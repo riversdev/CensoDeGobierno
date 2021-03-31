@@ -4,41 +4,43 @@
 <div style="height: 100vh;">
     <!-- Navegacion de bienvenida -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
-        <a class="navbar-brand text-dark" href="#">
-            <img src="views/static/img/h.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-            OFICIALÍA MAYOR
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav nav-pills ml-auto" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-                        <i class="fas fa-home"></i>
-                        INICIO
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="realizarCenso-tab" data-bs-toggle="tab" data-bs-target="#realizarCenso" type="button" role="tab" aria-controls="realizarCenso" aria-selected="false">
-                        <i class="fas fa-file-alt"></i>
-                        REALIZAR CENSO
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="iniciarSesion-tab" data-bs-toggle="tab" data-bs-target="#iniciarSesion" type="button" role="tab" aria-controls="iniciarSesion" aria-selected="false">
-                        <i class="fas fa-lock"></i>
-                        INICIAR SESIÓN
-                    </button>
-                </li>
-            </ul>
-            <div class="d-none d-lg-block py-3 mx-3" style="border: 1px solid #6C757D;"></div>
-            <form class="form-inline my-2 my-lg-0">
-                <a class="nav-link text-dark" href="http://oficialiamayor.hidalgo.gob.mx/" target="_blank">
-                    <i class="fas fa-external-link-alt"></i>
-                    Sitio Oficial
-                </a>
-            </form>
+        <div class="container-fluid">
+            <a class="navbar-brand text-dark" href="#">
+                <img src="views/static/img/h.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                OFICIALÍA MAYOR
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav nav-pills ml-auto d-flex justify-content-center mr-0" id="myTab" role="tablist">
+                    <li class="nav-item m-0" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                            <i class="fas fa-home"></i>
+                            INICIO
+                        </button>
+                    </li>
+                    <li class="nav-item m-0" role="presentation">
+                        <button class="nav-link" id="realizarCenso-tab" data-bs-toggle="tab" data-bs-target="#realizarCenso" type="button" role="tab" aria-controls="realizarCenso" aria-selected="false">
+                            <i class="fas fa-file-alt"></i>
+                            REALIZAR CENSO
+                        </button>
+                    </li>
+                    <li class="nav-item m-0" role="presentation">
+                        <button class="nav-link" id="iniciarSesion-tab" data-bs-toggle="tab" data-bs-target="#iniciarSesion" type="button" role="tab" aria-controls="iniciarSesion" aria-selected="false">
+                            <i class="fas fa-lock"></i>
+                            INICIAR SESIÓN
+                        </button>
+                    </li>
+                </ul>
+                <div class="d-none d-lg-block py-3 mx-3" style="border: 1px solid #6C757D;"></div>
+                <form class="form-inline my-2 my-lg-0">
+                    <a class="nav-link text-dark w-100 text-end" href="http://oficialiamayor.hidalgo.gob.mx/" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Sitio Oficial
+                    </a>
+                </form>
+            </div>
         </div>
     </nav>
 
