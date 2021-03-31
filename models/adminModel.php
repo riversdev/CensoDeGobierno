@@ -344,9 +344,11 @@ class AdminModel
             if ($tipoDeUsuario == "dependencia") {
                 $obtenerDatos =
                     "SELECT
-                    d.id AS idDependencia,
-                    d.password AS contraseniaDependencia,
-                    d.clasificacionAd AS clasificacionDependencia
+                        d.id AS idDependencia,
+                        d.password AS contraseniaDependencia,
+                        d.nombre AS nombreDependencia,
+                        d.clasificacionAd AS clasificacionDependencia,
+                        d.anio AS anioDependencia
                 FROM tbl_instituciones as d
                 WHERE d.id = '" . $usuario . "'
                 AND d.anio = '" . $anio . "'";
@@ -357,13 +359,15 @@ class AdminModel
                         session_start();
                         $_SESSION['sesionActiva'] = "1";
                         $_SESSION['idDependencia'] = $resultados[0]['idDependencia'];
+                        $_SESSION['nombreDependencia'] = $resultados[0]['nombreDependencia'];
                         $_SESSION['clasificacionDependencia'] = $resultados[0]['clasificacionDependencia'];
-                        return [true];
+                        $_SESSION['anioDependencia'] = $resultados[0]['anioDependencia'];
+                        return ["success", true];
                     } else {
-                        return [false];
+                        return ["success", false];
                     }
                 } else {
-                    return [false];
+                    return ["error", "Error, intente de nuevo o mas tarde!"];
                 }
             } else if ($tipoDeUsuario == "admin") {
                 $obtenerDatos =
@@ -374,24 +378,24 @@ class AdminModel
                     WHERE u.user_email = '" . $usuario . "'";
 
                 $stmt = Connection::connect()->prepare($obtenerDatos);
-                if($stmt->execute()){
+                if ($stmt->execute()) {
                     $resultados = $stmt->fetchAll();
-                    if(count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario'])){
+                    if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario'])) {
                         session_start();
                         $_SESSION['sesionActiva'] = "1";
                         $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
 
-                        return [true];
-                    }else{
+                        return ["success", true];
+                    } else {
 
-                        return [false];
+                        return ["success", false];
                     }
-                }else{
-                    return [false];
+                } else {
+                    return ["error", "Error, intente de nuevo o mas tarde!"];
                 }
             }
         } catch (Exception $e) {
-            return [false];
+            return ["error", "Imposible conectar a la base de datos!" . $e];
         }
     }
 }
