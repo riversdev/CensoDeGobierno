@@ -362,6 +362,7 @@ class AdminModel
                         $_SESSION['nombreDependencia'] = $resultados[0]['nombreDependencia'];
                         $_SESSION['clasificacionDependencia'] = $resultados[0]['clasificacionDependencia'];
                         $_SESSION['anioDependencia'] = $resultados[0]['anioDependencia'];
+                        $_SESSION['tipoUsuario'] = "dependencia";
                         return ["success", true];
                     } else {
                         return ["success", false];
@@ -384,6 +385,7 @@ class AdminModel
                         session_start();
                         $_SESSION['sesionActiva'] = "1";
                         $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
+                        $_SESSION['tipoUsuario'] = "admin";
 
                         return ["success", true];
                     } else {
