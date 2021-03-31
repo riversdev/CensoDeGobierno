@@ -241,10 +241,9 @@ class AdminModel
         }
     }
 
-    public static function obtenerDependencias($clasificacion)
+    public static function obtenerDependencias($clasificacion, $anio)
     {
         try {
-            $anio = date("Y");
             $obtenerDependencias = "";
             if ($clasificacion == "all") {
                 $obtenerDependencias =
@@ -277,10 +276,9 @@ class AdminModel
         }
     }
 
-    public static function registrarDependencia($clasificacion, $institucion, $password)
+    public static function registrarDependencia($clasificacion, $institucion, $password, $anio)
     {
         try {
-            $anio = date("Y");
             $password = password_hash($password, PASSWORD_DEFAULT);
             $contador = 0;
             $preguntarSiExiste =
@@ -337,5 +335,9 @@ class AdminModel
         } catch (Exception $e) {
             return ["error", "Imposible conectar a la base de datos! " . $e];
         }
+    }
+
+    public static function accesoUsuario($tipoDeUsuario, $usuario, $contrasenia){
+        
     }
 }
