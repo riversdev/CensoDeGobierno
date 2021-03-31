@@ -123,4 +123,12 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $clasificacion = $data['clasificacion'];
     $obtenerDependencias = AdminModel::obtenerDependencias($clasificacion);
     echo json_encode($obtenerDependencias);
+} else if ($tipoPeticion == "registrarDependencia"){
+    $institucion = $data['institucion'];
+    $clasificacion = $data['clasificacion'];
+    $password = $data['password'];
+
+    $respuesta = AdminModel::registrarDependencia($clasificacion, $institucion, $password);
+
+    echo json_encode($respuesta);
 }

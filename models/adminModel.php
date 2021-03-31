@@ -277,7 +277,65 @@ class AdminModel
         }
     }
 
-    public static function registrarDependencia()
+    public static function registrarDependencia($clasificacion, $institucion, $password)
     {
+        try {
+            $anio = date("Y");
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $contador = 0;
+            $preguntarSiExiste =
+                "SELECT *FROM tbl_instituciones 
+                WHERE id = '" . $institucion . "' AND anio = '" . $anio . "'";
+            $stmt = Connection::connect()->prepare($preguntarSiExiste);
+            if ($stmt->execute()) {
+                $contador = $stmt->fetchAll();
+                if (count($contador) != 0) {
+                    return ["error", "Ya cuenta con una contraseña registrada!"];
+                } else {
+                    //OBTENER NOMBRE DEPENDENCIA
+                    $obtenerNombreDependencia =
+                        "SELECT 
+                            t.Institucion AS nombreInstitucion
+                        FROM altas_instituciones AS t                         
+                        WHERE t.Clave = '" . $institucion . "' AND t.anio = '" . $anio . "'";
+
+                    $ejecutar = Connection::connect()->prepare($obtenerNombreDependencia);
+                    $ejecutar->execute();
+                    $row = $ejecutar->fetchAll();
+                    $nombreDependencia = $row[0][0];
+
+                    //INSERTAR DATOS DE LA DEPENDENCIA
+
+                    $insertarDatosDependencia =
+                        "INSERT INTO tbl_instituciones
+                        (
+                            id,
+                            nombre,
+                            `password`,
+                            clasificacionAd,
+                            anio
+                        )
+                        VALUES
+                        (
+                            '$institucion',
+                            '$nombreDependencia',
+                            '$password',
+                            '$clasificacion',
+                            '$anio'
+                        )";
+
+                    $ejecutarInsert = Connection::connect()->prepare($insertarDatosDependencia);
+                    if ($ejecutarInsert->execute()) {
+                        return ["success", "Registro exitoso!"];
+                    } else {
+                        return ["error",  "Error intentelo de nuevo o mas tarde!"];
+                    }
+                }
+            } else {
+                return ["error", "Error al ejecutar la consulta sql!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Imposible conectar a la base de datos! " . $e];
+        }
     }
 }
