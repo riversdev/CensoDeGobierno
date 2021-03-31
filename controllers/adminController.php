@@ -132,5 +132,11 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $respuesta = AdminModel::registrarDependencia($clasificacion, $institucion, $password, $anio);
     echo json_encode($respuesta);
 } else if ($tipoPeticion == "validarAcceso"){
-    echo $tipoDeUsuario = $data['tipoDeUsuario'];
+    $tipoDeUsuario = $data['tipoDeUsuario'];
+    $usuario = $data['usuario'];
+    $contrasenia = $data['contrasenia'];
+    $anio = $data['anio'];
+
+    $respuesta = AdminModel::accesoUsuario($tipoDeUsuario, $usuario, $contrasenia, $anio);
+    echo json_encode($respuesta);
 }

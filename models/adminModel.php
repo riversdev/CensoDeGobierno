@@ -288,7 +288,7 @@ class AdminModel
             if ($stmt->execute()) {
                 $contador = $stmt->fetchAll();
                 if (count($contador) != 0) {
-                    return ["error", "Ya cuenta con una contraseña registrada!"];
+                    return ["error", "Imposible registrar la institucion nuevamente!"];
                 } else {
                     //OBTENER NOMBRE DEPENDENCIA
                     $obtenerNombreDependencia =
@@ -337,7 +337,61 @@ class AdminModel
         }
     }
 
-    public static function accesoUsuario($tipoDeUsuario, $usuario, $contrasenia){
-        
+    public static function accesoUsuario($tipoDeUsuario, $usuario, $contrasenia, $anio)
+    {
+        try {
+            # OBTENER DATOS DE LA BD A COMPARAR
+            if ($tipoDeUsuario == "dependencia") {
+                $obtenerDatos =
+                    "SELECT
+                    d.id AS idDependencia,
+                    d.password AS contraseniaDependencia,
+                    d.clasificacionAd AS clasificacionDependencia
+                FROM tbl_instituciones as d
+                WHERE d.id = '" . $usuario . "'
+                AND d.anio = '" . $anio . "'";
+                $stmt = Connection::connect()->prepare($obtenerDatos);
+                if ($stmt->execute()) {
+                    $resultados = $stmt->fetchAll();
+                    if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaDependencia'])) {
+                        session_start();
+                        $_SESSION['sesionActiva'] = "1";
+                        $_SESSION['idDependencia'] = $resultados[0]['idDependencia'];
+                        $_SESSION['clasificacionDependencia'] = $resultados[0]['clasificacionDependencia'];
+                        return [true];
+                    } else {
+                        return [false];
+                    }
+                } else {
+                    return [false];
+                }
+            } else if ($tipoDeUsuario == "admin") {
+                $obtenerDatos =
+                    "SELECT
+                        u.user_id AS idUsuario,
+                        u.user_password_hash AS contraseniaUsuario
+                    FROM users AS u
+                    WHERE u.user_email = '" . $usuario . "'";
+
+                $stmt = Connection::connect()->prepare($obtenerDatos);
+                if($stmt->execute()){
+                    $resultados = $stmt->fetchAll();
+                    if(count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario'])){
+                        session_start();
+                        $_SESSION['sesionActiva'] = "1";
+                        $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
+
+                        return [true];
+                    }else{
+
+                        return [false];
+                    }
+                }else{
+                    return [false];
+                }
+            }
+        } catch (Exception $e) {
+            return [false];
+        }
     }
 }
