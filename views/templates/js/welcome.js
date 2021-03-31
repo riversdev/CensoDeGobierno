@@ -1,4 +1,7 @@
+f = null
+
 document.addEventListener('DOMContentLoaded', () => {
+    f = new Date()
     validarFormularios()
 
     obtenerDependencias('all').then((res) => {
@@ -106,7 +109,8 @@ async function obtenerDependencias(clasificacion) {
             method: 'POST',
             data: {
                 tipoPeticion: 'obtenerDependencias',
-                clasificacion
+                clasificacion,
+                anio: f.getFullYear()
             }
         })
         return res.data
@@ -122,8 +126,10 @@ async function registrarDependencia() {
             data: {
                 tipoPeticion: 'registrarDependencia',
                 clasificacion: document.getElementById('txtClasificacion').value,
-                institucion: document.getElementById('txtInstitucion').value,
-                password: document.getElementById('txtContrasenia').value
+                claveDependencia: document.getElementById('txtInstitucion').value,
+                nombreDependencia: document.getElementById('txtInstitucion').options[document.getElementById('txtInstitucion').selectedIndex].text,
+                password: document.getElementById('txtContrasenia').value,
+                anio: f.getFullYear()
             }
         })
         return res.data
@@ -140,7 +146,8 @@ async function validarAcceso(tipoDeUsuario, usuario, contrasenia) {
                 tipoPeticion: 'validarAcceso',
                 tipoDeUsuario,
                 usuario,
-                contrasenia
+                contrasenia,
+                anio: f.getFullYear()
             }
         })
         return res.data
