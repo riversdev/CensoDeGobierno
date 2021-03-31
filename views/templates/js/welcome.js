@@ -71,26 +71,38 @@ validarFormularios = () => {
                         })
                     } else if (form.id == 'formLoginDependencia') {
                         validarAcceso('dependencia', document.getElementById('txtInstitucionLogin').value, document.getElementById('txtContraseniaLogin').value).then((res) => {
-                            if (res[0] != undefined && res[0] == true) {
-                                alertify.success('Acceso correcto !')
-                                setTimeout(() => {
-                                    location.href('questionary')
-                                }, 1000)
-                            } else if (res[0] != undefined && res[0] == false) {
-                                alertify.error('Datos incorrectos !')
+                            if (res[0] != undefined && res[0] == 'success') {
+                                if (res[1] == true) {
+                                    alertify.success('Acceso correcto !')
+                                    setTimeout(() => {
+                                        location.href = 'questionary'
+                                    }, 1000)
+                                } else if (res[1] == false) {
+                                    alertify.error('Datos incorrectos !')
+                                } else {
+                                    console.warn('Tipo de respuesta no definido. ' + res)
+                                }
+                            } else if (res[0] != undefined && res[0] == 'error') {
+                                console.warn('Error. ' + res[1])
                             } else {
                                 console.warn('Tipo de respuesta no definido. ' + res)
                             }
                         })
                     } else if (form.id == 'formLoginAdmin') {
                         validarAcceso('admin', document.getElementById('txtMailLoginAdmin').value, document.getElementById('txtContraseniaLoginAdmin').value).then((res) => {
-                            if (res[0] != undefined && res[0] == true) {
-                                alertify.success('Acceso correcto !')
-                                setTimeout(() => {
-                                    location.href('home')
-                                }, 1000)
-                            } else if (res[0] != undefined && res[0] == false) {
-                                alertify.error('Datos incorrectos !')
+                            if (res[0] != undefined && res[0] == 'success') {
+                                if (res[1] == true) {
+                                    alertify.success('Acceso correcto !')
+                                    setTimeout(() => {
+                                        location.href = 'home'
+                                    }, 1000)
+                                } else if (res[1] == false) {
+                                    alertify.error('Datos incorrectos !')
+                                } else {
+                                    console.warn('Tipo de respuesta no definido. ' + res)
+                                }
+                            } else if (res[0] != undefined && res[0] == 'error') {
+                                console.warn('Error. ' + res[1])
                             } else {
                                 console.warn('Tipo de respuesta no definido. ' + res)
                             }
