@@ -264,16 +264,20 @@ class AdminModel
             $stmt = Connection::connect()->prepare($obtenerDependencias);
             if ($stmt->execute()) {
                 $contador = $stmt->fetchAll();
-                if(count($contador) == 0){
+                if (count($contador) == 0) {
                     return ["error", "No hay registros existentes"];
-                }else{
-                    return ["success", $stmt->fetchAll()];
+                } else {
+                    return ["success", $contador];
                 }
-            }else{
+            } else {
                 return ["error", "Imposible ejecutar la consulta!"];
             }
         } catch (Exception $e) {
             return ["error", "Error al conectar a la base de datos! " . $e];
         }
+    }
+
+    public static function registrarDependencia()
+    {
     }
 }
