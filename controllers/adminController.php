@@ -110,15 +110,15 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     }
 } else if ($tipoPeticion == "listarUsuarios") {
     $listarUsuarios = AdminModel::listarUsuarios();
-    json_encode($listarUsuarios);
+    echo json_encode($listarUsuarios);
 } else if ($tipoPeticion == "listarDependencias") {
     $anio = $data['anioDependencia'];
     $listarDependencias = AdminModel::listarDependencias($anio);
-    json_encode($listarDependencias);
+    echo json_encode($listarDependencias);
 } else if ($tipoPeticion == "listarResultados") {
     $anio = $data['anioDependencia'];
     $listarResultados = AdminModel::listarResultados($anio);
-    json_encode($listarResultados);
+    echo json_encode($listarResultados);
 } else if ($tipoPeticion == "obtenerDependencias"){
     $clasificacion = $data['clasificacion'];
     $anio = $data['anio'];
