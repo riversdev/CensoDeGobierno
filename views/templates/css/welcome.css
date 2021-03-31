@@ -1,0 +1,97 @@
+ul,
+li {
+  list-style-type: none;
+}
+
+footer {
+  background-color: #082432;
+  color: #fff;
+}
+
+.footer_info {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  padding: 15px 0;
+}
+
+.footer_info .footer_width {
+  padding: 0 15px;
+}
+
+.footer_info .mision .contact {
+  margin-bottom: 20px;
+}
+
+.about,
+.contact {
+  width: 35%;
+}
+
+.link {
+  width: 30%;
+}
+
+.social-media ul {
+  display: flex;
+}
+
+.social-media ul li a {
+  display: inline-block;
+  margin-right: 50px;
+  width: 50px;
+  height: 50px;
+  padding-top: 12px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  text-align: center;
+}
+
+.social-media ul li a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.link ul li a {
+  margin-bottom: 15px;
+  font-size: 18px;
+  align-items: center;
+}
+
+.link ul li a:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.contact ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.contact ul li span {
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 992px) {
+  .about .contact {
+    width: 35%;
+  }
+
+  .link {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .about,
+  .contact,
+  .link {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .footer_info {
+    flex-direction: column;
+  }
+}
