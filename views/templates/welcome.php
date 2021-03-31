@@ -156,7 +156,7 @@
                         <span class="ml-5"><u>Sección XII.</u> Contrataciones públicas.</span>
                     </p>
                     <br>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserr">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddUser">
                         Realizar Registro
                     </button>
                 </div>
@@ -172,7 +172,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="realizarCenso" role="tabpanel" aria-labelledby="realizarCenso-tab" style="height: 100%;">
+        <div class="tab-pane fade" id="realizarCenso" role="tabpanel" aria-labelledby="realizarCenso-tab" style="height: 95%;">
             <div class="row d-flex justify-content-center align-items-center m-0" style="height: 100%;">
                 <div class="row mx-5" style="height: 60vh; width: 150vh;">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-center align-items-center p-4 bg-dark shadow-lg" style="z-index: 2;">
@@ -225,7 +225,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="iniciarSesion" role="tabpanel" aria-labelledby="iniciarSesion-tab" style="height: 100%;">
+        <div class="tab-pane fade" id="iniciarSesion" role="tabpanel" aria-labelledby="iniciarSesion-tab" style="height: 95%;">
             <div class="row d-flex justify-content-center align-items-center m-0" style="height: 100%;">
                 <div class="row mx-5" style="height: 60vh; width: 150vh;">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-center align-items-center p-4 bg-dark shadow-lg" style="z-index: 2;">
@@ -280,14 +280,12 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addUserr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalAddUser" tabindex="-1" aria-labelledby="modalAddUserLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0">
                 <div class="modal-header border-0" style="background: linear-gradient(to right, #e63c4d,#b91926);">
-                    <h5 id="exampleModalLabel" class="modal-title text-white">Registro</h5>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 id="modalAddUserLabel" class="modal-title text-white">Registrar institución</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="formRegistrarDependencia" class="needs-validation" novalidate>
@@ -320,7 +318,7 @@
                                 <div class="invalid-feedback">Ingrese una contraseña</div>
                             </div>
                         </div>
-                        <div class="form-group text-center">
+                        <div class="form-group text-center mb-0">
                             <button id="registeruserI" type="submit" name="registeruserI" class="btn btn-outline-primary">
                                 Registrar
                                 <i class="fas fa-lg fa-paper-plane"></i>
@@ -382,6 +380,22 @@
     document.addEventListener('DOMContentLoaded', () => {
         validarFormularios()
 
+        obtenerDependencias('all').then((res) => {
+            if (res[0] != undefined && res[0] == 'success') {
+                document.getElementById('txtInstitucionLogin').innerHTML = ''
+                res[1].forEach(dependencia => {
+                    option = document.createElement('option')
+                    option.value = dependencia['claveDependencia']
+                    option.append(document.createTextNode(dependencia['nombreDependencia']))
+                    document.getElementById('txtInstitucionLogin').append(option)
+                })
+            } else if (res[0] != undefined && res[0] == 'error') {
+                alertify.error(res[1])
+            } else {
+                console.warn('Tipo de respuesta no definido. ' + res)
+            }
+        })
+
         botonesInicio = document.getElementsByClassName('btnInicio')
         for (let i = 0; i < botonesInicio.length; i++) {
             botonesInicio[i].addEventListener('click', () => {
@@ -391,15 +405,15 @@
 
         document.getElementById('txtClasificacion').addEventListener('change', function() {
             obtenerDependencias(this.value).then((res) => {
-                if (res[0] == 'success') {
+                if (res[0] != undefined && res[0] == 'success') {
                     document.getElementById('txtInstitucion').innerHTML = ''
                     res[1].forEach(dependencia => {
                         option = document.createElement('option')
-                        option.value = dependencia['nombreDependencia']
+                        option.value = dependencia['claveDependencia']
                         option.append(document.createTextNode(dependencia['nombreDependencia']))
                         document.getElementById('txtInstitucion').append(option)
                     })
-                } else if (res[0] == 'error') {
+                } else if (res[0] != undefined && res[0] == 'error') {
                     alertify.error(res[1])
                 } else {
                     console.warn('Tipo de respuesta no definido. ' + res)
@@ -423,9 +437,9 @@
                         event.preventDefault()
                         if (form.id == 'formRegistrarDependencia') {
                             registrarDependencia().then((res) => {
-                                if (res[0] == 'success') {
+                                if (res[0] != undefined && res[0] == 'success') {
                                     alertify.success(res[1])
-                                } else if (res[0] == 'error') {
+                                } else if (res[0] != undefined && res[0] == 'error') {
                                     alertify.error(res[1])
                                 } else {
                                     console.warn('Tipo de respuesta no definido. ' + res)
