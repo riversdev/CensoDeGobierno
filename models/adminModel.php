@@ -1,0 +1,279 @@
+<?php
+require_once "connectionModel.php";
+
+class AdminModel
+{
+    public static function revalidarDependenciasAnuales($tablas)
+    {
+        $anio = date("Y"); # AÑO ACTUAL
+        $c = 0; # CONTADOR DE CONSULTAS EXITOSAS
+        $errores = array(); # ARREGLO DE NOMBRES DE LAS TABLAS DE CONSULTAS ERRONEAS
+
+        # ACTUALIZAR (ESTATUS = 0) EN TODAS LAS TABLAS DE LA LISTA DONDE EL AÑO SEA DIFERENTE AL ACTUAL
+        for ($i = 0; $i < count($tablas); $i++) {
+            $SQL = "UPDATE $tablas[$i] SET Status = 0 WHERE anio != $anio";
+            $stmt = Connection::connect()->prepare($SQL);
+            try {
+                $stmt->execute() ? $c++ : array_push($errores, "$tablas[$i]"); # No se utiliza el else
+            } catch (Exception $e) {
+                array_push($errores, $tablas[$i]);
+            }
+            $stmt = null;
+        }
+
+        # VERIFICACION DE QUE TODAS LAS CONSULTAS FUERON EXITOSAS O NO
+        if ($c != count($tablas)) {
+            echo "error|Imposible revalidar todas las dependencias, errores en las tablas: " . json_encode($errores);
+        } else {
+            echo "success|Dependencias revalidadas exitosamente !";
+        }
+    }
+    public static function leerListaDependencias()
+    {
+        try {
+            $SQL = "SELECT UPPER(a.Institucion) AS dependencia FROM altas_instituciones AS a GROUP BY UPPER(a.Institucion) ORDER BY a.Institucion ASC";
+            $stmt = Connection::connect()->prepare($SQL);
+            if ($stmt->execute()) {
+                return ["success", $stmt->fetchAll()];
+            } else {
+                return ["error", "Imposible leer dependencias !"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Imposible leer dependencias !"];
+        }
+        $stmt = null;
+    }
+    public static function editarDependencia($idDependencia, $idDependenciaOriginal, $anioDependencia, $anioDependenciaOriginal, $nombreDependencia, $nombreDependenciaOriginal, $clasificacion, $clasificacionOriginal, $tablas)
+    {
+        $c = 0; # CONTADOR DE CONSULTAS EXITOSAS
+        $errores = array(); # ARREGLO DE NOMBRES DE LAS TABLAS DE CONSULTAS ERRONEAS
+
+        # ACTUALIZAR (ESTATUS = 0) EN TODAS LAS TABLAS DE LA LISTA DONDE EL AÑO SEA DIFERENTE AL ACTUAL
+        for ($i = 0; $i < count($tablas); $i++) {
+            # CREACION DE VARIABLES CON LOS NOMBRES DE LOS CAMPOS DE CADA TABLA (no se hace en la consulta porque no se admiten los arreglos en la cadena xD)
+            $tablaCadena = $tablas[$i]['tabla'];
+            $idCadena = $tablas[$i]['campos'][0];
+            $nombreCadena = $tablas[$i]['campos'][1];
+            $anioCadena = $tablas[$i]['campos'][2];
+
+            # CREACION DEL SQL PARA ACTUALIZAR CADA TABLA
+            if ($tablas[$i]['tabla'] == "altas_instituciones") {
+                $SQL = "UPDATE $tablaCadena
+                        SET $idCadena = $idDependencia,
+                            $nombreCadena = '$nombreDependencia',
+                            $anioCadena = $anioDependencia,
+                            Clasificacion_Adm = $clasificacion
+                        WHERE
+                            $idCadena = $idDependenciaOriginal AND
+                            $nombreCadena = '$nombreDependenciaOriginal' AND
+                            $anioCadena = $anioDependenciaOriginal AND
+                            Clasificacion_Adm = $clasificacionOriginal";
+            } elseif ($tablas[$i]['tabla'] == "tbl_instituciones") {
+                $SQL = "UPDATE $tablaCadena
+                        SET $idCadena = $idDependencia,
+                            $nombreCadena = '$nombreDependencia',
+                            $anioCadena = $anioDependencia,
+                            clasificacionAd = $clasificacion
+                        WHERE
+                            $idCadena = $idDependenciaOriginal AND
+                            $nombreCadena = '$nombreDependenciaOriginal' AND
+                            $anioCadena = $anioDependenciaOriginal AND
+                            clasificacionAd = $clasificacionOriginal";
+            } else {
+                $SQL = "UPDATE $tablaCadena
+                        SET $idCadena = $idDependencia,
+                            $nombreCadena = '$nombreDependencia',
+                            $anioCadena = $anioDependencia
+                        WHERE
+                            $idCadena = $idDependenciaOriginal AND
+                            $nombreCadena = '$nombreDependenciaOriginal' AND
+                            $anioCadena = $anioDependenciaOriginal";
+            }
+
+            # ALMACENADO DE LA CONSULTA PREPARADA EN EL STMT
+            $stmt = Connection::connect()->prepare($SQL);
+
+            # EJECUCION DE LA CONSULTA CON MANEJO DE ERRORES
+            try {
+                $stmt->execute() ? $c++ : array_push($errores, $tablas[$i]['tabla']); # No se utiliza el else
+            } catch (Exception $e) {
+                array_push($errores, $tablas[$i]['tabla']);
+            }
+
+            # IGUALACION DEL STMT A NULL PARA LA PROXIMA CONSULTA
+            $stmt = null;
+        }
+
+        # VERIFICACION DE QUE TODAS LAS CONSULTAS FUERON EXITOSAS O NO
+        if ($c != count($tablas)) {
+            echo "error|Imposible editar la dependencia en todas las tablas, errores en las tablas: " . json_encode($errores);
+        } else {
+            echo "success|Dependencia editada exitosamente !";
+        }
+    }
+    public static function verificarIdExistente($idDependencia, $anioDependencia)
+    {
+        try {
+            $SQL = "SELECT a.Clave AS idDependencia, a.Institucion AS nombreDependencia, a.anio AS anioDependencia
+                    FROM altas_instituciones AS a
+                    WHERE a.Clave=$idDependencia AND a.anio=$anioDependencia";
+            $stmt = Connection::connect()->prepare($SQL);
+            if ($stmt->execute()) {
+                return $stmt->fetchAll();
+            } else {
+                return 0;
+            }
+        } catch (Exception $e) {
+            return 0;
+        }
+        $stmt = null;
+    }
+    public static function listarUsuarios()
+    {
+        try {
+            $listarUsuarios =
+                "SELECT 
+                    u.user_id AS idUsuario,
+                    u.user_name AS nombreUsuario,
+                    u.user_apepa AS apUsuario,
+                    u.user_apema AS amUsuario,
+                    u.user_email AS user_email,
+                    u.user_dirge AS usuarioOcupacion,
+                    u.user_register AS fechaRegistro,
+                    u.user_status AS estatusUsuario
+                FROM users AS u";
+            $stmt = Connection::connect()->prepare($listarUsuarios);
+            if ($stmt->execute()) {
+                $contador = $stmt->fetchAll();
+                if (count($contador) == 0) {
+                    return ["error", "No hay usuarios registrados!"];
+                } else {
+                    return $stmt->fetchAll();
+                }
+            } else {
+                return ["error", "imposible ejecutar la consulta!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Error al conectar a la base datos! " . $e];
+        }
+    }
+
+    public static function listarDependencias($anio)
+    {
+        try {
+            if ($anio == "all") {
+                $listarDependencias =
+                    "SELECT
+                    d.Clave AS idInstitucion,
+                    d.Institucion AS nombreInstitucion,
+                    d.Clasificacion AS Clasificacion,
+                    d.anio AS anioInstitucion,
+                    d.finalizado AS Finalizado
+                FROM altas_instituciones as d";
+            } else {
+                $listarDependencias =
+                    "SELECT
+                    d.Clave AS idInstitucion,
+                    d.Institucion AS nombreInstitucion,
+                    d.Clasificacion AS Clasificacion,
+                    d.anio AS anioInstitucion,
+                    d.finalizado AS Finalizado
+                FROM altas_instituciones as d 
+                WHERE
+                d.anio = '" . $anio . "'";
+            }
+            $stmt = Connection::connect()->prepare($listarDependencias);
+            if ($stmt->execute()) {
+                $contador = $stmt->fetchAll();
+                if (count($contador) == 0) {
+                    return ["error", "No hay dependencias registradas!"];
+                } else {
+                    return $stmt->fetchAll();
+                }
+            } else {
+                return ["error", "Imposible ejecutar consulta!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Error al conectar a la base de datos! " . $e];
+        }
+    }
+
+    public static function listarResultados($anio)
+    {
+        try {
+            if ($anio == "all") {
+                $listarResultados =
+                    "SELECT
+                    d.id_intu AS idInstitucion,
+                    d.nombre_intu AS nombreInstitucion,
+                    d.cedula2 AS cedulaBlob,
+                    d.titulo2 AS tituloBlob,
+                    d.tituloo AS Titulo,
+                    d.cedula AS Cedula
+                FROM tbl_pregunta2";
+            } else {
+                $listarResultados =
+                    "SELECT
+                    d.id_intu AS idInstitucion,
+                    d.nombre_intu AS nombreInstitucion,
+                    d.cedula2 AS cedulaBlob,
+                    d.titulo2 AS tituloBlob,
+                    d.tituloo AS Titulo,
+                    d.cedula AS Cedula
+                FROM tbl_pregunta2
+                WHERE
+                    d.anio = '" . $anio . "'";
+            }
+
+            $stmt = Connection::connect()->prepare($listarResultados);
+            if ($stmt->execute()) {
+                $contador = $stmt->fetchAll();
+                if (count($contador) == 0) {
+                    return ["error", "No hay resultados registrados!"];
+                } else {
+                    return $stmt->fetchAll();
+                }
+            } else {
+                return ["error", "Imposible ejecutar la consulta!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Imposible conectar a la base de datos! " . $e];
+        }
+    }
+
+    public static function obtenerDependencias($clasificacion)
+    {
+        try {
+            $anio = date("Y");
+            $obtenerDependencias = "";
+            if ($clasificacion == "all") {
+                $obtenerDependencias =
+                    "SELECT
+                        d.Clave AS claveDependencia,
+                        d.Institucion AS nombreDependencia
+                    FROM altas_instituciones AS d
+                    WHERE d.anio = '" . $anio . "'";
+            } else {
+                $obtenerDependencias =
+                    "SELECT
+                        d.Clave AS claveDependencia,
+                        d.Institucion AS nombreDependencia
+                    FROM altas_instituciones AS d
+                    WHERE d.Clasificacion_Adm = '" . $clasificacion . "' AND d.anio = '" . $anio . "'";
+            }
+            $stmt = Connection::connect()->prepare($obtenerDependencias);
+            if ($stmt->execute()) {
+                $contador = $stmt->fetchAll();
+                if(count($contador) == 0){
+                    return ["error", "No hay registros existentes"];
+                }else{
+                    return ["success", $stmt->fetchAll()];
+                }
+            }else{
+                return ["error", "Imposible ejecutar la consulta!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Error al conectar a la base de datos! " . $e];
+        }
+    }
+}
