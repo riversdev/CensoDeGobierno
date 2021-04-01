@@ -3327,7 +3327,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (res != undefined && res == 'success') {
                         alertify.success('Sesión terminada !')
                         setTimeout(() => {
-                            location.href = '/'
+                            location.href = ''
                         }, 1000)
                     } else if (res != undefined && res == 'error') {
                         alertify.error('Imposible cerrar sesión !')
