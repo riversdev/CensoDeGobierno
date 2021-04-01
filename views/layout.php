@@ -26,6 +26,7 @@
 
         * {
             font-family: "Open Sans", sans-serif !important;
+            font-weight: normal !important;
         }
     </style>
 </head>

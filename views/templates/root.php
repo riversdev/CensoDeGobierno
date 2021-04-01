@@ -14,6 +14,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
     ';
 ?>
     <!-- Main Admin JS -->
+    <script src="views\templates\js\admin.js"></script>
     <!-- Main Admin CSS -->
     <link rel="stylesheet" href="views\templates\css\footer.css">
 
@@ -22,9 +23,57 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
         <?php require_once("views/templates/components/adminNavbar.php"); ?>
 
         <div class="tab-content row mx-2 my-3" id="tabNavigationContent">
-            <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">Usuarios</div>
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="d-flex align-content-around flex-wrap w-100" style="min-height: 80vh;">
+                    <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
+                        <button id="btnTabUsuarios" type="button" class="btn btn-outline-primary row d-flex align-items-center my-0 mx-5 py-4">
+                            <div class="col-5">
+                                <i class="fas fa-9x fa-users-cog"></i>
+                            </div>
+                            <div class="col-7 text-justify">
+                                <p class="text-center font-weight-bold">Usuarios</p>
+                                <small>Manipula la información de los usuarios administradores</small>
+                            </div>
+                        </button>
+                    </span>
+                    <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
+                        <button id="btnTabDependencias" type="button" class="btn btn-outline-primary row d-flex align-items-center my-0 mx-5 py-4">
+                            <div class="col-5">
+                                <i class="fas fa-9x fa-university"></i>
+                            </div>
+                            <div class="col-7 text-justify">
+                                <p class="text-center font-weight-bold">Dependencias</p>
+                                <small>Manipula la información de las dependencias y sus resultados</small>
+                            </div>
+                        </button>
+                    </span>
+                    <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
+                        <button id="btnTabReportes" type="button" class="btn btn-outline-primary row d-flex align-items-center my-0 mx-5 py-4">
+                            <div class="col-5">
+                                <i class="fas fa-9x fa-newspaper"></i>
+                            </div>
+                            <div class="col-7 text-justify">
+                                <p class="text-center font-weight-bold">Reportes</p>
+                                <small>Genera reportes de los censos desde 2019 a la fecha</small>
+                            </div>
+                        </button>
+                    </span>
+                    <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
+                        <button id="btnTabGraficador" type="button" class="btn btn-outline-primary row d-flex align-items-center my-0 mx-5 py-4">
+                            <div class="col-5">
+                                <i class="fas fa-9x fa-chart-bar"></i>
+                            </div>
+                            <div class="col-7 text-justify">
+                                <p class="text-center font-weight-bold">Graficador</p>
+                                <small>Vizualiza la información de los censos desde 2017 a la fecha</small>
+                            </div>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">Usuarios</div>
             <div class="tab-pane fade" id="dependencias" role="tabpanel" aria-labelledby="dependencias-tab">Dependencias</div>
-            <div class="tab-pane fade" id="resultados" role="tabpanel" aria-labelledby="resultados-tab">Resultados</div>
+            <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">Reportes</div>
             <div class="tab-pane fade" id="graficador" role="tabpanel" aria-labelledby="graficador-tab">Graficador</div>
         </div>
     </div>

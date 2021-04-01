@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#" id="btnTabHome">
             <img src="views/static/img/h.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
             OFICIALÍA MAYOR
         </a>
@@ -10,25 +10,28 @@
 
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="nav navbar-nav mr-auto" id="tabNavigation" role="tablist">
-                <li class="nav-item mx-1" role="presentation">
-                    <a href="#" class="nav-link active" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab" aria-controls="usuarios" aria-selected="true">
+                <li class="nav-item d-none" role="presentation">
+                    <a href="#" class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                </li>
+                <li class="nav-item mx-2" role="presentation">
+                    <a href="#" class="nav-link" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab" aria-controls="usuarios" aria-selected="true">
                         <i class="fas fa-users-cog"></i>
                         Usuarios
                     </a>
                 </li>
-                <li class="nav-item mx-1" role="presentation">
+                <li class="nav-item mx-2" role="presentation">
                     <a href="#" class="nav-link" id="dependencias-tab" data-bs-toggle="tab" data-bs-target="#dependencias" type="button" role="tab" aria-controls="dependencias" aria-selected="false">
                         <i class="fas fa-university"></i>
                         Dependencias
                     </a>
                 </li>
-                <li class="nav-item mx-1" role="presentation">
-                    <a href="#" class="nav-link" id="resultados-tab" data-bs-toggle="tab" data-bs-target="#resultados" type="button" role="tab" aria-controls="resultados" aria-selected="false">
+                <li class="nav-item mx-2" role="presentation">
+                    <a href="#" class="nav-link" id="reportes-tab" data-bs-toggle="tab" data-bs-target="#reportes" type="button" role="tab" aria-controls="reportes" aria-selected="false">
                         <i class="fas fa-newspaper"></i>
-                        Resultados
+                        Reportes
                     </a>
                 </li>
-                <li class="nav-item mx-1" role="presentation">
+                <li class="nav-item mx-2" role="presentation">
                     <a href="#" class="nav-link" id="graficador-tab" data-bs-toggle="tab" data-bs-target="#graficador" type="button" role="tab" aria-controls="graficador" aria-selected="false">
                         <i class="fas fa-chart-bar"></i>
                         Graficador
