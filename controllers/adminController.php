@@ -119,19 +119,19 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $anio = $data['anioDependencia'];
     $listarResultados = AdminModel::listarResultados($anio);
     echo json_encode($listarResultados);
-} else if ($tipoPeticion == "obtenerDependencias"){
+} else if ($tipoPeticion == "obtenerDependencias") {
     $clasificacion = $data['clasificacion'];
     $anio = $data['anio'];
     $obtenerDependencias = AdminModel::obtenerDependencias($clasificacion, $anio);
     echo json_encode($obtenerDependencias);
-} else if ($tipoPeticion == "registrarDependencia"){
+} else if ($tipoPeticion == "registrarDependencia") {
     $institucion = $data['claveDependencia'];
     $clasificacion = $data['clasificacion'];
     $password = $data['password'];
     $anio = $data['anio'];
     $respuesta = AdminModel::registrarDependencia($clasificacion, $institucion, $password, $anio);
     echo json_encode($respuesta);
-} else if ($tipoPeticion == "validarAcceso"){
+} else if ($tipoPeticion == "validarAcceso") {
     $tipoDeUsuario = $data['tipoDeUsuario'];
     $usuario = $data['usuario'];
     $contrasenia = $data['contrasenia'];
@@ -139,7 +139,7 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
 
     $respuesta = AdminModel::accesoUsuario($tipoDeUsuario, $usuario, $contrasenia, $anio);
     echo json_encode($respuesta);
-} else if($tipoPeticion == "cerrarSesion"){
+} else if ($tipoPeticion == "cerrarSesion") {
     $respuesta = AdminModel::cerrarSesion();
 
     echo json_encode($respuesta);
