@@ -21,7 +21,12 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
         <!-- Nav bar -->
         <?php require_once("views/templates/components/adminNavbar.php"); ?>
 
-        <div class="tab-content row mx-2 my-3"></div>
+        <div class="tab-content row mx-2 my-3" id="tabNavigationContent">
+            <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">Usuarios</div>
+            <div class="tab-pane fade" id="dependencias" role="tabpanel" aria-labelledby="dependencias-tab">Dependencias</div>
+            <div class="tab-pane fade" id="resultados" role="tabpanel" aria-labelledby="resultados-tab">Resultados</div>
+            <div class="tab-pane fade" id="graficador" role="tabpanel" aria-labelledby="graficador-tab">Graficador</div>
+        </div>
     </div>
 
     <footer style="border-top: 1px solid white;">
