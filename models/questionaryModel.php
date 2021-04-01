@@ -7064,7 +7064,7 @@ class Questionary
         session_unset();
         session_destroy();
 
-        return session_status() === PHP_SESSION_ACTIVE ? false : true;
+        return session_status() === PHP_SESSION_ACTIVE ? "error" : "success";
     }
     # @copyright CarlitosPC2810 Derechos Reservados
 }
