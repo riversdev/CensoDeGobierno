@@ -9,8 +9,8 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
         <script>
             const
                 idInstitucion = ' . $_SESSION['idDependencia'] . ',
-                nombreInstitucion = "' . $_SESSION['nombreDependencia'] . '";
-                clasificacionInstitucion = "' . $_SESSION['clasificacionDependencia'] . '";
+                nombreInstitucion = "' . $_SESSION['nombreDependencia'] . '",
+                clasificacionInstitucion = "' . $_SESSION['clasificacionDependencia'] . '",
                 anioInstitucion = "' . $_SESSION['anioDependencia'] . '";
         </script>
     ';
