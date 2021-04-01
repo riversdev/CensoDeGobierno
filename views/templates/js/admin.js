@@ -72,7 +72,7 @@ vizualizarElementosNavegacion = (tabVisible) => {
 
 async function cerrarSesion() {
     try {
-        let res = await axios('controllers/questionaryController.php', {
+        let res = await axios('controllers/adminController.php', {
             method: 'POST',
             data: {
                 tipoPeticion: 'cerrarSesion',
