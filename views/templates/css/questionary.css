@@ -1,0 +1,143 @@
+/* ESTILO GENERAL */
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #efefef;
+}
+
+/* ESTILO SCROLL 
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: #efefef;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #6c757d;
+}*/
+
+/* LOADER */
+#loaderContainer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+#loader {
+  height: 0%;
+  width: 0%;
+  background-color: #fff;
+  opacity: 0.3;
+  transition: all 0.2s ease;
+}
+
+#loaderContainer.showLoading {
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+#loaderContainer.showLoading #loader {
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+#loaderContainer.hideLoading {
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+#loaderContainer.hideLoading #loader {
+  height: 0%;
+  width: 0%;
+  transition: all 0.2s ease;
+}
+
+/* SIDEBAR */
+#sidebar {
+  position: fixed;
+  width: 90px;
+  height: 100%;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+#generalContainer {
+  margin-left: 200px;
+  transition: all 0.5s ease;
+}
+
+#sidebar.active {
+  width: 200px;
+}
+
+#sidebar ul li {
+  color: rgba(230, 230, 230, 0.9);
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+  text-align: center;
+}
+
+#btnToggle {
+  cursor: pointer;
+  margin-left: 200px;
+  transition: all 0.5s ease;
+}
+
+.navbar-brand {
+  background-color: #082432;
+}
+
+.accordion {
+  height: 88vh;
+  overflow-y: auto;
+}
+
+/* ESTILO MODALES */
+thead {
+  background-color: #f7f7f9;
+}
+
+/* ESTILO GENERAL DE PREGUNTAS */
+.cardPregunta {
+  border-radius: 15px;
+}
+
+.cardPregunta .preguntaPregunta {
+  background: linear-gradient(white, #f4f4f4);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.cardPregunta .preguntaRespuesta {
+  background-color: #f4f4f4;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.cardPregunta .preguntaRespuesta .card-body {
+  border-radius: 15px;
+  background-color: white;
+  border-top: 1px solid #b91926;
+}
+
+.headerTablas {
+  background-color: #f7f7f9;
+}
+
+.letraLabel {
+  font-size: 14px;
+}
