@@ -7057,5 +7057,19 @@ class Questionary
         }
     }
 
+    #CERRAR SESION QUESTIONARY
+
+    public static function cerrarSesion(){
+        session_start();
+        session_unset();
+        session_destroy();
+        
+        return "success";
+
+        if(session_status() === TRUE){
+            return "error";
+        }
+    }
+
     # @copyright CarlitosPC2810 Derechos Reservados
 }
