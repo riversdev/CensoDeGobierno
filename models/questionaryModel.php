@@ -10,18 +10,18 @@ class Questionary
 
             $SQL =
                 "SELECT
-                a.sexo AS sexo,
-                a.edad AS edad,
-                a.rangoMensu AS rangoIngresos,
-                a.grad AS nivelEscolaridad,
-                a.stats AS estatus,
-                a.especialidad AS especialidad,
-                a.empreoAnter AS empleoAnterior,
-                a.antigueda AS antiguedad,
-                a.antigueda2 as antigueda2,
-                a.puebloIndigena as puebloIndigena,
-                a.discapacidad as discapacidad,
-                a.designacion AS formaDesignacion
+                    a.sexo AS sexo,
+                    a.edad AS edad,
+                    a.rangoMensu AS rangoIngresos,
+                    a.grad AS nivelEscolaridad,
+                    a.stats AS estatus,
+                    a.especialidad AS especialidad,
+                    a.empreoAnter AS empleoAnterior,
+                    a.antigueda AS antiguedad,
+                    a.antigueda2 as antigueda2,
+                    a.puebloIndigena as puebloIndigena,
+                    a.discapacidad as discapacidad,
+                    a.designacion AS formaDesignacion
             FROM tbl_pregunta2 AS a
             WHERE a.id_intu=$idMismoTitular AND a.anio = $anioInstitucion";
             $stmt = Connection::connect()->prepare($SQL);
@@ -7058,18 +7058,13 @@ class Questionary
     }
 
     #CERRAR SESION QUESTIONARY
-
-    public static function cerrarSesion(){
+    public static function cerrarSesion()
+    {
         session_start();
         session_unset();
         session_destroy();
-        
-        return "success";
 
-        if(session_status() === TRUE){
-            return "error";
-        }
+        return session_status() === PHP_SESSION_ACTIVE ? false : true;
     }
-
     # @copyright CarlitosPC2810 Derechos Reservados
 }
