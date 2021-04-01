@@ -94,7 +94,7 @@ validarFormularios = () => {
                                 if (res[1] == true) {
                                     alertify.success('Acceso correcto !')
                                     setTimeout(() => {
-                                        location.href = 'home'
+                                        location.href = 'root'
                                     }, 1000)
                                 } else if (res[1] == false) {
                                     alertify.error('Datos incorrectos !')

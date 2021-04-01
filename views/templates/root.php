@@ -14,7 +14,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
     ';
 ?>
 
-    <h2>Hello home</h2>
+    <h2>Hello root</h2>
 
 <?php
 }
