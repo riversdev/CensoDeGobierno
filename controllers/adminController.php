@@ -139,4 +139,8 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
 
     $respuesta = AdminModel::accesoUsuario($tipoDeUsuario, $usuario, $contrasenia, $anio);
     echo json_encode($respuesta);
+} else if($tipoPeticion == "cerrarSesion"){
+    $respuesta = AdminModel::cerrarSesion();
+
+    echo json_encode($respuesta);
 }

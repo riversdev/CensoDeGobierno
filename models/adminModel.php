@@ -349,9 +349,9 @@ class AdminModel
                         d.nombre AS nombreDependencia,
                         d.clasificacionAd AS clasificacionDependencia,
                         d.anio AS anioDependencia
-                FROM tbl_instituciones as d
-                WHERE d.id = '" . $usuario . "'
-                AND d.anio = '" . $anio . "'";
+                    FROM tbl_instituciones as d
+                    WHERE d.id = '" . $usuario . "'
+                    AND d.anio = '" . $anio . "'";
                 $stmt = Connection::connect()->prepare($obtenerDatos);
                 if ($stmt->execute()) {
                     $resultados = $stmt->fetchAll();
@@ -399,5 +399,14 @@ class AdminModel
         } catch (Exception $e) {
             return ["error", "Imposible conectar a la base de datos!" . $e];
         }
+    }
+
+    public static function cerrarSesion()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+
+        return session_status() === PHP_SESSION_ACTIVE ? "error" : "success";
     }
 }
