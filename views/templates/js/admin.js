@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    alertify.success('Todo está listo !')
+    
     // ACCIONES DE LAS TABS
     document.getElementById('btnTabHome').addEventListener('click', () => {
         new bootstrap.Tab(document.getElementById('home-tab')).show()
@@ -22,6 +24,31 @@ document.addEventListener('DOMContentLoaded', () => {
             vizualizarElementosNavegacion(this.id)
         })
     })
+
+    // CERRAR SESION
+    document.getElementById('btnSalirAdmin').addEventListener('click', () => {
+        alertify.confirm(
+            'Saliendo...',
+            'Se requiere confirmación para cerrar la sesión',
+            function () {
+                cerrarSesion().then((res) => {
+                    if (res != undefined && res == 'success') {
+                        alertify.success('Sesión terminada !')
+                        setTimeout(() => {
+                            location.href = ''
+                        }, 1000)
+                    } else if (res != undefined && res == 'error') {
+                        alertify.error('Imposible cerrar sesión !')
+                    } else {
+                        console.warn('Tipo de respuesta no definido. ' + res)
+                    }
+                })
+            },
+            function () {
+                alertify.error('Cancelado')
+            }
+        ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
+    })
 })
 
 vizualizarElementosNavegacion = (tabVisible) => {
@@ -42,3 +69,17 @@ vizualizarElementosNavegacion = (tabVisible) => {
         }
     }
 }
+
+async function cerrarSesion() {
+    try {
+        let res = await axios('controllers/questionaryController.php', {
+            method: 'POST',
+            data: {
+                tipoPeticion: 'cerrarSesion',
+            }
+        })
+        return res.data
+    } catch (error) {
+        console.error(error);
+    }
+};
