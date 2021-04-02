@@ -17,9 +17,6 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
     <script src="views\templates\js\admin.js"></script>
     <!-- Main Admin CSS -->
     <link rel="stylesheet" href="views\templates\css\footer.css">
-    <!--DATATABLES
-    <link rel="stylesheet" href="../static/datatables/datatables.css">
-    <script type="javascript" src="../static/datatables/datatables.js"></script>-->
     <div style="min-height: 100vh;">
         <!-- Nav bar -->
         <?php require_once("views/templates/components/adminNavbar.php"); ?>
@@ -74,11 +71,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                 </div>
             </div>
             <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12" id="contenedorTablaUsuarios"></div>
-                    </div>
-                </div>
+                <div class="col-12" id="contenedorTablaUsuarios"></div>
             </div>
             <div class="tab-pane fade" id="dependencias" role="tabpanel" aria-labelledby="dependencias-tab">Dependencias</div>
             <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">Reportes</div>
@@ -129,12 +122,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
             </div>
         </div>
     </footer>
-
-
-    
-    
 <?php
-
-require_once 'modals.php';
+    require_once 'views\templates\components\modals.php';
 }
 ?>

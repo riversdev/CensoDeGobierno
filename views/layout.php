@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="views\static\alertifyjs\css\alertify.css">
     <link rel="stylesheet" href="views\static\alertifyjs\css\themes\default.css">
     <script src="views\static\alertifyjs\js\alertify.js"></script>
+    <!-- jQuery -->
+    <script src="views\static\jquery-3.5.1.min.js"></script>
+    <!-- DataTables-1.10.22 -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <style>
         @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
