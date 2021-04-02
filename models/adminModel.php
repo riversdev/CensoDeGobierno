@@ -135,9 +135,7 @@ class AdminModel
                 "SELECT 
                     u.user_id AS idUsuario,
                     u.user_name AS nombreUsuario,
-                    u.user_apepa AS apUsuario,
-                    u.user_apema AS amUsuario,
-                    u.user_email AS user_email,
+                    u.user_email AS emailUsuario,
                     u.user_dirge AS usuarioOcupacion,
                     u.user_register AS fechaRegistro,
                     u.user_status AS estatusUsuario
@@ -148,7 +146,7 @@ class AdminModel
                 if (count($contador) == 0) {
                     return ["error", "No hay usuarios registrados!"];
                 } else {
-                    return $stmt->fetchAll();
+                    return $contador;
                 }
             } else {
                 return ["error", "imposible ejecutar la consulta!"];

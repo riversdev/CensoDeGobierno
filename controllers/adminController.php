@@ -109,6 +109,7 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
         echo $resultado;
     }
 } else if ($tipoPeticion == "listarUsuarios") {
+
     $listarUsuarios = AdminModel::listarUsuarios();
     echo json_encode($listarUsuarios);
 } else if ($tipoPeticion == "listarDependencias") {
@@ -140,6 +141,7 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $respuesta = AdminModel::accesoUsuario($tipoDeUsuario, $usuario, $contrasenia, $anio);
     echo json_encode($respuesta);
 } else if ($tipoPeticion == "cerrarSesion") {
+
     $respuesta = AdminModel::cerrarSesion();
 
     echo json_encode($respuesta);
