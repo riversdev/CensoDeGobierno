@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body p-0">
                 <form id="formUsuarios" class="form-row card p-3 m-0 needs-validation" novalidate>
-                    <input type="text" id="txtIdUsuario">
+                    <input type="hidden" id="txtIdUsuario">
                     <div class="col-md-12 mb-3">
                         <label for="txtNombreUsuario" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="txtNombreUsuario" required />
