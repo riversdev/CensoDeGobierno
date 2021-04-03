@@ -34,8 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //MOSTRAR INPUT DE CONTRASEÑA
     document.getElementById('btnAgregarUsuario').addEventListener('click', ()  => {
         document.getElementById('contrasenia').style.display='block'
-            document.getElementBy
-            Id('contrasenia2').style.display='block'
+        document.getElementById('contrasenia2').style.display='block'
+        document.getElementById('formUsuarios').reset()
+
     })
 
     //FUNCION DE OJO PARA PASSWORD
