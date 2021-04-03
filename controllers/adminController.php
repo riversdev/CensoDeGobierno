@@ -145,4 +145,34 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $respuesta = AdminModel::cerrarSesion();
 
     echo json_encode($respuesta);
+} else if ($tipoPeticion == "eliminarUsuario") {
+
+    $id = $data['idUsuario'];
+    $respuesta = AdminModel::eliminarUsuario($id);
+
+    echo json_encode($respuesta);
+} else if ($tipoPeticion == "agregarUsuario") {
+    $nombreUsuario = $data['nombreUsuario'];
+    $correoUsuario = $data['correoUsuario'];
+    $contraseniaUsuario = $data['contraseniaUsuario'];
+    $phoneUsuario = $data['phoneUsuario'];
+    $ocupacionUsuario = $data['ocupacionUsuario'];
+    $rolUsuario = $data['rolUsuario'];
+    $estatusUsuario = $data['estatusUsuario'];
+
+    $respuesta = AdminModel::agregarUsuario($nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario);
+
+    echo json_encode($respuesta);
+} else if ($tipoPeticion == "editarUsuario") {
+    $idUsuario = $data['idUsuario'];
+    $nombreUsuario = $data['nombreUsuario'];
+    $correoUsuario = $data['correoUsuario'];
+    $phoneUsuario = $data['phoneUsuario'];
+    $ocupacionUsuario = $data['ocupacionUsuario'];
+    $rolUsuario = $data['rolUsuario'];
+    $estatusUsuario = $data['estatusUsuario'];
+
+    $respuesta = AdminModel::editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario);
+
+    echo json_encode($respuesta);
 }

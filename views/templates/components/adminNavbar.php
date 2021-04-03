@@ -40,7 +40,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto d-flex align-items-center">
-                    <a id="btnAgregarUsuario" class="nav-link d-none" href="#" data-toggle="modal" data-target="#addUser" style="font-size: x-small;">
+                    <a id="btnAgregarUsuario" class="nav-link d-none" href="#" data-bs-toggle="modal" data-bs-target="#modalUsuarios" style="font-size: x-small;">
                         <i class="fa fa-user-plus"></i>
                         Agregar Usuario
                     </a>

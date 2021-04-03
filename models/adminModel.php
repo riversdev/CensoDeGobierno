@@ -136,9 +136,12 @@ class AdminModel
                     u.user_id AS idUsuario,
                     u.user_name AS nombreUsuario,
                     u.user_email AS emailUsuario,
+                    u.user_phone AS phoneUsuario,
                     u.user_dirge AS usuarioOcupacion,
-                    u.user_register AS fechaRegistro,
-                    u.user_status AS estatusUsuario
+                    DATE(u.user_register) AS fechaRegistro,
+                    u.user_tipe AS tipoUsuario,
+                    u.user_status AS estatusUsuario,
+                    u.user_password_hash AS userPasswd
                 FROM users AS u";
             $stmt = Connection::connect()->prepare($listarUsuarios);
             if ($stmt->execute()) {
@@ -406,5 +409,105 @@ class AdminModel
         session_destroy();
 
         return session_status() === PHP_SESSION_ACTIVE ? "error" : "success";
+    }
+
+
+    #CRUD USUARIOS
+
+    public static function agregarUsuario($nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario)
+    {
+        try {
+            $userRegister = date("Y-m-d H:i:s");
+            $passwordUsuario = password_hash($contraseniaUsuario, PASSWORD_DEFAULT);
+            $insertarDatos =
+                "INSERT INTO users
+                (
+                    `user_name`,
+                    `user_password_hash`,
+                    `user_email`,
+                    `user_register`,
+                    `user_phone`,
+                    `user_tipe`,
+                    `user_status`,
+                    `user_dirge`
+                )
+                VALUES
+                (
+                    '$nombreUsuario',
+                    '$passwordUsuario',
+                    '$correoUsuario',
+                    '$userRegister',
+                    '$phoneUsuario',
+                    '$rolUsuario',
+                    '$estatusUsuario',
+                    '$ocupacionUsuario'
+                )";
+
+            $stmt = Connection::connect()->prepare($insertarDatos);
+            if ($stmt->execute()) {
+                return ["success", "Registro exitoso!"];
+            } else {
+                return ["error", "Error, intente de nuevo o mas tarde!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Error en el servidor !" . $e];
+        }
+    }
+
+    public static function eliminarUsuario($id)
+    {
+        try {
+            $preguntarSiExiste =
+                "SELECT *FROM users WHERE `user_id` = '" . $id . "'";
+            $stmt = Connection::connect()->prepare($preguntarSiExiste);
+            $stmt->execute();
+            $c = $stmt->fetchAll();
+            if (count($c) != 0) {
+                $borrarUsuario =
+                    "DELETE FROM users WHERE `user_id` = '" . $id . "'";
+                $stmt = Connection::connect()->prepare($borrarUsuario);
+                if ($stmt->execute()) {
+                    return ["success", "Registro Eliminado!"];
+                } else {
+                    return ["error", "Error al borrar registro, intente de nuevo o mas tarde!"];
+                }
+            } else {
+                return ["error", "Usuario no existente!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Error en el servidor intente mas tarde! " . $e];
+        }
+    }
+
+    public static function editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario)
+    {
+        try {
+            $preguntarSiExiste =
+                "SELECT *FROM users WHERE `user_id` = '" . $idUsuario . "'";
+            $stmt = Connection::connect()->prepare($preguntarSiExiste);
+            $stmt->execute();
+            $contador = $stmt->fetchAll();
+            if (count($contador) != 0) {
+                $editarUsuario =
+                    "UPDATE users
+                        SET
+                            `user_name` = '" . $nombreUsuario . "',
+                            `user_email` = '" . $correoUsuario . "',
+                            `user_phone` = '" . $phoneUsuario . "',
+                            `user_tipe` = '" . $rolUsuario . "',
+                            `user_status` = '" . $estatusUsuario . "',
+                            `user_dirge` = '" . $ocupacionUsuario . "'
+                        WHERE `user_id` = '" . $idUsuario . "'";
+                $stmt = Connection::connect()->prepare($editarUsuario);
+                if($stmt->execute()){
+                    return ["success", "Datos actualizados!"];
+                }else{
+                    return ["error", "Error al actualizar los datos!"];
+                }
+            } else {
+                return ["error", "Registro no existente!"];
+            }
+        } catch (Exception $e) {
+        }
     }
 }

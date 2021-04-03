@@ -1,10 +1,11 @@
 let usuarios = null;
 document.addEventListener('DOMContentLoaded', () => {
     listarUsuarios().then(() => {
-        generarTabla()
+        generarTablaUsuarios()
         validarFormularios()
         alertify.success('Todo está listo !')
     })
+
 
     // ACCIONES DE LAS TABS
     document.getElementById('btnTabHome').addEventListener('click', () => {
@@ -12,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     document.getElementById('btnTabUsuarios').addEventListener('click', () => {
         new bootstrap.Tab(document.getElementById('usuarios-tab')).show()
-        listarUsuarios().then(() => { generarTabla() })
     })
     document.getElementById('btnTabDependencias').addEventListener('click', () => {
         new bootstrap.Tab(document.getElementById('dependencias-tab')).show()
@@ -31,6 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+    //MOSTRAR INPUT DE CONTRASEÑA
+    document.getElementById('btnAgregarUsuario').addEventListener('click', ()  => {
+        document.getElementById('contrasenia').style.display='block'
+            document.getElementBy
+            Id('contrasenia2').style.display='block'
+    })
+
+    //FUNCION DE OJO PARA PASSWORD
+    //<i class="fas fa-eye-slash"></i>
+    document.getElementById('ojo').addEventListener('click', () => {
+        var saber = document.getElementById('ojito').classList
+        console.log(saber);
+        if(saber[1] == 'fa-eye-slash'){
+            document.getElementById('ojito').classList.remove('fa-eye-slash')
+            document.getElementById('ojito').classList.add('fa-eye');
+            document.getElementById('txtContraseniaUsuario').type = 'text'
+        }else if (saber[1] == 'fa-eye'){
+            document.getElementById('ojito').classList.remove('fa-eye')
+            document.getElementById('ojito').classList.add('fa-eye-slash');
+            document.getElementById('txtContraseniaUsuario').type = 'password'
+        }
+        
+    }) 
 
     // CERRAR SESION
     document.getElementById('btnSalirAdmin').addEventListener('click', () => {
@@ -56,6 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
     })
+
+
 })
 
 // FUNCIONES DE USO GENERAL
@@ -75,7 +100,14 @@ validarFormularios = () => {
                     event.preventDefault()
                     if (form.id == 'formUsuarios') {
                         alertify.success('Formulario usuarios correcto !')
-                        alertify.success(guardarUsuario())
+
+                        // LISTENER PARA EL SUBMIT DEL FORMULARIO
+                            document.getElementById('txtIdUsuario').value == '' ? enviarUsuario(recolectarDatosGUIUsuarios(),'agregar') : enviarUsuario(recolectarDatosGUIUsuarios(), 'editar')
+                        // ELIMINAR ID OCULTO CUANDO SE AGREGA
+                        document.getElementById('btnAgregarUsuario').addEventListener('click', () => {
+                            document.getElementById('formUsuarios').reset()
+                            document.getElementById('txtIdUsuario').value = ''
+                        })
                     }
                 }
 
@@ -173,8 +205,95 @@ async function listarUsuarios() {
     }
 }
 
+// PETICION CRUD USUARIOS
+async function enviarUsuario(usuario, accion) {
+    if (accion == 'agregar') {
+        try {
+            let res = await axios('controllers/adminController.php', {
+                method: 'POST',
+                data: {
+                    tipoPeticion: 'agregarUsuario',
+                    nombreUsuario: usuario['nombreUsuario'],
+                    correoUsuario: usuario['correoUsuario'],
+                    contraseniaUsuario: usuario['contraseniaUsuario'],
+                    phoneUsuario: usuario['phoneUsuario'],
+                    ocupacionUsuario: usuario['ocupacionUsuario'],
+                    rolUsuario: usuario['rolUsuario'],
+                    estatusUsuario: usuario['estatusUsuario']
+                }
+            })
+            respuesta = res.data
+            if (respuesta[0] == 'success') {
+                listarUsuarios().then(() => {
+                    generarTablaUsuarios()
+                    document.getElementById('formUsuarios').reset()
+                    document.getElementById('txtIdUsuario').value = ''
+                    alertify.success(respuesta[1])
+                })
+            } else if (respuesta[0] == 'error') {
+                alertify.error(respuesta[1])
+            } else {
+                console.warn('Tipo de respuesta no definido. ' + respuesta);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    } else if (accion == 'editar') {
+        try {
+            let res = await axios('controllers/adminController.php', {
+                method: 'POST',
+                data: {
+                    tipoPeticion: 'editarUsuario',
+                    idUsuario: usuario['idUsuario'],
+                    nombreUsuario: usuario['nombreUsuario'],
+                    correoUsuario: usuario['correoUsuario'],
+                    phoneUsuario: usuario['phoneUsuario'],
+                    ocupacionUsuario: usuario['ocupacionUsuario'],
+                    rolUsuario:usuario['rolUsuario'],
+                    estatusUsuario: usuario['estatusUsuario']
+                }
+            })
+            respuesta = res.data
+            if (respuesta[0] == 'success') {
+                listarUsuarios().then(() => {
+                    generarTablaUsuarios()
+                    alertify.success(respuesta[1])
+                })
+            } else if (respuesta[0] == 'error') {
+                alertify.error(respuesta[1])
+            } else {
+                console.warn('Tipo de respuesta no definido. ' + respuesta);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    } else if (accion == 'eliminar') {
+        try {
+            let res = await axios('controllers/adminController.php', {
+                method: 'POST',
+                data: {
+                    tipoPeticion: 'eliminarUsuario',
+                    idUsuario: usuario
+                }
+            })
+            respuesta = res.data
+            if (respuesta[0] == 'success') {
+                listarUsuarios().then(() => {
+                    generarTablaUsuarios()
+                    alertify.success(respuesta[1])
+                })
+            } else if (respuesta[0] == 'error') {
+                alertify.error(respuesta[1])
+            } else {
+                console.warn('Tipo de respuesta no definido. ' + respuesta);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
 // TABLA USUARIOS
-generarTabla = () => {
+generarTablaUsuarios = () => {
     let table = document.createElement('table'),
         head = document.createElement('thead'),
         body = document.createElement('tbody'),
@@ -185,7 +304,6 @@ generarTabla = () => {
     table.className += 'table table-hover'
     table.style.width = '100%'
     head.style.backgroundColor = '#F7F7F9'
-
     th.scope = 'col'
     th.appendChild(document.createTextNode('#'))
     tr.append(th)
@@ -195,7 +313,15 @@ generarTabla = () => {
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
+    th.appendChild(document.createTextNode('ROL'))
+    tr.append(th)
+    th = document.createElement('th')
+    th.scope = 'col'
     th.appendChild(document.createTextNode('CORREO'))
+    tr.append(th)
+    th = document.createElement('th')
+    th.scope = 'col'
+    th.appendChild(document.createTextNode('TELEFONO'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
@@ -226,7 +352,13 @@ generarTabla = () => {
         td.append(document.createTextNode(user['nombreUsuario']))
         tr.append(td)
         td = document.createElement('td')
+        td.append(document.createTextNode(user['tipoUsuario']))
+        tr.append(td)
+        td = document.createElement('td')
         td.append(document.createTextNode(user['emailUsuario']))
+        tr.append(td)
+        td = document.createElement('td')
+        td.append(document.createTextNode(user['phoneUsuario']))
         tr.append(td)
         td = document.createElement('td')
         td.append(document.createTextNode(user['usuarioOcupacion']))
@@ -235,7 +367,7 @@ generarTabla = () => {
         td.append(document.createTextNode(user['fechaRegistro']))
         tr.append(td)
         td = document.createElement('td')
-        td.append(document.createTextNode(user['estatusUsuario']))
+        td.append(document.createTextNode(user['estatusUsuario']))        
         tr.append(td)
         td = document.createElement('td')
         td.className = 'd-flex justify-content-around'
@@ -262,26 +394,33 @@ generarTabla = () => {
     table.append(body);
     document.getElementById('contenedorTablaUsuarios').innerHTML = ''
     document.getElementById('contenedorTablaUsuarios').append(table)
-    listenersDeAcciones()
-    aplicarDataTable('tablaUsuarios')
+    listenersDeAccionesUsuarios()
+    //aplicarDataTable('tablaUsuarios')
 }
 
 // RECOLECTAR DATOS DEL USUARIO
-recolectarDatosGUI = () => {
+recolectarDatosGUIUsuarios = () => {
+    var valor = "";
+    var interruptor = document.getElementById('txtEstatusUsuario').checked
+    if(interruptor == true){
+        valor = "Activo"
+    }else if(interruptor == false){
+        valor = "Inactivo"
+    }
     return {
         idUsuario: document.getElementById('txtIdUsuario').value,
         nombreUsuario: document.getElementById('txtNombreUsuario').value,
-        apUsuario: document.getElementById('txtApUsuario').value,
-        amUsuario: document.getElementById('txtAmUsuario').value,
         correoUsuario: document.getElementById('txtCorreoUsuario').value,
+        contraseniaUsuario: document.getElementById('txtContraseniaUsuario').value,
+        phoneUsuario: document.getElementById('txtPhoneUsuario').value,
         ocupacionUsuario: document.getElementById('txtOcupacionUsuario').value,
         rolUsuario: document.getElementById('txtTipoUsuario').value,
-        estatusUsuario: document.getElementById('txtEstatusUsuario').value
+        estatusUsuario: valor
     }
 }
 
 // LISTENERS DE ACCIONES USUARIOS
-listenersDeAcciones = () => {
+listenersDeAccionesUsuarios = () => {
     let elementosEditar = document.getElementsByClassName('btnEdit'),
         elementosEliminar = document.getElementsByClassName('btnDelete')
 
@@ -291,10 +430,12 @@ listenersDeAcciones = () => {
             let nombres = [
                 'idUsuario',
                 'nombreUsuario',
+                'tipoUsuario',
                 'correoUsuario',
+                'phoneUsuario',
                 'ocupacionUsuario',
                 'fechaRegistro',
-                'estatusUsuario'
+                'estatusUsuario',
             ];
             for (let i = 0; i < this.parentElement.parentElement.children.length - 1; i++) {
                 fila[nombres[i]] = this.parentElement.parentElement.children[i].innerHTML
@@ -304,20 +445,28 @@ listenersDeAcciones = () => {
             document.getElementById('txtIdUsuario').value = fila['idUsuario']
             document.getElementById('txtNombreUsuario').value = fila['nombreUsuario']
             document.getElementById('txtCorreoUsuario').value = fila['correoUsuario']
+            document.getElementById('txtPhoneUsuario').value = fila['phoneUsuario']
             document.getElementById('txtOcupacionUsuario').value = fila['ocupacionUsuario']
-            document.getElementById('txtEstatusUsuario').value = fila['estatusUsuario']
+            fila['estatusUsuario'] == 'Inactivo' ? document.getElementById('txtEstatusUsuario').checked = false : document.getElementById('txtEstatusUsuario').checked = true
+            fila['tipoUsuario'] == 'Usuario' ? document.getElementById('txtTipoUsuario').options.selectedIndex = 1 : document.getElementById('txtTipoUsuario').options.selectedIndex = 2
+            //document.getElementById('txtContraseniaUsuario').value = "12";
+            document.getElementById('txtContraseniaUsuario').value = 'sin datos';
             new bootstrap.Modal(document.getElementById('modalUsuarios')).show()
+            document.getElementById('modalUsuariosLabel').innerHTML = 'Editar Usuario'
+            document.getElementById('contrasenia').style.display='none'
+            document.getElementById('contrasenia2').style.display='none'
+        
         })
     }
 
     for (let i = 0; i < elementosEliminar.length; i++) {
         document.getElementById(elementosEliminar[i].id).addEventListener('click', function () {
-            idPrenda = this.parentElement.parentElement.children[0].innerHTML
+            var idUsuario = this.parentElement.parentElement.children[0].innerHTML
             alertify.confirm(
                 'Eliminando pregunta...',
-                'Seguro de quere eliminar la prenda "' + this.parentElement.parentElement.children[1].innerHTML + '" ?',
+                'Seguro de quere eliminar el usuario "' + this.parentElement.parentElement.children[1].innerHTML + '" ?',
                 function () {
-                    enviarPrenda(idPrenda, 'eliminar')
+                    enviarUsuario(idUsuario, 'eliminar')
                 },
                 function () {
                     alertify.error('Cancelado')
@@ -325,8 +474,4 @@ listenersDeAcciones = () => {
             ).set('labels', { ok: 'SI', cancel: 'Cancelar' });
         })
     }
-}
-
-guardarUsuario = () => {
-    return 'Usuario guardado !'
 }
