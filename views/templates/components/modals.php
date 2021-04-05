@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content border-0">
             <div class="modal-header border-0 d-flex justify-content-between align-items-center" style="background: linear-gradient(to right, #b91926,#e63c4d);">
-                <h5 class="modal-title text-white" id="modalUsuariosLabel">Catálogos</h5>
+                <h5 class="modal-title text-white" id="modalUsuariosLabel"></h5>
                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-row m-0">
                         <div class="col-md-5 mb-3" id="contrasenia">
-                            <label for="txtContraseniaUsuario" class="form-label">Contrasenia</label>
+                            <label for="txtContraseniaUsuario" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="txtContraseniaUsuario" required />
                             <div class="valid-feedback">Correcto!</div>
                             <div class="invalid-feedback">Ingrese una contraseña válida!</div>
@@ -38,14 +38,14 @@
                         </div>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <label for="txtOcupacionUsuario" class="form-label">Direccion General</label>
+                        <label for="txtOcupacionUsuario" class="form-label">Dirección general</label>
                         <input type="text" class="form-control" id="txtOcupacionUsuario" required />
                         <div class="valid-feedback">Correcto!</div>
                         <div class="invalid-feedback">Ingrese una dirección válida!</div>
                     </div>
                     <div class="form-row mb-3">
                         <div class="col-md-6">
-                            <label for="txtTipoUsuario" class="form-label">Tipo Usuario</label>
+                            <label for="txtTipoUsuario" class="form-label">Tipo de usuario</label>
                             <select id="txtTipoUsuario" class="custom-select" aria-label="Select tipo de usuario" required>
                                 <option value="" selected disabled>?</option>
                                 <option value="Usuario">Usuario</option>
