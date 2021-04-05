@@ -5,6 +5,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
     header("Location: /CensoDeGobierno");
     exit;
 } else {
+    require_once 'views\templates\components\modals.php';
     echo '
         <script>
             const
@@ -25,44 +26,44 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="d-flex align-content-around flex-wrap w-100" style="min-height: 80vh;">
                     <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
-                        <button id="btnTabUsuarios" type="button" class="btn btn-outline-primary row d-flex align-items-center my-0 mx-5 py-4">
-                            <div class="col-5">
+                        <button id="btnTabUsuarios" type="button" class="btn btn-outline-primary row d-flex align-items-center m-5 py-4">
+                            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
                                 <i class="fas fa-9x fa-users-cog"></i>
                             </div>
-                            <div class="col-7 text-justify">
+                            <div class="col-lg-7 col-md-12 col-sm-12 col-12 text-justify">
                                 <p class="text-center font-weight-bold">Usuarios</p>
                                 <small>Manipula la información de los usuarios administradores</small>
                             </div>
                         </button>
                     </span>
                     <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
-                        <button id="btnTabDependencias" type="button" class="btn btn-outline-primary row d-flex align-items-center my-0 mx-5 py-4">
-                            <div class="col-5">
+                        <button id="btnTabDependencias" type="button" class="btn btn-outline-primary row d-flex align-items-center m-5 py-4">
+                            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
                                 <i class="fas fa-9x fa-university"></i>
                             </div>
-                            <div class="col-7 text-justify">
+                            <div class="col-lg-7 col-md-12 col-sm-12 col-12 text-justify">
                                 <p class="text-center font-weight-bold">Dependencias</p>
                                 <small>Manipula la información de las dependencias y sus resultados</small>
                             </div>
                         </button>
                     </span>
                     <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
-                        <button id="btnTabReportes" type="button" class="btn btn-outline-primary row d-flex align-items-center my-0 mx-5 py-4">
-                            <div class="col-5">
+                        <button id="btnTabReportes" type="button" class="btn btn-outline-primary row d-flex align-items-center m-5 py-4">
+                            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
                                 <i class="fas fa-9x fa-newspaper"></i>
                             </div>
-                            <div class="col-7 text-justify">
+                            <div class="col-lg-7 col-md-12 col-sm-12 col-12 text-justify">
                                 <p class="text-center font-weight-bold">Reportes</p>
                                 <small>Genera reportes de los censos desde 2019 a la fecha</small>
                             </div>
                         </button>
                     </span>
                     <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
-                        <button id="btnTabGraficador" type="button" class="btn btn-outline-primary row d-flex align-items-center my-0 mx-5 py-4">
-                            <div class="col-5">
+                        <button id="btnTabGraficador" type="button" class="btn btn-outline-primary row d-flex align-items-center m-5 py-4">
+                            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
                                 <i class="fas fa-9x fa-chart-bar"></i>
                             </div>
-                            <div class="col-7 text-justify">
+                            <div class="col-lg-7 col-md-12 col-sm-12 col-12 text-justify">
                                 <p class="text-center font-weight-bold">Graficador</p>
                                 <small>Vizualiza la información de los censos desde 2017 a la fecha</small>
                             </div>
@@ -71,7 +72,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                 </div>
             </div>
             <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
-                <div class="col-12" id="contenedorTablaUsuarios"></div>
+                <div class="col-12 table-responsive pt-2" id="contenedorTablaUsuarios"></div>
             </div>
             <div class="tab-pane fade" id="dependencias" role="tabpanel" aria-labelledby="dependencias-tab">Dependencias</div>
             <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">Reportes</div>
@@ -123,6 +124,5 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
         </div>
     </footer>
 <?php
-    require_once 'views\templates\components\modals.php';
 }
 ?>

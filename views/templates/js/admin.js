@@ -1,11 +1,12 @@
-let usuarios = null;
+let usuarios = null,
+    modalUsuarios = new bootstrap.Modal(document.getElementById('modalUsuarios'))
+
 document.addEventListener('DOMContentLoaded', () => {
     listarUsuarios().then(() => {
         generarTablaUsuarios()
         validarFormularios()
         alertify.success('Todo está listo !')
     })
-
 
     // ACCIONES DE LAS TABS
     document.getElementById('btnTabHome').addEventListener('click', () => {
@@ -31,31 +32,27 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
-    //MOSTRAR INPUT DE CONTRASEÑA
-    document.getElementById('btnAgregarUsuario').addEventListener('click', ()  => {
-        document.getElementById('modalUsuariosLabel').innerHTML = 'Guardar Usuario'
-        document.getElementById('contrasenia').style.display='block'
-        document.getElementById('contrasenia2').style.display='block'
+    document.getElementById('btnAgregarUsuario').addEventListener('click', () => {
         document.getElementById('formUsuarios').reset()
-
+        document.getElementById('modalUsuariosLabel').innerHTML = 'Guardar Usuario'
+        document.getElementById('txtIdUsuario').value = ''
+        document.getElementById('txtContraseniaUsuario').setAttribute('required', '')
+        document.getElementById('formUsuarios').classList.remove('was-validated')
     })
 
     //FUNCION DE OJO PARA PASSWORD
-    //<i class="fas fa-eye-slash"></i>
     document.getElementById('ojo').addEventListener('click', () => {
         var saber = document.getElementById('ojito').classList
-        console.log(saber);
-        if(saber[1] == 'fa-eye-slash'){
-            document.getElementById('ojito').classList.remove('fa-eye-slash')
-            document.getElementById('ojito').classList.add('fa-eye');
-            document.getElementById('txtContraseniaUsuario').type = 'text'
-        }else if (saber[1] == 'fa-eye'){
+        if (saber[1] == 'fa-eye') {
             document.getElementById('ojito').classList.remove('fa-eye')
             document.getElementById('ojito').classList.add('fa-eye-slash');
+            document.getElementById('txtContraseniaUsuario').type = 'text'
+        } else if (saber[1] == 'fa-eye-slash') {
+            document.getElementById('ojito').classList.remove('fa-eye-slash')
+            document.getElementById('ojito').classList.add('fa-eye');
             document.getElementById('txtContraseniaUsuario').type = 'password'
         }
-        
-    }) 
+    })
 
     // CERRAR SESION
     document.getElementById('btnSalirAdmin').addEventListener('click', () => {
@@ -81,8 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
     })
-
-
 })
 
 // FUNCIONES DE USO GENERAL
@@ -101,10 +96,8 @@ validarFormularios = () => {
                 } else {
                     event.preventDefault()
                     if (form.id == 'formUsuarios') {
-                        alertify.success('Formulario usuarios correcto !')
-
                         // LISTENER PARA EL SUBMIT DEL FORMULARIO
-                            document.getElementById('txtIdUsuario').value == '' ? enviarUsuario(recolectarDatosGUIUsuarios(),'agregar') : enviarUsuario(recolectarDatosGUIUsuarios(), 'editar')
+                        document.getElementById('txtIdUsuario').value == '' ? enviarUsuario(recolectarDatosGUIUsuarios(), 'agregar') : enviarUsuario(recolectarDatosGUIUsuarios(), 'editar')
                         // ELIMINAR ID OCULTO CUANDO SE AGREGA
                         document.getElementById('btnAgregarUsuario').addEventListener('click', () => {
                             document.getElementById('formUsuarios').reset()
@@ -140,14 +133,25 @@ vizualizarElementosNavegacion = (tabVisible) => {
 aplicarDataTable = (tabla) => {
     if (tabla == 'tablaUsuarios') {
         $('#tablaUsuarios').DataTable({
-            scrollX: true,
             'lengthMenu': [
-                [5, 20, 40, -1],
-                [5, 20, 40, 'Todos']
+                [5, 20, 50, -1],
+                [5, 20, 50, 'Todos']
             ],
             'order': [
-                [0, 'asc']
+                [0, "asc"]
             ],
+            responsive: 'true',
+            // columnDefs: [
+            //     {
+            //         targets: [0],
+            //         visible: false,
+            //         searchable: true
+            //     }, {
+            //         targets: [1],
+            //         visible: false,
+            //         searchable: true
+            //     },
+            // ],
             language: {
                 sProcessing: 'Procesando...',
                 sLengthMenu: 'Mostrar _MENU_ registros',
@@ -228,9 +232,11 @@ async function enviarUsuario(usuario, accion) {
             if (respuesta[0] == 'success') {
                 listarUsuarios().then(() => {
                     generarTablaUsuarios()
+                    alertify.success(respuesta[1])
+                    modalUsuarios.hide()
                     document.getElementById('formUsuarios').reset()
                     document.getElementById('txtIdUsuario').value = ''
-                    alertify.success(respuesta[1])
+                    document.getElementById('formUsuarios').classList.remove('was-validated')
                 })
             } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
@@ -251,7 +257,7 @@ async function enviarUsuario(usuario, accion) {
                     correoUsuario: usuario['correoUsuario'],
                     phoneUsuario: usuario['phoneUsuario'],
                     ocupacionUsuario: usuario['ocupacionUsuario'],
-                    rolUsuario:usuario['rolUsuario'],
+                    rolUsuario: usuario['rolUsuario'],
                     estatusUsuario: usuario['estatusUsuario']
                 }
             })
@@ -260,6 +266,10 @@ async function enviarUsuario(usuario, accion) {
                 listarUsuarios().then(() => {
                     generarTablaUsuarios()
                     alertify.success(respuesta[1])
+                    modalUsuarios.hide()
+                    document.getElementById('formUsuarios').reset()
+                    document.getElementById('txtIdUsuario').value = ''
+                    document.getElementById('formUsuarios').classList.remove('was-validated')
                 })
             } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
@@ -294,6 +304,7 @@ async function enviarUsuario(usuario, accion) {
         }
     }
 }
+
 // TABLA USUARIOS
 generarTablaUsuarios = () => {
     let table = document.createElement('table'),
@@ -303,7 +314,7 @@ generarTablaUsuarios = () => {
         th = document.createElement('th')
 
     table.id = 'tablaUsuarios'
-    table.className += 'table table-hover'
+    table.className += 'table table-sm table-hover'
     table.style.width = '100%'
     head.style.backgroundColor = '#F7F7F9'
     th.scope = 'col'
@@ -335,7 +346,7 @@ generarTablaUsuarios = () => {
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
-    th.appendChild(document.createTextNode('STATUS'))
+    th.appendChild(document.createTextNode('ESTATUS'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
@@ -369,10 +380,10 @@ generarTablaUsuarios = () => {
         td.append(document.createTextNode(user['fechaRegistro']))
         tr.append(td)
         td = document.createElement('td')
-        td.append(document.createTextNode(user['estatusUsuario']))        
+        td.append(document.createTextNode(user['estatusUsuario']))
         tr.append(td)
         td = document.createElement('td')
-        td.className = 'd-flex justify-content-around'
+        td.className = 'text-center align-middle'
         i = document.createElement('i')
         i.className = 'fas fa-lg fa-user-edit text-info'
         a = document.createElement('a')
@@ -381,7 +392,7 @@ generarTablaUsuarios = () => {
         a.append(i);
         td.append(a)
         i = document.createElement('i')
-        i.className = 'fa fa-lg fa-user-times text-danger'
+        i.className = 'fa fa-lg fa-user-times text-danger ml-3'
         a = document.createElement('a')
         a.className = 'btnDelete'
         a.id = 'btnDelete' + user['idUsuario']
@@ -391,24 +402,16 @@ generarTablaUsuarios = () => {
         body.append(tr)
     })
 
-
     table.append(head);
     table.append(body);
     document.getElementById('contenedorTablaUsuarios').innerHTML = ''
     document.getElementById('contenedorTablaUsuarios').append(table)
     listenersDeAccionesUsuarios()
-    //aplicarDataTable('tablaUsuarios')
+    aplicarDataTable('tablaUsuarios')
 }
 
 // RECOLECTAR DATOS DEL USUARIO
 recolectarDatosGUIUsuarios = () => {
-    var valor = "";
-    var interruptor = document.getElementById('txtEstatusUsuario').checked
-    if(interruptor == true){
-        valor = "Activo"
-    }else if(interruptor == false){
-        valor = "Inactivo"
-    }
     return {
         idUsuario: document.getElementById('txtIdUsuario').value,
         nombreUsuario: document.getElementById('txtNombreUsuario').value,
@@ -417,47 +420,51 @@ recolectarDatosGUIUsuarios = () => {
         phoneUsuario: document.getElementById('txtPhoneUsuario').value,
         ocupacionUsuario: document.getElementById('txtOcupacionUsuario').value,
         rolUsuario: document.getElementById('txtTipoUsuario').value,
-        estatusUsuario: valor
+        estatusUsuario: document.getElementById('txtEstatusUsuario').value
     }
 }
 
 // LISTENERS DE ACCIONES USUARIOS
 listenersDeAccionesUsuarios = () => {
+    console.log(usuarios);
     let elementosEditar = document.getElementsByClassName('btnEdit'),
         elementosEliminar = document.getElementsByClassName('btnDelete')
 
     for (let i = 0; i < elementosEditar.length; i++) {
         document.getElementById(elementosEditar[i].id).addEventListener('click', function () {
-            let fila = [];
-            let nombres = [
-                'idUsuario',
-                'nombreUsuario',
-                'tipoUsuario',
-                'correoUsuario',
-                'phoneUsuario',
-                'ocupacionUsuario',
-                'fechaRegistro',
-                'estatusUsuario',
-            ];
+            let fila = [],
+                nombres = [
+                    'idUsuario',
+                    'nombreUsuario',
+                    'tipoUsuario',
+                    'correoUsuario',
+                    'phoneUsuario',
+                    'ocupacionUsuario',
+                    'fechaRegistro',
+                    'estatusUsuario',
+                ]
+
             for (let i = 0; i < this.parentElement.parentElement.children.length - 1; i++) {
                 fila[nombres[i]] = this.parentElement.parentElement.children[i].innerHTML
             }
-            console.log(fila)
+
+            usuarios.forEach(usuario => {
+                if (usuario.idUsuario == fila['idUsuario']) {
+                    console.log(usuario);
+                }
+            })
 
             document.getElementById('txtIdUsuario').value = fila['idUsuario']
             document.getElementById('txtNombreUsuario').value = fila['nombreUsuario']
             document.getElementById('txtCorreoUsuario').value = fila['correoUsuario']
             document.getElementById('txtPhoneUsuario').value = fila['phoneUsuario']
             document.getElementById('txtOcupacionUsuario').value = fila['ocupacionUsuario']
-            fila['estatusUsuario'] == 'Inactivo' ? document.getElementById('txtEstatusUsuario').checked = false : document.getElementById('txtEstatusUsuario').checked = true
-            fila['tipoUsuario'] == 'Usuario' ? document.getElementById('txtTipoUsuario').options.selectedIndex = 1 : document.getElementById('txtTipoUsuario').options.selectedIndex = 2
-            //document.getElementById('txtContraseniaUsuario').value = "12";
-            document.getElementById('txtContraseniaUsuario').value = 'sin datos';
-            new bootstrap.Modal(document.getElementById('modalUsuarios')).show()
+            document.getElementById('txtTipoUsuario').value = fila['tipoUsuario']
+            document.getElementById('txtEstatusUsuario').value = fila['estatusUsuario']
+            document.getElementById('txtContraseniaUsuario').value = '';
             document.getElementById('modalUsuariosLabel').innerHTML = 'Editar Usuario'
-            document.getElementById('contrasenia').style.display='none'
-            document.getElementById('contrasenia2').style.display='none'
-        
+            document.getElementById('txtContraseniaUsuario').removeAttribute('required')
+            modalUsuarios.show()
         })
     }
 
@@ -465,15 +472,15 @@ listenersDeAccionesUsuarios = () => {
         document.getElementById(elementosEliminar[i].id).addEventListener('click', function () {
             var idUsuario = this.parentElement.parentElement.children[0].innerHTML
             alertify.confirm(
-                'Eliminando pregunta...',
-                'Seguro de quere eliminar el usuario "' + this.parentElement.parentElement.children[1].innerHTML + '" ?',
+                'Eliminando usuario...',
+                'Se require confirmación para eliminar a <u>' + this.parentElement.parentElement.children[1].innerHTML + '</u>.',
                 function () {
                     enviarUsuario(idUsuario, 'eliminar')
                 },
                 function () {
                     alertify.error('Cancelado')
                 }
-            ).set('labels', { ok: 'SI', cancel: 'Cancelar' });
+            ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
         })
     }
 }

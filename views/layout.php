@@ -23,9 +23,11 @@
     <script src="views\static\alertifyjs\js\alertify.js"></script>
     <!-- jQuery -->
     <script src="views\static\jquery-3.5.1.min.js"></script>
-    <!-- DataTables-1.10.22 -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <!-- DataTables-1.10.24 
+    <link rel="stylesheet" href="views\static\datatables\datatables.min.css">-->
+    <script src="views\static\datatables\datatables.min.js"></script>
+    <link rel="stylesheet" href="views\static\datatables\DataTables-1.10.24\css\dataTables.bootstrap4.min.css">
+    <script src="views\static\datatables\DataTables-1.10.24\js\dataTables.bootstrap4.min.js"></script>
     <style>
         @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 

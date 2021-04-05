@@ -28,6 +28,7 @@ class AdminModel
             echo "success|Dependencias revalidadas exitosamente !";
         }
     }
+
     public static function leerListaDependencias()
     {
         try {
@@ -43,6 +44,7 @@ class AdminModel
         }
         $stmt = null;
     }
+
     public static function editarDependencia($idDependencia, $idDependenciaOriginal, $anioDependencia, $anioDependenciaOriginal, $nombreDependencia, $nombreDependenciaOriginal, $clasificacion, $clasificacionOriginal, $tablas)
     {
         $c = 0; # CONTADOR DE CONSULTAS EXITOSAS
@@ -111,6 +113,7 @@ class AdminModel
             echo "success|Dependencia editada exitosamente !";
         }
     }
+
     public static function verificarIdExistente($idDependencia, $anioDependencia)
     {
         try {
@@ -128,6 +131,7 @@ class AdminModel
         }
         $stmt = null;
     }
+    
     public static function listarUsuarios()
     {
         try {
@@ -412,8 +416,7 @@ class AdminModel
     }
 
 
-    #CRUD USUARIOS
-
+    # CRUD USUARIOS
     public static function agregarUsuario($nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario)
     {
         try {
@@ -445,12 +448,12 @@ class AdminModel
 
             $stmt = Connection::connect()->prepare($insertarDatos);
             if ($stmt->execute()) {
-                return ["success", "Registro exitoso!"];
+                return ["success", "Usuario registrado !"];
             } else {
-                return ["error", "Error, intente de nuevo o mas tarde!"];
+                return ["error", "Imposible registrar usuario !"];
             }
         } catch (Exception $e) {
-            return ["error", "Error en el servidor !" . $e];
+            return ["warn", "Error en el servidor !" . $e];
         }
     }
 
@@ -467,15 +470,15 @@ class AdminModel
                     "DELETE FROM users WHERE `user_id` = '" . $id . "'";
                 $stmt = Connection::connect()->prepare($borrarUsuario);
                 if ($stmt->execute()) {
-                    return ["success", "Registro Eliminado!"];
+                    return ["success", "Usuario eliminado !"];
                 } else {
-                    return ["error", "Error al borrar registro, intente de nuevo o mas tarde!"];
+                    return ["error", "Imposible eliminar usuario !"];
                 }
             } else {
-                return ["error", "Usuario no existente!"];
+                return ["error", "El usuario no existe !"];
             }
         } catch (Exception $e) {
-            return ["error", "Error en el servidor intente mas tarde! " . $e];
+            return ["warn", "Error en el servidor ! " . $e];
         }
     }
 
@@ -499,15 +502,16 @@ class AdminModel
                             `user_dirge` = '" . $ocupacionUsuario . "'
                         WHERE `user_id` = '" . $idUsuario . "'";
                 $stmt = Connection::connect()->prepare($editarUsuario);
-                if($stmt->execute()){
-                    return ["success", "Datos actualizados!"];
-                }else{
-                    return ["error", "Error al actualizar los datos!"];
+                if ($stmt->execute()) {
+                    return ["success", "Usuario actualizado !"];
+                } else {
+                    return ["error", "Imposible actualizar usuario !"];
                 }
             } else {
-                return ["error", "Registro no existente!"];
+                return ["error", "El usuario no existe !"];
             }
         } catch (Exception $e) {
+            return ["warn", "Error en el servidor ! " . $e];
         }
     }
 }
