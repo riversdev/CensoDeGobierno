@@ -420,10 +420,18 @@ class AdminModel
     public static function agregarUsuario($nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario)
     {
         try {
-            $userRegister = date("Y-m-d H:i:s");
-            $passwordUsuario = password_hash($contraseniaUsuario, PASSWORD_DEFAULT);
-            $insertarDatos =
-                "INSERT INTO users
+            $correoRepetido =
+                "SELECT *FROM users WHERE user_email = '" . $correoUsuario . "'";
+            $stmt = Connection::connect()->prepare($correoRepetido);
+            $stmt->execute();
+            $existente = $stmt->rowCount();
+            if ($existente > 0) {
+                return ["error", "Ya se ha registrado el correo !"];
+            } else {
+                $userRegister = date("Y-m-d H:i:s");
+                $passwordUsuario = password_hash($contraseniaUsuario, PASSWORD_DEFAULT);
+                $insertarDatos =
+                    "INSERT INTO users
                 (
                     `user_name`,
                     `user_password_hash`,
@@ -446,14 +454,15 @@ class AdminModel
                     '$ocupacionUsuario'
                 )";
 
-            $stmt = Connection::connect()->prepare($insertarDatos);
-            if ($stmt->execute()) {
-                return ["success", "Usuario registrado !"];
-            } else {
-                return ["error", "Imposible registrar usuario !"];
+                $stmt = Connection::connect()->prepare($insertarDatos);
+                if ($stmt->execute()) {
+                    return ["success", "Usuario registrado !"];
+                } else {
+                    return ["error", "Imposible registrar usuario !"];
+                }
             }
         } catch (Exception $e) {
-            return ["warn", "Error en el servidor !" . $e];
+            return ["error", "Error en el servidor !" . $e];
         }
     }
 
