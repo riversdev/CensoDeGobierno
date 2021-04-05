@@ -22,7 +22,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
         <!-- Nav bar -->
         <?php require_once("views/templates/components/adminNavbar.php"); ?>
 
-        <div class="tab-content row mx-2 my-3" id="tabNavigationContent">
+        <div class="tab-content m-4" id="tabNavigationContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="d-flex align-content-around flex-wrap w-100" style="min-height: 80vh;">
                     <span class="w-50 h-50 d-flex align-items-center justify-content-center px-5">
@@ -71,10 +71,10 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                     </span>
                 </div>
             </div>
-            <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
-                <div class="col-12 table-responsive pt-2" id="contenedorTablaUsuarios"></div>
+            <div class="tab-pane fade p-3 shadow rounded border border-bottom-0 border-left-0 border-right-0" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+                <div class="table-responsive p-1" id="contenedorTablaUsuarios"></div>
             </div>
-            <div class="tab-pane fade" id="dependencias" role="tabpanel" aria-labelledby="dependencias-tab">Dependencias</div>
+            <div class="tab-pane fade p-3 shadow rounded border border-bottom-0 border-left-0 border-right-0" id="dependencias" role="tabpanel" aria-labelledby="dependencias-tab">Dependencias</div>
             <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">Reportes</div>
             <div class="tab-pane fade" id="graficador" role="tabpanel" aria-labelledby="graficador-tab">Graficador</div>
         </div>
