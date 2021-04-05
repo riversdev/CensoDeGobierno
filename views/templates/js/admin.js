@@ -141,17 +141,21 @@ aplicarDataTable = (tabla) => {
                 [0, "asc"]
             ],
             responsive: 'true',
-            // columnDefs: [
-            //     {
-            //         targets: [0],
-            //         visible: false,
-            //         searchable: true
-            //     }, {
-            //         targets: [1],
-            //         visible: false,
-            //         searchable: true
-            //     },
-            // ],
+            columnDefs: [
+                {
+                    targets: [0],
+                    visible: false,
+                    searchable: true
+                }, {
+                    targets: [3],
+                    visible: false,
+                    searchable: true
+                }, {
+                    targets: [5],
+                    visible: false,
+                    searchable: true
+                },
+            ],
             language: {
                 sProcessing: 'Procesando...',
                 sLengthMenu: 'Mostrar _MENU_ registros',
@@ -315,7 +319,7 @@ generarTablaUsuarios = () => {
         th = document.createElement('th')
 
     table.id = 'tablaUsuarios'
-    table.className += 'table table-sm table-hover'
+    table.className += 'table table-hover'
     table.style.width = '100%'
     head.style.backgroundColor = '#F7F7F9'
     th.scope = 'col'
@@ -323,36 +327,36 @@ generarTablaUsuarios = () => {
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
-    th.appendChild(document.createTextNode('NOMBRE'))
+    th.appendChild(document.createTextNode('Nombre'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
-    th.appendChild(document.createTextNode('ROL'))
+    th.appendChild(document.createTextNode('Tipo de usuario'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
-    th.appendChild(document.createTextNode('CORREO'))
+    th.appendChild(document.createTextNode('Email'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
-    th.appendChild(document.createTextNode('TELEFONO'))
+    th.appendChild(document.createTextNode('Teléfono'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
-    th.appendChild(document.createTextNode('DIRECCIÓN GENERAL'))
+    th.appendChild(document.createTextNode('Dirección general'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
-    th.appendChild(document.createTextNode('REGISTRADO'))
+    th.appendChild(document.createTextNode('Fecha de registro'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
-    th.appendChild(document.createTextNode('ESTATUS'))
+    th.appendChild(document.createTextNode('Estatus'))
     tr.append(th)
     th = document.createElement('th')
     th.scope = 'col'
     th.className = 'text-center'
-    th.appendChild(document.createTextNode('ACCIONES'))
+    th.appendChild(document.createTextNode('Acciones'))
     tr.append(th)
     head.append(tr)
 
@@ -382,6 +386,7 @@ generarTablaUsuarios = () => {
         tr.append(td)
         td = document.createElement('td')
         td.append(document.createTextNode(user['estatusUsuario']))
+        td.className = user['estatusUsuario'] == 'Activo' ? 'text-primary' : 'text-muted'
         tr.append(td)
         td = document.createElement('td')
         td.className = 'text-center align-middle'
@@ -389,14 +394,14 @@ generarTablaUsuarios = () => {
         i.className = 'fas fa-lg fa-user-edit text-info'
         a = document.createElement('a')
         a.className = 'btnEdit'
-        a.id = 'btnEdit' + user['idUsuario']
+        a.id = 'btnEdit-' + user['idUsuario']
         a.append(i);
         td.append(a)
         i = document.createElement('i')
-        i.className = 'fa fa-lg fa-user-times text-danger ml-3'
+        i.className = 'fa fa-lg fa-user-times text-danger ml-4'
         a = document.createElement('a')
         a.className = 'btnDelete'
-        a.id = 'btnDelete' + user['idUsuario']
+        a.id = 'btnDelete-' + user['idUsuario']
         a.append(i)
         td.append(a)
         tr.append(td)
@@ -427,54 +432,47 @@ recolectarDatosGUIUsuarios = () => {
 
 // LISTENERS DE ACCIONES USUARIOS
 listenersDeAccionesUsuarios = () => {
-    console.log(usuarios);
     let elementosEditar = document.getElementsByClassName('btnEdit'),
         elementosEliminar = document.getElementsByClassName('btnDelete')
 
     for (let i = 0; i < elementosEditar.length; i++) {
         document.getElementById(elementosEditar[i].id).addEventListener('click', function () {
-            let fila = [],
-                nombres = [
-                    'idUsuario',
-                    'nombreUsuario',
-                    'tipoUsuario',
-                    'correoUsuario',
-                    'phoneUsuario',
-                    'ocupacionUsuario',
-                    'fechaRegistro',
-                    'estatusUsuario',
-                ]
+            let idUsuario = this.id.split('-')[1]
 
-            for (let i = 0; i < this.parentElement.parentElement.children.length - 1; i++) {
-                fila[nombres[i]] = this.parentElement.parentElement.children[i].innerHTML
-            }
-
-            usuarios.forEach(usuario => {
-                if (usuario.idUsuario == fila['idUsuario']) {
-                    console.log(usuario);
+            for (const usuario in usuarios) {
+                if (usuarios[usuario].idUsuario == idUsuario) {
+                    document.getElementById('txtIdUsuario').value = usuarios[usuario]['idUsuario']
+                    document.getElementById('txtNombreUsuario').value = usuarios[usuario]['nombreUsuario']
+                    document.getElementById('txtCorreoUsuario').value = usuarios[usuario]['emailUsuario']
+                    document.getElementById('txtPhoneUsuario').value = usuarios[usuario]['phoneUsuario']
+                    document.getElementById('txtOcupacionUsuario').value = usuarios[usuario]['usuarioOcupacion']
+                    document.getElementById('txtTipoUsuario').value = usuarios[usuario]['tipoUsuario']
+                    document.getElementById('txtEstatusUsuario').value = usuarios[usuario]['estatusUsuario']
+                    document.getElementById('txtContraseniaUsuario').value = '';
+                    document.getElementById('modalUsuariosLabel').innerHTML = 'Editar Usuario'
+                    document.getElementById('txtContraseniaUsuario').removeAttribute('required')
+                    modalUsuarios.show()
+                    break
                 }
-            })
-
-            document.getElementById('txtIdUsuario').value = fila['idUsuario']
-            document.getElementById('txtNombreUsuario').value = fila['nombreUsuario']
-            document.getElementById('txtCorreoUsuario').value = fila['correoUsuario']
-            document.getElementById('txtPhoneUsuario').value = fila['phoneUsuario']
-            document.getElementById('txtOcupacionUsuario').value = fila['ocupacionUsuario']
-            document.getElementById('txtTipoUsuario').value = fila['tipoUsuario']
-            document.getElementById('txtEstatusUsuario').value = fila['estatusUsuario']
-            document.getElementById('txtContraseniaUsuario').value = '';
-            document.getElementById('modalUsuariosLabel').innerHTML = 'Editar Usuario'
-            document.getElementById('txtContraseniaUsuario').removeAttribute('required')
-            modalUsuarios.show()
+            }
         })
     }
 
     for (let i = 0; i < elementosEliminar.length; i++) {
         document.getElementById(elementosEliminar[i].id).addEventListener('click', function () {
-            var idUsuario = this.parentElement.parentElement.children[0].innerHTML
+            var idUsuario = this.id.split('-')[1],
+                nombreUsuario = ''
+
+            for (const usuario in usuarios) {
+                if (usuarios[usuario].idUsuario == idUsuario) {
+                    nombreUsuario = usuarios[usuario]['nombreUsuario']
+                    break
+                }
+            }
+
             alertify.confirm(
                 'Eliminando usuario...',
-                'Se require confirmación para eliminar a <u>' + this.parentElement.parentElement.children[1].innerHTML + '</u>.',
+                'Se require confirmación para eliminar a <u>' + nombreUsuario + '</u>.',
                 function () {
                     enviarUsuario(idUsuario, 'eliminar')
                 },
