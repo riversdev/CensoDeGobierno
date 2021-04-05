@@ -258,7 +258,8 @@ async function enviarUsuario(usuario, accion) {
                     phoneUsuario: usuario['phoneUsuario'],
                     ocupacionUsuario: usuario['ocupacionUsuario'],
                     rolUsuario: usuario['rolUsuario'],
-                    estatusUsuario: usuario['estatusUsuario']
+                    estatusUsuario: usuario['estatusUsuario'],
+                    contraseniaUsuario: usuario['contraseniaUsuario'],
                 }
             })
             respuesta = res.data
