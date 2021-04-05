@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //MOSTRAR INPUT DE CONTRASEÑA
     document.getElementById('btnAgregarUsuario').addEventListener('click', ()  => {
+        document.getElementById('modalUsuariosLabel').innerHTML = 'Guardar Usuario'
         document.getElementById('contrasenia').style.display='block'
         document.getElementById('contrasenia2').style.display='block'
         document.getElementById('formUsuarios').reset()
