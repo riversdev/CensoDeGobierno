@@ -171,8 +171,9 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $ocupacionUsuario = $data['ocupacionUsuario'];
     $rolUsuario = $data['rolUsuario'];
     $estatusUsuario = $data['estatusUsuario'];
+    $contraseniaUsuario = $data['contraseniaUsuario'];
 
-    $respuesta = AdminModel::editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario);
+    $respuesta = AdminModel::editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario);
 
     echo json_encode($respuesta);
 }

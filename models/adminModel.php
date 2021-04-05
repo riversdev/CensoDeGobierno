@@ -131,7 +131,7 @@ class AdminModel
         }
         $stmt = null;
     }
-    
+
     public static function listarUsuarios()
     {
         try {
@@ -482,7 +482,7 @@ class AdminModel
         }
     }
 
-    public static function editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario)
+    public static function editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario)
     {
         try {
             $preguntarSiExiste =
@@ -491,8 +491,23 @@ class AdminModel
             $stmt->execute();
             $contador = $stmt->fetchAll();
             if (count($contador) != 0) {
-                $editarUsuario =
-                    "UPDATE users
+                $editarUsuario = "";
+                if ($contraseniaUsuario != "" && $contraseniaUsuario != null) {
+                    $passwordUsuario = password_hash($contraseniaUsuario, PASSWORD_DEFAULT);
+                    $editarUsuario =
+                        "UPDATE users
+                        SET
+                            `user_name` = '" . $nombreUsuario . "',
+                            `user_password_hash` = '" . $passwordUsuario . "',
+                            `user_email` = '" . $correoUsuario . "',
+                            `user_phone` = '" . $phoneUsuario . "',
+                            `user_tipe` = '" . $rolUsuario . "',
+                            `user_status` = '" . $estatusUsuario . "',
+                            `user_dirge` = '" . $ocupacionUsuario . "'
+                        WHERE `user_id` = '" . $idUsuario . "'";
+                } else {
+                    $editarUsuario =
+                        "UPDATE users
                         SET
                             `user_name` = '" . $nombreUsuario . "',
                             `user_email` = '" . $correoUsuario . "',
@@ -501,6 +516,7 @@ class AdminModel
                             `user_status` = '" . $estatusUsuario . "',
                             `user_dirge` = '" . $ocupacionUsuario . "'
                         WHERE `user_id` = '" . $idUsuario . "'";
+                }
                 $stmt = Connection::connect()->prepare($editarUsuario);
                 if ($stmt->execute()) {
                     return ["success", "Usuario actualizado !"];
