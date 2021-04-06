@@ -167,7 +167,7 @@ if (isset($_SESSION['sesionActiva']) && $_SESSION['sesionActiva'] == "1") {
                                     <div class="form-row">
                                         <div class="col-12 mb-3">
                                             <label for="txtMailLoginAdmin">Correo electrónico</label>
-                                            <input type="email" class="form-control" id="txtMailLoginAdmin" required>
+                                            <input type="email" class="form-control" id="txtMailLoginAdmin" autocomplete="off" required>
                                             <div class="valid-feedback">Correcto</div>
                                             <div class="invalid-feedback">Ingrese su correo</div>
                                         </div>

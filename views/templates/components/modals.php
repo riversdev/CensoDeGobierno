@@ -10,20 +10,20 @@
                     <input type="hidden" id="txtIdUsuario">
                     <div class="col-md-12 mb-3">
                         <label for="txtNombreUsuario" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="txtNombreUsuario" required />
+                        <input type="text" class="form-control" id="txtNombreUsuario" autocomplete="off" required />
                         <div class="valid-feedback">Correcto!</div>
                         <div class="invalid-feedback">Ingrese un nombre válido!</div>
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="txtCorreoUsuario" class="form-label">Correo</label>
-                        <input type="email" class="form-control" id="txtCorreoUsuario" required />
+                        <input type="email" class="form-control" id="txtCorreoUsuario" autocomplete="off" required />
                         <div class="valid-feedback">Correcto!</div>
                         <div class="invalid-feedback">Ingrese un correo válido!</div>
                     </div>
                     <div class="form-row m-0">
                         <div class="col-md-5 col-sm-11 col-11 mb-3" id="contrasenia">
                             <label for="txtContraseniaUsuario" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="txtContraseniaUsuario" required />
+                            <input type="password" class="form-control" id="txtContraseniaUsuario" autocomplete="off" required />
                             <div class="valid-feedback">Correcto!</div>
                             <div class="invalid-feedback">Ingrese una contraseña válida!</div>
                         </div>
@@ -32,14 +32,14 @@
                         </div>
                         <div class="col-md-6 mb-3" id="contrasenia2">
                             <label for="txtPhoneUsuario" class="form-label">Teléfono</label>
-                            <input type="number" class="form-control" id="txtPhoneUsuario" required />
+                            <input type="number" class="form-control" id="txtPhoneUsuario" autocomplete="off" required />
                             <div class="valid-feedback">Correcto!</div>
                             <div class="invalid-feedback">Ingrese un teléfono válido!</div>
                         </div>
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="txtOcupacionUsuario" class="form-label">Dirección general</label>
-                        <input type="text" class="form-control" id="txtOcupacionUsuario" required />
+                        <input type="text" class="form-control" id="txtOcupacionUsuario" autocomplete="off" required />
                         <div class="valid-feedback">Correcto!</div>
                         <div class="invalid-feedback">Ingrese una dirección válida!</div>
                     </div>

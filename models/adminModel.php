@@ -387,16 +387,19 @@ class AdminModel
                 $stmt = Connection::connect()->prepare($obtenerDatos);
                 if ($stmt->execute()) {
                     $resultados = $stmt->fetchAll();
-                    if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario']) && $resultados[0]['estatusUsuario'] == "Activo") {
-                        session_start();
-                        $_SESSION['sesionActiva'] = "1";
-                        $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
-                        $_SESSION['tipoUsuario'] = "admin";
-                        return ["success", true];
-                    } else if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario']) && $resultados[0]['estatusUsuario'] == "Inactivo") {
+                    if ($resultados[0]['estatusUsuario'] == "Activo" && count($resultados) > 0) {
+                        if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario']) && $resultados[0]['estatusUsuario'] == "Activo") {
+                            session_start();
+                            $_SESSION['sesionActiva'] = "1";
+                            $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
+                            $_SESSION['tipoUsuario'] = "admin";
+                            return ["success", true];
+                        } else {
+                            return ["success", false];
+                        }
+                    } elseif ($resultados[0]['estatusUsuario'] == "Inactivo" && count($resultados) > 0) {
                         return ["success", false, "Usuario Inactivo !"];
                     } else {
-
                         return ["success", false];
                     }
                 } else {

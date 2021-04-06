@@ -97,7 +97,7 @@ validarFormularios = () => {
                                         location.href = 'root'
                                     }, 1000)
                                 } else if (res[1] == false) {
-                                    alertify.error('Datos incorrectos !')
+                                    res[2] != undefined ? alertify.error(res[2]) : alertify.error('Datos incorrectos !')
                                 } else {
                                     console.warn('Tipo de respuesta no definido. ' + res)
                                 }
