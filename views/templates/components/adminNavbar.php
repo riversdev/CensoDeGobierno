@@ -38,13 +38,6 @@
                     </a>
                 </li>
             </ul>
-            <ul>
-                <li class="nav-item pt-2">
-                    <select class="form-select d-none" aria-label="Default select example" id="selectorAnioDependencia">
-                        <option value="all" selected>Todos</option>
-                    </select>
-                </li>
-            </ul>
             <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto d-flex align-items-center">
                     <a id="btnAgregarUsuario" class="nav-link d-none" href="#" data-bs-toggle="modal" data-bs-target="#modalUsuarios" style="font-size: x-small;">
@@ -55,9 +48,14 @@
                         <i class="fas fa-university"></i>
                         Agregar Dependencia
                     </a>
+                    <li id="contenedorSelectAnioDependencia" class="nav-link d-none p-0">
+                        <select class="custom-select custom-select-sm" aria-label="" id="selectAnioDependencia">
+                            <option value="all" selected>Todos</option>
+                        </select>
+                    </li>
                 </ul>
-                <div class="d-none d-lg-block py-3 mx-2" style="border: 1px solid #6C757D;"></div>
-                <a class="nav-link text-white active pl-2 pr-0" href="#" id="btnSalirAdmin">
+                <div class="d-none d-lg-block py-3 mx-3" style="border: 1px solid #6C757D;"></div>
+                <a class="nav-link text-white active pl-0 pr-0" href="#" id="btnSalirAdmin">
                     <i class="fa fa-power-off"></i>
                     Salir
                 </a>
