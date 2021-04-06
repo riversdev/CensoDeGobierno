@@ -21,13 +21,13 @@
                         <div class="invalid-feedback">Ingrese un correo válido!</div>
                     </div>
                     <div class="form-row m-0">
-                        <div class="col-md-5 mb-3" id="contrasenia">
+                        <div class="col-md-5 col-sm-11 col-11 mb-3" id="contrasenia">
                             <label for="txtContraseniaUsuario" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="txtContraseniaUsuario" required />
                             <div class="valid-feedback">Correcto!</div>
                             <div class="invalid-feedback">Ingrese una contraseña válida!</div>
                         </div>
-                        <div class="col-md-1 mx-0 mt-4 pt-3 px-0 text-center" id="contrasenia2">
+                        <div class="col-md-1 col-sm-1 col-1 mx-0 mt-4 pt-3 px-0 text-center" id="contrasenia2">
                             <a id="ojo"><i class="fas fa-eye fa-lg" id="ojito"></i></a>
                         </div>
                         <div class="col-md-6 mb-3" id="contrasenia2">
