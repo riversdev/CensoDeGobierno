@@ -394,7 +394,7 @@ class AdminModel
                         $_SESSION['tipoUsuario'] = "admin";
                         return ["success", true];
                     } else if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario']) && $resultados[0]['estatusUsuario'] == "Inactivo") {
-                        return ["error", false, "Usuario Inactivo !"];
+                        return ["success", false, "Usuario Inactivo !"];
                     } else {
 
                         return ["success", false];
