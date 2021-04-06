@@ -379,20 +379,22 @@ class AdminModel
                 $obtenerDatos =
                     "SELECT
                         u.user_id AS idUsuario,
-                        u.user_password_hash AS contraseniaUsuario
+                        u.user_password_hash AS contraseniaUsuario,
+                        u.user_status AS estatusUsuario
                     FROM users AS u
                     WHERE u.user_email = '" . $usuario . "'";
 
                 $stmt = Connection::connect()->prepare($obtenerDatos);
                 if ($stmt->execute()) {
                     $resultados = $stmt->fetchAll();
-                    if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario'])) {
+                    if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario']) && $resultados[0]['estatusUsuario'] == "Activo") {
                         session_start();
                         $_SESSION['sesionActiva'] = "1";
                         $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
                         $_SESSION['tipoUsuario'] = "admin";
-
                         return ["success", true];
+                    } else if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario']) && $resultados[0]['estatusUsuario'] == "Inactivo") {
+                        return ["error", false, "Usuario Inactivo !"];
                     } else {
 
                         return ["success", false];
