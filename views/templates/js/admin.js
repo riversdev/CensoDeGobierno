@@ -32,12 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+    // FORMATEO DEL MODAL AL AGREGAR
     document.getElementById('btnAgregarUsuario').addEventListener('click', () => {
         document.getElementById('formUsuarios').reset()
         document.getElementById('modalUsuariosLabel').innerHTML = 'Guardar Usuario'
         document.getElementById('txtIdUsuario').value = ''
         document.getElementById('txtContraseniaUsuario').setAttribute('required', '')
         document.getElementById('formUsuarios').classList.remove('was-validated')
+        document.getElementById('ojito').classList.remove('fa-eye-slash')
+        document.getElementById('ojito').classList.add('fa-eye');
+        document.getElementById('txtContraseniaUsuario').type = 'password'
     })
 
     //FUNCION DE OJO PARA PASSWORD
@@ -451,6 +455,9 @@ listenersDeAccionesUsuarios = () => {
                     document.getElementById('txtContraseniaUsuario').value = '';
                     document.getElementById('modalUsuariosLabel').innerHTML = 'Editar Usuario'
                     document.getElementById('txtContraseniaUsuario').removeAttribute('required')
+                    document.getElementById('ojito').classList.remove('fa-eye-slash')
+                    document.getElementById('ojito').classList.add('fa-eye');
+                    document.getElementById('txtContraseniaUsuario').type = 'password'
                     modalUsuarios.show()
                     break
                 }
