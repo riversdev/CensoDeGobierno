@@ -166,12 +166,13 @@ class AdminModel
     public static function listarDependencias($anio)
     {
         try {
+            $listarDependencias = "";
             if ($anio == "all") {
                 $listarDependencias =
                     "SELECT
                     d.Clave AS idInstitucion,
                     d.Institucion AS nombreInstitucion,
-                    d.Clasificacion AS Clasificacion,
+                    d.Clasificacion_Adm AS Clasificacion,
                     d.anio AS anioInstitucion,
                     d.finalizado AS Finalizado
                 FROM altas_instituciones as d";
@@ -180,7 +181,7 @@ class AdminModel
                     "SELECT
                     d.Clave AS idInstitucion,
                     d.Institucion AS nombreInstitucion,
-                    d.Clasificacion AS Clasificacion,
+                    d.Clasificacion_Adm AS Clasificacion,
                     d.anio AS anioInstitucion,
                     d.finalizado AS Finalizado
                 FROM altas_instituciones as d 
@@ -193,7 +194,7 @@ class AdminModel
                 if (count($contador) == 0) {
                     return ["error", "No hay dependencias registradas!"];
                 } else {
-                    return $stmt->fetchAll();
+                    return $contador;
                 }
             } else {
                 return ["error", "Imposible ejecutar consulta!"];
