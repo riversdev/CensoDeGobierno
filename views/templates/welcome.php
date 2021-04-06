@@ -6,7 +6,7 @@ if (isset($_SESSION['sesionActiva']) && $_SESSION['sesionActiva'] == "1") {
         header("Location: /CensoDeGobierno/questionary");
         exit;
     } elseif ($_SESSION['tipoUsuario'] == "admin") {
-        header("Location: /CensoDeGobierno/root");
+        header("Location: /CensoDeGobierno/admin");
         exit;
     } else {
         header("Location: /CensoDeGobierno");

@@ -1,4 +1,3 @@
-
 <!-- MODAL USUARIOS -->
 <div class="modal fade" id="modalUsuarios" tabindex="-1" aria-labelledby="modalUsuariosLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -77,6 +76,7 @@
         </div>
     </div>
 </div>
+
 <!-- MODAL DEPENDENCIAS -->
 <div class="modal fade" id="modalDependencias" tabindex="-1" aria-labelledby="modalDependenciasLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -90,7 +90,7 @@
                     <div class="form-row m-0">
                         <div class="col-md-6 mb-3">
                             <label for="txtIdDependencia">Clave</label>
-                            <input type="number" class="form-control" id="txtIdDependencia" autocomplete="off" required/>
+                            <input type="number" class="form-control" id="txtIdDependencia" autocomplete="off" required />
                             <div class="valid-feedback">Correcto!</div>
                             <div class="invalid-feedback">Ingrese un numero válido!</div>
                         </div>
@@ -110,23 +110,22 @@
                         <div class="invalid-feedback">Ingrese un nombre válido!</div>
                     </div>
                     <div class="col-md-12 mb-3">
-                    <label for="clasificacionDependencia">Tipo de Clasificación</label>
-                    <select class="form-control" aria-label="Default select example" id="clasificacionDependencia">
+                        <label for="clasificacionDependencia">Tipo de Clasificación</label>
+                        <select class="form-control" aria-label="Default select example" id="clasificacionDependencia">
                             <option selected>?</option>
                             <option value="1">Administración Publica Centralizada</option>
                             <option value="2">Administración Publica Paraestatal</option>
-                            </select>
-                            <div class="valid-feedback">Correcto!</div>
-                            <div class="invalid-feedback">Ingrese un opción válida!</div>
-                        </div>
+                        </select>
+                        <div class="valid-feedback">Correcto!</div>
+                        <div class="invalid-feedback">Ingrese un opción válida!</div>
                     </div>
-                    <div class="col-12 d-flex justify-content-end">
-                        <button type="button" class="btn btn-outline-white" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-outline-primary ml-3">Enviar</button>
-                    </div>
-                </form>
             </div>
-            <div class="modal-footer" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
+            <div class="col-12 d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-white" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-outline-primary ml-3">Enviar</button>
+            </div>
+            </form>
         </div>
+        <div class="modal-footer" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
     </div>
 </div>

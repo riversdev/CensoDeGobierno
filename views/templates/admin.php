@@ -15,7 +15,9 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
     ';
 ?>
     <!-- Main Admin JS -->
-    <script src="views\templates\js\admin.js"></script>
+    <script src="views\templates\js\admin\admin.js"></script>
+    <script src="views\templates\js\admin\users.js"></script>
+    <script src="views\templates\js\admin\dependencies.js"></script>
     <!-- Main Admin CSS -->
     <link rel="stylesheet" href="views\templates\css\footer.css">
     <div style="min-height: 100vh;">
@@ -71,10 +73,10 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                     </span>
                 </div>
             </div>
-            <div class="tab-pane fade p-3 shadow rounded border border-bottom-0 border-left-0 border-right-0" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+            <div class="tab-pane fade p-3 shadow rounded" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
                 <div class="table-responsive p-1" id="contenedorTablaUsuarios"></div>
             </div>
-            <div class="tab-pane fade p-3 shadow rounded border border-bottom-0 border-left-0 border-right-0" id="dependencias" role="tabpanel" aria-labelledby="dependencias-tab">
+            <div class="tab-pane fade p-3 shadow rounded" id="dependencias" role="tabpanel" aria-labelledby="dependencias-tab">
                 <div class="table-responsive p-1" id="contenedorTablaDependencias"></div>
             </div>
             <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">Reportes</div>
