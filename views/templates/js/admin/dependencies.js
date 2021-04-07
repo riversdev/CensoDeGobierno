@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
             generarTablaDependencias()
         })
     })
+
+    //ACCIONES BOTON GUARDAR USUARIO
+    document.getElementById('btnAgregarDependencia').addEventListener('click', () => {
+        document.getElementById('formDependencias').reset()
+        document.getElementById('modalDependenciasLabel').innerHTML = 'Agregar Dependencia'
+        document.getElementById('submitDependencia').innerHTML = 'Guardar'
+    })
 })
 
 // LLENAR SELECTS DE AÑOS
@@ -137,4 +144,49 @@ generarTablaDependencias = () => {
     document.getElementById('contenedorTablaDependencias').append(table)
 
     aplicarDataTable('tablaDependencias')
+}
+
+async function accionesDependencias(dependencia, accion){
+    if(accion == 'agregar'){
+        try{
+            let res = await axios('controllers/adminController.php', {
+                method: 'POST',
+                data:{
+                    tipoPeticion: 'guardarDependencia',
+                    idDependencia: dependencia['idDependencia'],
+                    anioDependencia: dependencia['anioDependencia'],
+                    nombreDependencia: dependencia['nombreDependencia'],
+                    clasificacionDependencia: dependencia['Clasificacion']
+                }
+            })
+            respuesta = res.data
+            console.log(respuesta)
+            if(respuesta[0] == 'success'){
+                alertify.success(respuesta[1])
+                modalDependencias.hide()
+                listarDependencias('all').then(() => {generarTablaDependencias()})
+                document.getElementById('formDependencias').reset()
+            }else if(respuesta[0] == 'error'){
+                alertify.error(respuesta[1])
+            }else{
+                console.log('respuesta no definida ' + respuesta)
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }else if(accion == 'editar'){
+
+    }else if(accion == 'eliminar'){
+        
+    }
+}
+
+
+recolectarDatosDependencia = () =>{
+    return {
+        idDependencia: document.getElementById('txtIdDependencia').value,
+        anioDependencia: document.getElementById('AnioDependencia').value,
+        nombreDependencia: document.getElementById('txtDependencia').value,
+        Clasificacion: document.getElementById('clasificacionDependencia').value
+    }
 }

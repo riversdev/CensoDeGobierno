@@ -176,4 +176,13 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $respuesta = AdminModel::editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario);
 
     echo json_encode($respuesta);
+} else if ($tipoPeticion == "guardarDependencia"){
+    $idDependencia = $data ['idDependencia'];
+    $anioDependencia = $data['anioDependencia'];
+    $nombreDependencia = $data['nombreDependencia'];
+    $clasificacionDependencia = $data['clasificacionDependencia'];
+    
+    $respuesta = AdminModel::guardarDependencia($idDependencia, $anioDependencia, $nombreDependencia, $clasificacionDependencia);
+
+    echo json_encode($respuesta);
 }

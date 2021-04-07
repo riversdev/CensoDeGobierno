@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             vizualizarElementosNavegacion(this.id)
         })
     })
-
     // CERRAR SESION
     document.getElementById('btnSalirAdmin').addEventListener('click', () => {
         alertify.confirm(
@@ -76,6 +75,15 @@ validarFormularios = () => {
                             enviarUsuario(recolectarDatosGUIUsuarios(), 'agregar')
                         } else {
                             enviarUsuario(recolectarDatosGUIUsuarios(), 'editar')
+                        }
+                    }else if(form.id == 'formDependencias'){
+                        let valor = document.getElementById('submitDependencia').innerHTML
+                        if(valor == 'Guardar'){
+                            accionesDependencias(recolectarDatosDependencia(), 'agregar')
+                        }else if(valor == 'Actualizar'){
+
+                        }else{
+                            console.log('button invalido')
                         }
                     }
                 }

@@ -204,6 +204,48 @@ class AdminModel
         }
     }
 
+    public static function guardarDependencia($idDependencia, $anioDependencia, $nombreDependencia, $clasificacionDependencia)
+    {
+        try {
+            $preguntarSiExiste =
+                "SELECT *FROM altas_instituciones WHERE Clave = '" . $idDependencia . "' AND anio = '" . $anioDependencia . "'";
+            $stmt = Connection::connect()->prepare($preguntarSiExiste);
+            $stmt->execute();
+            $contador = $stmt->rowCount();
+            if ($contador != 0) {
+                return ["error", "Ya se ha registrado esa clave !"];
+            } else {
+                $agregarDependencia =
+                    "INSERT INTO altas_instituciones
+                    (
+                        Clave,
+                        Institucion,
+                        Clasificacion_Adm,
+                        `Status`,
+                        anio,
+                        Finalizado
+                    )
+                    VALUES
+                    (
+                        '$idDependencia',
+                        '$nombreDependencia',
+                        '$clasificacionDependencia',
+                        '1',
+                        '$anioDependencia',
+                        '0'
+                    )";
+                $stmt = Connection::connect()->prepare($agregarDependencia);
+                if ($stmt->execute()) {
+                    return ["success", "Dependencia registrada !"];
+                } else {
+                    return ["error", "Imposible registrar dependencia !"];
+                }
+            }
+        } catch (Exception $e) {
+            return ["error", "Imposible conectar a la base de datos " . $e];
+        }
+    }
+
     public static function listarResultados($anio)
     {
         try {

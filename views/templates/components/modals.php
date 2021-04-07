@@ -82,7 +82,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content border-0">
             <div class="modal-header border-0 d-flex justify-content-between align-items-center" style="background: linear-gradient(to right, #b91926,#e63c4d);">
-                <h5 class="modal-title text-white" id="modalUsuariosLabel"></h5>
+                <h5 class="modal-title text-white" id="modalDependenciasLabel"></h5>
                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
@@ -122,7 +122,7 @@
             </div>
             <div class="col-12 d-flex justify-content-end">
                 <button type="button" class="btn btn-outline-white" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-outline-primary ml-3">Enviar</button>
+                <button id="submitDependencia" type="submit" class="btn btn-outline-primary ml-3" >Enviar</button>
             </div>
             </form>
         </div>
