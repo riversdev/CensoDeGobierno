@@ -28,6 +28,15 @@
     <script src="views\static\datatables\datatables.min.js"></script>
     <link rel="stylesheet" href="views\static\datatables\DataTables-1.10.24\css\dataTables.bootstrap4.min.css">
     <script src="views\static\datatables\DataTables-1.10.24\js\dataTables.bootstrap4.min.js"></script>
+    <!-- Highcharts-8.2.2 -->
+    <script src="views/static/highcharts/code/highcharts.js"></script>
+    <script src="views/static/highcharts/code/modules/exporting.js"></script>
+    <script src="views/static/highcharts/code/modules/export-data.js"></script>
+    <script src="views/static/highcharts/code/modules/data.js"></script>
+    <script src="views/static/highcharts/code/modules/drilldown.js"></script>
+    <script src="views/static/highcharts/code/modules/accessibility.js"></script>
+    <script src="views/static/highcharts/code/modules/variable-pie.js"></script>
+    <script src="views/static/highcharts/code/modules/no-data-to-display.js"></script>
     <style>
         @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
