@@ -96,23 +96,25 @@ async function obtenerDatos(pregunta, anio) {
 }
 
 graficarDatos = (pregunta) => {
+    let dataPrev = {},
+        data = {};
+
+    for (let i = 0; i < anios.length - 1; i++) {
+        data[anios[i]] = registroAnios[anios[i]];
+    }
+
+    for (let i = 0; i < anios.length - 1; i++) {
+        dataPrev[anios[i]] = registroAnios[anios[i + 1]];
+    }
+
+    // console.warn('DataPrev');
+    // console.log(dataPrev);
+    // console.warn('Data');
+    // console.log(data);
+
+    crearSelectComparacionAnios()
+
     if (pregunta == 3) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -237,9 +239,8 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        crearSelectComparacionAnios()
-
         document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -271,22 +272,6 @@ graficarDatos = (pregunta) => {
             chart.hideLoading();
         });
     } else if (pregunta == 4) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -411,9 +396,8 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        crearSelectComparacionAnios()
-
         document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -445,22 +429,6 @@ graficarDatos = (pregunta) => {
             chart.hideLoading();
         });
     } else if (pregunta == 5) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -585,69 +553,39 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de personal, ' + year,
-                        },
-                        subtitle: {
-                            text:
-                                'Representación por sexo e institución de seguridad social, comparación de cantidades con el ' + (year - 1),
-                        },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrev(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getData(data[year]).slice(),
-                            },
-                        ],
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de personal, ' + this.value,
                     },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                chart.hideLoading();
-            });
+                    subtitle: {
+                        text:
+                            'Representación por sexo e institución de seguridad social, comparación de cantidades con el ' + (this.value - 1),
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrev(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getData(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            chart.hideLoading();
         });
     } else if (pregunta == 6) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -820,67 +758,37 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        title: {
-                            text: 'Cantidad de personal, ' + year
-                        },
-                        subtitle: {
-                            text: 'Representación por sexo y rango de edad, comparación de cantidades con el ' + (year - 1),
-                        },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrev(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getData(data[year]).slice(),
-                            },
-                        ],
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            chart.update(
+                {
+                    title: {
+                        text: 'Cantidad de personal, ' + this.value
                     },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                chart.hideLoading();
-            });
+                    subtitle: {
+                        text: 'Representación por sexo y rango de edad, comparación de cantidades con el ' + (this.value - 1),
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrev(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getData(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            chart.hideLoading();
         });
     } else if (pregunta == 7) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -1056,67 +964,37 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        title: {
-                            text: 'Cantidad de personal, ' + year
-                        },
-                        subtitle: {
-                            text: 'Representación por sexo y rango de ingresos mensual, comparación de cantidades con el ' + (year - 1),
-                        },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrev(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getData(data[year]).slice(),
-                            },
-                        ],
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            chart.update(
+                {
+                    title: {
+                        text: 'Cantidad de personal, ' + this.value
                     },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                chart.hideLoading();
-            });
+                    subtitle: {
+                        text: 'Representación por sexo y rango de ingresos mensual, comparación de cantidades con el ' + (this.value - 1),
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrev(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getData(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            chart.hideLoading();
         });
     } else if (pregunta == 9) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getDataMen = (data) => {
             return data.map((category, i) => {
                 return {
@@ -1349,139 +1227,109 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        series: [
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-                secondChart.update(
-                    {
-                        series: [
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de personal, ' + year,
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.update(
+                {
+                    series: [
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por sexo e institución (' + registroAnios[year].length + ' dependencias)',
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year,
-                                data: getDataMen(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataWomen(data[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                secondChart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de personal, ' + (year - 1),
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
+            secondChart.update(
+                {
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por sexo e institución (' + registroAnios[year - 1].length + ' dependencias)',
+                        {
+                            name: this.value - 1,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrevMen(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevWomen(dataPrev[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
 
-                chart.hideLoading();
-                secondChart.hideLoading();
-            });
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de personal, ' + this.value,
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por sexo e institución (' + registroAnios[this.value].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value,
+                            data: getDataMen(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataWomen(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            secondChart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de personal, ' + (this.value - 1),
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por sexo e institución (' + registroAnios[this.value - 1].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevMen(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevWomen(dataPrev[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+
+            chart.hideLoading();
+            secondChart.hideLoading();
         });
     } else if (pregunta == 15) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -1606,69 +1454,39 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de bienes inmuebles, ' + year,
-                        },
-                        subtitle: {
-                            text:
-                                'Representación por tipo de institución y tipo de posesión, comparación de cantidades con el ' + (year - 1),
-                        },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrev(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getData(data[year]).slice(),
-                            },
-                        ],
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de bienes inmuebles, ' + this.value,
                     },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                chart.hideLoading();
-            });
+                    subtitle: {
+                        text:
+                            'Representación por tipo de institución y tipo de posesión, comparación de cantidades con el ' + (this.value - 1),
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrev(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getData(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            chart.hideLoading();
         });
     } else if (pregunta == 16) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getDataPropios = (data) => {
             return data.map((category, i) => {
                 return {
@@ -1945,155 +1763,125 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        series: [
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-                secondChart.update(
-                    {
-                        series: [
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de bienes inmuebles, ' + year,
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.update(
+                {
+                    series: [
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por institución y tipo de posesión (' + registroAnios[year].length + ' dependencias)',
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year,
-                                data: getDataPropios(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataRentados(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataOtros(data[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                secondChart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de bienes inmuebles, ' + (year - 1),
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por institución y tipo de posesión (' + registroAnios[year - 1].length + ' dependencias)',
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
+            secondChart.update(
+                {
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrevPropios(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevRentados(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevOtros(dataPrev[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
 
-                chart.hideLoading();
-                secondChart.hideLoading();
-            });
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de bienes inmuebles, ' + this.value,
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por institución y tipo de posesión (' + registroAnios[this.value].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value,
+                            data: getDataPropios(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataRentados(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataOtros(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            secondChart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de bienes inmuebles, ' + (this.value - 1),
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por institución y tipo de posesión (' + registroAnios[this.value - 1].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevPropios(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevRentados(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevOtros(dataPrev[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+
+            chart.hideLoading();
+            secondChart.hideLoading();
         });
     } else if (pregunta == 17) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -2218,69 +2006,39 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de vehículos en funcionamiento, ' + year,
-                        },
-                        subtitle: {
-                            text:
-                                'Representación por tipo de institución y tipo de vehículo, comparación de cantidades con el ' + (year - 1),
-                        },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrev(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getData(data[year]).slice(),
-                            },
-                        ],
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de vehículos en funcionamiento, ' + this.value,
                     },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                chart.hideLoading();
-            });
+                    subtitle: {
+                        text:
+                            'Representación por tipo de institución y tipo de vehículo, comparación de cantidades con el ' + (this.value - 1),
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrev(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getData(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            chart.hideLoading();
         });
     } else if (pregunta == 18) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getDataAutomoviles = (data) => {
             return data.map((category, i) => {
                 return {
@@ -2597,171 +2355,141 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        series: [
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-                secondChart.update(
-                    {
-                        series: [
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de vehículos en funcionamiento, ' + year,
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.update(
+                {
+                    series: [
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por institución y tipo de vehículo (' + registroAnios[year].length + ' dependencias)',
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year,
-                                data: getDataAutomoviles(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataCamionesCamionetas(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataMotocicletas(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataOtros(data[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                secondChart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de vehículos en funcionamiento, ' + (year - 1),
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por institución y tipo de vehículo (' + registroAnios[year - 1].length + ' dependencias)',
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrevAutomoviles(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevCamionesCamionetas(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevMotocicletas(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevOtros(dataPrev[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
+            secondChart.update(
+                {
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
 
-                chart.hideLoading();
-                secondChart.hideLoading();
-            });
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de vehículos en funcionamiento, ' + this.value,
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por institución y tipo de vehículo (' + registroAnios[this.value].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value,
+                            data: getDataAutomoviles(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataCamionesCamionetas(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataMotocicletas(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataOtros(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            secondChart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de vehículos en funcionamiento, ' + (this.value - 1),
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por institución y tipo de vehículo (' + registroAnios[this.value - 1].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevAutomoviles(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevCamionesCamionetas(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevMotocicletas(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevOtros(dataPrev[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+
+            chart.hideLoading();
+            secondChart.hideLoading();
         });
     } else if (pregunta == 19) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -2886,69 +2614,39 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de líneas y aparatos telefónicos en funcionamiento, ' + year,
-                        },
-                        subtitle: {
-                            text:
-                                'Representación por tipo de institución, tipo de línea y aparato telefónico, comparación de cantidades con el ' + (year - 1),
-                        },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrev(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getData(data[year]).slice(),
-                            },
-                        ],
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de líneas y aparatos telefónicos en funcionamiento, ' + this.value,
                     },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                chart.hideLoading();
-            });
+                    subtitle: {
+                        text:
+                            'Representación por tipo de institución, tipo de línea y aparato telefónico, comparación de cantidades con el ' + (this.value - 1),
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrev(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getData(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            chart.hideLoading();
         });
     } else if (pregunta == 20) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getDataAparatosF = (data) => {
             return data.map((category, i) => {
                 return {
@@ -3265,171 +2963,141 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        series: [
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-                secondChart.update(
-                    {
-                        series: [
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de líneas y aparatos telefónicos en funcionamiento, ' + year,
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.update(
+                {
+                    series: [
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por institución, tipo de línea y aparato telefónico (' + registroAnios[year].length + ' dependencias)',
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year,
-                                data: getDataAparatosF(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataAparatosM(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataLineasF(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataLineasM(data[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                secondChart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de líneas y aparatos telefónicos en funcionamiento, ' + (year - 1),
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por institución, tipo de línea y aparato telefónico (' + registroAnios[year - 1].length + ' dependencias)',
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrevAparatosF(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevAparatosM(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevLineasF(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevLineasM(dataPrev[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
+            secondChart.update(
+                {
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
 
-                chart.hideLoading();
-                secondChart.hideLoading();
-            });
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de líneas y aparatos telefónicos en funcionamiento, ' + this.value,
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por institución, tipo de línea y aparato telefónico (' + registroAnios[this.value].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value,
+                            data: getDataAparatosF(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataAparatosM(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataLineasF(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataLineasM(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            secondChart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de líneas y aparatos telefónicos en funcionamiento, ' + (this.value - 1),
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por institución, tipo de línea y aparato telefónico (' + registroAnios[this.value - 1].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevAparatosF(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevAparatosM(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevLineasF(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevLineasM(dataPrev[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+
+            chart.hideLoading();
+            secondChart.hideLoading();
         });
     } else if (pregunta == 21) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getData = (data) => {
             return data.map((category, i) => {
                 return {
@@ -3554,69 +3222,39 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de computadoras, impresoras, multifuncionales, servidores y tabletas en funcionamiento, ' + year,
-                        },
-                        subtitle: {
-                            text:
-                                'Representación por tipo de institución, tipo de computadora, impresora, multifuncional, servidor y tableta, comparación de cantidades con el ' + (year - 1),
-                        },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrev(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getData(data[year]).slice(),
-                            },
-                        ],
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de computadoras, impresoras, multifuncionales, servidores y tabletas en funcionamiento, ' + this.value,
                     },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                chart.hideLoading();
-            });
+                    subtitle: {
+                        text:
+                            'Representación por tipo de institución, tipo de computadora, impresora, multifuncional, servidor y tableta, comparación de cantidades con el ' + (this.value - 1),
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrev(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getData(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            chart.hideLoading();
         });
     } else if (pregunta == 22) {
-        let dataPrev = {},
-            data = {};
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            data[anios[i]] = registroAnios[anios[i]];
-        }
-
-        for (let i = 0; i < anios.length - 1; i++) {
-            dataPrev[anios[i]] = registroAnios[anios[i + 1]];
-        }
-
-        // console.warn('DataPrev');
-        // console.log(dataPrev);
-        // console.warn('Data');
-        // console.log(data);
-
         getDataCompuEscritorio = (data) => {
             return data.map((category, i) => {
                 return {
@@ -4057,201 +3695,187 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
-
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
-
-            btn.addEventListener('click', function () {
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
-
-                chart.update(
-                    {
-                        series: [
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                            {
-                                name: year,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-                secondChart.update(
-                    {
-                        series: [
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                            {
-                                name: year - 1,
-                                data: [],
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 100,
-                    }
-                );
-
-                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-
-                chart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de computadoras, impresoras, multifuncionales, servidores y tabletas en funcionamiento, ' + year,
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            chart.update(
+                {
+                    series: [
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por institución, tipo de computadora, impresora, multifuncional, servidor y tableta (' + registroAnios[year].length + ' dependencias)',
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year,
-                                data: getDataCompuEscritorio(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataCompuPortatil(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataImpresoraCompartida(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataImpresoraPersonal(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataMultifuncionales(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataServidores(data[year]).slice(),
-                            },
-                            {
-                                name: year,
-                                data: getDataTabletas(data[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
-                secondChart.update(
-                    {
-                        title: {
-                            text:
-                                'Cantidad de computadoras, impresoras, multifuncionales, servidores y tabletas en funcionamiento, ' + (year - 1),
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        subtitle: {
-                            text:
-                                'Representación por institución, tipo de computadora, impresora, multifuncional, servidor y tableta (' + registroAnios[year - 1].length + ' dependencias)',
+                        {
+                            name: this.value,
+                            data: [],
                         },
-                        series: [
-                            {
-                                name: year - 1,
-                                data: getDataPrevCompuEscritorio(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevCompuPortatil(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevImpresoraCompartida(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevImpresoraPersonal(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevMultifuncionales(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevServidores(dataPrev[year]).slice(),
-                            },
-                            {
-                                name: year - 1,
-                                data: getDataPrevTabletas(dataPrev[year]).slice(),
-                            },
-                        ],
-                    },
-                    true,
-                    false,
-                    {
-                        duration: 800,
-                    }
-                );
+                        {
+                            name: this.value,
+                            data: [],
+                        },
+                        {
+                            name: this.value,
+                            data: [],
+                        },
+                        {
+                            name: this.value,
+                            data: [],
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
+            secondChart.update(
+                {
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
 
-                chart.hideLoading();
-                secondChart.hideLoading();
-            });
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de computadoras, impresoras, multifuncionales, servidores y tabletas en funcionamiento, ' + this.value,
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por institución, tipo de computadora, impresora, multifuncional, servidor y tableta (' + registroAnios[this.value].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value,
+                            data: getDataCompuEscritorio(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataCompuPortatil(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataImpresoraCompartida(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataImpresoraPersonal(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataMultifuncionales(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataServidores(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataTabletas(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            secondChart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de computadoras, impresoras, multifuncionales, servidores y tabletas en funcionamiento, ' + (this.value - 1),
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por institución, tipo de computadora, impresora, multifuncional, servidor y tableta (' + registroAnios[this.value - 1].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevCompuEscritorio(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevCompuPortatil(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevImpresoraCompartida(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevImpresoraPersonal(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevMultifuncionales(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevServidores(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevTabletas(dataPrev[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+
+            chart.hideLoading();
+            secondChart.hideLoading();
         });
     } else {
         alertify.error('Sin graficar !');
