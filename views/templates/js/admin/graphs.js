@@ -240,7 +240,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -397,7 +396,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -554,7 +552,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -759,7 +756,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -965,7 +961,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -1228,7 +1223,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.update(
                 {
                     series: [
@@ -1455,7 +1449,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -1764,7 +1757,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.update(
                 {
                     series: [
@@ -2007,7 +1999,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -2356,7 +2347,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.update(
                 {
                     series: [
@@ -2615,7 +2605,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -2964,7 +2953,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.update(
                 {
                     series: [
@@ -3223,7 +3211,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
             chart.update(
                 {
@@ -3696,7 +3683,6 @@ graficarDatos = (pregunta) => {
         });
 
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            alertify.success('change')
             chart.update(
                 {
                     series: [
