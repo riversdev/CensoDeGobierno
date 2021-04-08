@@ -156,9 +156,9 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                     </div>
                 </div>
                 <!-- Contenedor graficas -->
-                <div class="row px-2 mt-2">
-                    <div id="container" class="col-lg-6 col-md-6 col-sm-12 col-12"></div>
-                    <div id="secondContainer" class="col-lg-6 col-md-6 col-sm-12 col-12 d-none" style="z-index: 0;"></div>
+                <div class="row mt-2 mx-0">
+                    <div id="container" class="col-lg-6 col-md-6 col-sm-12 col-12 p-0"></div>
+                    <div id="secondContainer" class="col-lg-6 col-md-6 col-sm-12 col-12 p-0 d-none" style="z-index: 0;"></div>
                 </div>
                 <!-- Contenedor tablas -->
                 <div id="tablesContainer"></div>
