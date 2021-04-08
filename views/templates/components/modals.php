@@ -96,8 +96,8 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="AnioDependencia">Año</label>
-                            <select class="form-control" aria-label="Default select example" id="AnioDependencia">
-                                <option selected>?</option>
+                            <select class="form-control" aria-label="Default select example" id="AnioDependencia" required>
+                                <option value="" disabled selected>?</option>
                             </select>
                             <div class="valid-feedback">Correcto!</div>
                             <div class="invalid-feedback">Ingrese un opción válida!</div>
@@ -111,8 +111,8 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="clasificacionDependencia">Tipo de Clasificación</label>
-                        <select class="form-control" aria-label="Default select example" id="clasificacionDependencia">
-                            <option selected>?</option>
+                        <select class="form-control" aria-label="Default select example" id="clasificacionDependencia" required>
+                            <option value="" disabled selected>?</option>
                             <option value="1">Administración Publica Centralizada</option>
                             <option value="2">Administración Publica Paraestatal</option>
                         </select>
