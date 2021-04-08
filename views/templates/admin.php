@@ -151,7 +151,9 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                             <div class="input-group-prepend">
                                 <label class="input-group-text">Año</label>
                             </div>
-                            <select class="custom-select" id="anioGrafica"></select>
+                            <div id="contenedorAnioGrafica">
+                                <select class="custom-select" id="anioGrafica"></select>
+                            </div>
                         </div>
                     </div>
                 </div>

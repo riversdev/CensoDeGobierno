@@ -243,39 +243,57 @@ graficarDatos = (pregunta) => {
             },
         });
 
+        document.getElementById('contenedorAnioGrafica').innerHTML = ''
+        select = document.createElement('select')
+        select.className = 'custom-select'
+        select.id = 'anioGrafica'
+
+        for (let i = 0; i < anios.length - 1; i++) {
+            let option = document.createElement('option')
+            option.value = anios[i]
+            option.appendChild(document.createTextNode(anios[i]))
+            select.append(option);
+        }
+
+        document.getElementById('contenedorAnioGrafica').append(select)
+
         document.getElementById('anioGrafica').addEventListener('change', function () {
-            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            alertify.success('change')
+            if (chart.chartHeight != undefined) {
+                chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
 
-            chart.update(
-                {
-                    title: {
-                        text:
-                            'Cantidad de personal, ' + this.value,
-                    },
-                    subtitle: {
-                        text:
-                            'Representación por sexo y tipo de institución, comparación de cantidades con el ' + (this.value - 1),
-                    },
-                    series: [
-                        {
-                            name: this.value - 1,
-                            data: getDataPrev(dataPrev[this.value]).slice(),
+                chart.update(
+                    {
+                        title: {
+                            text:
+                                'Cantidad de personal, ' + this.value,
                         },
-                        {
-                            name: this.value,
-                            data: getData(data[this.value]).slice(),
+                        subtitle: {
+                            text:
+                                'Representación por sexo y tipo de institución, comparación de cantidades con el ' + (this.value - 1),
                         },
-                    ],
-                },
-                true,
-                false,
-                {
-                    duration: 800,
-                }
-            );
+                        series: [
+                            {
+                                name: this.value - 1,
+                                data: getDataPrev(dataPrev[this.value]).slice(),
+                            },
+                            {
+                                name: this.value,
+                                data: getData(data[this.value]).slice(),
+                            },
+                        ],
+                    },
+                    true,
+                    false,
+                    {
+                        duration: 800,
+                    }
+                );
 
-            chart.hideLoading();
-        });
+                chart.hideLoading();
+            }
+            // this.removeEventListener('change', arguments.callee);
+        }, { once: false });
     } else if (pregunta == 4) {
         let dataPrev = {},
             data = {};
@@ -417,40 +435,43 @@ graficarDatos = (pregunta) => {
             },
         });
 
-        let years = anios.slice();
-        years.pop();
+        document.getElementById('contenedorAnioGrafica').innerHTML = ''
+        select = document.createElement('select')
+        select.className = 'custom-select'
+        select.id = 'anioGrafica'
 
-        years.forEach(function (year) {
-            var btn = document.getElementById('btn' + year);
+        for (let i = 0; i < anios.length - 1; i++) {
+            let option = document.createElement('option')
+            option.value = anios[i]
+            option.appendChild(document.createTextNode(anios[i]))
+            select.append(option);
+        }
 
-            btn.addEventListener('click', function () {
+        document.getElementById('contenedorAnioGrafica').append(select)
+
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            alertify.success('change')
+            if (chart.chartHeight != undefined) {
                 chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
-                document.getElementById('anioDropdown').innerHTML = year;
-                document
-                    .querySelectorAll('.buttons button.active')
-                    .forEach(function (active) {
-                        active.className = 'dropdown-item';
-                    });
-                btn.className = 'dropdown-item active';
 
                 chart.update(
                     {
                         title: {
                             text:
-                                'Cantidad de personal, ' + year,
+                                'Cantidad de personal, ' + this.value,
                         },
                         subtitle: {
                             text:
-                                'Representación por sexo y régimen de contratación, comparación de cantidades con el ' + (year - 1),
+                                'Representación por sexo y régimen de contratación, comparación de cantidades con el ' + (this.value - 1),
                         },
                         series: [
                             {
-                                name: year - 1,
-                                data: getDataPrev(dataPrev[year]).slice(),
+                                name: this.value - 1,
+                                data: getDataPrev(dataPrev[this.value]).slice(),
                             },
                             {
-                                name: year,
-                                data: getData(data[year]).slice(),
+                                name: this.value,
+                                data: getData(data[this.value]).slice(),
                             },
                         ],
                     },
@@ -460,9 +481,11 @@ graficarDatos = (pregunta) => {
                         duration: 800,
                     }
                 );
+
                 chart.hideLoading();
-            });
-        });
+            }
+            // this.removeEventListener('change', arguments.callee);
+        }, { once: false });
     } else if (pregunta == 5) {
         let dataPrev = {},
             data = {};
