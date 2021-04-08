@@ -76,13 +76,13 @@ validarFormularios = () => {
                         } else {
                             enviarUsuario(recolectarDatosGUIUsuarios(), 'editar')
                         }
-                    }else if(form.id == 'formDependencias'){
+                    } else if (form.id == 'formDependencias') {
                         let valor = document.getElementById('submitDependencia').innerHTML
-                        if(valor == 'Guardar'){
+                        if (valor == 'Guardar') {
                             accionesDependencias(recolectarDatosDependenciaGUI(), 'agregar')
-                        }else if(valor == 'Actualizar'){
-                            accionesDependencias({'datosNuevos': recolectarDatosDependenciaGUI(), 'datosViejos': dependenciasEditar}, 'editar')
-                        }else{
+                        } else if (valor == 'Actualizar') {
+                            accionesDependencias({ 'datosNuevos': recolectarDatosDependenciaGUI(), 'datosViejos': dependenciasEditar }, 'editar')
+                        } else {
                             console.log('button invalido')
                         }
                     }

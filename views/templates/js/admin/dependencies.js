@@ -1,7 +1,8 @@
 // VARIABLES Y CONSTANTES GLOBALES DEL MODULO DE DEPENDENCIAS
 const modalDependencias = new bootstrap.Modal(document.getElementById('modalDependencias'))
-let dependencias = null
-let dependenciasEditar = null;
+let dependencias = null,
+    dependenciasEditar = null;
+
 document.addEventListener('DOMContentLoaded', () => {
     // LLENAR SELECTS DE AÑOS
     llenarSelectDeAnios('selectAnioDependencia')
@@ -147,12 +148,12 @@ generarTablaDependencias = () => {
     aplicarDataTable('tablaDependencias')
 }
 
-async function accionesDependencias(dependencia, accion){
-    if(accion == 'agregar'){
-        try{
+async function accionesDependencias(dependencia, accion) {
+    if (accion == 'agregar') {
+        try {
             let res = await axios('controllers/adminController.php', {
                 method: 'POST',
-                data:{
+                data: {
                     tipoPeticion: 'guardarDependencia',
                     idDependencia: dependencia['idDependencia'],
                     anioDependencia: dependencia['anioDependencia'],
@@ -162,22 +163,22 @@ async function accionesDependencias(dependencia, accion){
             })
             respuesta = res.data
             console.log(respuesta)
-            if(respuesta[0] == 'success'){
+            if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
                 modalDependencias.hide()
-                listarDependencias('all').then(() => {generarTablaDependencias()})
+                listarDependencias('all').then(() => { generarTablaDependencias() })
                 document.getElementById('formDependencias').reset()
-            }else if(respuesta[0] == 'error'){
+            } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
-            }else{
+            } else {
                 console.log('respuesta no definida ' + respuesta)
             }
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
-    }else if(accion == 'editar'){
-        try{
-            let res = await axios ('controllers/adminController.php', {
+    } else if (accion == 'editar') {
+        try {
+            let res = await axios('controllers/adminController.php', {
                 method: 'POST',
                 data: {
                     tipoPeticion: 'editarDependencia',
@@ -186,29 +187,29 @@ async function accionesDependencias(dependencia, accion){
                     anioDependencia: dependencia.datosNuevos.anioDependencia,
                     anioDependenciaOriginal: dependencia.datosViejos.anioDependenciaOriginal,
                     nombreDependencia: dependencia.datosNuevos.nombreDependencia,
-                    nombreDependenciaOriginal:dependencia.datosViejos.nombreDependenciaOriginal,
+                    nombreDependenciaOriginal: dependencia.datosViejos.nombreDependenciaOriginal,
                     clasificacionDependencia: dependencia.datosNuevos.clasificacionDependencia,
                     clasificacionDependenciaOriginal: dependencia.datosViejos.clasificacionDependenciaOriginal
-                    
+
                 }
             })
             respuesta = res.data
             console.log(dependencia)
-            if(respuesta[0] == 'success'){
+            if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
                 modalDependencias.hide()
-                listarDependencias('all').then(() => {generarTablaDependencias()})
+                listarDependencias('all').then(() => { generarTablaDependencias() })
                 document.getElementById('formDependencias').reset()
-            }else if(respuesta[0] == 'error'){
+            } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
-            }else{
+            } else {
                 console.log('respuesta no definida ' + respuesta)
             }
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
-    }else if(accion == 'eliminar'){
-        try{
+    } else if (accion == 'eliminar') {
+        try {
             let res = await axios('controllers/adminController.php', {
                 method: 'POST',
                 data: {
@@ -218,22 +219,21 @@ async function accionesDependencias(dependencia, accion){
                 }
             })
             respuesta = res.data
-            if(respuesta[0] == 'success'){
+            if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
-                listarDependencias('all').then(() => {generarTablaDependencias()})
-            }else if(respuesta[0] == 'error'){
+                listarDependencias('all').then(() => { generarTablaDependencias() })
+            } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
-            }else{
+            } else {
                 console.warn('respuesta no definida ' + respuesta)
             }
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
     }
 }
 
-
-recolectarDatosDependenciaGUI = () =>{
+recolectarDatosDependenciaGUI = () => {
     return {
         idDependencia: document.getElementById('txtIdDependencia').value,
         anioDependencia: document.getElementById('AnioDependencia').value,
@@ -250,8 +250,8 @@ listenerDeAccionesDependencias = () => {
         document.getElementById(elementosEditar[i].id).addEventListener('click', function () {
             let idDependencia = this.id.split('-')[1],
                 anioDependencia = this.id.split('-')[2]
-                dependenciasEditar = null;
-            let idDependenciaOriginal = '', nombreDependenciaOriginal = '', clasificacionDependenciaOriginal = '', anioDependenciaOriginal = '' 
+            dependenciasEditar = null;
+            let idDependenciaOriginal = '', nombreDependenciaOriginal = '', clasificacionDependenciaOriginal = '', anioDependenciaOriginal = ''
             for (const dependencia in dependencias) {
                 if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
                     /**
@@ -277,10 +277,10 @@ listenerDeAccionesDependencias = () => {
             }
 
             dependenciasEditar = {
-                'idDependenciaOriginal' : idDependenciaOriginal,
-                'nombreDependenciaOriginal' : nombreDependenciaOriginal,
-                'anioDependenciaOriginal' : anioDependenciaOriginal,
-                'clasificacionDependenciaOriginal' : clasificacionDependenciaOriginal
+                'idDependenciaOriginal': idDependenciaOriginal,
+                'nombreDependenciaOriginal': nombreDependenciaOriginal,
+                'anioDependenciaOriginal': anioDependenciaOriginal,
+                'clasificacionDependenciaOriginal': clasificacionDependenciaOriginal
             }
 
         })
@@ -302,7 +302,7 @@ listenerDeAccionesDependencias = () => {
                 'Eliminando usuario...',
                 'Se require confirmación para eliminar a <u>' + nombreDependencia + '</u> y toda la informacion referente a esta dependencia.',
                 function () {
-                    accionesDependencias({idDependencia, anioDependencia}, 'eliminar')
+                    accionesDependencias({ idDependencia, anioDependencia }, 'eliminar')
                 },
                 function () {
                     alertify.error('Cancelado')
