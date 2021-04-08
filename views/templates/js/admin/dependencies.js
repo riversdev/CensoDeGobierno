@@ -162,7 +162,6 @@ async function accionesDependencias(dependencia, accion) {
                 }
             })
             respuesta = res.data
-            console.log(respuesta)
             if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
                 modalDependencias.hide()
@@ -190,11 +189,9 @@ async function accionesDependencias(dependencia, accion) {
                     nombreDependenciaOriginal: dependencia.datosViejos.nombreDependenciaOriginal,
                     clasificacionDependencia: dependencia.datosNuevos.clasificacionDependencia,
                     clasificacionDependenciaOriginal: dependencia.datosViejos.clasificacionDependenciaOriginal
-
                 }
             })
             respuesta = res.data
-            console.log(dependencia)
             if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
                 modalDependencias.hide()

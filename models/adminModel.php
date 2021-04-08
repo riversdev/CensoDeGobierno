@@ -108,9 +108,9 @@ class AdminModel
 
         # VERIFICACION DE QUE TODAS LAS CONSULTAS FUERON EXITOSAS O NO
         if ($c != count($tablas)) {
-            echo json_encode(["error", "Imposible editar la dependencia en todas las tablas, errores en las tablas: " . json_encode($errores)]);
+            return ["error", "Imposible editar la dependencia en todas las tablas, errores en las tablas: " . json_encode($errores)];
         } else {
-            echo json_encode(["success", "Dependencia editada exitosamente !"]);
+            return ["success", "Dependencia editada exitosamente !"];
         }
     }
 
@@ -454,9 +454,6 @@ class AdminModel
             return ["warning", "ERROR SQL " . $e];
         }
     }
-
-
-
     # CRUD USUARIOS
     public static function listarUsuarios()
     {
