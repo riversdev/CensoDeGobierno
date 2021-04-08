@@ -45,74 +45,6 @@ class AdminModel
         $stmt = null;
     }
 
-    public static function editarDependencia($idDependencia, $idDependenciaOriginal, $anioDependencia, $anioDependenciaOriginal, $nombreDependencia, $nombreDependenciaOriginal, $clasificacion, $clasificacionOriginal, $tablas)
-    {
-        $c = 0; # CONTADOR DE CONSULTAS EXITOSAS
-        $errores = array(); # ARREGLO DE NOMBRES DE LAS TABLAS DE CONSULTAS ERRONEAS
-
-        # ACTUALIZAR (ESTATUS = 0) EN TODAS LAS TABLAS DE LA LISTA DONDE EL AÑO SEA DIFERENTE AL ACTUAL
-        for ($i = 0; $i < count($tablas); $i++) {
-            # CREACION DE VARIABLES CON LOS NOMBRES DE LOS CAMPOS DE CADA TABLA (no se hace en la consulta porque no se admiten los arreglos en la cadena xD)
-            $tablaCadena = $tablas[$i]['tabla'];
-            $idCadena = $tablas[$i]['campos'][0];
-            $nombreCadena = $tablas[$i]['campos'][1];
-            $anioCadena = $tablas[$i]['campos'][2];
-
-            # CREACION DEL SQL PARA ACTUALIZAR CADA TABLA
-            if ($tablas[$i]['tabla'] == "altas_instituciones") {
-                $SQL = "UPDATE $tablaCadena
-                        SET $idCadena = $idDependencia,
-                            $nombreCadena = '$nombreDependencia',
-                            $anioCadena = $anioDependencia,
-                            Clasificacion_Adm = $clasificacion
-                        WHERE
-                            $idCadena = $idDependenciaOriginal AND
-                            $nombreCadena = '$nombreDependenciaOriginal' AND
-                            $anioCadena = $anioDependenciaOriginal AND
-                            Clasificacion_Adm = $clasificacionOriginal";
-            } elseif ($tablas[$i]['tabla'] == "tbl_instituciones") {
-                $SQL = "UPDATE $tablaCadena
-                        SET $idCadena = $idDependencia,
-                            $nombreCadena = '$nombreDependencia',
-                            $anioCadena = $anioDependencia,
-                            clasificacionAd = $clasificacion
-                        WHERE
-                            $idCadena = $idDependenciaOriginal AND
-                            $nombreCadena = '$nombreDependenciaOriginal' AND
-                            $anioCadena = $anioDependenciaOriginal AND
-                            clasificacionAd = $clasificacionOriginal";
-            } else {
-                $SQL = "UPDATE $tablaCadena
-                        SET $idCadena = $idDependencia,
-                            $nombreCadena = '$nombreDependencia',
-                            $anioCadena = $anioDependencia
-                        WHERE
-                            $idCadena = $idDependenciaOriginal AND
-                            $nombreCadena = '$nombreDependenciaOriginal' AND
-                            $anioCadena = $anioDependenciaOriginal";
-            }
-
-            # ALMACENADO DE LA CONSULTA PREPARADA EN EL STMT
-            $stmt = Connection::connect()->prepare($SQL);
-
-            # EJECUCION DE LA CONSULTA CON MANEJO DE ERRORES
-            try {
-                $stmt->execute() ? $c++ : array_push($errores, $tablas[$i]['tabla']); # No se utiliza el else
-            } catch (Exception $e) {
-                array_push($errores, $tablas[$i]['tabla']);
-            }
-
-            # IGUALACION DEL STMT A NULL PARA LA PROXIMA CONSULTA
-            $stmt = null;
-        }
-
-        # VERIFICACION DE QUE TODAS LAS CONSULTAS FUERON EXITOSAS O NO
-        if ($c != count($tablas)) {
-            return ["error", "Imposible editar la dependencia en todas las tablas, errores en las tablas: " . json_encode($errores)];
-        } else {
-            return ["success", "Dependencia editada exitosamente !"];
-        }
-    }
 
     public static function verificarIdExistente($idDependencia, $anioDependencia)
     {
@@ -434,26 +366,113 @@ class AdminModel
         }
     }
 
-    public static function elminarDependencia($idDependencia, $anioDependencia)
+    public static function editarDependencia($idDependencia, $idDependenciaOriginal, $anioDependencia, $anioDependenciaOriginal, $nombreDependencia, $nombreDependenciaOriginal, $clasificacion, $clasificacionOriginal, $tablas)
     {
-        try {
+        $c = 0; # CONTADOR DE CONSULTAS EXITOSAS
+        $errores = array(); # ARREGLO DE NOMBRES DE LAS TABLAS DE CONSULTAS ERRONEAS
 
-            $tablas = "";
-            $borrarDependencia =
-                "DELETE FROM altas_nstituciones WHERE Clave = '" . $idDependencia . "' AND anio = '" . $anioDependencia . "'";
-            $stmt = Connection::connect()->prepare($borrarDependencia);
-            if ($stmt->execute()) {
-                return ["success", "Dependencia eliminada !"];
+        # ACTUALIZAR (ESTATUS = 0) EN TODAS LAS TABLAS DE LA LISTA DONDE EL AÑO SEA DIFERENTE AL ACTUAL
+        for ($i = 0; $i < count($tablas); $i++) {
+            # CREACION DE VARIABLES CON LOS NOMBRES DE LOS CAMPOS DE CADA TABLA (no se hace en la consulta porque no se admiten los arreglos en la cadena xD)
+            $tablaCadena = $tablas[$i]['tabla'];
+            $idCadena = $tablas[$i]['campos'][0];
+            $nombreCadena = $tablas[$i]['campos'][1];
+            $anioCadena = $tablas[$i]['campos'][2];
 
-                //FOR
-
+            # CREACION DEL SQL PARA ACTUALIZAR CADA TABLA
+            if ($tablas[$i]['tabla'] == "altas_instituciones") {
+                $SQL = "UPDATE $tablaCadena
+                        SET $idCadena = $idDependencia,
+                            $nombreCadena = '$nombreDependencia',
+                            $anioCadena = $anioDependencia,
+                            Clasificacion_Adm = $clasificacion
+                        WHERE
+                            $idCadena = $idDependenciaOriginal AND
+                            $nombreCadena = '$nombreDependenciaOriginal' AND
+                            $anioCadena = $anioDependenciaOriginal AND
+                            Clasificacion_Adm = $clasificacionOriginal";
+            } elseif ($tablas[$i]['tabla'] == "tbl_instituciones") {
+                $SQL = "UPDATE $tablaCadena
+                        SET $idCadena = $idDependencia,
+                            $nombreCadena = '$nombreDependencia',
+                            $anioCadena = $anioDependencia,
+                            clasificacionAd = $clasificacion
+                        WHERE
+                            $idCadena = $idDependenciaOriginal AND
+                            $nombreCadena = '$nombreDependenciaOriginal' AND
+                            $anioCadena = $anioDependenciaOriginal AND
+                            clasificacionAd = $clasificacionOriginal";
             } else {
-                return ["error", "Imposible eliminar dependencia !"];
+                $SQL = "UPDATE $tablaCadena
+                        SET $idCadena = $idDependencia,
+                            $nombreCadena = '$nombreDependencia',
+                            $anioCadena = $anioDependencia
+                        WHERE
+                            $idCadena = $idDependenciaOriginal AND
+                            $nombreCadena = '$nombreDependenciaOriginal' AND
+                            $anioCadena = $anioDependenciaOriginal";
             }
-        } catch (Exception $e) {
-            return ["warning", "ERROR SQL " . $e];
+
+            # ALMACENADO DE LA CONSULTA PREPARADA EN EL STMT
+            $stmt = Connection::connect()->prepare($SQL);
+
+            # EJECUCION DE LA CONSULTA CON MANEJO DE ERRORES
+            try {
+                $stmt->execute() ? $c++ : array_push($errores, $tablas[$i]['tabla']); # No se utiliza el else
+            } catch (Exception $e) {
+                array_push($errores, $tablas[$i]['tabla']);
+            }
+
+            # IGUALACION DEL STMT A NULL PARA LA PROXIMA CONSULTA
+            $stmt = null;
+        }
+
+        # VERIFICACION DE QUE TODAS LAS CONSULTAS FUERON EXITOSAS O NO
+        if ($c != count($tablas)) {
+            return ["error", "Imposible editar la dependencia en todas las tablas, errores en las tablas: " . json_encode($errores)];
+        } else {
+            return ["success", "Dependencia editada exitosamente !"];
         }
     }
+
+    public static function elminarDependencia($idDependencia, $anioDependencia, $tablas)
+    {
+        $c = 0; // CONTADOR DE CONSULTAS EJECUTADAS
+        $errores = array(); // ARRAY PARA ATRAPAR ERRORES
+
+        // RECORRER ARBOL DE TABLAS DONDE ESTAN LAS TABLAS Y SUS CAMPOS
+        for ($i = 0; $i < count($tablas); $i++) {
+
+            // ATRAPAR DATOS DEL ARRAY EN VARIABLES DE LO CONTRARIO NO FUNCIONA XD
+            $tablaCadena = $tablas[$i]['tabla'];
+            $idCadena = $tablas[$i]['campos'][0];
+            $anioCadena = $tablas[$i]['campos'][2];
+
+            // CREACION DEL LA VARIABLE SQL
+            $deleteTablas =
+                "DELETE FROM $tablaCadena
+                 WHERE $idCadena = '" . $idDependencia . "' AND $anioCadena = '" . $anioDependencia . "'";
+            $stmt = Connection::connect()->prepare($deleteTablas);
+
+            //EJECUCION DE CONSULTAS
+            try {
+                $stmt->execute() ? $c++ : array_push($errores, $tablas[$i]['tabla']);
+            } catch (Exception $e) {
+                array_push($errores,  $e);
+            }
+
+            // MANDAR NULL LA VARIABLE STMT PARA NUEVO USO
+            $stmt = null;
+        }
+
+        if ($c != count($tablas)) {
+            return ["error", "Error al eliminar la dependencia en todas las tablas " . json_encode($errores)];
+        } else {
+            return ["success", "Dependencia eliminada !"];
+        }
+    }
+
+
     # CRUD USUARIOS
     public static function listarUsuarios()
     {
