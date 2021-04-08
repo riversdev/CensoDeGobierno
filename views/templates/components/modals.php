@@ -85,31 +85,33 @@
                 <h5 class="modal-title text-white" id="modalDependenciasLabel"></h5>
                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-0">
-                <form id="formDependencias" class="form-row card p-3 m-0 needs-validation" novalidate>
-                    <div class="form-row m-0">
-                        <div class="col-md-6 mb-3">
-                            <label for="txtIdDependencia">Clave</label>
-                            <input type="number" class="form-control" id="txtIdDependencia" autocomplete="off" required />
-                            <div class="valid-feedback">Correcto!</div>
-                            <div class="invalid-feedback">Ingrese un numero válido!</div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="AnioDependencia">Año</label>
-                            <select class="form-control" aria-label="Default select example" id="AnioDependencia" required>
-                                <option value="" disabled selected>?</option>
-                            </select>
-                            <div class="valid-feedback">Correcto!</div>
-                            <div class="invalid-feedback">Ingrese un opción válida!</div>
+            <form id="formDependencias" class="card p-3 m-0 needs-validation" novalidate>
+                <div class="modal-body form-row p-0">
+                    <div class="col-12">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="txtIdDependencia">Clave</label>
+                                <input type="number" class="form-control" id="txtIdDependencia" autocomplete="off" required />
+                                <div class="valid-feedback">Correcto!</div>
+                                <div class="invalid-feedback">Ingrese un numero válido!</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="AnioDependencia">Año</label>
+                                <select class="form-control" aria-label="Default select example" id="AnioDependencia" required>
+                                    <option value="" disabled selected>?</option>
+                                </select>
+                                <div class="valid-feedback">Correcto!</div>
+                                <div class="invalid-feedback">Ingrese un opción válida!</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-12 mb-3">
+                    <div class="col-12 mb-3">
                         <label for="txtDependencia" class="form-label">Nombre de Dependencia</label>
                         <input type="text" class="form-control" id="txtDependencia" autocomplete="off" required />
                         <div class="valid-feedback">Correcto!</div>
                         <div class="invalid-feedback">Ingrese un nombre válido!</div>
                     </div>
-                    <div class="col-md-12 mb-3">
+                    <div class="col-12 mb-3">
                         <label for="clasificacionDependencia">Tipo de Clasificación</label>
                         <select class="form-control" aria-label="Default select example" id="clasificacionDependencia" required>
                             <option value="" disabled selected>?</option>
@@ -119,13 +121,13 @@
                         <div class="valid-feedback">Correcto!</div>
                         <div class="invalid-feedback">Ingrese un opción válida!</div>
                     </div>
-            </div>
-            <div class="col-12 d-flex justify-content-end">
-                <button type="button" class="btn btn-outline-white" data-bs-dismiss="modal">Cerrar</button>
-                <button id="submitDependencia" type="submit" class="btn btn-outline-primary ml-3" >Enviar</button>
-            </div>
+                </div>
+                <div class="w-100 d-flex justify-content-end">
+                    <button type="button" class="btn btn-outline-white" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="submitDependencia" type="submit" class="btn btn-outline-primary ml-3">Enviar</button>
+                </div>
             </form>
+            <div class="modal-footer" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
         </div>
-        <div class="modal-footer" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
     </div>
 </div>
