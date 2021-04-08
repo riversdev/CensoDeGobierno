@@ -108,9 +108,9 @@ class AdminModel
 
         # VERIFICACION DE QUE TODAS LAS CONSULTAS FUERON EXITOSAS O NO
         if ($c != count($tablas)) {
-            echo "error|Imposible editar la dependencia en todas las tablas, errores en las tablas: " . json_encode($errores);
+            echo json_encode(["error", "Imposible editar la dependencia en todas las tablas, errores en las tablas: " . json_encode($errores)]);
         } else {
-            echo "success|Dependencia editada exitosamente !";
+            echo json_encode(["success", "Dependencia editada exitosamente !"]);
         }
     }
 
@@ -132,119 +132,6 @@ class AdminModel
         $stmt = null;
     }
 
-    public static function listarUsuarios()
-    {
-        try {
-            $listarUsuarios =
-                "SELECT 
-                    u.user_id AS idUsuario,
-                    u.user_name AS nombreUsuario,
-                    u.user_email AS emailUsuario,
-                    u.user_phone AS phoneUsuario,
-                    u.user_dirge AS usuarioOcupacion,
-                    DATE(u.user_register) AS fechaRegistro,
-                    u.user_tipe AS tipoUsuario,
-                    u.user_status AS estatusUsuario,
-                    u.user_password_hash AS userPasswd
-                FROM users AS u";
-            $stmt = Connection::connect()->prepare($listarUsuarios);
-            if ($stmt->execute()) {
-                $contador = $stmt->fetchAll();
-                if (count($contador) == 0) {
-                    return ["error", "No hay usuarios registrados!"];
-                } else {
-                    return $contador;
-                }
-            } else {
-                return ["error", "imposible ejecutar la consulta!"];
-            }
-        } catch (Exception $e) {
-            return ["error", "Error al conectar a la base datos! " . $e];
-        }
-    }
-
-    public static function listarDependencias($anio)
-    {
-        try {
-            $listarDependencias = "";
-            if ($anio == "all") {
-                $listarDependencias =
-                    "SELECT
-                    d.Clave AS idInstitucion,
-                    d.Institucion AS nombreInstitucion,
-                    d.Clasificacion_Adm AS Clasificacion,
-                    d.anio AS anioInstitucion,
-                    d.finalizado AS Finalizado
-                FROM altas_instituciones as d";
-            } else {
-                $listarDependencias =
-                    "SELECT
-                    d.Clave AS idInstitucion,
-                    d.Institucion AS nombreInstitucion,
-                    d.Clasificacion_Adm AS Clasificacion,
-                    d.anio AS anioInstitucion,
-                    d.finalizado AS Finalizado
-                FROM altas_instituciones as d 
-                WHERE
-                d.anio = '" . $anio . "'";
-            }
-            $stmt = Connection::connect()->prepare($listarDependencias);
-            if ($stmt->execute()) {
-                $contador = $stmt->fetchAll();
-                if (count($contador) == 0) {
-                    return ["error", "No hay dependencias registradas!"];
-                } else {
-                    return $contador;
-                }
-            } else {
-                return ["error", "Imposible ejecutar consulta!"];
-            }
-        } catch (Exception $e) {
-            return ["error", "Error al conectar a la base de datos! " . $e];
-        }
-    }
-
-    public static function guardarDependencia($idDependencia, $anioDependencia, $nombreDependencia, $clasificacionDependencia)
-    {
-        try {
-            $preguntarSiExiste =
-                "SELECT *FROM altas_instituciones WHERE Clave = '" . $idDependencia . "' AND anio = '" . $anioDependencia . "'";
-            $stmt = Connection::connect()->prepare($preguntarSiExiste);
-            $stmt->execute();
-            $contador = $stmt->rowCount();
-            if ($contador != 0) {
-                return ["error", "Ya se ha registrado esa clave !"];
-            } else {
-                $agregarDependencia =
-                    "INSERT INTO altas_instituciones
-                    (
-                        Clave,
-                        Institucion,
-                        Clasificacion_Adm,
-                        `Status`,
-                        anio,
-                        Finalizado
-                    )
-                    VALUES
-                    (
-                        '$idDependencia',
-                        '$nombreDependencia',
-                        '$clasificacionDependencia',
-                        '1',
-                        '$anioDependencia',
-                        '0'
-                    )";
-                $stmt = Connection::connect()->prepare($agregarDependencia);
-                if ($stmt->execute()) {
-                    return ["success", "Dependencia registrada !"];
-                } else {
-                    return ["error", "Imposible registrar dependencia !"];
-                }
-            }
-        } catch (Exception $e) {
-            return ["error", "Imposible conectar a la base de datos " . $e];
-        }
-    }
 
     public static function listarResultados($anio)
     {
@@ -463,8 +350,145 @@ class AdminModel
         return session_status() === PHP_SESSION_ACTIVE ? "error" : "success";
     }
 
+    #CRUD DEPENDENCIAS
+    public static function listarDependencias($anio)
+    {
+        try {
+            $listarDependencias = "";
+            if ($anio == "all") {
+                $listarDependencias =
+                    "SELECT
+                    d.Clave AS idInstitucion,
+                    d.Institucion AS nombreInstitucion,
+                    d.Clasificacion_Adm AS Clasificacion,
+                    d.anio AS anioInstitucion,
+                    d.finalizado AS Finalizado
+                FROM altas_instituciones as d";
+            } else {
+                $listarDependencias =
+                    "SELECT
+                    d.Clave AS idInstitucion,
+                    d.Institucion AS nombreInstitucion,
+                    d.Clasificacion_Adm AS Clasificacion,
+                    d.anio AS anioInstitucion,
+                    d.finalizado AS Finalizado
+                FROM altas_instituciones as d 
+                WHERE
+                d.anio = '" . $anio . "'";
+            }
+            $stmt = Connection::connect()->prepare($listarDependencias);
+            if ($stmt->execute()) {
+                $contador = $stmt->fetchAll();
+                if (count($contador) == 0) {
+                    return ["error", "No hay dependencias registradas!"];
+                } else {
+                    return $contador;
+                }
+            } else {
+                return ["error", "Imposible ejecutar consulta!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Error al conectar a la base de datos! " . $e];
+        }
+    }
+
+    public static function guardarDependencia($idDependencia, $anioDependencia, $nombreDependencia, $clasificacionDependencia)
+    {
+        try {
+            $preguntarSiExiste =
+                "SELECT *FROM altas_instituciones WHERE Clave = '" . $idDependencia . "' AND anio = '" . $anioDependencia . "'";
+            $stmt = Connection::connect()->prepare($preguntarSiExiste);
+            $stmt->execute();
+            $contador = $stmt->rowCount();
+            if ($contador != 0) {
+                return ["error", "Ya se ha registrado esa clave !"];
+            } else {
+                $agregarDependencia =
+                    "INSERT INTO altas_instituciones
+                    (
+                        Clave,
+                        Institucion,
+                        Clasificacion_Adm,
+                        `Status`,
+                        anio,
+                        Finalizado
+                    )
+                    VALUES
+                    (
+                        '$idDependencia',
+                        '$nombreDependencia',
+                        '$clasificacionDependencia',
+                        '1',
+                        '$anioDependencia',
+                        '0'
+                    )";
+                $stmt = Connection::connect()->prepare($agregarDependencia);
+                if ($stmt->execute()) {
+                    return ["success", "Dependencia registrada !"];
+                } else {
+                    return ["error", "Imposible registrar dependencia !"];
+                }
+            }
+        } catch (Exception $e) {
+            return ["error", "Imposible conectar a la base de datos " . $e];
+        }
+    }
+
+    public static function elminarDependencia($idDependencia, $anioDependencia)
+    {
+        try {
+
+            $tablas = "";
+            $borrarDependencia =
+                "DELETE FROM altas_nstituciones WHERE Clave = '" . $idDependencia . "' AND anio = '" . $anioDependencia . "'";
+            $stmt = Connection::connect()->prepare($borrarDependencia);
+            if ($stmt->execute()) {
+                return ["success", "Dependencia eliminada !"];
+
+                //FOR
+
+            } else {
+                return ["error", "Imposible eliminar dependencia !"];
+            }
+        } catch (Exception $e) {
+            return ["warning", "ERROR SQL " . $e];
+        }
+    }
+
+
 
     # CRUD USUARIOS
+    public static function listarUsuarios()
+    {
+        try {
+            $listarUsuarios =
+                "SELECT 
+                    u.user_id AS idUsuario,
+                    u.user_name AS nombreUsuario,
+                    u.user_email AS emailUsuario,
+                    u.user_phone AS phoneUsuario,
+                    u.user_dirge AS usuarioOcupacion,
+                    DATE(u.user_register) AS fechaRegistro,
+                    u.user_tipe AS tipoUsuario,
+                    u.user_status AS estatusUsuario,
+                    u.user_password_hash AS userPasswd
+                FROM users AS u";
+            $stmt = Connection::connect()->prepare($listarUsuarios);
+            if ($stmt->execute()) {
+                $contador = $stmt->fetchAll();
+                if (count($contador) == 0) {
+                    return ["error", "No hay usuarios registrados!"];
+                } else {
+                    return $contador;
+                }
+            } else {
+                return ["error", "imposible ejecutar la consulta!"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Error al conectar a la base datos! " . $e];
+        }
+    }
+
     public static function agregarUsuario($nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario)
     {
         try {

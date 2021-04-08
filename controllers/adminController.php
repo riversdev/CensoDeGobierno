@@ -53,12 +53,28 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $anioDependenciaOriginal = $data['anioDependenciaOriginal'];
     $nombreDependencia = $data['nombreDependencia'];
     $nombreDependenciaOriginal = $data['nombreDependenciaOriginal'];
-    $clasificacion = $data['clasificacion'];
-    $clasificacionOriginal = $data['clasificacionOriginal'];
+    $clasificacion = $data['clasificacionDependencia'];
+    $clasificacionOriginal = $data['clasificacionDependenciaOriginal'];
     $tablas = [
         ["tabla" => "altas_instituciones", "campos" => ["Clave", "Institucion", "anio"]],
+        ["tabla" => "tblpregunta1_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta2_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta3_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta4_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta5_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta6_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta7_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta8_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta9_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta10_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta11_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta12_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta13_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tblpregunta14_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tbl_complemento_2021", "campos" =>["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_instituciones", "campos" => ["id", "nombre", "anio"]],
         ["tabla" => "tbl_pregunta2", "campos" => ["id_intu", "nombre_intu", "anio"]],
+        ["tabla" => "tbl_pregunta2_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_pregunta4", "campos" => ["id_inst", "nombre_inst", "anio"]],
         ["tabla" => "tbl_pregunta5", "campos" => ["idIns", "nombreIns", "anio"]],
         ["tabla" => "tbl_pregunta6", "campos" => ["id_inti", "intitucion", "anio"]],
@@ -69,26 +85,41 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
         ["tabla" => "`tbl_pregunta9-2`", "campos" => ["id_institu", "institucion", "anio"]],
         ["tabla" => "`tbl_preguntas9-3`", "campos" => ["id_institu", "institucion", "anio"]],
         ["tabla" => "`tbl_pregunta9-4`", "campos" => ["id_institu", "institucion", "anio"]],
+        ["tabla" => "tbl_pregunta10_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_pregunta10", "campos" => ["id_institu", "institucion", "anio"]],
         ["tabla" => "tbl_pregunta11", "campos" => ["id_institu", "institucion", "anio"]],
+        ["tabla" => "tbl_pregunta11_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tbl_pregunta12_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tbl_pregunta13_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tbl_pregunta14_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_pregunta15", "campos" => ["idInst", "nombreIns", "anio"]],
         ["tabla" => "tbl_pregunta16", "campos" => ["idInst", "nombreInst", "anio"]],
         ["tabla" => "`tbl_pregunta16-1`", "campos" => ["idIsnt", "nombreInst", "anio"]],
         ["tabla" => "`tbl_pregunta16-2`", "campos" => ["idInst", "nombreInst", "anio"]],
+        ["tabla" => "`tbl_pregunta16-2_2021`", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "`tbl_pregunta16-3`", "campos" => ["idIsnt", "nombreInst", "anio"]],
         ["tabla" => "`tbl_pregunta16-4`", "campos" => ["idInst", "nombreInst", "anio"]],
         ["tabla" => "`tbl_pregunta16-5`", "campos" => ["idIsnt", "nombreInst", "anio"]],
         ["tabla" => "`tbl_pregunta16-6`", "campos" => ["idInst", "nombreInst", "anio"]],
         ["tabla" => "`tbl_pregunta16-7`", "campos" => ["idInst", "nombreInst", "anio"]],
         ["tabla" => "`tbl_pregunta16-8`", "campos" => ["idInst", "nombreInst", "anio"]],
+        ["tabla" => "tbl_pregunta16_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_pregunta17", "campos" => ["idIns", "nombreIns", "anio"]],
+        ["tabla" => "tbl_pregunta17_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_pregunta18", "campos" => ["idInst", "nombreInst", "anio"]],
+        ["tabla" => "tbl_pregunta18_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_pregunta19", "campos" => ["idIns", "nombreIns", "anio"]],
+        ["tabla" => "tbl_pregunta19_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_pregunta20", "campos" => ["idInst", "nombreInst", "anio"]],
         ["tabla" => "tbl_pregunta21", "campos" => ["idIns", "nombreInst", "anio"]],
+        ["tabla" => "tbl_pregunta21_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
         ["tabla" => "tbl_pregunta22", "campos" => ["idInst", "nombreInst", "anio"]],
         ["tabla" => "`tbl_pregunta22-1`", "campos" => ["idInst", "nombreInst", "anio"]],
-        ["tabla" => "`tbl_pregunta22-2`", "campos" => ["idInst", "nombreInst", "anio"]]
+        ["tabla" => "`tbl_pregunta22-2`", "campos" => ["idInst", "nombreInst", "anio"]],
+        ["tabla" => "`tbl_pregunta22-2_2021`", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tbl_pregunta22_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tbl_pregunta23_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]],
+        ["tabla" => "tbl_pregunta28_2021", "campos" => ["idInstitucion", "nombreInstitucion", "Anio"]]
     ];
 
     if ($idDependencia != $idDependenciaOriginal || $anioDependencia != $anioDependenciaOriginal) {
@@ -97,16 +128,16 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
         if ($idExistente != 0) {
             if (count($idExistente) == 0) {
                 $resultado = AdminModel::editarDependencia($idDependencia, $idDependenciaOriginal, $anioDependencia, $anioDependenciaOriginal, $nombreDependencia, $nombreDependenciaOriginal, $clasificacion, $clasificacionOriginal, $tablas);
-                echo $resultado;
+                echo json_encode($resultado);
             } else {
-                echo "alert|La clave <u>" . $idExistente[0]['idDependencia'] . "</u> ya existe en el año <u>" . $idExistente[0]['anioDependencia'] . "</u> y le pertenece a <u>" . $idExistente[0]['nombreDependencia'] . "</u>.";
+                echo json_encode(["error", "La clave <u>" . $idExistente[0]['idDependencia'] . "</u> ya existe en el año <u>" . $idExistente[0]['anioDependencia'] . "</u> y le pertenece a <u>" . $idExistente[0]['nombreDependencia'] . "</u>."]);
             }
         } else {
-            echo "error|Imposible verificar si el nuevo ID existe !";
+            echo json_encode(["error", "Imposible verificar si el nuevo ID existe !"]);
         }
     } else {
         $resultado = AdminModel::editarDependencia($idDependencia, $idDependenciaOriginal, $anioDependencia, $anioDependenciaOriginal, $nombreDependencia, $nombreDependenciaOriginal, $clasificacion, $clasificacionOriginal, $tablas);
-        echo $resultado;
+        echo json_encode($resultado);
     }
 } else if ($tipoPeticion == "listarUsuarios") {
 
@@ -176,13 +207,20 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $respuesta = AdminModel::editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario);
 
     echo json_encode($respuesta);
-} else if ($tipoPeticion == "guardarDependencia"){
-    $idDependencia = $data ['idDependencia'];
+} else if ($tipoPeticion == "guardarDependencia") {
+    $idDependencia = $data['idDependencia'];
     $anioDependencia = $data['anioDependencia'];
     $nombreDependencia = $data['nombreDependencia'];
     $clasificacionDependencia = $data['clasificacionDependencia'];
-    
+
     $respuesta = AdminModel::guardarDependencia($idDependencia, $anioDependencia, $nombreDependencia, $clasificacionDependencia);
+
+    echo json_encode($respuesta);
+} else if ($tipoPeticion == "eliminarDependencia") {
+    $idDependencia = $data['idDependencia'];
+    $anioDependencia = $data['anioDependencia'];
+
+    $respuesta = AdminModel::elminarDependencia($idDependencia, $anioDependencia);
 
     echo json_encode($respuesta);
 }

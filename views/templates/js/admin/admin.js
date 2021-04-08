@@ -79,9 +79,9 @@ validarFormularios = () => {
                     }else if(form.id == 'formDependencias'){
                         let valor = document.getElementById('submitDependencia').innerHTML
                         if(valor == 'Guardar'){
-                            accionesDependencias(recolectarDatosDependencia(), 'agregar')
+                            accionesDependencias(recolectarDatosDependenciaGUI(), 'agregar')
                         }else if(valor == 'Actualizar'){
-
+                            accionesDependencias({'datosNuevos': recolectarDatosDependenciaGUI(), 'datosViejos': dependenciasEditar}, 'editar')
                         }else{
                             console.log('button invalido')
                         }

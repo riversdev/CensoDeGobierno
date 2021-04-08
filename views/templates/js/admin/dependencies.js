@@ -1,7 +1,7 @@
 // VARIABLES Y CONSTANTES GLOBALES DEL MODULO DE DEPENDENCIAS
 const modalDependencias = new bootstrap.Modal(document.getElementById('modalDependencias'))
 let dependencias = null
-
+let dependenciasEditar = null;
 document.addEventListener('DOMContentLoaded', () => {
     // LLENAR SELECTS DE AÑOS
     llenarSelectDeAnios('selectAnioDependencia')
@@ -116,15 +116,15 @@ generarTablaDependencias = () => {
         i = document.createElement('i')
         i.className = 'fas fa-lg fa-user-edit text-info mx-0 w-25'
         a = document.createElement('a')
-        a.className = 'btnEdit'
-        a.id = 'btnEdit-' + dependencia['idInstitucion']
+        a.className = 'btnEditDependencia'
+        a.id = 'btnEditDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.append(i);
         td.append(a)
         i = document.createElement('i')
         i.className = 'fa fa-lg fa-user-times text-danger mx-2 w-25'
         a = document.createElement('a')
-        a.className = 'btnDelete'
-        a.id = 'btnDelete-' + dependencia['idInstitucion']
+        a.className = 'btnDeleteDependencia'
+        a.id = 'btnDeleteDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.append(i)
         td.append(a)
         i = document.createElement('i')
@@ -143,6 +143,7 @@ generarTablaDependencias = () => {
     document.getElementById('contenedorTablaDependencias').innerHTML = ''
     document.getElementById('contenedorTablaDependencias').append(table)
 
+    listenerDeAccionesDependencias()
     aplicarDataTable('tablaDependencias')
 }
 
@@ -156,7 +157,7 @@ async function accionesDependencias(dependencia, accion){
                     idDependencia: dependencia['idDependencia'],
                     anioDependencia: dependencia['anioDependencia'],
                     nombreDependencia: dependencia['nombreDependencia'],
-                    clasificacionDependencia: dependencia['Clasificacion']
+                    clasificacionDependencia: dependencia['clasificacionDependencia']
                 }
             })
             respuesta = res.data
@@ -175,18 +176,138 @@ async function accionesDependencias(dependencia, accion){
             console.log(error)
         }
     }else if(accion == 'editar'){
-
+        try{
+            let res = await axios ('controllers/adminController.php', {
+                method: 'POST',
+                data: {
+                    tipoPeticion: 'editarDependencia',
+                    idDependencia: dependencia.datosNuevos.idDependencia,
+                    idDependenciaOriginal: dependencia.datosViejos.idDependenciaOriginal,
+                    anioDependencia: dependencia.datosNuevos.anioDependencia,
+                    anioDependenciaOriginal: dependencia.datosViejos.anioDependenciaOriginal,
+                    nombreDependencia: dependencia.datosNuevos.nombreDependencia,
+                    nombreDependenciaOriginal:dependencia.datosViejos.nombreDependenciaOriginal,
+                    clasificacionDependencia: dependencia.datosNuevos.clasificacionDependencia,
+                    clasificacionDependenciaOriginal: dependencia.datosViejos.clasificacionDependenciaOriginal
+                    
+                }
+            })
+            respuesta = res.data
+            console.log(dependencia)
+            if(respuesta[0] == 'success'){
+                alertify.success(respuesta[1])
+                modalDependencias.hide()
+                listarDependencias('all').then(() => {generarTablaDependencias()})
+                document.getElementById('formDependencias').reset()
+            }else if(respuesta[0] == 'error'){
+                alertify.error(respuesta[1])
+            }else{
+                console.log('respuesta no definida ' + respuesta)
+            }
+        }catch(error){
+            console.log(error)
+        }
     }else if(accion == 'eliminar'){
-        
+        try{
+            let res = await axios('controllers/adminController.php', {
+                method: 'POST',
+                data: {
+                    tipoPeticion: 'eliminarDependencia',
+                    idDependencia: dependencia['idDependencia'],
+                    anioDependencia: dependencia['anioDependencia']
+                }
+            })
+            respuesta = res.data
+            if(respuesta[0] == 'success'){
+                alertify.success(respuesta[1])
+                listarDependencias('all').then(() => {generarTablaDependencias()})
+            }else if(respuesta[0] == 'error'){
+                alertify.error(respuesta[1])
+            }else{
+                console.warn('respuesta no definida ' + respuesta)
+            }
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 
 
-recolectarDatosDependencia = () =>{
+recolectarDatosDependenciaGUI = () =>{
     return {
         idDependencia: document.getElementById('txtIdDependencia').value,
         anioDependencia: document.getElementById('AnioDependencia').value,
         nombreDependencia: document.getElementById('txtDependencia').value,
-        Clasificacion: document.getElementById('clasificacionDependencia').value
+        clasificacionDependencia: document.getElementById('clasificacionDependencia').value
+    }
+}
+
+listenerDeAccionesDependencias = () => {
+    let elementosEditar = document.getElementsByClassName('btnEditDependencia'),
+        elementosEliminar = document.getElementsByClassName('btnDeleteDependencia')
+
+    for (let i = 0; i < elementosEditar.length; i++) {
+        document.getElementById(elementosEditar[i].id).addEventListener('click', function () {
+            let idDependencia = this.id.split('-')[1],
+                anioDependencia = this.id.split('-')[2]
+                dependenciasEditar = null;
+            let idDependenciaOriginal = '', nombreDependenciaOriginal = '', clasificacionDependenciaOriginal = '', anioDependenciaOriginal = '' 
+            for (const dependencia in dependencias) {
+                if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
+                    /**
+                     * Datos originales de la institucion
+                     */
+                    idDependenciaOriginal = dependencias[dependencia]['idInstitucion']
+                    nombreDependenciaOriginal = dependencias[dependencia]['nombreInstitucion']
+                    anioDependenciaOriginal = dependencias[dependencia]['anioInstitucion']
+                    clasificacionDependenciaOriginal = dependencias[dependencia]['Clasificacion']
+
+                    /**
+                     * Datos Nuevos de la institucion
+                     */
+                    document.getElementById('txtIdDependencia').value = dependencias[dependencia]['idInstitucion']
+                    document.getElementById('AnioDependencia').value = dependencias[dependencia]['anioInstitucion']
+                    document.getElementById('txtDependencia').value = dependencias[dependencia]['nombreInstitucion']
+                    document.getElementById('clasificacionDependencia').value = dependencias[dependencia]['Clasificacion']
+                    document.getElementById('modalDependenciasLabel').innerHTML = 'Editar Dependencia'
+                    document.getElementById('submitDependencia').innerHTML = 'Actualizar'
+                    modalDependencias.show()
+                    break
+                }
+            }
+
+            dependenciasEditar = {
+                'idDependenciaOriginal' : idDependenciaOriginal,
+                'nombreDependenciaOriginal' : nombreDependenciaOriginal,
+                'anioDependenciaOriginal' : anioDependenciaOriginal,
+                'clasificacionDependenciaOriginal' : clasificacionDependenciaOriginal
+            }
+
+        })
+    }
+
+    for (let i = 0; i < elementosEliminar.length; i++) {
+        document.getElementById(elementosEliminar[i].id).addEventListener('click', function () {
+            let idDependencia = this.id.split('-')[1],
+                anioDependencia = this.id.split('-')[2],
+                nombreDependencia = ''
+
+            for (const dependencia in dependencias) {
+                if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
+                    nombreDependencia = dependencias[dependencia]['nombreInstitucion']
+                    break
+                }
+            }
+            alertify.confirm(
+                'Eliminando usuario...',
+                'Se require confirmación para eliminar a <u>' + nombreDependencia + '</u> y toda la informacion referente a esta dependencia.',
+                function () {
+                    accionesDependencias({idDependencia, anioDependencia}, 'eliminar')
+                },
+                function () {
+                    alertify.error('Cancelado')
+                }
+            ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
+        })
     }
 }
