@@ -1,10 +1,11 @@
 // VARIABLES Y CONSTANTES GLOBALES DEL MODULO DE DEPENDENCIAS
 const modalDependencias = new bootstrap.Modal(document.getElementById('modalDependencias'))
+const modalDependenciasEliminar = new bootstrap.Modal(document.getElementById('modalDependenciasEliminar'))
 let dependencias = null,
-    dependenciasEditar = null;
+    dependenciasEditar = null
+    dependenciasEliminar = null
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('ocultarFormEliminar').style.display = 'none'
     // LLENAR SELECTS DE AÑOS
     llenarSelectDeAnios('selectAnioDependencia')
     llenarSelectDeAnios('AnioDependencia')
@@ -213,15 +214,17 @@ async function accionesDependencias(dependencia, accion) {
                 method: 'POST',
                 data: {
                     tipoPeticion: 'eliminarDependencia',
-                    idDependencia: dependencia['idDependencia'],
-                    anioDependencia: dependencia['anioDependencia'],
-                    tipoDeEliminacion: dependencia['res']
+                    idDependencia: dependencia.datosDependencia.idDependencia,
+                    anioDependencia: dependencia.datosDependencia.anioDependencia,
+                    tipoDeEliminacion: dependencia.tipoPeticionEliminar
                 }
             })
             respuesta = res.data
             if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
                 listarDependencias('all').then(() => { generarTablaDependencias() })
+                document.getElementById('formDependenciaEliminar').reset()
+                
             } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
             } else {
@@ -315,69 +318,19 @@ listenerDeAccionesDependencias = () => {
             let idDependencia = this.id.split('-')[1],
                 anioDependencia = this.id.split('-')[2],
                 nombreDependencia = ''
-
+                dependenciasEliminar = null
             for (const dependencia in dependencias) {
                 if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
                     nombreDependencia = dependencias[dependencia]['nombreInstitucion']
                     break
                 }
             }
-
-    alertify.genericDialog || alertify.dialog('genericDialog',function(){
-    return {
-        main:function(content){
-            this.setContent(content);
-        },
-        setup:function(){
-            return {
-                focus:{
-                    element:function(){
-                        return this.elements.body.querySelector(this.get('selector'));
-                    },
-                    select:true
-                },
-                options:{
-                    basic:true,
-                    maximizable:false,
-                    resizable:false,
-                    padding:false
-                }
-            };
-        },
-        settings:{
-            selector:undefined
-        }
-    };
-    });
-//force focusing password box
-    alertify.genericDialog ($('#formEliminarDependencia')[0], 
-        document.getElementById('eliminarDependencia').addEventListener('click', function () {
-            let res = document.getElementById('inlineRadio1').checked
-                res2 = document.getElementById('inlineRadio2').checked
-            if(res != false || res2 != false ){
-                let res = document.querySelector('input[name="inlineRadioOptions"]:checked').value
-                accionesDependencias({idDependencia, anioDependencia, res}, 'eliminar')
-                alertify.genericDialog().close()
-            }else{
-                alertify.error('Seleccione al menos una opcion !')
+            dependenciasEliminar = {
+                'idDependencia' : idDependencia,
+                'anioDependencia': anioDependencia,
+                'nombreDependencia': nombreDependencia
             }
-
-        }),
-        document.getElementById('cerrarDialog').addEventListener('click', function () {
-            alertify.genericDialog().close()
-        })
-    ).set('selector', 'input[type="radio"]');
-            
-            /*alertify.confirm(
-                'Eliminando usuario...',
-                'Se require confirmación para eliminar a <u>' + nombreDependencia + '</u> y toda la informacion referente a esta dependencia.',
-                function () {
-                    accionesDependencias({ idDependencia, anioDependencia }, 'eliminar')
-                },
-                function () {
-                    alertify.error('Cancelado')
-                }
-            ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });*/
+            modalDependenciasEliminar.show()
         })
     }
 

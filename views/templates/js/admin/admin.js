@@ -85,6 +85,19 @@ validarFormularios = () => {
                         } else {
                             console.log('button invalido')
                         }
+                    } else if(form.id == 'formDependenciaEliminar'){
+                        let valorSelector = document.querySelector('input[name="flexRadioDefault"]:checked').value  
+                        let datosDependencia = dependenciasEliminar
+                        alertify.confirm('Eliminando Dependencia...',
+                        '¿Esta seguro de querer realizar esta accion en <u>' + datosDependencia.nombreDependencia +'</u>? ',
+                        function(){
+                            accionesDependencias({'datosDependencia':datosDependencia, 'tipoPeticionEliminar': valorSelector}, 'eliminar')
+                            modalDependenciasEliminar.hide()
+                        },  
+                        function(){
+                            alertify.error('Cancelado')
+                        }   
+                        ).set('labels', {ok: 'Confirmo' , cancel: 'Cancelar'})
                     }
                 }
 
