@@ -213,14 +213,14 @@ class Questions
     {
         $SQL =
             "SELECT b.clasificacionAd,
-                SUM(IF(a.admcfijos1!=0,a.admcfijos1,0)) AS lineasFijas,
-                SUM(IF(a.admcmoviles1!=0,a.admcmoviles1,0)) AS lineasMoviles,
-                SUM(IF(a.admcfijos2!=0,a.admcfijos2,0)) AS aparatosFijos,
-                SUM(IF(a.admcmoviles2!=0,a.admcmoviles2,0)) AS aparatosMoviles
-            FROM tbl_pregunta19 AS a
-            INNER JOIN tbl_instituciones AS b ON b.id=a.idIns
+                SUM(IF(a.lineasfijas!=0,a.lineasfijas,0)) AS lineasFijas,
+                SUM(IF(a.lineasmoviles!=0,a.lineasmoviles,0)) AS lineasMoviles,
+                SUM(IF(a.aparatosfijos!=0,a.aparatosfijos,0)) AS aparatosFijos,
+                SUM(IF(a.aparatosmoviles!=0,a.aparatosmoviles,0)) AS aparatosMoviles
+            FROM tbl_pregunta20 AS a
+            INNER JOIN tbl_instituciones AS b ON b.id=a.idInst
             WHERE a.anio=$anio AND b.anio=$anio
-            GROUP BY b.clasificacionAd;";
+            GROUP BY b.clasificacionAd";
         $stmt = Connection::connect()->prepare($SQL);
         $stmt->execute();
         return $stmt->fetchAll();
@@ -229,10 +229,10 @@ class Questions
     {
         $SQL =
             "SELECT a.idInst AS idInstitucion,b.nombre AS institucion,
-                SUM(IF(a.lineasfijas!=0,a.lineasfijas,0)) AS lineasFijas,
-                SUM(IF(a.lineasmoviles!=0,a.lineasmoviles,0)) AS lineasMoviles,
-                SUM(IF(a.aparatosfijos!=0,a.aparatosfijos,0)) AS aparatosFijos,
-                SUM(IF(a.aparatosmoviles!=0,a.aparatosmoviles,0)) AS aparatosMoviles
+                IF(a.lineasfijas!=0,a.lineasfijas,0) AS lineasFijas,
+                IF(a.lineasmoviles!=0,a.lineasmoviles,0) AS lineasMoviles,
+                IF(a.aparatosfijos!=0,a.aparatosfijos,0) AS aparatosFijos,
+                IF(a.aparatosmoviles!=0,a.aparatosmoviles,0) AS aparatosMoviles
             FROM tbl_pregunta20 AS a
             INNER JOIN tbl_instituciones AS b ON b.id=a.idInst
             WHERE a.anio=$anio AND b.anio=$anio
