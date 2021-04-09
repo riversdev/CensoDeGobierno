@@ -45,7 +45,6 @@ class AdminModel
         $stmt = null;
     }
 
-
     public static function verificarIdExistente($idDependencia, $anioDependencia)
     {
         try {
@@ -63,7 +62,6 @@ class AdminModel
         }
         $stmt = null;
     }
-
 
     public static function listarResultados($anio)
     {
@@ -282,6 +280,7 @@ class AdminModel
         return session_status() === PHP_SESSION_ACTIVE ? "error" : "success";
     }
 
+    
     #CRUD DEPENDENCIAS
     public static function listarDependencias($anio)
     {
@@ -479,14 +478,14 @@ class AdminModel
                 "UPDATE altas_instituciones
                 SET
                     Finalizado  = 0
-                WHERE Clave = '" . $idDependencia . "' AND anio = '".$anioDependencia."'";
+                WHERE Clave = '" . $idDependencia . "' AND anio = '" . $anioDependencia . "'";
 
-                $stmt = Connection::connect()->prepare($cambiarEstadoCuestionario);
-                if($stmt->execute()){
-                    return ["success", "Cuestionario de <u> $nombreDependencia </u> ha sido activado nuevamente !"];
-                }else{
-                    return ["error", "Error al activar cuestionario ! "];
-                }
+            $stmt = Connection::connect()->prepare($cambiarEstadoCuestionario);
+            if ($stmt->execute()) {
+                return ["success", "Cuestionario de <u> $nombreDependencia </u> ha sido activado nuevamente !"];
+            } else {
+                return ["error", "Error al activar cuestionario ! "];
+            }
         } catch (Exception $e) {
             return ["error", "Error al conectar a la base de datos"];
         }

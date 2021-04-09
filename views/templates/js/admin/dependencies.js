@@ -228,9 +228,9 @@ async function accionesDependencias(dependencia, accion) {
         } catch (error) {
             console.log(error)
         }
-    } else if (accion == 'activarCuestionario'){
-        try{
-            let res = await axios('controllers/adminController.php',{
+    } else if (accion == 'activarCuestionario') {
+        try {
+            let res = await axios('controllers/adminController.php', {
                 method: 'POST',
                 data: {
                     tipoPeticion: 'activarCuestionarioDependencia',
@@ -240,15 +240,15 @@ async function accionesDependencias(dependencia, accion) {
                 }
             })
             respuesta = res.data
-            if(respuesta[0] == 'success'){
+            if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
                 listarDependencias('all').then(() => { generarTablaDependencias() })
-            }else if(respuesta[0] == 'error'){
+            } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
-            }else{
+            } else {
                 console.log('respuesta no definida' + respuesta)
             }
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
     }
@@ -333,33 +333,33 @@ listenerDeAccionesDependencias = () => {
         })
     }
 
-    for(let i = 0; i<elementosActivarCuestionario.length; i++){
+    for (let i = 0; i < elementosActivarCuestionario.length; i++) {
         document.getElementById(elementosActivarCuestionario[i].id).addEventListener('click', function () {
             let idDependencia = this.id.split('-')[1],
                 anioDependencia = this.id.split('-')[2],
                 nombreDependencia = '',
                 estadoCuestionario = this.id.split('-')[3]
-                
-                for (const dependencia in dependencias) {
-                    if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
-                        nombreDependencia = dependencias[dependencia]['nombreInstitucion']
-                        break
+
+            for (const dependencia in dependencias) {
+                if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
+                    nombreDependencia = dependencias[dependencia]['nombreInstitucion']
+                    break
+                }
+            }
+            if (estadoCuestionario == 1) {
+                alertify.confirm(
+                    'Activando cuestionario',
+                    'se requiere confirmacion para reactivar cuestionario a <u>' + nombreDependencia + '</u>',
+                    function () {
+                        accionesDependencias({ idDependencia, nombreDependencia, anioDependencia }, 'activarCuestionario')
+                    },
+                    function () {
+                        alertify.error('Cancelado')
                     }
-                }
-                if(estadoCuestionario == 1){
-                    alertify.confirm(
-                        'Activando cuestionario',
-                        'se requiere confirmacion para reactivar cuestionario a <u>'+ nombreDependencia +'</u>',
-                        function(){
-                            accionesDependencias({idDependencia, nombreDependencia, anioDependencia}, 'activarCuestionario')
-                        },
-                        function(){
-                            alertify.error('Cancelado')
-                        }
-                    )
-                }else if (estadoCuestionario == 0){
-                    alertify.error('La dependencia aun no finaliza el cuestionario')
-                }
+                )
+            } else if (estadoCuestionario == 0) {
+                alertify.error('La dependencia aun no finaliza el cuestionario')
+            }
         })
     }
 }

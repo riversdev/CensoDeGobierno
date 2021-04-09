@@ -1483,7 +1483,7 @@ graficarDatos = (pregunta) => {
         getDataPropios = (data) => {
             return data.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['propio']),
                     gender: 'Propios',
                     color: '#14587A',
@@ -1494,7 +1494,7 @@ graficarDatos = (pregunta) => {
         getDataPrevPropios = (dataPrev) => {
             return dataPrev.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['propio']),
                     gender: 'Propios',
                     color: '#14587A',
@@ -1505,7 +1505,7 @@ graficarDatos = (pregunta) => {
         getDataRentados = (data) => {
             return data.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['renta']),
                     gender: 'Rentados',
                     color: '#E0B61D',
@@ -1516,7 +1516,7 @@ graficarDatos = (pregunta) => {
         getDataPrevRentados = (dataPrev) => {
             return dataPrev.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['renta']),
                     gender: 'Rentados',
                     color: '#E0B61D',
@@ -1527,7 +1527,7 @@ graficarDatos = (pregunta) => {
         getDataOtros = (data) => {
             return data.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['otro']),
                     gender: 'Otros',
                     color: '#e63c4d',
@@ -1538,7 +1538,7 @@ graficarDatos = (pregunta) => {
         getDataPrevOtros = (dataPrev) => {
             return dataPrev.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['otro']),
                     gender: 'Otros',
                     color: '#e63c4d',
@@ -4293,17 +4293,17 @@ tabularDatos = (pregunta) => {
                         for (let j = 2017; j < registroAnios.length; j++) {
                             if (j != i) {
                                 registroAnios[j].forEach((dependencia) => {
-                                    if (comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreIns)).toLowerCase()] != undefined) {
-                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreIns)).toLowerCase()][j] = {
-                                            dependencia: dependencia.nombreIns,
+                                    if (comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreInst)).toLowerCase()] != undefined) {
+                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreInst)).toLowerCase()][j] = {
+                                            dependencia: dependencia.nombreInst,
                                             propios: dependencia.propio,
                                             rentados: dependencia.renta,
                                             otros: dependencia.otro
                                         };
                                     } else {
-                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreIns)).toLowerCase()] = [];
-                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreIns)).toLowerCase()][j] = {
-                                            dependencia: dependencia.nombreIns,
+                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreInst)).toLowerCase()] = [];
+                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreInst)).toLowerCase()][j] = {
+                                            dependencia: dependencia.nombreInst,
                                             propios: dependencia.propio,
                                             rentados: dependencia.renta,
                                             otros: dependencia.otro

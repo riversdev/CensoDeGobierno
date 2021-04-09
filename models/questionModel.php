@@ -145,10 +145,10 @@ class Questions
     {
         $SQL =
             "SELECT b.clasificacionAd AS clasificacion,
-                SUM(IF(a.admcpropio!=0,a.admcpropio,0)) AS propios,
-                SUM(IF(a.admcrenta!=0,a.admcrenta,0)) AS rentados,
-                SUM(IF(a.admncotro!=0,a.admncotro,0)) AS otros
-            FROM tbl_pregunta15 AS a
+                SUM(IF(a.propios!=0,a.propios,0)) AS propios,
+                SUM(IF(a.retados!=0,a.retados,0)) AS rentados,
+                SUM(IF(a.otro!=0,a.otro,0)) AS otros
+            FROM tbl_pregunta16 AS a
             INNER JOIN tbl_instituciones AS b ON b.id=a.idInst
             WHERE a.anio=$anio AND b.anio=$anio
             GROUP BY b.clasificacionAd";
@@ -159,14 +159,14 @@ class Questions
     public static function sixteenth($anio)
     {
         $SQL =
-            "SELECT a.idInst,a.nombreIns,
-                IF(a.admcpropio!=0,a.admcpropio,0) AS propio,
-                IF(a.admcrenta!=0,a.admcrenta,0) AS renta,
-                IF(a.admncotro!=0,a.admncotro,0) AS otro
-            FROM tbl_pregunta15 AS a
+            "SELECT a.idInst,a.nombreInst,
+                IF(a.propios!=0,a.propios,0) AS propio,
+                IF(a.retados!=0,a.retados,0) AS renta,
+                IF(a.otro!=0,a.otro,0) AS otro
+            FROM tbl_pregunta16 AS a
             WHERE a.anio=$anio
-            GROUP BY a.nombreIns
-            ORDER BY a.nombreIns ASC;";
+            GROUP BY a.nombreInst
+            ORDER BY a.nombreInst ASC;";
         $stmt = Connection::connect()->prepare($SQL);
         $stmt->execute();
         return $stmt->fetchAll();
