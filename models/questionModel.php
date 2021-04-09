@@ -175,12 +175,15 @@ class Questions
     {
         $SQL =
             "SELECT b.clasificacionAd AS clasificacion,
-                SUM(IF(a.admcauto!=0,a.admcauto,0)) AS automoviles,
-                SUM(IF(a.admccamioneta!=0,a.admccamioneta,0)) AS camionesCamionetas,
-                SUM(IF(a.admcmoto!=0,a.admcmoto,0)) AS motocicletas,
-                SUM(IF(a.admcotro!=0,a.admcotro,0)) AS otros
-            FROM tbl_pregunta17 AS a
-            INNER JOIN tbl_instituciones AS b ON b.id=a.idIns
+                SUM(IF(a.automoviles!=0,a.automoviles,0)) AS automoviles,
+                SUM(IF(a.camionetas!=0,a.camionetas,0)) AS camionesCamionetas,
+                SUM(IF(a.motocicletas!=0,a.motocicletas,0)) AS motocicletas,
+                SUM(IF(a.bicicletas!=0,a.bicicletas,0)) AS bicicletas,
+                SUM(IF(a.helicopteros!=0,a.helicopteros,0)) AS helicopteros,
+                SUM(IF(a.drones!=0,a.drones,0)) AS drones,
+                SUM(IF(a.otro!=0,a.otro,0)) AS otros
+            FROM tbl_pregunta18 AS a
+            INNER JOIN tbl_instituciones AS b ON b.id=a.idInst
             WHERE a.anio=$anio AND b.anio=$anio
             GROUP BY b.clasificacionAd";
         $stmt = Connection::connect()->prepare($SQL);
@@ -190,15 +193,18 @@ class Questions
     public static function eighteenth($anio)
     {
         $SQL =
-            "SELECT a.idIns,a.nombreIns,
-                SUM(IF(a.admcauto!=0,a.admcauto,0)) AS automoviles,
-                SUM(IF(a.admccamioneta!=0,a.admccamioneta,0)) AS camionesCamionetas,
-                SUM(IF(a.admcmoto!=0,a.admcmoto,0)) AS motocicletas,
-                SUM(IF(a.admcotro!=0,a.admcotro,0)) AS otros
-            FROM tbl_pregunta17 AS a
+            "SELECT a.idInst,a.nombreInst,
+                IF(a.automoviles!=0,a.automoviles,0) AS automoviles,
+                IF(a.camionetas!=0,a.camionetas,0) AS camionesCamionetas,
+                IF(a.motocicletas!=0,a.motocicletas,0) AS motocicletas,
+                IF(a.bicicletas!=0,a.bicicletas,0) AS bicicletas,
+                IF(a.helicopteros!=0,a.helicopteros,0) AS helicopteros,
+                IF(a.drones!=0,a.drones,0) AS drones,
+                IF(a.otro!=0,a.otro,0) AS otros
+            FROM tbl_pregunta18 AS a
             WHERE a.anio=$anio
-            GROUP BY a.nombreIns  
-            ORDER BY a.nombreIns ASC";
+            GROUP BY a.nombreInst  
+            ORDER BY a.nombreInst ASC";
         $stmt = Connection::connect()->prepare($SQL);
         $stmt->execute();
         return $stmt->fetchAll();

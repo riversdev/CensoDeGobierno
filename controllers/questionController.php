@@ -152,7 +152,7 @@ switch ($pregunta) {
             [
                 'Centralizadas',
                 isset($preguntaDiecisiete[0]['automoviles']) ? intval($preguntaDiecisiete[0]['automoviles']) : 0,
-                'Automoviles'
+                'Automóviles'
             ],
             [
                 'Centralizadas',
@@ -166,13 +166,28 @@ switch ($pregunta) {
             ],
             [
                 'Centralizadas',
+                isset($preguntaDiecisiete[0]['bicicletas']) ? intval($preguntaDiecisiete[0]['bicicletas']) : 0,
+                'Bicicletas'
+            ],
+            [
+                'Centralizadas',
+                isset($preguntaDiecisiete[0]['helicopteros']) ? intval($preguntaDiecisiete[0]['helicopteros']) : 0,
+                'Helicópteros'
+            ],
+            [
+                'Centralizadas',
+                isset($preguntaDiecisiete[0]['drones']) ? intval($preguntaDiecisiete[0]['drones']) : 0,
+                'Drones'
+            ],
+            [
+                'Centralizadas',
                 isset($preguntaDiecisiete[0]['otros']) ? intval($preguntaDiecisiete[0]['otros']) : 0,
                 'Otros'
             ],
             [
                 'Paraestatales',
                 isset($preguntaDiecisiete[1]['automoviles']) ? intval($preguntaDiecisiete[1]['automoviles']) : 0,
-                'Automoviles'
+                'Automóviles'
             ],
             [
                 'Paraestatales',
@@ -183,6 +198,21 @@ switch ($pregunta) {
                 'Paraestatales',
                 isset($preguntaDiecisiete[1]['motocicletas']) ? intval($preguntaDiecisiete[1]['motocicletas']) : 0,
                 'Motocicletas'
+            ],
+            [
+                'Paraestatales',
+                isset($preguntaDiecisiete[1]['bicicletas']) ? intval($preguntaDiecisiete[1]['bicicletas']) : 0,
+                'Bicicletas'
+            ],
+            [
+                'Paraestatales',
+                isset($preguntaDiecisiete[1]['helicopteros']) ? intval($preguntaDiecisiete[1]['helicopteros']) : 0,
+                'Helicópteros'
+            ],
+            [
+                'Paraestatales',
+                isset($preguntaDiecisiete[1]['drones']) ? intval($preguntaDiecisiete[1]['drones']) : 0,
+                'Drones'
             ],
             [
                 'Paraestatales',

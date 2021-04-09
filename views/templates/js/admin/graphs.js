@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
         actualizarPopover(document.getElementById('preguntaGrafica').value);
     });
     document.getElementById('btnTabular').addEventListener('click', () => {
-        // console.warn('Registro de años (Tabla ' + document.getElementById('preguntaGrafica').value + ')');
-        // console.log(registroAnios); // Registro de años completo
+        console.warn('Registro de años (Tabla ' + document.getElementById('preguntaGrafica').value + ')');
+        console.log(registroAnios); // Registro de años completo
         tabularDatos(document.getElementById('preguntaGrafica').value);
     });
 });
@@ -1880,7 +1880,7 @@ graficarDatos = (pregunta) => {
                     name: category[2],
                     y: category[1],
                     gender: category[0],
-                    color: category[2] == 'Automoviles' ? '#14587A' : category[2] == 'Camiones y camionetas' ? '#E0B61D' : category[2] == 'Motocicletas' ? '#006F3E' : '#E63C4D',
+                    color: category[2] == 'Automóviles' ? '#14587A' : category[2] == 'Camiones y camionetas' ? '#E0B61D' : category[2] == 'Motocicletas' ? '#006F3E' : category[2] == 'Bicicletas' ? '#E63C4D' : category[2] == 'Helicópteros' ? '#6f42c1' : category[2] == 'Drones' ? '#fd7e14' : '#1f9bcf',
                 };
             });
         }
@@ -2033,7 +2033,7 @@ graficarDatos = (pregunta) => {
         getDataAutomoviles = (data) => {
             return data.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['automoviles']),
                     gender: 'Automóviles',
                     color: '#14587A',
@@ -2044,7 +2044,7 @@ graficarDatos = (pregunta) => {
         getDataPrevAutomoviles = (dataPrev) => {
             return dataPrev.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['automoviles']),
                     gender: 'Automóviles',
                     color: '#14587A',
@@ -2055,7 +2055,7 @@ graficarDatos = (pregunta) => {
         getDataCamionesCamionetas = (data) => {
             return data.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['camionesCamionetas']),
                     gender: 'Camiones y camionetas',
                     color: '#E0B61D',
@@ -2066,7 +2066,7 @@ graficarDatos = (pregunta) => {
         getDataPrevCamionesCamionetas = (dataPrev) => {
             return dataPrev.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['camionesCamionetas']),
                     gender: 'Camiones y camionetas',
                     color: '#E0B61D',
@@ -2077,7 +2077,7 @@ graficarDatos = (pregunta) => {
         getDataMotocicletas = (data) => {
             return data.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['motocicletas']),
                     gender: 'Motocicletas',
                     color: '#006F3E',
@@ -2088,7 +2088,7 @@ graficarDatos = (pregunta) => {
         getDataPrevMotocicletas = (dataPrev) => {
             return dataPrev.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['motocicletas']),
                     gender: 'Motocicletas',
                     color: '#006F3E',
@@ -2096,13 +2096,79 @@ graficarDatos = (pregunta) => {
             });
         }
 
+        getDataBicicletas = (data) => {
+            return data.map((category, i) => {
+                return {
+                    name: category['nombreInst'].toUpperCase(),
+                    y: parseInt(category['bicicletas']),
+                    gender: 'Bicicletas',
+                    color: '#E63C4D',
+                };
+            });
+        }
+
+        getDataPrevBicicletas = (dataPrev) => {
+            return dataPrev.map((category, i) => {
+                return {
+                    name: category['nombreInst'].toUpperCase(),
+                    y: parseInt(category['bicicletas']),
+                    gender: 'Bicicletas',
+                    color: '#E63C4D',
+                };
+            });
+        }
+
+        getDataHelicopteros = (data) => {
+            return data.map((category, i) => {
+                return {
+                    name: category['nombreInst'].toUpperCase(),
+                    y: parseInt(category['helicopteros']),
+                    gender: 'Helicopteros',
+                    color: '#6f42c1',
+                };
+            });
+        }
+
+        getDataPrevHelicopteros = (dataPrev) => {
+            return dataPrev.map((category, i) => {
+                return {
+                    name: category['nombreInst'].toUpperCase(),
+                    y: parseInt(category['helicopteros']),
+                    gender: 'Helicopteros',
+                    color: '#6f42c1',
+                };
+            });
+        }
+
+        getDataDrones = (data) => {
+            return data.map((category, i) => {
+                return {
+                    name: category['nombreInst'].toUpperCase(),
+                    y: parseInt(category['drones']),
+                    gender: 'Drones',
+                    color: '#fd7e14',
+                };
+            });
+        }
+
+        getDataPrevDrones = (dataPrev) => {
+            return dataPrev.map((category, i) => {
+                return {
+                    name: category['nombreInst'].toUpperCase(),
+                    y: parseInt(category['drones']),
+                    gender: 'Drones',
+                    color: '#fd7e14',
+                };
+            });
+        }
+
         getDataOtros = (data) => {
             return data.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['otros']),
                     gender: 'Otros',
-                    color: '#E63C4D',
+                    color: '#1f9bcf',
                 };
             });
         }
@@ -2110,10 +2176,10 @@ graficarDatos = (pregunta) => {
         getDataPrevOtros = (dataPrev) => {
             return dataPrev.map((category, i) => {
                 return {
-                    name: category['nombreIns'].toUpperCase(),
+                    name: category['nombreInst'].toUpperCase(),
                     y: parseInt(category['otros']),
                     gender: 'Otros',
-                    color: '#E63C4D',
+                    color: '#1f9bcf',
                 };
             });
         }
@@ -2218,11 +2284,41 @@ graficarDatos = (pregunta) => {
                 },
                 {
                     name: anios[0],
-                    data: getDataOtros(data[anios[0]]).slice(),
+                    data: getDataBicicletas(data[anios[0]]).slice(),
                     dataLabels: [
                         {
                             enabled: true,
                             color: '#E63C4D',
+                        },
+                    ],
+                },
+                {
+                    name: anios[0],
+                    data: getDataHelicopteros(data[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#6f42c1',
+                        },
+                    ],
+                },
+                {
+                    name: anios[0],
+                    data: getDataDrones(data[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#fd7e14',
+                        },
+                    ],
+                },
+                {
+                    name: anios[0],
+                    data: getDataOtros(data[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#1f9bcf',
                         },
                     ],
                 },
@@ -2331,12 +2427,42 @@ graficarDatos = (pregunta) => {
                     ],
                 },
                 {
+                    name: anios[0],
+                    data: getDataPrevBicicletas(dataPrev[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#E63C4D',
+                        },
+                    ],
+                },
+                {
+                    name: anios[0],
+                    data: getDataPrevHelicopteros(dataPrev[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#6f42c1',
+                        },
+                    ],
+                },
+                {
+                    name: anios[0],
+                    data: getDataPrevDrones(dataPrev[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#fd7e14',
+                        },
+                    ],
+                },
+                {
                     name: anios[1],
                     data: getDataPrevOtros(dataPrev[anios[0]]).slice(),
                     dataLabels: [
                         {
                             enabled: true,
-                            color: '#E63C4D',
+                            color: '#1f9bcf',
                         },
                     ],
                 },
@@ -2366,6 +2492,18 @@ graficarDatos = (pregunta) => {
                             name: this.value,
                             data: [],
                         },
+                        {
+                            name: this.value,
+                            data: [],
+                        },
+                        {
+                            name: this.value,
+                            data: [],
+                        },
+                        {
+                            name: this.value,
+                            data: [],
+                        },
                     ],
                 },
                 true,
@@ -2377,6 +2515,18 @@ graficarDatos = (pregunta) => {
             secondChart.update(
                 {
                     series: [
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
                         {
                             name: this.value - 1,
                             data: [],
@@ -2430,6 +2580,18 @@ graficarDatos = (pregunta) => {
                         },
                         {
                             name: this.value,
+                            data: getDataBicicletas(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataHelicopteros(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataDrones(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
                             data: getDataOtros(data[this.value]).slice(),
                         },
                     ],
@@ -2462,6 +2624,18 @@ graficarDatos = (pregunta) => {
                         {
                             name: this.value - 1,
                             data: getDataPrevMotocicletas(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevBicicletas(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevHelicopteros(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevDrones(dataPrev[this.value]).slice(),
                         },
                         {
                             name: this.value - 1,
@@ -4469,21 +4643,27 @@ tabularDatos = (pregunta) => {
                         for (let j = 2017; j < registroAnios.length; j++) {
                             if (j != i) {
                                 registroAnios[j].forEach((dependencia) => {
-                                    if (comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreIns)).toLowerCase()] != undefined) {
-                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreIns)).toLowerCase()][j] = {
-                                            dependencia: dependencia.nombreIns,
+                                    if (comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreInst)).toLowerCase()] != undefined) {
+                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreInst)).toLowerCase()][j] = {
+                                            dependencia: dependencia.nombreInst,
                                             automoviles: dependencia.automoviles,
                                             camionesCamionetas: dependencia.camionesCamionetas,
                                             motocicletas: dependencia.motocicletas,
+                                            bicicletas: dependencia.bicicletas,
+                                            helicopteros: dependencia.helicopteros,
+                                            drones: dependencia.drones,
                                             otros: dependencia.otros,
                                         };
                                     } else {
-                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreIns)).toLowerCase()] = [];
-                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreIns)).toLowerCase()][j] = {
-                                            dependencia: dependencia.nombreIns,
+                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreInst)).toLowerCase()] = [];
+                                        comparacionAnual[quitarEspacios(quitarAcentos(dependencia.nombreInst)).toLowerCase()][j] = {
+                                            dependencia: dependencia.nombreInst,
                                             automoviles: dependencia.automoviles,
                                             camionesCamionetas: dependencia.camionesCamionetas,
                                             motocicletas: dependencia.motocicletas,
+                                            bicicletas: dependencia.bicicletas,
+                                            helicopteros: dependencia.helicopteros,
+                                            drones: dependencia.drones,
                                             otros: dependencia.otros,
                                         };
                                     }
@@ -4559,6 +4739,75 @@ tabularDatos = (pregunta) => {
                         td = document.createElement('td');
                         td.className = 'text-right';
                         td.innerHTML = comparacionAnual[dependencia][years[i]].motocicletas;
+                        tr.append(td);
+                    } else {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = '-';
+                        tr.append(td);
+                    }
+                }
+            })
+            body.append(tr);
+            comparacionAnual[dependencia].forEach((anio) => {
+                tr = document.createElement('tr');
+                td = document.createElement('td');
+                td.innerHTML = 'Bicicletas';
+                tr.append(td);
+                td = document.createElement('td');
+                td.innerHTML = anio.dependencia.toUpperCase();
+                tr.append(td);
+                for (let i = 0; i < years.length; i++) {
+                    if (comparacionAnual[dependencia][years[i]] != undefined) {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = comparacionAnual[dependencia][years[i]].bicicletas;
+                        tr.append(td);
+                    } else {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = '-';
+                        tr.append(td);
+                    }
+                }
+            })
+            body.append(tr);
+            comparacionAnual[dependencia].forEach((anio) => {
+                tr = document.createElement('tr');
+                td = document.createElement('td');
+                td.innerHTML = 'Helicópteros';
+                tr.append(td);
+                td = document.createElement('td');
+                td.innerHTML = anio.dependencia.toUpperCase();
+                tr.append(td);
+                for (let i = 0; i < years.length; i++) {
+                    if (comparacionAnual[dependencia][years[i]] != undefined) {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = comparacionAnual[dependencia][years[i]].helicopteros;
+                        tr.append(td);
+                    } else {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = '-';
+                        tr.append(td);
+                    }
+                }
+            })
+            body.append(tr);
+            comparacionAnual[dependencia].forEach((anio) => {
+                tr = document.createElement('tr');
+                td = document.createElement('td');
+                td.innerHTML = 'Drones';
+                tr.append(td);
+                td = document.createElement('td');
+                td.innerHTML = anio.dependencia.toUpperCase();
+                tr.append(td);
+                for (let i = 0; i < years.length; i++) {
+                    if (comparacionAnual[dependencia][years[i]] != undefined) {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = comparacionAnual[dependencia][years[i]].drones;
                         tr.append(td);
                     } else {
                         td = document.createElement('td');
