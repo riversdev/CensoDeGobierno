@@ -246,25 +246,6 @@ class Questions
     {
         $SQL =
             "SELECT b.clasificacionAd AS clasificacion,
-                SUM(IF(a.admccompues!=0,a.admccompues,0)) AS compuEscritorio,
-                SUM(IF(a.admccomppo!=0,a.admccomppo,0)) AS compuPortatil,
-                SUM(IF(a.admcimpper!=0,a.admcimpper,0)) AS impresoraPersonal,
-                SUM(IF(a.admcimpcom!=0,a.admcimpcom,0)) AS impresoraCompartida,
-                SUM(IF(a.totalcmultf!=0,a.totalcmultf,0)) AS multifuncionales,
-                SUM(IF(a.totalcserv!=0,a.totalcserv,0)) AS servidores,
-                SUM(IF(a.totalctablet!=0,a.totalctablet,0)) AS tabletas
-            FROM tbl_pregunta21 AS a
-            INNER JOIN tbl_instituciones AS b ON b.id=a.idIns
-            WHERE a.anio=$anio AND b.anio=$anio
-            GROUP BY b.clasificacionAd;";
-        $stmt = Connection::connect()->prepare($SQL);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
-    public static function twentySecond($anio)
-    {
-        $SQL =
-            "SELECT a.nombreInst AS institucion,
                 SUM(IF(a.cumpuEscritorio!=0,a.cumpuEscritorio,0)) AS compuEscritorio,
                 SUM(IF(a.compuPortatil!=0,a.compuPortatil,0)) AS compuPortatil,
                 SUM(IF(a.impresoraPersonal!=0,a.impresoraPersonal,0)) AS impresoraPersonal,
@@ -273,9 +254,28 @@ class Questions
                 SUM(IF(a.servidores!=0,a.servidores,0)) AS servidores,
                 SUM(IF(a.tabletas!=0,a.tabletas,0)) AS tabletas
             FROM tbl_pregunta22 AS a
+            INNER JOIN tbl_instituciones AS b ON b.id=a.idInst
+            WHERE a.anio=$anio AND b.anio=$anio
+            GROUP BY b.clasificacionAd";
+        $stmt = Connection::connect()->prepare($SQL);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    public static function twentySecond($anio)
+    {
+        $SQL =
+            "SELECT a.nombreInst AS institucion,
+                IF(a.cumpuEscritorio!=0,a.cumpuEscritorio,0) AS compuEscritorio,
+                IF(a.compuPortatil!=0,a.compuPortatil,0) AS compuPortatil,
+                IF(a.impresoraPersonal!=0,a.impresoraPersonal,0) AS impresoraPersonal,
+                IF(a.impresoraCompartida!=0,a.impresoraCompartida,0) AS impresoraCompartida,
+                IF(a.multifuncionales!=0,a.multifuncionales,0) AS multifuncionales,
+                IF(a.servidores!=0,a.servidores,0) AS servidores,
+                IF(a.tabletas!=0,a.tabletas,0) AS tabletas
+            FROM tbl_pregunta22 AS a
             WHERE a.anio=$anio
             GROUP BY a.nombreInst
-            ORDER BY a.nombreInst ASC;";
+            ORDER BY a.nombreInst ASC";
         $stmt = Connection::connect()->prepare($SQL);
         $stmt->execute();
         return $stmt->fetchAll();
