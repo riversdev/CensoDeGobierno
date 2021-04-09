@@ -131,3 +131,37 @@
         </div>
     </div>
 </div>
+
+
+<!-- Formulario ALERTIFY.JS -->
+<div class="container-fluid" id="ocultarFormEliminar">
+    <form id="formEliminarDependencia">
+        <fieldset>
+            <div class="col-12 text-center">
+                <h5>Que desea eliminar...</h5>
+            </div>
+            <div class="form-row m-0">
+                <div class="col-6 offset-3 mt-1">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" >
+                        <label class="form-check-label" for="inlineRadio1">Eliminar Completamente...</label>
+                    </div>
+                </div>
+                <div class="col-6 offset-3 mt-1 mb-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="historial">
+                        <label class="form-check-label" for="inlineRadio2">Eliminar Solo Historial...</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row m-0 text-center">
+                <div class="col-6">
+                    <button class="btn btn-success" type="button" id="eliminarDependencia">Confirmar</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-danger" type="button" id="cerrarDialog">Cancelar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

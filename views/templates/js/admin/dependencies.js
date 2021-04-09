@@ -4,6 +4,7 @@ let dependencias = null,
     dependenciasEditar = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('ocultarFormEliminar').style.display = 'none'
     // LLENAR SELECTS DE AÑOS
     llenarSelectDeAnios('selectAnioDependencia')
     llenarSelectDeAnios('AnioDependencia')
@@ -213,7 +214,8 @@ async function accionesDependencias(dependencia, accion) {
                 data: {
                     tipoPeticion: 'eliminarDependencia',
                     idDependencia: dependencia['idDependencia'],
-                    anioDependencia: dependencia['anioDependencia']
+                    anioDependencia: dependencia['anioDependencia'],
+                    tipoDeEliminacion: dependencia['res']
                 }
             })
             respuesta = res.data
@@ -320,7 +322,53 @@ listenerDeAccionesDependencias = () => {
                     break
                 }
             }
-            alertify.confirm(
+
+    alertify.genericDialog || alertify.dialog('genericDialog',function(){
+    return {
+        main:function(content){
+            this.setContent(content);
+        },
+        setup:function(){
+            return {
+                focus:{
+                    element:function(){
+                        return this.elements.body.querySelector(this.get('selector'));
+                    },
+                    select:true
+                },
+                options:{
+                    basic:true,
+                    maximizable:false,
+                    resizable:false,
+                    padding:false
+                }
+            };
+        },
+        settings:{
+            selector:undefined
+        }
+    };
+    });
+//force focusing password box
+    alertify.genericDialog ($('#formEliminarDependencia')[0], 
+        document.getElementById('eliminarDependencia').addEventListener('click', function () {
+            let res = document.getElementById('inlineRadio1').checked
+                res2 = document.getElementById('inlineRadio2').checked
+            if(res != false || res2 != false ){
+                let res = document.querySelector('input[name="inlineRadioOptions"]:checked').value
+                accionesDependencias({idDependencia, anioDependencia, res}, 'eliminar')
+                alertify.genericDialog().close()
+            }else{
+                alertify.error('Seleccione al menos una opcion !')
+            }
+
+        }),
+        document.getElementById('cerrarDialog').addEventListener('click', function () {
+            alertify.genericDialog().close()
+        })
+    ).set('selector', 'input[type="radio"]');
+            
+            /*alertify.confirm(
                 'Eliminando usuario...',
                 'Se require confirmación para eliminar a <u>' + nombreDependencia + '</u> y toda la informacion referente a esta dependencia.',
                 function () {
@@ -329,7 +377,7 @@ listenerDeAccionesDependencias = () => {
                 function () {
                     alertify.error('Cancelado')
                 }
-            ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
+            ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });*/
         })
     }
 

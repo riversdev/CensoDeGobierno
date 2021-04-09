@@ -434,11 +434,13 @@ class AdminModel
         }
     }
 
-    public static function elminarDependencia($idDependencia, $anioDependencia, $tablas)
+    public static function elminarDependencia($idDependencia, $anioDependencia, $tablasAll, $tablaHistorial, $tipoDeEliminacion)
     {
         $c = 0; // CONTADOR DE CONSULTAS EJECUTADAS
         $errores = array(); // ARRAY PARA ATRAPAR ERRORES
-
+        $tablas = []; // VARIABLE PARA GUARDAR ARRAY
+        //REASIGNAR TABLAS PARA DISMINUIR CODIGO
+        $tipoDeEliminacion == "all" ? $tablas = $tablasAll : $tablas = $tablaHistorial;
         // RECORRER ARBOL DE TABLAS DONDE ESTAN LAS TABLAS Y SUS CAMPOS
         for ($i = 0; $i < count($tablas); $i++) {
 
