@@ -131,8 +131,9 @@ generarTablaDependencias = () => {
         i = document.createElement('i')
         i.className = dependencia['Finalizado'] == 1 ? 'fa fa-lg fa-power-off text-warning mx-0 w-25' : 'fa fa-lg fa-power-off text-muted mx-0 w-25'
         a = document.createElement('a')
-        a.className = 'btnActive'
-        a.id = 'btnActive-' + dependencia['idInstitucion']
+        a.className = 'btnActiveDependencia'
+        a.id = 'btnActive-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion'] + '-' + dependencia['Finalizado']
+        a.title = dependencia['finalizado'] == 1 ? 'finalizado' : ''
         a.append(i)
         td.append(a)
         tr.append(td)
@@ -227,6 +228,29 @@ async function accionesDependencias(dependencia, accion) {
         } catch (error) {
             console.log(error)
         }
+    } else if (accion == 'activarCuestionario'){
+        try{
+            let res = await axios('controllers/adminController.php',{
+                method: 'POST',
+                data: {
+                    tipoPeticion: 'activarCuestionarioDependencia',
+                    idDependencia: dependencia['idDependencia'],
+                    nombreDependencia: dependencia['nombreDependencia'],
+                    anioDependencia: dependencia['anioDependencia']
+                }
+            })
+            respuesta = res.data
+            if(respuesta[0] == 'success'){
+                alertify.success(respuesta[1])
+                listarDependencias('all').then(() => { generarTablaDependencias() })
+            }else if(respuesta[0] == 'error'){
+                alertify.error(respuesta[1])
+            }else{
+                console.log('respuesta no definida' + respuesta)
+            }
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 
@@ -241,7 +265,8 @@ recolectarDatosDependenciaGUI = () => {
 
 listenerDeAccionesDependencias = () => {
     let elementosEditar = document.getElementsByClassName('btnEditDependencia'),
-        elementosEliminar = document.getElementsByClassName('btnDeleteDependencia')
+        elementosEliminar = document.getElementsByClassName('btnDeleteDependencia'),
+        elementosActivarCuestionario = document.getElementsByClassName('btnActiveDependencia')
 
     for (let i = 0; i < elementosEditar.length; i++) {
         document.getElementById(elementosEditar[i].id).addEventListener('click', function () {
@@ -305,6 +330,36 @@ listenerDeAccionesDependencias = () => {
                     alertify.error('Cancelado')
                 }
             ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
+        })
+    }
+
+    for(let i = 0; i<elementosActivarCuestionario.length; i++){
+        document.getElementById(elementosActivarCuestionario[i].id).addEventListener('click', function () {
+            let idDependencia = this.id.split('-')[1],
+                anioDependencia = this.id.split('-')[2],
+                nombreDependencia = '',
+                estadoCuestionario = this.id.split('-')[3]
+                
+                for (const dependencia in dependencias) {
+                    if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
+                        nombreDependencia = dependencias[dependencia]['nombreInstitucion']
+                        break
+                    }
+                }
+                if(estadoCuestionario == 1){
+                    alertify.confirm(
+                        'Activando cuestionario',
+                        'se requiere confirmacion para reactivar cuestionario a <u>'+ nombreDependencia +'</u>',
+                        function(){
+                            accionesDependencias({idDependencia, nombreDependencia, anioDependencia}, 'activarCuestionario')
+                        },
+                        function(){
+                            alertify.error('Cancelado')
+                        }
+                    )
+                }else if (estadoCuestionario == 0){
+                    alertify.error('La dependencia aun no finaliza el cuestionario')
+                }
         })
     }
 }

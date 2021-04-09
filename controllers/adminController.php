@@ -288,4 +288,12 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
 
     $respuesta = AdminModel::elminarDependencia($idDependencia, $anioDependencia, $tablas);
     echo json_encode($respuesta);
+} else if ($tipoPeticion == "activarCuestionarioDependencia"){
+    $idDependencia = $data['idDependencia'];
+    $nombreDependencia = $data['nombreDependencia'];
+    $anioDependencia = $data['anioDependencia'];
+
+    $respuesta = AdminModel::activarCuestionario($idDependencia, $nombreDependencia, $anioDependencia);
+
+    echo json_encode($respuesta);
 }

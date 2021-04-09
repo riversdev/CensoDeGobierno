@@ -472,6 +472,26 @@ class AdminModel
         }
     }
 
+    public static function activarCuestionario($idDependencia, $nombreDependencia, $anioDependencia)
+    {
+        try {
+            $cambiarEstadoCuestionario =
+                "UPDATE altas_instituciones
+                SET
+                    Finalizado  = 0
+                WHERE Clave = '" . $idDependencia . "' AND anio = '".$anioDependencia."'";
+
+                $stmt = Connection::connect()->prepare($cambiarEstadoCuestionario);
+                if($stmt->execute()){
+                    return ["success", "Cuestionario de <u> $nombreDependencia </u> ha sido activado nuevamente !"];
+                }else{
+                    return ["error", "Error al activar cuestionario ! "];
+                }
+        } catch (Exception $e) {
+            return ["error", "Error al conectar a la base de datos"];
+        }
+    }
+
 
     # CRUD USUARIOS
     public static function listarUsuarios()
