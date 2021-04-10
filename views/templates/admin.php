@@ -84,81 +84,78 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
             <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">Reportes</div>
             <div class="tab-pane fade p-3 shadow rounded" id="graficador" role="tabpanel" aria-labelledby="graficador-tab">
                 <!-- Controles -->
-                <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-lg-8 col-sm-7 col-12">
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-sm-6 col-12">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="preguntaGrafica">Pregunta</label>
                             </div>
                             <select class="custom-select" id="preguntaGrafica">
                                 <option value="3" selected>
-                                    3. Anote la cantidad total de personal que tenía la Administración Pública de su entidad federativa al cierre del año, especificando si se encontraba en instituciones de la Administración Central o Paraestatal.
+                                    Cantidad de personal, representación por sexo y tipo de institución.
                                 </option>
                                 <option value="4">
-                                    4. De acuerdo con la cantidad total de personal que registró en la respuesta de la pregunta anterior, anote el personal especificando el régimen de contratación y sexo.
+                                    Cantidad de personal, representación por sexo y régimen de contratación.
                                 </option>
                                 <option value="5">
-                                    5. De acuerdo con la cantidad total de personal que registró en la respuesta de la pregunta 3, anote el personal especificando la institución de seguridad social en la que se encontraba registrado, según su sexo.
+                                    Cantidad de personal, representación por sexo e institución de seguridad social.
                                 </option>
                                 <option value="6">
-                                    6. De acuerdo con la cantidad total de personal que registró en la respuesta a la pregunta 3, anote el personal especificando el rango de edad y sexo.
+                                    Cantidad de personal, representación por sexo y rango de edad.
                                 </option>
                                 <option value="7">
-                                    7. De acuerdo con la cantidad total de personal que registró en la respuesta de la pregunta 3, anote el personal especificando el rango de ingresos mensual y sexo.
+                                    Cantidad de personal, representación por sexo y rango de ingresos mensual.
                                 </option>
                                 <option value="9">
-                                    9. De acuerdo con la respuesta de la pregunta 3, en la siguiente tabla anote la cantidad de personal con el que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones, especificando su sexo.
+                                    Cantidad de personal, representación por sexo e institución.
                                 </option>
                                 <option value="15">
-                                    15. Anote la cantidad total de bienes inmuebles que tenía la Administración Pública de la entidad federativa al cierre del año, especificando su tipo de posesión y si se encontraban asignados a instituciones de la Administración Central o Paraestatal.
+                                    Cantidad de bienes inmuebles, representación por tipo de institución y tipo de posesión.
                                 </option>
                                 <option value="16">
-                                    16. De acuerdo con la respuesta de la pregunta 15, en la siguiente tabla anote la cantidad total de bienes inmuebles con los que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones, especificando el tipo de posesión.
+                                    Cantidad de bienes inmuebles, representación por institución y tipo de posesión.
                                 </option>
                                 <option value="17">
-                                    17. Anote la cantidad total de vehículos en funcionamiento, por tipo, que conformaron el parque vehicular de la Administración Pública de su entidad federativa al cierre del año, especificando si se encontraban asignados a instituciones de la Administración Central o Paraestatal.
+                                    Cantidad de vehículos en funcionamiento, representación por tipo de institución y tipo de vehículo.
                                 </option>
                                 <option value="18">
-                                    18. De acuerdo con la respuesta de la pregunta anterior, en la siguiente tabla anote la cantidad total de vehículos con los que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones, especificando el tipo de los mismos.
+                                    Cantidad de vehículos en funcionamiento, representación por institución y tipo de vehículo.
                                 </option>
                                 <option value="19">
-                                    19. Anote la cantidad total de líneas y aparatos telefónicos en funcionamiento que tenía la Administración Pública de su entidad federativa al cierre del año 2018, especificando si se encontraban asignados a instituciones de la Administración Central o Paraestatal.
+                                    Cantidad de líneas y aparatos telefónicos en funcionamiento, representación por tipo de institución, tipo de línea y aparato telefónico.
                                 </option>
                                 <option value="20">
-                                    20. De acuerdo con la respuesta de la pregunta 19, en la siguiente tabla anote la cantidad total de líneas y aparatos telefónicos con los que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones, especificando el tipo de los mismos.
+                                    Cantidad de líneas y aparatos telefónicos en funcionamiento, representación por institución, tipo de línea y aparato telefónico.
                                 </option>
                                 <option value="21">
-                                    21. Anote la cantidad total de computadoras por tipo, impresoras por tipo, multifuncionales, servidores y tabletas electrónicas en funcionamiento que tenía la Administración Pública de su entidad federativa, al cierre del año 2018, especificando si se encontraban asignadas a instituciones de la Administración Central o Paraestatal.
+                                    Cantidad de equipo informático en funcionamiento, representación por tipo de institución y tipo de equipo informático.
                                 </option>
                                 <option value="22">
-                                    22. De acuerdo con la respuesta de la pregunta 21, en la siguiente tabla anote la cantidad total de computadoras por tipo, impresoras por tipo, multifuncionales, servidores y tabletas electrónicas con las que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones.
+                                    Cantidad de equipo informático en funcionamiento, representación por institución y tipo de equipo informático.
                                 </option>
                             </select>
-                            <div class="input-group-prepend">
-                                <button id="popoverPreguntas" tabindex="0" class="btn btn-sm btn-outline-secondary" type="button" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Pregunta 3" data-bs-content="Anote la cantidad total de personal que tenía la Administración Pública de su entidad federativa al cierre del año, especificando si se encontraba en instituciones de la Administración Central o Paraestatal.">
-                                    <i class="far fa-2x fa-question-circle"></i>
-                                </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+                        <div class="d-flex justify-content-between justify-content-sm-end">
+                            <div class="input-group w-auto">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Año</label>
+                                </div>
+                                <div id="contenedorAnioGrafica"></div>
                             </div>
-                            <div class="input-group-prepend ml-2">
+                            <div class="input-group-prepend">
                                 <button id="btnTabular" class="btn btn-sm btn-outline-secondary" type="button" data-toggle="tooltip" data-placement="bottom" title="Comparación anual">
                                     <i class="fas fa-2x fa-table"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-auto d-flex">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text">Año</label>
-                            </div>
-                            <div id="contenedorAnioGrafica"></div>
-                        </div>
-                    </div>
                 </div>
                 <!-- Contenedor graficas -->
                 <div class="row mt-2 mx-0">
-                    <div id="container" class="col-lg-6 col-md-6 col-sm-12 col-12 p-0"></div>
-                    <div id="secondContainer" class="col-lg-6 col-md-6 col-sm-12 col-12 p-0 d-none" style="z-index: 0;"></div>
+                    <div id="container" class="col-lg-6 col-md-12 col-sm-12 col-12 p-0"></div>
+                    <div id="secondContainer" class="col-lg-6 col-md-12 col-sm-12 col-12 p-0 d-none" style="z-index: 0; height: 900vh;"></div>
                 </div>
                 <!-- Contenedor tablas -->
                 <div id="tablesContainer"></div>

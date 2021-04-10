@@ -1,37 +1,18 @@
-let preguntas = {
-    '3': 'Anote la cantidad total de personal que tenía la Administración Pública de su entidad federativa al cierre del año, especificando si se encontraba en instituciones de la Administración Central o Paraestatal.',
-    '4': 'De acuerdo con la cantidad total de personal que registró en la respuesta de la pregunta anterior, anote el personal especificando el régimen de contratación y sexo.',
-    '5': 'De acuerdo con la cantidad total de personal que registró en la respuesta de la pregunta 3, anote el personal especificando la institución de seguridad social en la que se encontraba registrado, según su sexo.',
-    '6': 'De acuerdo con la cantidad total de personal que registró en la respuesta a la pregunta 3, anote el personal especificando el rango de edad y sexo.',
-    '7': 'De acuerdo con la cantidad total de personal que registró en la respuesta de la pregunta 3, anote el personal especificando el rango de ingresos mensual y sexo.',
-    '9': 'De acuerdo con la respuesta de la pregunta 3, en la siguiente tabla anote la cantidad de personal con el que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones, especificando su sexo.',
-    '15': 'Anote la cantidad total de bienes inmuebles que tenía la Administración Pública de la entidad federativa al cierre del año, especificando su tipo de posesión y si se encontraban asignados a instituciones de la Administración Central o Paraestatal.',
-    '16': 'De acuerdo con la respuesta de la pregunta 15, en la siguiente tabla anote la cantidad total de bienes inmuebles con los que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones, especificando el tipo de posesión.',
-    '17': 'Anote la cantidad total de vehículos en funcionamiento, por tipo, que conformaron el parque vehicular de la Administración Pública de su entidad federativa al cierre del año, especificando si se encontraban asignados a instituciones de la Administración Central o Paraestatal.',
-    '18': 'De acuerdo con la respuesta de la pregunta anterior, en la siguiente tabla anote la cantidad total de vehículos con los que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones, especificando el tipo de  los mismos.',
-    '19': 'Anote la cantidad total de líneas y aparatos telefónicos en funcionamiento que tenía la Administración Pública de su entidad federativa al cierre del año 2018, especificando si se encontraban asignados a instituciones de la Administración Central o Paraestatal.',
-    '20': 'De acuerdo con la respuesta de la pregunta 19, en la siguiente tabla anote la cantidad total de líneas y aparatos telefónicos con los que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones, especificando el tipo de  los mismos.',
-    '21': 'Anote la cantidad total de computadoras por tipo, impresoras por tipo, multifuncionales, servidores y tabletas electrónicas en funcionamiento que tenía la Administración Pública de su entidad federativa, al cierre del año anterior, especificando si se encontraban asignadas a instituciones de la Administración Central o Paraestatal.',
-    '22': 'De acuerdo con la respuesta de la pregunta 21, en la siguiente tabla anote la cantidad total de computadoras por tipo, impresoras por tipo, multifuncionales, servidores y tabletas electrónicas con las que contaron cada una de las instituciones de la Administración Pública de su entidad federativa para el ejercicio de sus funciones.'
-},
-    anios = [],
-    registroAnios = [];
+let anios = [],
+    registroAnios = []
 
 document.addEventListener('DOMContentLoaded', function () {
-    verificarAnios();
+    verificarAnios()
     document.getElementById('preguntaGrafica').addEventListener('change', () => {
-        document.getElementById('tablesContainer').innerHTML = '';
-
-        verificarAnios();
-
-        actualizarPopover(document.getElementById('preguntaGrafica').value);
-    });
+        document.getElementById('tablesContainer').innerHTML = ''
+        verificarAnios()
+    })
     document.getElementById('btnTabular').addEventListener('click', () => {
-        console.warn('Registro de años (Tabla ' + document.getElementById('preguntaGrafica').value + ')');
-        console.log(registroAnios); // Registro de años completo
-        tabularDatos(document.getElementById('preguntaGrafica').value);
-    });
-});
+        console.warn('Registro de años (Tabla ' + document.getElementById('preguntaGrafica').value + ')')
+        console.log(registroAnios) // Registro de años completo
+        tabularDatos(document.getElementById('preguntaGrafica').value)
+    })
+})
 
 verificarAnios = () => {
     anios = []
@@ -48,24 +29,18 @@ verificarAnios = () => {
     });
 }
 
-actualizarPopover = (pregunta) => {
-    let popover = document.getElementById('popoverPreguntas');
-    popover.setAttribute('data-original-title', ('Pregunta ' + pregunta));
-    popover.setAttribute('data-content', preguntas[pregunta]);
-}
-
 redimensionarContenedores = (pregunta) => {
     if (pregunta == 9 || pregunta == 16 || pregunta == 18 || pregunta == 20 || pregunta == 22) {
         document.getElementById('container').style = 'height: 900vh; z-index: 1; box-shadow: 40px 0px 30px -20px rgba(236,238,239,1);';
-        document.getElementById('container').classList.add('col-lg-6', 'col-md-6', 'border', 'border-bottom-0', 'border-left-0', 'rounded');
+        document.getElementById('container').classList.add('col-lg-6', 'col-md-12', 'border', 'border-bottom-0', 'border-left-0', 'rounded');
         document.getElementById('secondContainer').classList.remove('d-none');
     } else if (pregunta == 7) {
         document.getElementById('container').style = 'height: 90vh; z-index: 1; rgba(236,238,239,1); box-shadow: 0px 0px 0px 0px white;';
-        document.getElementById('container').classList.remove('col-lg-6', 'col-md-6', 'border', 'border-bottom-0', 'border-left-0', 'rounded');
+        document.getElementById('container').classList.remove('col-lg-6', 'col-md-12', 'border', 'border-bottom-0', 'border-left-0', 'rounded');
         document.getElementById('secondContainer').classList.add('d-none');
     } else {
         document.getElementById('container').style = 'height: 450px; z-index: 1; rgba(236,238,239,1); box-shadow: 0px 0px 0px 0px white;';
-        document.getElementById('container').classList.remove('col-lg-6', 'col-md-6', 'border', 'border-bottom-0', 'border-left-0', 'rounded');
+        document.getElementById('container').classList.remove('col-lg-6', 'col-md-12', 'border', 'border-bottom-0', 'border-left-0', 'rounded');
         document.getElementById('secondContainer').classList.add('d-none');
     }
 }
@@ -107,10 +82,10 @@ graficarDatos = (pregunta) => {
         dataPrev[anios[i]] = registroAnios[anios[i + 1]];
     }
 
-    // console.warn('DataPrev');
-    // console.log(dataPrev);
-    // console.warn('Data');
-    // console.log(data);
+    console.warn('DataPrev');
+    console.log(dataPrev);
+    console.warn('Data');
+    console.log(data);
 
     crearSelectComparacionAnios()
 
