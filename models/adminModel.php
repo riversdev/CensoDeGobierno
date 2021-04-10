@@ -280,7 +280,7 @@ class AdminModel
         return session_status() === PHP_SESSION_ACTIVE ? "error" : "success";
     }
 
-    
+
     #CRUD DEPENDENCIAS
     public static function listarDependencias($anio)
     {
@@ -440,7 +440,7 @@ class AdminModel
         $errores = array(); // ARRAY PARA ATRAPAR ERRORES
         $tablas = []; // VARIABLE PARA GUARDAR ARRAY
         $mensajeSuccess = ""; // VARIABLE DE GUARDADO
-         //REASIGNAR TABLAS PARA DISMINUIR CODIGO
+        //REASIGNAR TABLAS PARA DISMINUIR CODIGO
         $tipoDeEliminacion == "all" ? $tablas = $tablasAll : $tablas = $tablaHistorial;
         $tipoDeEliminacion == "all" ? $mensajeSuccess = ["success", "Dependencia Eliminada"] : $mensajeSuccess = ["success", "Resultados Eliminados"];
         // RECORRER ARBOL DE TABLAS DONDE ESTAN LAS TABLAS Y SUS CAMPOS

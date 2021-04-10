@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             vizualizarElementosNavegacion(this.id)
         })
     })
+
     // CERRAR SESION
     document.getElementById('btnSalirAdmin').addEventListener('click', () => {
         alertify.confirm(
@@ -78,26 +79,28 @@ validarFormularios = () => {
                         }
                     } else if (form.id == 'formDependencias') {
                         let valor = document.getElementById('submitDependencia').innerHTML
+
                         if (valor == 'Guardar') {
                             accionesDependencias(recolectarDatosDependenciaGUI(), 'agregar')
                         } else if (valor == 'Actualizar') {
                             accionesDependencias({ 'datosNuevos': recolectarDatosDependenciaGUI(), 'datosViejos': dependenciasEditar }, 'editar')
                         } else {
-                            console.log('button invalido')
+                            console.warn('Botón inválido')
                         }
-                    } else if(form.id == 'formDependenciaEliminar'){
-                        let valorSelector = document.querySelector('input[name="flexRadioDefault"]:checked').value  
-                        let datosDependencia = dependenciasEliminar
-                        alertify.confirm('Eliminando Dependencia...',
-                        '¿Esta seguro de querer realizar esta accion en <u>' + datosDependencia.nombreDependencia +'</u>? ',
-                        function(){
-                            accionesDependencias({'datosDependencia':datosDependencia, 'tipoPeticionEliminar': valorSelector}, 'eliminar')
-                            modalDependenciasEliminar.hide()
-                        },  
-                        function(){
-                            alertify.error('Cancelado')
-                        }   
-                        ).set('labels', {ok: 'Confirmo' , cancel: 'Cancelar'})
+                    } else if (form.id == 'formDependenciaEliminar') {
+                        let valorSelector = document.querySelector('input[name="flexRadioDefault"]:checked').value,
+                            datosDependencia = dependenciasEliminar
+
+                        alertify.confirm('Eliminando dependencia...',
+                            'Se requiere confirmación para eliminar información de la dependencia <u>' + datosDependencia.nombreDependencia + '</u>',
+                            function () {
+                                accionesDependencias({ 'datosDependencia': datosDependencia, 'tipoPeticionEliminar': valorSelector }, 'eliminar')
+                                modalDependenciasEliminar.hide()
+                            },
+                            function () {
+                                alertify.error('Cancelado')
+                            }
+                        ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' })
                     }
                 }
 

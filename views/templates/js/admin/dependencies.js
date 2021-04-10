@@ -2,7 +2,7 @@
 const modalDependencias = new bootstrap.Modal(document.getElementById('modalDependencias'))
 const modalDependenciasEliminar = new bootstrap.Modal(document.getElementById('modalDependenciasEliminar'))
 let dependencias = null,
-    dependenciasEditar = null
+    dependenciasEditar = null,
     dependenciasEliminar = null
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
-    //ACCIONES BOTON GUARDAR USUARIO
+    // ACCIONES BOTON GUARDAR USUARIO
     document.getElementById('btnAgregarDependencia').addEventListener('click', () => {
         document.getElementById('formDependencias').reset()
         document.getElementById('modalDependenciasLabel').innerHTML = 'Agregar Dependencia'
@@ -224,7 +224,7 @@ async function accionesDependencias(dependencia, accion) {
                 alertify.success(respuesta[1])
                 listarDependencias('all').then(() => { generarTablaDependencias() })
                 document.getElementById('formDependenciaEliminar').reset()
-                
+
             } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
             } else {
@@ -276,9 +276,13 @@ listenerDeAccionesDependencias = () => {
     for (let i = 0; i < elementosEditar.length; i++) {
         document.getElementById(elementosEditar[i].id).addEventListener('click', function () {
             let idDependencia = this.id.split('-')[1],
-                anioDependencia = this.id.split('-')[2]
-            dependenciasEditar = null;
-            let idDependenciaOriginal = '', nombreDependenciaOriginal = '', clasificacionDependenciaOriginal = '', anioDependenciaOriginal = ''
+                anioDependencia = this.id.split('-')[2],
+                dependenciasEditar = null,
+                idDependenciaOriginal = '',
+                nombreDependenciaOriginal = '',
+                clasificacionDependenciaOriginal = '',
+                anioDependenciaOriginal = ''
+
             for (const dependencia in dependencias) {
                 if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
                     /**
@@ -309,7 +313,6 @@ listenerDeAccionesDependencias = () => {
                 'anioDependenciaOriginal': anioDependenciaOriginal,
                 'clasificacionDependenciaOriginal': clasificacionDependenciaOriginal
             }
-
         })
     }
 
@@ -317,19 +320,22 @@ listenerDeAccionesDependencias = () => {
         document.getElementById(elementosEliminar[i].id).addEventListener('click', function () {
             let idDependencia = this.id.split('-')[1],
                 anioDependencia = this.id.split('-')[2],
-                nombreDependencia = ''
+                nombreDependencia = '',
                 dependenciasEliminar = null
+
             for (const dependencia in dependencias) {
                 if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
                     nombreDependencia = dependencias[dependencia]['nombreInstitucion']
                     break
                 }
             }
+
             dependenciasEliminar = {
-                'idDependencia' : idDependencia,
+                'idDependencia': idDependencia,
                 'anioDependencia': anioDependencia,
                 'nombreDependencia': nombreDependencia
             }
+
             modalDependenciasEliminar.show()
         })
     }
@@ -347,10 +353,11 @@ listenerDeAccionesDependencias = () => {
                     break
                 }
             }
+
             if (estadoCuestionario == 1) {
                 alertify.confirm(
-                    'Activando cuestionario',
-                    'se requiere confirmacion para reactivar cuestionario a <u>' + nombreDependencia + '</u>',
+                    'Activando cuestionario...',
+                    'Se requiere confirmación para reactivar el cuestionario a la dependencia <u>' + nombreDependencia + '</u>',
                     function () {
                         accionesDependencias({ idDependencia, nombreDependencia, anioDependencia }, 'activarCuestionario')
                     },

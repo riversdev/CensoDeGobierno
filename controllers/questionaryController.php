@@ -2350,7 +2350,7 @@ if ($tipoPeticion == "guardarPregunta") {
     $respuesta = Questionary::getTitular($idMismoTitular, $anioInstitucion, $sexo, $edad, $ingresos, $nivelEscolaridad, $estatusEscolaridad, $empleoAnterior, $antiguedadServicio, $antiguedadCargo, $pertenenciaIndigena, $condicionDiscapacidad, $formaDesignacion);
 
     echo json_encode($respuesta);
-} else if($tipoPeticion == "cerrarSesion"){
+} else if ($tipoPeticion == "cerrarSesion") {
     $respuesta = Questionary::cerrarSesion();
 
     echo json_encode($respuesta);

@@ -132,7 +132,6 @@
     </div>
 </div>
 
-
 <!-- Formulario ELIMINAR DEPENDENCIA -->
 <div class="modal fade" id="modalDependenciasEliminar" tabindex="-1" aria-labelledby="modalDependenciasEliminarLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -143,9 +142,6 @@
             </div>
             <form id="formDependenciaEliminar" class="card p-3 m-0 needs-validation" novalidate>
                 <div class="modal-body form-row p-0">
-                    <div class="col-12 text-center">
-                        <h5>¿Qué desea eliminar?</h5>
-                    </div>
                     <div class="col-12">
                         <div class="form-row mt-2">
                             <div class="col-6 offset-3 mb-3">

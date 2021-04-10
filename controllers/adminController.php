@@ -363,4 +363,3 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
 
     echo json_encode($respuesta);
 }
- 
