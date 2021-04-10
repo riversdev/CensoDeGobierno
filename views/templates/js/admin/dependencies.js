@@ -277,11 +277,12 @@ listenerDeAccionesDependencias = () => {
         document.getElementById(elementosEditar[i].id).addEventListener('click', function () {
             let idDependencia = this.id.split('-')[1],
                 anioDependencia = this.id.split('-')[2],
-                dependenciasEditar = null,
                 idDependenciaOriginal = '',
                 nombreDependenciaOriginal = '',
                 clasificacionDependenciaOriginal = '',
                 anioDependenciaOriginal = ''
+
+            dependenciasEditar = null
 
             for (const dependencia in dependencias) {
                 if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
@@ -320,8 +321,9 @@ listenerDeAccionesDependencias = () => {
         document.getElementById(elementosEliminar[i].id).addEventListener('click', function () {
             let idDependencia = this.id.split('-')[1],
                 anioDependencia = this.id.split('-')[2],
-                nombreDependencia = '',
-                dependenciasEliminar = null
+                nombreDependencia = ''
+
+            dependenciasEliminar = null
 
             for (const dependencia in dependencias) {
                 if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
