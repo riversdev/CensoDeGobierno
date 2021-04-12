@@ -29,22 +29,6 @@ class AdminModel
         }
     }
 
-    public static function leerListaDependencias()
-    {
-        try {
-            $SQL = "SELECT UPPER(a.Institucion) AS dependencia FROM altas_instituciones AS a GROUP BY UPPER(a.Institucion) ORDER BY a.Institucion ASC";
-            $stmt = Connection::connect()->prepare($SQL);
-            if ($stmt->execute()) {
-                return ["success", $stmt->fetchAll()];
-            } else {
-                return ["error", "Imposible leer dependencias !"];
-            }
-        } catch (Exception $e) {
-            return ["error", "Imposible leer dependencias !"];
-        }
-        $stmt = null;
-    }
-
     public static function verificarIdExistente($idDependencia, $anioDependencia)
     {
         try {
@@ -332,7 +316,7 @@ class AdminModel
             $stmt->execute();
             $contador = $stmt->rowCount();
             if ($contador != 0) {
-                return ["error", "Ya se ha registrado esa clave !"];
+                return ["error", "Ya se ha registrado esa clave en <u>$anioDependencia</u> !"];
             } else {
                 $agregarDependencia =
                     "INSERT INTO altas_instituciones
@@ -493,6 +477,22 @@ class AdminModel
         } catch (Exception $e) {
             return ["error", "Error al conectar a la base de datos"];
         }
+    }
+
+    public static function leerListaDependencias()
+    {
+        try {
+            $SQL = "SELECT UPPER(a.Institucion) AS dependencia FROM altas_instituciones AS a GROUP BY UPPER(a.Institucion) ORDER BY a.Institucion ASC";
+            $stmt = Connection::connect()->prepare($SQL);
+            if ($stmt->execute()) {
+                return ["success", $stmt->fetchAll()];
+            } else {
+                return ["error", "Imposible leer dependencias !"];
+            }
+        } catch (Exception $e) {
+            return ["error", "Imposible leer dependencias !"];
+        }
+        $stmt = null;
     }
 
 

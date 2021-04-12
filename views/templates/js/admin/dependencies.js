@@ -3,8 +3,8 @@ const modalDependencias = new bootstrap.Modal(document.getElementById('modalDepe
 const modalDependenciasEliminar = new bootstrap.Modal(document.getElementById('modalDependenciasEliminar'))
 let dependencias = null,
     dependenciasEditar = null,
-    dependenciasEliminar = null
-
+    dependenciasEliminar = null,
+    vectorListaDependencias = []
 document.addEventListener('DOMContentLoaded', () => {
     // LLENAR SELECTS DE AÑOS
     llenarSelectDeAnios('selectAnioDependencia')
@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // CONSTRUCCION DE LA TABLA DE DEPENDENCIAS
     listarDependencias('all').then(() => { generarTablaDependencias() })
+
+    //DATA LIST
+    leerListaDependencias()
 
     // ESCUCHADOR SELECT DE AÑO DE LA NAVBAR
     document.getElementById('selectAnioDependencia').addEventListener('change', () => {
@@ -25,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('formDependencias').reset()
         document.getElementById('modalDependenciasLabel').innerHTML = 'Agregar Dependencia'
         document.getElementById('submitDependencia').innerHTML = 'Guardar'
+        document.getElementById('formDependencias').classList.remove('was-validated')
     })
 })
 
@@ -121,6 +125,7 @@ generarTablaDependencias = () => {
         a = document.createElement('a')
         a.className = 'btnEditDependencia'
         a.id = 'btnEditDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
+        a.title = 'Editar'
         a.append(i);
         td.append(a)
         i = document.createElement('i')
@@ -128,6 +133,7 @@ generarTablaDependencias = () => {
         a = document.createElement('a')
         a.className = 'btnDeleteDependencia'
         a.id = 'btnDeleteDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
+        a.title = 'Eliminar'
         a.append(i)
         td.append(a)
         i = document.createElement('i')
@@ -135,7 +141,7 @@ generarTablaDependencias = () => {
         a = document.createElement('a')
         a.className = 'btnActiveDependencia'
         a.id = 'btnActive-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion'] + '-' + dependencia['Finalizado']
-        a.title = dependencia['finalizado'] == 1 ? 'finalizado' : ''
+        a.title = 'Reactivar'
         a.append(i)
         td.append(a)
         tr.append(td)
@@ -373,4 +379,65 @@ listenerDeAccionesDependencias = () => {
             }
         })
     }
+}
+
+
+//LISTAR DEPENDENCIAS PARA DATA LIST
+async function leerListaDependencias() {
+    try {
+      let res = await axios('controllers/adminController.php', {
+        method: 'POST',
+        data: {
+          tipoPeticion: 'leerListaDependencias',
+        }
+      })
+      if (res.data[0] == 'success') {
+        vectorListaDependencias = []
+        datalist = document.getElementById('listaDependencias')
+        datalist.innerHTML = ''
+        for (let i = 0; i < res.data[1].length; i++) {
+          option = document.createElement('option')
+          option.value = res.data[1][i]['dependencia']
+          option.appendChild(document.createTextNode(res.data[1][i]['dependencia']))
+          datalist.append(option)
+          vectorListaDependencias.push(res.data[1][i]['dependencia'])
+        }
+        
+      } else if (res.data[0] == 'error') {
+        console.error(res.data[1]);
+      } else {
+        console.warn('Tipo de respuesta no definido. ' + res.data)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+}
+
+quitarAcentos = (cadena) => {
+    const acentos = {
+      'á': 'a',
+      'é': 'e',
+      'í': 'i',
+      'ó': 'o',
+      'ú': 'u',
+      'Á': 'A',
+      'É': 'E',
+      'Í': 'I',
+      'Ó': 'O',
+      'Ú': 'U'
+    };
+    return cadena.split('').map(letra => acentos[letra] || letra).join('').toString();
+}
+
+quitarEspacios = (i) => {
+    let ii = i.split('');
+    let iiSinEspacios = '';
+
+    for (let i = 0; i < ii.length; i++) {
+      if (ii[i] != ' ') {
+        iiSinEspacios += ii[i];
+      }
+    }
+
+    return iiSinEspacios;
 }
