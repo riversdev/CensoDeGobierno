@@ -91,7 +91,7 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="txtIdDependencia">Clave</label>
-                                <input type="number" class="form-control" id="txtIdDependencia" autocomplete="off" required min="1"/>
+                                <input type="number" class="form-control" id="txtIdDependencia" autocomplete="off" required min="0"/>
                                 <div class="valid-feedback">Correcto!</div>
                                 <div class="invalid-feedback">Ingrese un numero válido!</div>
                             </div>
@@ -108,7 +108,7 @@
                     <div class="col-12 mb-3">
                         <datalist id="listaDependencias"></datalist>
                         <label for="txtDependencia" class="form-label">Nombre de Dependencia</label>
-                        <input type="text" class="form-control" id="txtDependencia" autocomplete="off" required list="listaDependencias" />
+                        <input type="text" class="form-control" id="txtDependencia" autocomplete="off" required list="listaEditarDependencias" />
                         <div class="valid-feedback">Correcto!</div>
                         <div class="invalid-feedback">Ingrese un nombre válido!</div>
                     </div>
