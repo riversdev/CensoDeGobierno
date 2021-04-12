@@ -430,7 +430,7 @@ class AdminModel
         if ($c != count($tablas)) {
             return ["error", "Imposible editar la dependencia en todas las tablas, errores en las tablas: " . json_encode($errores)];
         } else {
-            return ["success", "Dependencia editada exitosamente !"];
+            return ["success", "Dependencia actualizada !"];
         }
     }
 
@@ -486,7 +486,7 @@ class AdminModel
 
             $stmt = Connection::connect()->prepare($cambiarEstadoCuestionario);
             if ($stmt->execute()) {
-                return ["success", "Cuestionario de <u> $nombreDependencia </u> ha sido activado nuevamente !"];
+                return ["success", "Cuestionario reactivado !"];
             } else {
                 return ["error", "Error al activar cuestionario ! "];
             }

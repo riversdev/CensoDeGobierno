@@ -117,14 +117,14 @@ generarTablaDependencias = () => {
         td.className = 'text-center align-middle'
         td.style.width = '15%'
         i = document.createElement('i')
-        i.className = 'fas fa-lg fa-user-edit text-info mx-0 w-25'
+        i.className = 'fas fa-lg far fa-edit text-info mx-0 w-25'
         a = document.createElement('a')
         a.className = 'btnEditDependencia'
         a.id = 'btnEditDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.append(i);
         td.append(a)
         i = document.createElement('i')
-        i.className = 'fa fa-lg fa-user-times text-danger mx-2 w-25'
+        i.className = 'fa fa-lg far fa-trash-alt text-danger mx-2 w-25'
         a = document.createElement('a')
         a.className = 'btnDeleteDependencia'
         a.id = 'btnDeleteDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
@@ -293,7 +293,6 @@ listenerDeAccionesDependencias = () => {
                     nombreDependenciaOriginal = dependencias[dependencia]['nombreInstitucion']
                     anioDependenciaOriginal = dependencias[dependencia]['anioInstitucion']
                     clasificacionDependenciaOriginal = dependencias[dependencia]['Clasificacion']
-
                     /**
                      * Datos Nuevos de la institucion
                      */
@@ -319,12 +318,14 @@ listenerDeAccionesDependencias = () => {
 
     for (let i = 0; i < elementosEliminar.length; i++) {
         document.getElementById(elementosEliminar[i].id).addEventListener('click', function () {
+            document.getElementById('flexRadioDefault1').checked = false
+            document.getElementById('flexRadioDefault12').checked = false
             let idDependencia = this.id.split('-')[1],
                 anioDependencia = this.id.split('-')[2],
                 nombreDependencia = ''
-
+                
             dependenciasEliminar = null
-
+            
             for (const dependencia in dependencias) {
                 if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
                     nombreDependencia = dependencias[dependencia]['nombreInstitucion']

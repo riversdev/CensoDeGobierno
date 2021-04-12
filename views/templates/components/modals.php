@@ -144,22 +144,26 @@
                 <div class="modal-body form-row p-0">
                     <div class="col-12">
                         <div class="form-row mt-2">
-                            <div class="col-6 offset-3 mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="all" required>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Eliminar Dependencia...
+                            <div class="col-10 offset-1 mb-3">
+                                <div class="form-check text-center">
+                                    <label class="form-check-label text-justify" for="flexRadioDefault1">
+                                        Eliminar dependencia (esto eliminará todo registro de esta dependencia en el año seleccionado, incluyendo las respuestas del censo y contraseña de acceso)
                                     </label>
+                                    <input class="btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="all" required>
+                                    <label class="btn btn-sm btn-outline-success text-white" for="flexRadioDefault1"><i class="fas fa-2x fa-times"></i></label>
+
                                 </div>
                                 <div class="valid-feedback">Correcto!</div>
                                 <div class="invalid-feedback">Ingrese un numero válido!</div>
                             </div>
-                            <div class="col-6 offset-3 mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault12" value="historial" required>
-                                    <label class="form-check-label" for="flexRadioDefault12">
-                                        Eliminar Resultados...
+                            <div class="col-10 offset-1 mb-3">
+                                <div class="form-check text-center">
+                                    <label class="form-check-label text-justify" for="flexRadioDefault12">
+                                        Eliminar resultados ponle (esto eliminará las respuestas del censo en el año seleccionado pero se conservará la contraseña de acceso de la dependencia)
                                     </label>
+                                    <input class="btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault12" value="historial" required>
+                                    <label class="btn btn-sm btn-outline-success text-white" for="flexRadioDefault12"><i class="fas fa-2x fa-times"></i></label>
+
                                 </div>
                                 <div class="valid-feedback">Correcto!</div>
                                 <div class="invalid-feedback">Ingrese un opción válida!</div>
