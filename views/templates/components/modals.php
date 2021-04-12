@@ -108,7 +108,7 @@
                     <div class="col-12 mb-3">
                         <datalist id="listaDependencias"></datalist>
                         <label for="txtDependencia" class="form-label">Nombre de Dependencia</label>
-                        <input type="text" class="form-control" id="txtDependencia" autocomplete="off" required list="listaEditarDependencias" />
+                        <input type="text" class="form-control" id="txtDependencia" autocomplete="off" required list="listaDependencias" />
                         <div class="valid-feedback">Correcto!</div>
                         <div class="invalid-feedback">Ingrese un nombre válido!</div>
                     </div>
