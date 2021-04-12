@@ -30,7 +30,7 @@ verificarAnios = () => {
 }
 
 redimensionarContenedores = (pregunta) => {
-    if (pregunta == 9 || pregunta == 16 || pregunta == 18 || pregunta == 20 || pregunta == 22) {
+    if (pregunta == 9 || pregunta == 16 || pregunta == 18 || pregunta == 20 || pregunta == 22 || pregunta == 'coronavirusPorDependencia') {
         document.getElementById('container').style = 'height: 900vh; z-index: 1; box-shadow: 40px 0px 30px -20px rgba(236,238,239,1);';
         document.getElementById('container').classList.add('col-lg-6', 'col-md-12', 'border', 'border-bottom-0', 'border-left-0', 'rounded');
         document.getElementById('secondContainer').classList.remove('d-none');
@@ -4012,6 +4012,496 @@ graficarDatos = (pregunta) => {
             chart.hideLoading();
             secondChart.hideLoading();
         });
+    } else if (pregunta == 'coronavirusPorTipoInstitucion') {
+        getData = (data) => {
+            return data.map((category, i) => {
+                return {
+                    name: category[0],
+                    y: category[1],
+                    gender: category[2],
+                    color: category[2] == 'Hombres' ? '#14587A' : '#E0B61D',
+                };
+            });
+        }
+
+        getDataPrev = (data) => {
+            return data.map((category, i) => {
+                return {
+                    name: category[0],
+                    y: category[1],
+                    gender: category[2],
+                };
+            });
+        }
+
+        let chart = Highcharts.chart('container', {
+            chart: {
+                type: 'column',
+            },
+            title: {
+                text: 'Cantidad de personal fallecido por COVID-19, ' + anios[0],
+            },
+            subtitle: {
+                text:
+                    'Representación por sexo y tipo de institución, comparación de cantidades con el ' + anios[1],
+            },
+            loading: {
+                hideDuration: 1000,
+                showDuration: 0
+            },
+            lang: {
+                noData: 'No existen resultados. Restablezca los parámetros de búsqueda'
+            },
+            noData: {
+                style: {
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    color: '#b91926',
+                    opacity: '.7'
+                }
+            },
+            plotOptions: {
+                series: {
+                    grouping: false,
+                    borderWidth: 0,
+                },
+            },
+            legend: {
+                enabled: false,
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:12px" class="font-weight-bold w-100 text-left">{point.point.name}</span><table style="width: 100%;">',
+                pointFormat: '<tr class="d-flex justify-content-between">' +
+                    '<td style="color:{point.color};padding:0" class="text-left">' +
+                    '<span style="color:{point.color}">\u25CF</span> {series.name}: ' +
+                    '</td>' +
+                    '<td style="padding:0" class="text-right">' +
+                    '<span class="font-weight-bold px-1">{point.y} </span><span style="color:{point.color}">{point.gender}</span>' +
+                    '</td>' +
+                    '</tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            xAxis: {
+                type: "category",
+            },
+            yAxis: [
+                {
+                    title: {
+                        text: 'Cantidad de personal'
+                    },
+                    showFirstLabel: false,
+                },
+            ],
+            series: [
+                {
+                    color: 'rgb(158, 159, 163)',
+                    pointPlacement: -0.2,
+                    linkedTo: 'main',
+                    data: getDataPrev(dataPrev[anios[0]]).slice(),
+                    name: anios[1],
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            inside: true,
+                            align: 'left',
+                            color: 'black',
+                            style: {
+                                fontSize: '9px',
+                            },
+                        },
+                    ],
+                },
+                {
+                    name: anios[0],
+                    id: 'main',
+                    dataSorting: {
+                        enabled: true,
+                        matchByName: true,
+                    },
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            inside: true,
+                            style: {
+                                fontSize: '12px',
+                            },
+                        },
+                    ],
+                    data: getData(data[anios[0]]).slice(),
+                },
+            ],
+            exporting: {
+                allowHTML: true,
+            },
+        });
+
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de personal fallecido por COVID-19, ' + this.value,
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por sexo y tipo de institución, comparación de cantidades con el ' + (this.value - 1),
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrev(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getData(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            chart.hideLoading();
+        });
+    } else if (pregunta == 'coronavirusPorDependencia') {
+        getDataMen = (data) => {
+            return data.map((category, i) => {
+                return {
+                    name: category['institucion'].toUpperCase(),
+                    y: parseInt(category['hombres']),
+                    gender: 'Hombres',
+                    color: '#14587A',
+                };
+            });
+        }
+
+        getDataPrevMen = (dataPrev) => {
+            return dataPrev.map((category, i) => {
+                return {
+                    name: category['institucion'].toUpperCase(),
+                    y: parseInt(category['hombres']),
+                    gender: 'Hombres',
+                    color: '#14587A',
+                };
+            });
+        }
+
+        getDataWomen = (data) => {
+            return data.map((category, i) => {
+                return {
+                    name: category['institucion'].toUpperCase(),
+                    y: parseInt(category['mujeres']),
+                    gender: 'Mujeres',
+                    color: '#E0B61D',
+                };
+            });
+        }
+
+        getDataPrevWomen = (dataPrev) => {
+            return dataPrev.map((category, i) => {
+                return {
+                    name: category['institucion'].toUpperCase(),
+                    y: parseInt(category['mujeres']),
+                    gender: 'Mujeres',
+                    color: '#E0B61D',
+                };
+            });
+        }
+
+        let chart = Highcharts.chart('container', {
+            chart: {
+                type: 'bar',
+            },
+            title: {
+                text: 'Cantidad de personal fallecido por COVID-19, ' + anios[0],
+            },
+            subtitle: {
+                text:
+                    'Representación por sexo e institución (' + registroAnios[anios[0]].length + ' dependencias)',
+            },
+            loading: {
+                hideDuration: 2000,
+                showDuration: 0,
+                labelStyle: {
+                    top: '1%',
+                }
+            },
+            lang: {
+                noData: 'No existen resultados.<br> Restablezca los parámetros de búsqueda'
+            },
+            noData: {
+                position: {
+                    verticalAlign: 'top',
+                    align: 'center',
+                },
+                style: {
+                    fontWeight: 'bold',
+                    fontSize: '13px',
+                    color: '#b91926',
+                    opacity: '.7'
+                }
+            },
+            plotOptions: {
+                series: {
+                    grouping: true,
+                    borderWidth: 0,
+                },
+            },
+            legend: {
+                enabled: false,
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:12px" class="font-weight-bold w-100 text-left">{point.point.name}</span><table style="width: 100%;">',
+                pointFormat: '<tr class="d-flex justify-content-between" style="color:{point.color}">' +
+                    '<td class="text-left p-0">' +
+                    '<span>\u25CF</span> <span class="font-weight-bold">{point.y}</span>' +
+                    '</td>' +
+                    '<td class="text-right p-0">' +
+                    '<span class="font-weight-light px-1">{point.gender} </span>' +
+                    '</td>' +
+                    '</tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            xAxis: {
+                type: 'category',
+            },
+            yAxis: [
+                {
+                    title: {
+                        text: 'Cantidad de personal'
+                    },
+                    showFirstLabel: false,
+                },
+            ],
+            series: [
+                {
+                    name: anios[0],
+                    data: getDataMen(data[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#14587A',
+                        },
+                    ],
+                },
+                {
+                    name: anios[0],
+                    data: getDataWomen(data[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#E0B61D',
+                        },
+                    ],
+                },
+            ],
+            exporting: {
+                allowHTML: true,
+            },
+        });
+
+        let secondChart = Highcharts.chart('secondContainer', {
+            chart: {
+                type: 'bar',
+            },
+            title: {
+                text: 'Cantidad de personal fallecido por COVID-19, ' + anios[1],
+            },
+            subtitle: {
+                text:
+                    'Representación por sexo e institución (' + registroAnios[anios[1]].length + ' dependencias)',
+            },
+            loading: {
+                hideDuration: 2000,
+                showDuration: 0,
+                labelStyle: {
+                    top: '1%',
+                }
+            },
+            lang: {
+                noData: 'No existen resultados.<br> Restablezca los parámetros de búsqueda'
+            },
+            noData: {
+                position: {
+                    verticalAlign: 'top',
+                    align: 'center',
+                },
+                style: {
+                    fontWeight: 'bold',
+                    fontSize: '13px',
+                    color: '#b91926',
+                    opacity: '.7'
+                }
+            },
+            plotOptions: {
+                series: {
+                    grouping: true,
+                    borderWidth: 0,
+                },
+            },
+            legend: {
+                enabled: false,
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:12px" class="font-weight-bold w-100 text-left">{point.point.name}</span><table style="width: 100%;">',
+                pointFormat: '<tr class="d-flex justify-content-between" style="color:{point.color}">' +
+                    '<td class="text-left p-0">' +
+                    '<span>\u25CF</span> <span class="font-weight-bold">{point.y}</span>' +
+                    '</td>' +
+                    '<td class="text-right p-0">' +
+                    '<span class="font-weight-light px-1">{point.gender} </span>' +
+                    '</td>' +
+                    '</tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            xAxis: {
+                type: 'category',
+            },
+            yAxis: [
+                {
+                    title: {
+                        text: 'Cantidad de personal'
+                    },
+                    showFirstLabel: false,
+                },
+            ],
+            series: [
+                {
+                    name: anios[1],
+                    data: getDataPrevMen(dataPrev[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#14587A',
+                        },
+                    ],
+                },
+                {
+                    name: anios[1],
+                    data: getDataPrevWomen(dataPrev[anios[0]]).slice(),
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            color: '#E0B61D',
+                        },
+                    ],
+                },
+            ],
+            exporting: {
+                allowHTML: true,
+            },
+        });
+
+        document.getElementById('anioGrafica').addEventListener('change', function () {
+            chart.update(
+                {
+                    series: [
+                        {
+                            name: this.value,
+                            data: [],
+                        },
+                        {
+                            name: this.value,
+                            data: [],
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
+            secondChart.update(
+                {
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                        {
+                            name: this.value - 1,
+                            data: [],
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 100,
+                }
+            );
+
+            chart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+            secondChart.showLoading('<i class="fas fa-lg fa-spin fa-spinner"></i>');
+
+            chart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de personal fallecido por COVID-19, ' + this.value,
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por sexo e institución (' + registroAnios[this.value].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value,
+                            data: getDataMen(data[this.value]).slice(),
+                        },
+                        {
+                            name: this.value,
+                            data: getDataWomen(data[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+            secondChart.update(
+                {
+                    title: {
+                        text:
+                            'Cantidad de personal fallecido por COVID-19, ' + (this.value - 1),
+                    },
+                    subtitle: {
+                        text:
+                            'Representación por sexo e institución (' + registroAnios[this.value - 1].length + ' dependencias)',
+                    },
+                    series: [
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevMen(dataPrev[this.value]).slice(),
+                        },
+                        {
+                            name: this.value - 1,
+                            data: getDataPrevWomen(dataPrev[this.value]).slice(),
+                        },
+                    ],
+                },
+                true,
+                false,
+                {
+                    duration: 800,
+                }
+            );
+
+            chart.hideLoading();
+            secondChart.hideLoading();
+        });
     } else {
         alertify.error('Sin graficar !');
     }
@@ -4054,7 +4544,7 @@ tabularDatos = (pregunta) => {
     div = document.createElement('div');
     div.className = 'd-flex justify-content-center align-items-center';
     label.className += 'text-dark h4 font-weight-light';
-    label.innerHTML = 'Pregunta ' + pregunta;
+    label.innerHTML = pregunta == 'coronavirusPorTipoInstitucion' || pregunta == 'coronavirusPorDependencia' ? 'Personal fallecido por COVID-19' : 'Pregunta ' + pregunta
     div.append(label);
     label = document.createElement('label');
     label.className += 'text-primary ml-3';
@@ -5283,6 +5773,155 @@ tabularDatos = (pregunta) => {
                         td = document.createElement('td');
                         td.className = 'text-right';
                         td.innerHTML = comparacionAnual[dependencia][years[i]].tabletas;
+                        tr.append(td);
+                    } else {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = '-';
+                        tr.append(td);
+                    }
+                }
+            })
+            body.append(tr);
+        }
+    } else if (pregunta == 'coronavirusPorTipoInstitucion') {
+        th.scope = 'col';
+        th.appendChild(document.createTextNode('Género'));
+        tr.append(th);
+        th = document.createElement('th');
+        th.scope = 'col';
+        th.appendChild(document.createTextNode('Categoría'));
+        tr.append(th);
+
+        for (let i = anios.length - 1; i >= 0; i--) {
+            th = document.createElement('th');
+            th.scope = 'col';
+            th.className = 'text-center';
+            th.appendChild(document.createTextNode(anios[i]));
+            tr.append(th);
+        }
+        head.append(tr);
+
+        for (let i = 0; i < registroAnios[anios[0]].length; i++) {
+            for (let j = 2017; j < registroAnios.length; j++) {
+                tr = document.createElement('tr');
+                td = document.createElement('td');
+                td.innerHTML = registroAnios[j][i][2];
+                tr.append(td);
+                td = document.createElement('td');
+                td.innerHTML = registroAnios[j][i][0];
+                tr.append(td);
+                for (let m = 2017; m < registroAnios.length; m++) {
+                    td = document.createElement('td');
+                    td.className = 'text-right';
+                    td.innerHTML = registroAnios[m][i] != undefined ? registroAnios[m][i][1] : '-';
+                    tr.append(td);
+                }
+            }
+            body.append(tr);
+        }
+    } else if (pregunta == 'coronavirusPorDependencia') {
+        th.scope = 'col';
+        th.appendChild(document.createTextNode('Género'));
+        tr.append(th);
+        th = document.createElement('th');
+        th.scope = 'col';
+        th.appendChild(document.createTextNode('Institución'));
+        tr.append(th);
+
+        for (let i = anios.length - 1; i >= 0; i--) {
+            th = document.createElement('th');
+            th.scope = 'col';
+            th.className = 'text-center';
+            th.appendChild(document.createTextNode(anios[i]));
+            tr.append(th);
+        }
+        head.append(tr);
+
+        let comparacionAnual = [],
+            maximoRegistros = 0;
+
+        for (let i = 0; i < anios.length; i++) {
+            if (registroAnios[anios[i]].length > maximoRegistros) {
+                maximoRegistros = registroAnios[anios[i]].length
+            }
+        }
+
+        for (let z = 0; z < maximoRegistros; z++) {
+            let c = 2017;
+            for (let i = 2017; i < registroAnios.length; i++) {
+                if (registroAnios[i][z] != undefined) {
+                    c++;
+                }
+            }
+
+            if (c != 2017) {
+                for (let i = 2017; i < registroAnios.length; i++) {
+                    if (registroAnios[i][z] != undefined) {
+                        for (let j = 2017; j < registroAnios.length; j++) {
+                            registroAnios[j].forEach((dependencia) => {
+                                if (comparacionAnual[quitarEspacios(quitarAcentos(dependencia.institucion)).toLowerCase()] != undefined) {
+                                    comparacionAnual[quitarEspacios(quitarAcentos(dependencia.institucion)).toLowerCase()][j] = {
+                                        dependencia: dependencia.institucion,
+                                        hombres: dependencia.hombres,
+                                        mujeres: dependencia.mujeres
+                                    };
+                                } else {
+                                    comparacionAnual[quitarEspacios(quitarAcentos(dependencia.institucion)).toLowerCase()] = [];
+                                    comparacionAnual[quitarEspacios(quitarAcentos(dependencia.institucion)).toLowerCase()][j] = {
+                                        dependencia: dependencia.institucion,
+                                        hombres: dependencia.hombres,
+                                        mujeres: dependencia.mujeres
+                                    };
+                                }
+                            })
+                        }
+                    }
+                }
+            }
+        }
+
+        console.log(comparacionAnual); // Datos ordenados
+
+        let years = anios.reverse();
+
+        for (const dependencia in comparacionAnual) {
+            comparacionAnual[dependencia].forEach((anio) => {
+                tr = document.createElement('tr');
+                td = document.createElement('td');
+                td.innerHTML = 'Hombres';
+                tr.append(td);
+                td = document.createElement('td');
+                td.innerHTML = anio.dependencia.toUpperCase();
+                tr.append(td);
+                for (let i = 0; i < years.length; i++) {
+                    if (comparacionAnual[dependencia][years[i]] != undefined) {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = comparacionAnual[dependencia][years[i]].hombres;
+                        tr.append(td);
+                    } else {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = '-';
+                        tr.append(td);
+                    }
+                }
+            })
+            body.append(tr);
+            comparacionAnual[dependencia].forEach((anio) => {
+                tr = document.createElement('tr');
+                td = document.createElement('td');
+                td.innerHTML = 'Mujeres';
+                tr.append(td);
+                td = document.createElement('td');
+                td.innerHTML = anio.dependencia.toUpperCase();
+                tr.append(td);
+                for (let i = 0; i < years.length; i++) {
+                    if (comparacionAnual[dependencia][years[i]] != undefined) {
+                        td = document.createElement('td');
+                        td.className = 'text-right';
+                        td.innerHTML = comparacionAnual[dependencia][years[i]].mujeres;
                         tr.append(td);
                     } else {
                         td = document.createElement('td');

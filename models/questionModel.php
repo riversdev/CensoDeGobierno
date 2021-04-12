@@ -280,4 +280,34 @@ class Questions
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public static function coronavirusPorTipoInstitucion($anio)
+    {
+        $SQL =
+            "SELECT
+                SUM(IF(b.Clasificacion_Adm=1,a.totalHombres,0)) AS hombresCentralizadas,
+                SUM(IF(b.Clasificacion_Adm=1,a.totalMujeres,0)) AS mujeresCentralizadas,
+                SUM(IF(b.Clasificacion_Adm=2,a.totalHombres,0)) AS hombresParaestatales,
+                SUM(IF(b.Clasificacion_Adm=2,a.totalMujeres,0)) AS mujeresParaestatales
+            FROM tbl_complemento_2021 AS a
+            INNER JOIN altas_instituciones AS b ON b.Clave=a.idInstitucion
+            WHERE a.anio=$anio AND b.anio=$anio";
+        $stmt = Connection::connect()->prepare($SQL);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    public static function coronavirusPorDependencia($anio)
+    {
+        $SQL =
+            "SELECT
+                a.nombreInstitucion AS institucion,
+                a.totalHombres AS hombres,
+                a.totalMujeres AS mujeres
+            FROM tbl_complemento_2021 AS a
+            WHERE a.anio=$anio
+            GROUP BY a.nombreInstitucion
+            ORDER BY a.nombreInstitucion ASC";
+        $stmt = Connection::connect()->prepare($SQL);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }

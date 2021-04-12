@@ -306,13 +306,30 @@ switch ($pregunta) {
         echo json_encode($preguntaVeintidos);
         break;
 
+    case "coronavirusPorTipoInstitucion":
+        $preguntaCoronavirus = Questions::coronavirusPorTipoInstitucion($anio);
+        $cantidades = [
+            ['Centralizadas', isset($preguntaCoronavirus[0]['hombresCentralizadas']) ? intval($preguntaCoronavirus[0]['hombresCentralizadas']) : 0, 'Hombres'],
+            ['Paraestatales', isset($preguntaCoronavirus[0]['hombresParaestatales']) ? intval($preguntaCoronavirus[0]['hombresParaestatales']) : 0, 'Hombres'],
+            ['Centralizadas', isset($preguntaCoronavirus[0]['mujeresCentralizadas']) ? intval($preguntaCoronavirus[0]['mujeresCentralizadas']) : 0, 'Mujeres'],
+            ['Paraestatales', isset($preguntaCoronavirus[0]['mujeresParaestatales']) ? intval($preguntaCoronavirus[0]['mujeresParaestatales']) : 0, 'Mujeres'],
+        ];
+        echo json_encode($cantidades);
+        break;
+
+    case "coronavirusPorDependencia":
+        $preguntaCoronavirus = Questions::coronavirusPorDependencia($anio);
+        echo json_encode($preguntaCoronavirus);
+        break;
+
     default:
-        # code...
         echo '
-            let container = document.getElementById("container"),
-                msg = document.createTextNode("Grafica no terminada :v !!!");
-            container.innerHTML="";
-            container.append(msg);
+            <script>
+                let container = document.getElementById("container"),
+                msg = document.createTextNode("Gráfica no terminada :v !!!");
+                container.innerHTML="";
+                container.append(msg);
+            </script>
         ';
         break;
 }
