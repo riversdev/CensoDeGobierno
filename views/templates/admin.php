@@ -84,9 +84,30 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
             </div>
             <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">
                 <div class="row m-0">
-                    <div class="col-4 offset-1 mb-4 p-3 shadow rounded">HI<br>HI</div>
-                    <div class="col-4 offset-2 mb-4 p-3 shadow rounded">HI<br>HI</div>
-                    <div class="col-12 p-3 shadow rounded">HI<br>HI</div>
+                    <div class="col-4 offset-1 mb-4 p-3 shadow rounded">
+                        <h5>General</h5>
+                        <p>
+                            <small>de</small>
+                            2021
+                        </p>
+                        <button id="btnReporteGeneral" class="btn btn-outline-primary" type="button">Generar</button>
+                    </div>
+                    <div class="col-4 offset-2 mb-4 p-3 shadow rounded">
+                        <h5>Por clasificación administrativa</h5>
+                        <select id="selectClasificacionReporte" class="custom-select">
+                            <option value="1" selected>Centralizadas</option>
+                            <option value="2">Paraestatales</option>
+                        </select>
+                        <p>
+                            <small>de</small>
+                            2021
+                        </p>
+                        <button id="btnReporteClasificacion" class="btn btn-outline-primary" type="button">Generar</button>
+                    </div>
+                    <div class="col-12 p-3 shadow rounded">
+                        <h5>Individuales y documentos del titular</h5>
+                        <div class="table-responsive p-1" id="contenedorTablaReportesIndividuales"></div>
+                    </div>
                 </div>
             </div>
             <div class="tab-pane fade p-3 shadow rounded" id="graficador" role="tabpanel" aria-labelledby="graficador-tab">

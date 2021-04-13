@@ -265,7 +265,7 @@ class AdminModel
     }
 
 
-    #CRUD DEPENDENCIAS
+    # CRUD DEPENDENCIAS
     public static function listarDependencias($anio)
     {
         try {
@@ -648,6 +648,30 @@ class AdminModel
             }
         } catch (Exception $e) {
             return ["warn", "Error en el servidor ! " . $e];
+        }
+    }
+
+    # REPORTES
+    public static function listarReportes($anio)
+    {
+        try {
+            $SQL =
+                "SELECT
+                    a.Clave AS idInstitucion,
+                    a.Institucion AS nombreInstitucion,
+                    a.Clasificacion_Adm AS clasificacion,
+                    a.anio AS anioInstitucion
+                FROM altas_instituciones as a
+                WHERE a.anio=$anio AND a.finalizado=1";
+            $stmt = Connection::connect()->prepare($SQL);
+
+            if ($stmt->execute()) {
+                return ["success", $stmt->fetchAll()];
+            } else {
+                return ["error", "Imposible obtener resultados!"];
+            }
+        } catch (Exception $e) {
+            return ["warn", "Error al conectar a la base de datos! " . $e];
         }
     }
 }

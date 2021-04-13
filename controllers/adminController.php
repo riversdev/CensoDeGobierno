@@ -362,4 +362,6 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $respuesta = AdminModel::activarCuestionario($idDependencia, $nombreDependencia, $anioDependencia);
 
     echo json_encode($respuesta);
+} else if ($tipoPeticion == "listarReportes") {
+    echo json_encode(AdminModel::listarReportes($data['anioDependencia']));
 }
