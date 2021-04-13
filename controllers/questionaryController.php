@@ -1906,9 +1906,9 @@ if ($tipoPeticion == "guardarPregunta") {
         ],
 
         "pregunta16seccion1" => [
-            'Respuesta' => $pregunta16[0]['Valor'],
-            'disposicionNormativa' => $pregunta16[0]['disposicionNormativa'],
-            'comentarioGenera' => $pregunta16[0]['comentariosPregunta']
+            'Respuesta' => isset($pregunta16[0]['Valor']) ? $pregunta16[0]['Valor'] : "",
+            'disposicionNormativa' => isset($pregunta16[0]['disposicionNormativa']) ? $pregunta16[0]['disposicionNormativa'] : "",
+            'comentarioGenera' => isset($pregunta16[0]['comentariosPregunta']) ? $pregunta16[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta17seccion1" => [
@@ -1936,27 +1936,27 @@ if ($tipoPeticion == "guardarPregunta") {
         ],
 
         "pregunta19seccion1" => [
-            'Respuesta' => $pregunta19[0]['Respuesta'],
-            'accionesFormativas' => $pregunta19[0]['accionesFormativas'],
-            'accionesFormativasConcluidas' => $pregunta19[0]['accionesFormativasC'],
-            'TotalPersonal' => $pregunta19[0]['Total'],
-            'totalHombres' => $pregunta19[0]['Hombres'],
-            'totalMujeres' => $pregunta19[0]['Mujeres'],
-            'comentarioGeneral' => $pregunta19[0]['comentariosPregunta']
+            'Respuesta' => isset($pregunta19[0]['Respuesta']) ? $pregunta19[0]['Respuesta'] : "",
+            'accionesFormativas' => isset($pregunta19[0]['accionesFormativas']) ? $pregunta19[0]['accionesFormativas'] : "",
+            'accionesFormativasConcluidas' => isset($pregunta19[0]['accionesFormativasC']) ? $pregunta19[0]['accionesFormativasC'] : "",
+            'TotalPersonal' => isset($pregunta19[0]['Total']) ? $pregunta19[0]['Total'] : "",
+            'totalHombres' => isset($pregunta19[0]['Hombres']) ? $pregunta19[0]['Hombres'] : "",
+            'totalMujeres' => isset($pregunta19[0]['Mujeres']) ? $pregunta19[0]['Mujeres'] : "",
+            'comentarioGeneral' => isset($pregunta19[0]['comentariosPregunta']) ? $pregunta19[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta24seccion1" => [
-            'inmueblesPropios' => $pregunta24[0]['propios'],
-            'inmueblesRentados' => $pregunta24[0]['retados'],
-            'inmueblesOtros' => $pregunta24[0]['otro'],
-            'totalInmuebles' => $pregunta24[0]['total'],
-            'datosEspecíficos' => $pregunta24[0]['comentariosValidacion'],
-            'comentarioGeneral' => $pregunta24[0]['comentariosPregunta']
+            'inmueblesPropios' => isset($pregunta24[0]['propios']) ? $pregunta24[0]['propios'] : "",
+            'inmueblesRentados' => isset($pregunta24[0]['retados']) ? $pregunta24[0]['retados'] : "",
+            'inmueblesOtros' => isset($pregunta24[0]['otro']) ? $pregunta24[0]['otro'] : "",
+            'totalInmuebles' => isset($pregunta24[0]['total']) ? $pregunta24[0]['total'] : "",
+            'datosEspecíficos' => isset($pregunta24[0]['comentariosValidacion']) ? $pregunta24[0]['comentariosValidacion'] : "",
+            'comentarioGeneral' => isset($pregunta24[0]['comentariosPregunta']) ? $pregunta24[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta25seccion1" => [
-            'Respuesta' => $pregunta25[0]['opcion1'],
-            'comentarioGeneral' => $pregunta25[0]['comentariosPregunta']
+            'Respuesta' => isset($pregunta25[0]['opcion1']) ? $pregunta25[0]['opcion1'] : "",
+            'comentarioGeneral' => isset($pregunta25[0]['comentariosPregunta']) ? $pregunta25[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta26seccion1" => [
@@ -1974,8 +1974,8 @@ if ($tipoPeticion == "guardarPregunta") {
         ],
 
         "pregunta27seccion1" => [
-            'Respuesta' => $pregunta27[0]['opcion1'],
-            'comentarioGeneral' => $pregunta27[0]['comentariosPregunta']
+            'Respuesta' => isset($pregunta27[0]['opcion1']) ? $pregunta27[0]['opcion1'] : "",
+            'comentarioGeneral' => isset($pregunta27[0]['comentariosPregunta']) ? $pregunta27[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta28seccion1" => [
@@ -1997,8 +1997,8 @@ if ($tipoPeticion == "guardarPregunta") {
         ],
 
         "pregunta29seccion1" => [
-            'Respuesta' => $pregunta29[0]['opcion1'],
-            'comentarioGeneral' => $pregunta29[0]['comentariosPregunta']
+            'Respuesta' => isset($pregunta29[0]['opcion1']) ? $pregunta29[0]['opcion1'] : "",
+            'comentarioGeneral' => isset($pregunta29[0]['comentariosPregunta']) ? $pregunta29[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta30seccion1" => [
@@ -2024,46 +2024,46 @@ if ($tipoPeticion == "guardarPregunta") {
         ],
 
         "pregunta31seccion1" => [
-            'Automoviles' => $pregunta31[0]['automoviles'],
-            'Camionetas' => $pregunta31[0]['camionetas'],
-            'motocicletas' => $pregunta31[0]['motocicletas'],
-            'bicicletas' => $pregunta31[0]['bicicletas'],
-            'helicopteros' => $pregunta31[0]['helicopteros'],
-            'drones' => $pregunta31[0]['drones'],
-            'otros' => $pregunta31[0]['otro'],
-            'totalVehiculos' => $pregunta31[0]['total'],
-            'datosEspecificos' => $pregunta31[0]['comentariosValidacion'],
-            'comentarioGeneral' => $pregunta31[0]['comentariosPregunta']
+            'Automoviles' => isset($pregunta31[0]['automoviles']) ? $pregunta31[0]['automoviles'] : "",
+            'Camionetas' => isset($pregunta31[0]['camionetas']) ? $pregunta31[0]['camionetas'] : "",
+            'motocicletas' => isset($pregunta31[0]['motocicletas']) ? $pregunta31[0]['motocicletas'] : "", 
+            'bicicletas' => isset($pregunta31[0]['bicicletas']) ? $pregunta31[0]['bicicletas'] : "",
+            'helicopteros' => isset($pregunta31[0]['helicopteros']) ? $pregunta31[0]['helicopteros'] : "",
+            'drones' => isset($pregunta31[0]['drones']) ? $pregunta31[0]['drones'] : "",
+            'otros' => isset($pregunta31[0]['otro']) ? $pregunta31[0]['otro'] : "",
+            'totalVehiculos' => isset($pregunta31[0]['total']) ? $pregunta31[0]['total'] : "",
+            'datosEspecificos' => isset($pregunta31[0]['comentariosValidacion']) ? $pregunta31[0]['comentariosValidacion'] : "",
+            'comentarioGeneral' => isset($pregunta31[0]['comentariosPregunta']) ? $pregunta31[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta32seccion1" => [
-            'lineasFijas' => $pregunta32[0]['lineasfijas'],
-            'lineasMoviles' => $pregunta32[0]['lineasmoviles'],
-            'totalLineas' => $pregunta32[0]['total1'],
-            'aparatosFijos' => $pregunta32[0]['aparatosfijos'],
-            'aparatosMoviles' => $pregunta32[0]['aparatosmoviles'],
-            'totalAparatos' => $pregunta32[0]['total2'],
-            'comentarioGeneral' => $pregunta32[0]['comentariosPregunta']
+            'lineasFijas' => isset($pregunta32[0]['lineasfijas']) ? $pregunta32[0]['lineasfijas'] : "",
+            'lineasMoviles' => isset($pregunta32[0]['lineasmoviles']) ? $pregunta32[0]['lineasmoviles'] : "",
+            'totalLineas' => isset($pregunta32[0]['total1']) ? $pregunta32[0]['total1'] : "",
+            'aparatosFijos' => isset($pregunta32[0]['aparatosfijos']) ? $pregunta32[0]['aparatosfijos'] : "",
+            'aparatosMoviles' => isset($pregunta32[0]['aparatosmoviles']) ? $pregunta32[0]['aparatosmoviles'] : "",
+            'totalAparatos' => isset($pregunta32[0]['total2']) ? $pregunta32[0]['total2'] : "",
+            'comentarioGeneral' => isset($pregunta32[0]['comentariosPregunta']) ? $pregunta32[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta33seccion1" => [
-            'computadorasEscritorio' => $pregunta33[0]['cumpuEscritorio'],
-            'computadorasPersonales' => $pregunta33[0]['compuPortatil'],
-            'totalComputadoras' => $pregunta33[0]['totalC'],
-            'impresorasPersonal' => $pregunta33[0]['impresoraPersonal'],
-            'impresoraCompartida' => $pregunta33[0]['impresoraCompartida'],
-            'totalImpresoras' => $pregunta33[0]['totalI'],
-            'multifuncionales' => $pregunta33[0]['multifuncionales'],
-            'servidores' => $pregunta33[0]['servidores'],
-            'tabletas' => $pregunta33[0]['tabletas'],
-            'conexionRemota' => $pregunta33[0]['conexionRemota'],
-            'datosEspecificos' => $pregunta33[0]['comentariosValidacion'],
-            'comentarioGeneral' => $pregunta33[0]['comentariosPregunta']
+            'computadorasEscritorio' => isset($pregunta33[0]['cumpuEscritorio']) ? $pregunta33[0]['cumpuEscritorio'] : "",
+            'computadorasPersonales' => isset($pregunta33[0]['compuPortatil']) ? $pregunta33[0]['compuPortatil'] : "",
+            'totalComputadoras' => isset($pregunta33[0]['totalC']) ? $pregunta33[0]['totalC'] : "",
+            'impresorasPersonal' => isset($pregunta33[0]['impresoraPersonal']) ? $pregunta33[0]['impresoraPersonal'] : "",
+            'impresoraCompartida' => isset($pregunta33[0]['impresoraCompartida']) ? $pregunta33[0]['impresoraCompartida'] : "",
+            'totalImpresoras' => isset($pregunta33[0]['totalI']) ? $pregunta33[0]['totalI'] : "",
+            'multifuncionales' => isset($pregunta33[0]['multifuncionales']) ? $pregunta33[0]['multifuncionales'] : "",
+            'servidores' => isset($pregunta33[0]['servidores']) ? $pregunta33[0]['servidores'] : "",
+            'tabletas' => isset($pregunta33[0]['tabletas']) ? $pregunta33[0]['tabletas'] : "",
+            'conexionRemota' => isset($pregunta33[0]['conexionRemota']) ? $pregunta33[0]['conexionRemota'] : "",
+            'datosEspecificos' => isset($pregunta33[0]['comentariosValidacion']) ? $pregunta33[0]['comentariosValidacion'] : "",
+            'comentarioGeneral' => isset($pregunta33[0]['comentariosPregunta']) ? $pregunta33[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta34seccion1" => [
-            'Respuesta' => $pregunta34[0]['opcion1'],
-            'comentarioGeneral' => $pregunta34[0]['comentariosPregunta']
+            'Respuesta' => isset($pregunta34[0]['opcion1']) ? $pregunta34[0]['opcion1'] : "",
+            'comentarioGeneral' => isset($pregunta34[0]['comentariosPregunta']) ? $pregunta34[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta35seccion1" => [
@@ -2087,10 +2087,10 @@ if ($tipoPeticion == "guardarPregunta") {
         ],
 
         "preguntacomplementoseccion1" => [
-            'TotalPersonal' => $pregunta36[0]['Total'],
-            'totalHombres' => $pregunta36[0]['totalHombres'],
-            'totalMujeres' => $pregunta36[0]['totalMujeres'],
-            'comentarioGeneral' => $pregunta36[0]['comentariosPregunta']
+            'TotalPersonal' => isset($pregunta36[0]['Total']) ? $pregunta36[0]['Total'] : "",
+            'totalHombres' => isset($pregunta36[0]['totalHombres']) ? $pregunta36[0]['totalHombres'] : "",
+            'totalMujeres' => isset($pregunta36[0]['totalMujeres']) ? $pregunta36[0]['totalMujeres'] : "",
+            'comentarioGeneral' => isset($pregunta36[0]['comentariosPregunta']) ? $pregunta36[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta1seccion12" => [
