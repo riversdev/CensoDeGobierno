@@ -154,11 +154,30 @@ validarFormularios = () => {
         })
 }
 
+llenarSelectDeAnios = (select) => {
+    if (select == 'selectAnioReportes') {
+        for (let anio = new Date().getFullYear(); anio >= 2019; anio--) {
+            option = document.createElement('option')
+            option.append(document.createTextNode(anio))
+            option.value = anio
+            document.getElementById(select).append(option)
+        }
+    } else {
+        for (let anio = new Date().getFullYear(); anio >= 2017; anio--) {
+            option = document.createElement('option')
+            option.append(document.createTextNode(anio))
+            option.value = anio
+            document.getElementById(select).append(option)
+        }
+    }
+}
+
 // ELEMENTOS VISIBLES EN LAS TABS
 vizualizarElementosNavegacion = (tabVisible) => {
     arbolElementosOcultos = {
         'usuarios-tab': ['btnAgregarUsuario'],
-        'dependencias-tab': ['btnAgregarDependencia', 'contenedorSelectAnioDependencia']
+        'dependencias-tab': ['btnAgregarDependencia', 'contenedorSelectAnioDependencia'],
+        'reportes-tab': ['contenedorSelectAnioReportes']
     }
 
     for (const lista in arbolElementosOcultos) {

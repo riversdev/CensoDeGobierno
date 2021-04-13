@@ -53,6 +53,9 @@
                             <option value="all" selected>Todos</option>
                         </select>
                     </li>
+                    <li id="contenedorSelectAnioReportes" class="nav-link d-none p-0">
+                        <select class="custom-select custom-select-sm" aria-label="" id="selectAnioReportes"></select>
+                    </li>
                 </ul>
                 <div class="d-none d-lg-block py-3 mx-3" style="border: 1px solid #6C757D;"></div>
                 <a class="nav-link text-white active pl-0 pr-0" href="#" id="btnSalirAdmin">

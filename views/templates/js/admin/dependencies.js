@@ -32,16 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-// LLENAR SELECTS DE AÑOS
-llenarSelectDeAnios = (select) => {
-    for (let anio = new Date().getFullYear(); anio >= 2017; anio--) {
-        option = document.createElement('option')
-        option.append(document.createTextNode(anio))
-        option.value = anio
-        document.getElementById(select).append(option)
-    }
-}
-
 // LISTAR DEPENDENCIAS
 async function listarDependencias(anioDependencia) {
     try {
