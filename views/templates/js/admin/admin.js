@@ -83,52 +83,52 @@ validarFormularios = () => {
                             leerListaDependencias().then(() => {
                                 let c = 0
                                 for (let i = 0; i < vectorListaDependencias.length; i++) {
-                                  if (quitarAcentos(quitarEspacios(vectorListaDependencias[i])) == quitarAcentos(quitarEspacios(document.getElementById('txtDependencia').value.toUpperCase()))) {
-                                    break
-                                  } else {
-                                    c++
-                                  }
+                                    if (quitarAcentos(quitarEspacios(vectorListaDependencias[i])) == quitarAcentos(quitarEspacios(document.getElementById('txtDependencia').value.toUpperCase()))) {
+                                        break
+                                    } else {
+                                        c++
+                                    }
                                 }
                                 if (c == vectorListaDependencias.length) {
-                                  alertify.confirm('Guardando...', 'El nombre de la dependencia es diferente a cualquiera ya registrado, aun así desea guardarlo ?', 
-                                  function() {
-                                    accionesDependencias(recolectarDatosDependenciaGUI(), 'agregar')
-                                    leerListaDependencias();
-                                  }, function() {
-                                    alertify.error('Cancelado')
-                                  }).set('labels', {
-                                    ok: 'OK',
-                                    cancel: 'Cancelar'
-                                  });
+                                    alertify.confirm('Guardando...', 'El nombre de la dependencia es diferente a cualquiera ya registrado, aun así desea guardarlo ?',
+                                        function () {
+                                            accionesDependencias(recolectarDatosDependenciaGUI(), 'agregar')
+                                            leerListaDependencias();
+                                        }, function () {
+                                            alertify.error('Cancelado')
+                                        }).set('labels', {
+                                            ok: 'OK',
+                                            cancel: 'Cancelar'
+                                        });
                                 } else {
                                     accionesDependencias(recolectarDatosDependenciaGUI(), 'agregar')
                                 }
-                              });
+                            });
                         } else if (valor == 'Actualizar') {
                             leerListaDependencias().then(() => {
                                 let c = 0
                                 for (let i = 0; i < vectorListaDependencias.length; i++) {
-                                  if (quitarAcentos(quitarEspacios(vectorListaDependencias[i])) == quitarAcentos(quitarEspacios(document.getElementById('txtDependencia').value.toUpperCase()))) {
-                                    break
-                                  } else {
-                                    c++
-                                  }
+                                    if (quitarAcentos(quitarEspacios(vectorListaDependencias[i])) == quitarAcentos(quitarEspacios(document.getElementById('txtDependencia').value.toUpperCase()))) {
+                                        break
+                                    } else {
+                                        c++
+                                    }
                                 }
                                 if (c == vectorListaDependencias.length) {
-                                  alertify.confirm('Guardando...', 'El nombre de la dependencia es diferente a cualquiera ya registrado, aun así desea guardarlo ?', 
-                                  function() {
-                                    accionesDependencias({ 'datosNuevos': recolectarDatosDependenciaGUI(), 'datosViejos': dependenciasEditar }, 'editar')
-                                    leerListaDependencias();
-                                  }, function() {
-                                    alertify.error('Cancelado')
-                                  }).set('labels', {
-                                    ok: 'OK',
-                                    cancel: 'Cancelar'
-                                  });
+                                    alertify.confirm('Guardando...', 'El nombre de la dependencia es diferente a cualquiera ya registrado, aun así desea guardarlo ?',
+                                        function () {
+                                            accionesDependencias({ 'datosNuevos': recolectarDatosDependenciaGUI(), 'datosViejos': dependenciasEditar }, 'editar')
+                                            leerListaDependencias();
+                                        }, function () {
+                                            alertify.error('Cancelado')
+                                        }).set('labels', {
+                                            ok: 'OK',
+                                            cancel: 'Cancelar'
+                                        });
                                 } else {
                                     accionesDependencias({ 'datosNuevos': recolectarDatosDependenciaGUI(), 'datosViejos': dependenciasEditar }, 'editar')
                                 }
-                              });
+                            });
                         } else {
                             console.warn('Botón inválido')
                         }

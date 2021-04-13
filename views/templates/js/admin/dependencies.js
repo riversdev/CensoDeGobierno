@@ -329,9 +329,9 @@ listenerDeAccionesDependencias = () => {
             let idDependencia = this.id.split('-')[1],
                 anioDependencia = this.id.split('-')[2],
                 nombreDependencia = ''
-                
+
             dependenciasEliminar = null
-            
+
             for (const dependencia in dependencias) {
                 if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
                     nombreDependencia = dependencias[dependencia]['nombreInstitucion']
@@ -382,49 +382,49 @@ listenerDeAccionesDependencias = () => {
 }
 
 
-//LISTAR DEPENDENCIAS PARA DATA LIST
+// LISTAR DEPENDENCIAS PARA DATALIST
 async function leerListaDependencias() {
     try {
-      let res = await axios('controllers/adminController.php', {
-        method: 'POST',
-        data: {
-          tipoPeticion: 'leerListaDependencias',
+        let res = await axios('controllers/adminController.php', {
+            method: 'POST',
+            data: {
+                tipoPeticion: 'leerListaDependencias',
+            }
+        })
+        if (res.data[0] == 'success') {
+            vectorListaDependencias = []
+            datalist = document.getElementById('listaDependencias')
+            datalist.innerHTML = ''
+
+            for (let i = 0; i < res.data[1].length; i++) {
+                option = document.createElement('option')
+                option.value = res.data[1][i]['dependencia']
+                option.appendChild(document.createTextNode(res.data[1][i]['dependencia']))
+                datalist.append(option)
+                vectorListaDependencias.push(res.data[1][i]['dependencia'])
+            }
+        } else if (res.data[0] == 'error') {
+            console.error(res.data[1]);
+        } else {
+            console.warn('Tipo de respuesta no definido. ' + res.data)
         }
-      })
-      if (res.data[0] == 'success') {
-        vectorListaDependencias = []
-        datalist = document.getElementById('listaDependencias')
-        datalist.innerHTML = ''
-        for (let i = 0; i < res.data[1].length; i++) {
-          option = document.createElement('option')
-          option.value = res.data[1][i]['dependencia']
-          option.appendChild(document.createTextNode(res.data[1][i]['dependencia']))
-          datalist.append(option)
-          vectorListaDependencias.push(res.data[1][i]['dependencia'])
-        }
-        
-      } else if (res.data[0] == 'error') {
-        console.error(res.data[1]);
-      } else {
-        console.warn('Tipo de respuesta no definido. ' + res.data)
-      }
     } catch (error) {
-      console.error(error)
+        console.error(error)
     }
 }
 
 quitarAcentos = (cadena) => {
     const acentos = {
-      'á': 'a',
-      'é': 'e',
-      'í': 'i',
-      'ó': 'o',
-      'ú': 'u',
-      'Á': 'A',
-      'É': 'E',
-      'Í': 'I',
-      'Ó': 'O',
-      'Ú': 'U'
+        'á': 'a',
+        'é': 'e',
+        'í': 'i',
+        'ó': 'o',
+        'ú': 'u',
+        'Á': 'A',
+        'É': 'E',
+        'Í': 'I',
+        'Ó': 'O',
+        'Ú': 'U'
     };
     return cadena.split('').map(letra => acentos[letra] || letra).join('').toString();
 }
@@ -434,9 +434,9 @@ quitarEspacios = (i) => {
     let iiSinEspacios = '';
 
     for (let i = 0; i < ii.length; i++) {
-      if (ii[i] != ' ') {
-        iiSinEspacios += ii[i];
-      }
+        if (ii[i] != ' ') {
+            iiSinEspacios += ii[i];
+        }
     }
 
     return iiSinEspacios;
