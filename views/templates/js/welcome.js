@@ -4,22 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     f = new Date()
     validarFormularios()
 
-        // FUNCION DE OJO PARA PASSWORD
-    /*document.getElementById('ojoContrasenia').addEventListener('click', function () {
-        var saber = document.getElementById('ojitoContrasenia').classList
-        console.log(saber)
-        console.log('hola me pisas')
-        if (saber[1] == 'fa-eye') {
-            document.getElementById('ojito').classList.remove('fa-eye')
-            document.getElementById('ojito').classList.add('fa-eye-slash');
-            document.getElementById('txtContraseniaUsuario').type = 'text'
-        } else if (saber[1] == 'fa-eye-slash') {
-            document.getElementById('ojito').classList.remove('fa-eye-slash')
-            document.getElementById('ojito').classList.add('fa-eye');
-            document.getElementById('txtContraseniaUsuario').type = 'password'
+    // FUNCION DE OJO PARA PASSWORD
+    document.getElementById('ojoContrasenia').addEventListener('click', () => {
+        if (document.getElementById('ojitoContrasenia').classList.contains('fa-eye-slash')) {
+            document.getElementById('ojitoContrasenia').classList.remove('fa-eye-slash')
+            document.getElementById('ojitoContrasenia').classList.add('fa-eye');
+            document.getElementById('txtContrasenia').type = 'password'
+        } else if (document.getElementById('ojitoContrasenia').classList.contains('fa-eye')) {
+            document.getElementById('ojitoContrasenia').classList.remove('fa-eye')
+            document.getElementById('ojitoContrasenia').classList.add('fa-eye-slash');
+            document.getElementById('txtContrasenia').type = 'text'
         }
-    })*/
-
+    })
 
     obtenerDependencias('all').then((res) => {
         if (res[0] != undefined && res[0] == 'success') {
@@ -187,3 +183,5 @@ async function validarAcceso(tipoDeUsuario, usuario, contrasenia) {
         console.error(error);
     }
 };
+
+
