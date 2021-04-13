@@ -229,11 +229,28 @@ if (isset($_SESSION['sesionActiva']) && $_SESSION['sesionActiva'] == "1") {
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-12 mb-3">
+                                <div class="col-11 mb-3">
                                     <label for="txtContrasenia" class="label-material">Contraseña</label>
                                     <input id="txtContrasenia" type="password" required class="form-control" autocomplete="off">
                                     <div class="valid-feedback">Correcto</div>
                                     <div class="invalid-feedback">Ingrese una contraseña</div>
+                                </div>
+                                <div class="col-1 mx-0 mt-4 pt-3 px-0 text-center" id="contrasenia2">
+                                    <a id="ojoContrasenia"><i class="fas fa-eye fa-lg" id="ojitoContrasenia"></i></a>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-6 mb-3">
+                                    <label for="txtCorreo" class="label-material">Correo electrónico</label>
+                                    <input id="txtCorreo" type="email" required class="form-control" autocomplete="off">
+                                    <div class="valid-feedback">Correcto</div>
+                                    <div class="invalid-feedback">Ingrese un correo válido</div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label for="txtNumeroTelefonico" class="label-material">Número de teléfono</label>
+                                    <input id="txtNumeroTelefonico" type="number" required class="form-control" autocomplete="off">
+                                    <div class="valid-feedback">Correcto</div>
+                                    <div class="invalid-feedback">Ingrese un numero telefónico válido</div>
                                 </div>
                             </div>
                             <div class="form-group text-center mb-0">
