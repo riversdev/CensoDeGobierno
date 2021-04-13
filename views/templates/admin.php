@@ -92,46 +92,52 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                             </div>
                             <select class="custom-select" id="preguntaGrafica">
                                 <option value="3" selected>
-                                    Cantidad de personal, representación por sexo y tipo de institución.
+                                    Personal, representación por sexo y tipo de institución.
                                 </option>
                                 <option value="4">
-                                    Cantidad de personal, representación por sexo y régimen de contratación.
+                                    Personal, representación por sexo y régimen de contratación.
                                 </option>
                                 <option value="5">
-                                    Cantidad de personal, representación por sexo e institución de seguridad social.
+                                    Personal, representación por sexo e institución de seguridad social.
                                 </option>
                                 <option value="6">
-                                    Cantidad de personal, representación por sexo y rango de edad.
+                                    Personal, representación por sexo y rango de edad.
                                 </option>
                                 <option value="7">
-                                    Cantidad de personal, representación por sexo y rango de ingresos mensual.
+                                    Personal, representación por sexo y rango de ingresos mensual.
                                 </option>
                                 <option value="9">
-                                    Cantidad de personal, representación por sexo e institución.
+                                    Personal, representación por sexo e institución.
                                 </option>
                                 <option value="15">
-                                    Cantidad de bienes inmuebles, representación por tipo de institución y tipo de posesión.
+                                    Bienes inmuebles, representación por tipo de institución y tipo de posesión.
                                 </option>
                                 <option value="16">
-                                    Cantidad de bienes inmuebles, representación por institución y tipo de posesión.
+                                    Bienes inmuebles, representación por institución y tipo de posesión.
                                 </option>
                                 <option value="17">
-                                    Cantidad de vehículos en funcionamiento, representación por tipo de institución y tipo de vehículo.
+                                    Vehículos, representación por tipo de institución y tipo de vehículo.
                                 </option>
                                 <option value="18">
-                                    Cantidad de vehículos en funcionamiento, representación por institución y tipo de vehículo.
+                                    Vehículos, representación por institución y tipo de vehículo.
                                 </option>
                                 <option value="19">
-                                    Cantidad de líneas y aparatos telefónicos en funcionamiento, representación por tipo de institución, tipo de línea y aparato telefónico.
+                                    Líneas y aparatos telefónicos, representación por tipo de institución, tipo de línea y aparato telefónico.
                                 </option>
                                 <option value="20">
-                                    Cantidad de líneas y aparatos telefónicos en funcionamiento, representación por institución, tipo de línea y aparato telefónico.
+                                    Líneas y aparatos telefónicos, representación por institución, tipo de línea y aparato telefónico.
                                 </option>
                                 <option value="21">
-                                    Cantidad de equipo informático en funcionamiento, representación por tipo de institución y tipo de equipo informático.
+                                    Equipo informático, representación por tipo de institución y tipo de equipo informático.
                                 </option>
                                 <option value="22">
-                                    Cantidad de equipo informático en funcionamiento, representación por institución y tipo de equipo informático.
+                                    Equipo informático, representación por institución y tipo de equipo informático.
+                                </option>
+                                <option value="coronavirusPorTipoInstitucion">
+                                    Personal fallecido por COVID-19, representación por sexo y tipo de institución.
+                                </option>
+                                <option value="coronavirusPorDependencia">
+                                    Personal fallecido por COVID-19, representación por sexo e institución.
                                 </option>
                             </select>
                         </div>
