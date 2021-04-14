@@ -7,12 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // FUNCION DE OJO PARA PASSWORD
     document.getElementById('ojoContrasenia').addEventListener('click', () => {
         if (document.getElementById('ojitoContrasenia').classList.contains('fa-eye-slash')) {
-            document.getElementById('ojitoContrasenia').classList.remove('fa-eye-slash')
-            document.getElementById('ojitoContrasenia').classList.add('fa-eye');
+            document.getElementById('ojitoContrasenia').classList.replace('fa-eye-slash', 'fa-eye');
             document.getElementById('txtContrasenia').type = 'password'
         } else if (document.getElementById('ojitoContrasenia').classList.contains('fa-eye')) {
-            document.getElementById('ojitoContrasenia').classList.remove('fa-eye')
-            document.getElementById('ojitoContrasenia').classList.add('fa-eye-slash');
+            document.getElementById('ojitoContrasenia').classList.add('fa-eye', 'fa-eye-slash');
             document.getElementById('txtContrasenia').type = 'text'
         }
     })
