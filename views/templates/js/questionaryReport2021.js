@@ -1,5 +1,4 @@
-let reporte
-let url, url_define, idInstitucion, anioInstitucion, clasificacionInstitucion, nombreInstitucion
+let reporte, url, url_define, idInstitucion, anioInstitucion, clasificacionInstitucion, nombreInstitucion
 
 document.addEventListener('DOMContentLoaded', () => {
     recuperarURL()
@@ -1038,8 +1037,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-async function recuperarNombreDependencia(){
-    try{
+async function recuperarNombreDependencia() {
+    try {
         let res = await axios('controllers/adminController.php', {
             method: 'POST',
             data: {
@@ -1049,14 +1048,14 @@ async function recuperarNombreDependencia(){
             }
         })
         nombreInstitucion = res.data
-        
-    }catch(error){
+
+    } catch (error) {
         console.log(error)
     }
 }
 
 //RECUPERAR VARIABLES
-function recuperarURL(){
+function recuperarURL() {
     url = window.location.href
     url_define = url.split('?')[1]
     idInstitucion = atob(url_define.split('&')[0])
