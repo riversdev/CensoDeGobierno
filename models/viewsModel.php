@@ -3,7 +3,8 @@ class viewsModel
 {
     static protected function obtenerVistasModelo($vistas)
     {
-        $listaBlanca = ["admin", "questionary"];
+        $listaBlanca = ["admin", "questionary", "questionaryReport"];
+        
         if (in_array($vistas, $listaBlanca)) {
             if (is_file("./views/templates/" . $vistas . ".php")) {
                 $contenido = "./views/templates/" . $vistas . ".php";
