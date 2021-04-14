@@ -647,4 +647,22 @@ class AdminModel
             return ["warn", "Error al conectar a la base de datos! " . $e];
         }
     }
+
+    public static function nombreInstitucion($id, $anio)
+    {
+        try {
+            $obtenerNombre =
+                "SELECT Institucion FROM altas_instituciones WHERE Clave = $id AND anio = $anio";
+
+            $stmt = Connection::connect()->prepare($obtenerNombre);
+            if($stmt->execute()){
+                $datos = $stmt->fetchAll();
+                return $datos[0][0];
+            }else{
+                return "algo salio mal xd";
+            }
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
 }

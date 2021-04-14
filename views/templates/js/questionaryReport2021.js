@@ -1,8 +1,10 @@
 let reporte
+let url, url_define, idInstitucion, anioInstitucion, clasificacionInstitucion, nombreInstitucion
 
 document.addEventListener('DOMContentLoaded', () => {
+    recuperarURL()
+    recuperarNombreDependencia()
     window.addEventListener('afterprint', function () { this.close() }, false)
-
     verificarCuestionarioFinalizado().then((res) => {
         if (res != undefined && res == true) {
             obtenerReporte().then(() => {
@@ -1036,9 +1038,35 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
+async function recuperarNombreDependencia(){
+    try{
+        let res = await axios('controllers/adminController.php', {
+            method: 'POST',
+            data: {
+                tipoPeticion: 'nombreInstitucion',
+                idInstitucion,
+                anioInstitucion
+            }
+        })
+        nombreInstitucion = res.data
+        
+    }catch(error){
+        console.log(error)
+    }
+}
+
+//RECUPERAR VARIABLES
+function recuperarURL(){
+    url = window.location.href
+    url_define = url.split('?')[1]
+    idInstitucion = atob(url_define.split('&')[0])
+    anioInstitucion = atob(url_define.split('&')[1])
+    clasificacionInstitucion = atob(url_define.split('&')[2])
+}
+
 async function verificarCuestionarioFinalizado() {
     try {
-        let res = await axios('../controllers/questionaryController.php', {
+        let res = await axios('controllers/questionaryController.php', {
             method: 'POST',
             data: {
                 tipoPeticion: 'verificarCuestionarioFinalizado',
@@ -1063,7 +1091,7 @@ async function verificarCuestionarioFinalizado() {
 
 async function obtenerReporte() {
     try {
-        let res = await axios('../controllers/questionaryController.php', {
+        let res = await axios('controllers/questionaryController.php', {
             method: 'POST',
             data: {
                 tipoPeticion: 'obtenerReporte',
@@ -1074,6 +1102,7 @@ async function obtenerReporte() {
             }
         })
         reporte = res.data
+        console.log(reporte)
     } catch (error) {
         console.error(error);
     }

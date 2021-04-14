@@ -93,7 +93,7 @@ generarTablaReportes = () => {
 
         a = document.createElement('a')
         a.className = 'btnReporteIndividual'
-        a.id = 'btnReporteIndividual-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
+        a.id = 'btnReporteIndividual-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion'] +'-'+dependencia['clasificacion'] + '-'+dependencia['Institucion']
         a.title = 'Generar reporte'
         i = document.createElement('i')
         i.className = 'fas fa-lg fa-address-book text-info mx-0 w-25'
@@ -139,9 +139,11 @@ listenersDeAccionesResultados = () => {
     for (let i = 0; i < elementosReporteIndivudual.length; i++) {
         document.getElementById(elementosReporteIndivudual[i].id).addEventListener('click', function () {
             let idDependencia = this.id.split('-')[1],
-                anioDependencia = this.id.split('-')[2]
+                anioDependencia = this.id.split('-')[2],
+                clasificacionDependencia = this.id.split('-')[3],
+                nombreDependencia = this.id.split('-')[4]
 
-            alertify.success('Reporte de ' + idDependencia + '(' + anioDependencia + ')')
+                window.open('questionaryReport2021?'+btoa(idDependencia)+'&'+btoa(anioDependencia)+'&'+btoa(clasificacionDependencia), '_blank')
         })
     }
 }

@@ -1,20 +1,23 @@
 <?php
 session_start();
 
-if ($_SESSION['valida'] != "1") {
+if ($_SESSION['sesionActiva'] != "1") {
     header('Location: logout.php');
     exit;
 } else {
-    $id = $_SESSION['id'];
-    echo '
+    $tipoSesion = $_SESSION['tipoUsuario'];
+    echo $tipoSesion == "dependencia" ? 'hey' : "hasfas";
+    if ($_SESSION['tipoUsuario'] == "dependencia") {
+        $id = $_SESSION['idDependencia'];
+        echo '
         <script>
-            const
-                idInstitucion = ' . $_SESSION['id'] . ',
-                nombreInstitucion = "' . $_SESSION['nombre'] . '";
-                clasificacionInstitucion = "' . $_SESSION['clasificacion'] . '";
-                anioInstitucion = "' . $_SESSION['anio'] . '";
+                idInstitucion = ' . $_SESSION['idDependencia'] . ',
+                nombreInstitucion = "' . $_SESSION['nombreDependencia'] . '";
+                clasificacionInstitucion = "' . $_SESSION['clasificacionDependencia'] . '";
+                anioInstitucion = "' . $_SESSION['anioDependencia'] . '";
         </script>
     ';
+    }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -26,14 +29,14 @@ if ($_SESSION['valida'] != "1") {
         <link rel="shortcut icon" href="../static/img/h.png">
         <title>Oficialía Mayor</title>
         <!-- Axios -->
-        <script src="../static/axios/axios.js"></script>
+        <script src="views/static/axios/axios.js"></script>
         <!-- bootstrap-5.0.0-beta2-dist -->
-        <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
-        <script src="../static/bootstrap/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="views/static/bootstrap/css/bootstrap.css">
+        <script src="views/static/bootstrap/js/bootstrap.js"></script>
         <!-- Bootswatch LUX -->
-        <link rel="stylesheet" href="../static/bootswatch/bootswatch-lux.css">
+        <link rel="stylesheet" href="views/static/bootswatch/bootswatch-lux.css">
         <!-- Main questionary report JS -->
-        <script src="js/questionaryReport2021.js"></script>
+        <script src="views\templates\js\questionaryReport2021.js"></script>
 
         <style>
             ._card-border {
