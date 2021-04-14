@@ -5,6 +5,7 @@ let dependencias = null,
     dependenciasEditar = null,
     dependenciasEliminar = null,
     vectorListaDependencias = []
+
 document.addEventListener('DOMContentLoaded', () => {
     // LLENAR SELECTS DE AÑOS
     llenarSelectDeAnios('selectAnioDependencia')
@@ -42,7 +43,18 @@ async function listarDependencias(anioDependencia) {
                 anioDependencia: anioDependencia
             }
         })
-        dependencias = res.data
+
+        let resultado = res.data
+
+        if (resultado[0] == 'success') {
+            dependencias = resultado[1]
+        } else if (resultado[0] == 'error') {
+            alertify.error(resultado[1])
+        } else if (resultado[0] == 'warn') {
+            console.warn(resultado[1])
+        } else {
+            console.error('Tipo de respuesta no definido. ' + resultado)
+        }
     } catch (error) {
         console.log(error)
     }

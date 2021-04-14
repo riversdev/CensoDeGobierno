@@ -1,19 +1,23 @@
-f = null
+const modalRegistroDependencia = new bootstrap.Modal(document.getElementById('modalAddUser'))
+let f = null
 
 document.addEventListener('DOMContentLoaded', () => {
     f = new Date()
     validarFormularios()
 
-    // FUNCION DE OJO PARA PASSWORD
-    document.getElementById('ojoContrasenia').addEventListener('click', () => {
-        if (document.getElementById('ojitoContrasenia').classList.contains('fa-eye-slash')) {
-            document.getElementById('ojitoContrasenia').classList.replace('fa-eye-slash', 'fa-eye');
-            document.getElementById('txtContrasenia').type = 'password'
-        } else if (document.getElementById('ojitoContrasenia').classList.contains('fa-eye')) {
-            document.getElementById('ojitoContrasenia').classList.replace('fa-eye', 'fa-eye-slash');
-            document.getElementById('txtContrasenia').type = 'text'
-        }
-    })
+    // ESCUCHADORES DE CLICKS EN OJOS PARA VER CONTRASEÑA
+    botonesOjoContrasenia = document.getElementsByClassName('ojoContrasenia')
+    for (let i = 0; i < botonesOjoContrasenia.length; i++) {
+        botonesOjoContrasenia[i].addEventListener('click', function () {
+            if (this.children[0].classList.contains('fa-eye')) {
+                this.children[0].classList.replace('fa-eye', 'fa-eye-slash');
+                this.parentElement.parentElement.children[0].children[1].type = 'text'
+            } else if (this.children[0].classList.contains('fa-eye-slash')) {
+                this.children[0].classList.replace('fa-eye-slash', 'fa-eye');
+                this.parentElement.parentElement.children[0].children[1].type = 'password'
+            }
+        })
+    }
 
     obtenerDependencias('all').then((res) => {
         if (res[0] != undefined && res[0] == 'success') {
@@ -30,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn('Tipo de respuesta no definido. ' + res)
         }
     })
-
 
     botonesInicio = document.getElementsByClassName('btnInicio')
     for (let i = 0; i < botonesInicio.length; i++) {
@@ -56,8 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     })
-
-
 })
 
 validarFormularios = () => {
@@ -76,6 +77,7 @@ validarFormularios = () => {
                     if (form.id == 'formRegistrarDependencia') {
                         registrarDependencia().then((res) => {
                             if (res[0] != undefined && res[0] == 'success') {
+                                modalRegistroDependencia.hide()
                                 alertify.success(res[1])
                             } else if (res[0] != undefined && res[0] == 'error') {
                                 alertify.error(res[1])
@@ -152,9 +154,11 @@ async function registrarDependencia() {
             data: {
                 tipoPeticion: 'registrarDependencia',
                 clasificacion: document.getElementById('txtClasificacion').value,
-                claveDependencia: document.getElementById('txtInstitucion').value,
-                nombreDependencia: document.getElementById('txtInstitucion').options[document.getElementById('txtInstitucion').selectedIndex].text,
+                clave: document.getElementById('txtInstitucion').value,
+                dependencia: document.getElementById('txtInstitucion').options[document.getElementById('txtInstitucion').selectedIndex].text,
+                correo: document.getElementById('txtCorreo').value,
                 password: document.getElementById('txtContrasenia').value,
+                telefono: document.getElementById('txtNumeroTelefonico').value,
                 anio: f.getFullYear()
             }
         })
@@ -181,5 +185,3 @@ async function validarAcceso(tipoDeUsuario, usuario, contrasenia) {
         console.error(error);
     }
 };
-
-

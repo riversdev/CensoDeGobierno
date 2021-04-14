@@ -144,9 +144,7 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $listarUsuarios = AdminModel::listarUsuarios();
     echo json_encode($listarUsuarios);
 } else if ($tipoPeticion == "listarDependencias") {
-    $anio = $data['anioDependencia'];
-    $listarDependencias = AdminModel::listarDependencias($anio);
-    echo json_encode($listarDependencias);
+    echo json_encode(AdminModel::listarDependencias($data['anioDependencia']));
 } else if ($tipoPeticion == "listarResultados") {
     $anio = $data['anioDependencia'];
     $listarResultados = AdminModel::listarResultados($anio);
@@ -157,12 +155,7 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $obtenerDependencias = AdminModel::obtenerDependencias($clasificacion, $anio);
     echo json_encode($obtenerDependencias);
 } else if ($tipoPeticion == "registrarDependencia") {
-    $institucion = $data['claveDependencia'];
-    $clasificacion = $data['clasificacion'];
-    $password = $data['password'];
-    $anio = $data['anio'];
-    $respuesta = AdminModel::registrarDependencia($clasificacion, $institucion, $password, $anio);
-    echo json_encode($respuesta);
+    echo json_encode(AdminModel::registrarDependencia($data['clasificacion'], $data['clave'], $data['dependencia'], $data['correo'], $data['password'], $data['telefono'], $data['anio']));
 } else if ($tipoPeticion == "validarAcceso") {
     $tipoDeUsuario = $data['tipoDeUsuario'];
     $usuario = $data['usuario'];

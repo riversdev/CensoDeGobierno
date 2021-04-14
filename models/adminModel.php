@@ -125,64 +125,34 @@ class AdminModel
         }
     }
 
-    public static function registrarDependencia($clasificacion, $institucion, $password, $anio)
+    public static function registrarDependencia($clasificacion, $clave, $dependencia, $correo, $password, $telefono, $anio)
     {
         try {
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $contador = 0;
-            $preguntarSiExiste =
-                "SELECT *FROM tbl_instituciones 
-                WHERE id = '" . $institucion . "' AND anio = '" . $anio . "'";
-            $stmt = Connection::connect()->prepare($preguntarSiExiste);
+            $SQL = "SELECT * FROM tbl_instituciones WHERE id=$clave AND anio=$anio";
+            $stmt = Connection::connect()->prepare($SQL);
+
             if ($stmt->execute()) {
-                $contador = $stmt->fetchAll();
-                if (count($contador) != 0) {
-                    return ["error", "Imposible registrar la institucion nuevamente!"];
+                if (count($stmt->fetchAll()) != 0) {
+                    return ["error", "La institución ya se ha registrado !"];
                 } else {
-                    //OBTENER NOMBRE DEPENDENCIA
-                    $obtenerNombreDependencia =
-                        "SELECT 
-                            t.Institucion AS nombreInstitucion
-                        FROM altas_instituciones AS t                         
-                        WHERE t.Clave = '" . $institucion . "' AND t.anio = '" . $anio . "'";
+                    $stmt = null;
+                    $hash = password_hash($password, PASSWORD_DEFAULT);
+                    $SQL =
+                        "INSERT INTO tbl_instituciones (id, nombre, password, clasificacionAd, correo, telefono, anio) VALUES
+                            ($clave, '$dependencia', '$hash', '$clasificacion', '$correo', '$telefono', $anio)";
 
-                    $ejecutar = Connection::connect()->prepare($obtenerNombreDependencia);
-                    $ejecutar->execute();
-                    $row = $ejecutar->fetchAll();
-                    $nombreDependencia = $row[0][0];
-
-                    //INSERTAR DATOS DE LA DEPENDENCIA
-
-                    $insertarDatosDependencia =
-                        "INSERT INTO tbl_instituciones
-                        (
-                            id,
-                            nombre,
-                            `password`,
-                            clasificacionAd,
-                            anio
-                        )
-                        VALUES
-                        (
-                            '$institucion',
-                            '$nombreDependencia',
-                            '$password',
-                            '$clasificacion',
-                            '$anio'
-                        )";
-
-                    $ejecutarInsert = Connection::connect()->prepare($insertarDatosDependencia);
-                    if ($ejecutarInsert->execute()) {
-                        return ["success", "Registro exitoso!"];
+                    $stmt = Connection::connect()->prepare($SQL);
+                    if ($stmt->execute()) {
+                        return ["success", "Registro exitoso !"];
                     } else {
-                        return ["error",  "Error intentelo de nuevo o mas tarde!"];
+                        return ["error",  "Imposible realizar registro !"];
                     }
                 }
             } else {
-                return ["error", "Error al ejecutar la consulta sql!"];
+                return ["error", "Imposible realizar registro !"];
             }
         } catch (Exception $e) {
-            return ["error", "Imposible conectar a la base de datos! " . $e];
+            return ["warn", "Imposible conectar a la base de datos! " . $e];
         }
     }
 
@@ -273,37 +243,40 @@ class AdminModel
             if ($anio == "all") {
                 $listarDependencias =
                     "SELECT
-                    d.Clave AS idInstitucion,
-                    d.Institucion AS nombreInstitucion,
-                    d.Clasificacion_Adm AS Clasificacion,
-                    d.anio AS anioInstitucion,
-                    d.finalizado AS Finalizado
-                FROM altas_instituciones as d";
+                        d.Clave AS idInstitucion,
+                        d.Institucion AS nombreInstitucion,
+                        d.Clasificacion_Adm AS Clasificacion,
+                        d.anio AS anioInstitucion,
+                        d.finalizado AS Finalizado,
+                        e.correo AS correo,
+                        e.telefono AS telefono
+                    FROM altas_instituciones as d
+                    INNER JOIN tbl_instituciones as e ON e.id=d.Clave
+                    GROUP BY d.Clave";
             } else {
                 $listarDependencias =
                     "SELECT
-                    d.Clave AS idInstitucion,
-                    d.Institucion AS nombreInstitucion,
-                    d.Clasificacion_Adm AS Clasificacion,
-                    d.anio AS anioInstitucion,
-                    d.finalizado AS Finalizado
-                FROM altas_instituciones as d 
-                WHERE
-                d.anio = '" . $anio . "'";
+                        d.Clave AS idInstitucion,
+                        d.Institucion AS nombreInstitucion,
+                        d.Clasificacion_Adm AS Clasificacion,
+                        d.anio AS anioInstitucion,
+                        d.finalizado AS Finalizado,
+                        e.correo AS correo,
+                        e.telefono AS telefono
+                    FROM altas_instituciones as d
+                    INNER JOIN tbl_instituciones as e ON e.id=d.Clave 
+                    WHERE d.anio=$anio AND e.anio=$anio
+                    GROUP BY d.Clave";
             }
             $stmt = Connection::connect()->prepare($listarDependencias);
+
             if ($stmt->execute()) {
-                $contador = $stmt->fetchAll();
-                if (count($contador) == 0) {
-                    return ["error", "No hay dependencias registradas!"];
-                } else {
-                    return $contador;
-                }
+                return ["success", $stmt->fetchAll()];
             } else {
-                return ["error", "Imposible ejecutar consulta!"];
+                return ["error", "Imposible obtener dependencias !"];
             }
         } catch (Exception $e) {
-            return ["error", "Error al conectar a la base de datos! " . $e];
+            return ["warn", "Error al conectar a la base de datos! " . $e];
         }
     }
 

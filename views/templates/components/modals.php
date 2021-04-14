@@ -91,7 +91,7 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="txtIdDependencia">Clave</label>
-                                <input type="number" class="form-control" id="txtIdDependencia" autocomplete="off" required min="0"/>
+                                <input type="number" class="form-control" id="txtIdDependencia" autocomplete="off" required min="0" />
                                 <div class="valid-feedback">Correcto!</div>
                                 <div class="invalid-feedback">Ingrese un numero válido!</div>
                             </div>
