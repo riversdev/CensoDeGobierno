@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('ojitoContrasenia').classList.replace('fa-eye-slash', 'fa-eye');
             document.getElementById('txtContrasenia').type = 'password'
         } else if (document.getElementById('ojitoContrasenia').classList.contains('fa-eye')) {
-            document.getElementById('ojitoContrasenia').classList.add('fa-eye', 'fa-eye-slash');
+            document.getElementById('ojitoContrasenia').classList.replace('fa-eye', 'fa-eye-slash');
             document.getElementById('txtContrasenia').type = 'text'
         }
     })
