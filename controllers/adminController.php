@@ -357,7 +357,7 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     echo json_encode($respuesta);
 } else if ($tipoPeticion == "listarReportes") {
     echo json_encode(AdminModel::listarReportes($data['anioDependencia']));
-} else if($tipoPeticion == 'nombreInstitucion'){
+} else if ($tipoPeticion == 'nombreInstitucion') {
     $resultado = AdminModel::nombreInstitucion($data['idInstitucion'], $data['anioInstitucion']);
     echo $resultado;
 }

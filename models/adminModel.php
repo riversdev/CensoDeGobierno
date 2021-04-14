@@ -138,12 +138,24 @@ class AdminModel
                     $stmt = null;
                     $hash = password_hash($password, PASSWORD_DEFAULT);
                     $SQL =
-                        "INSERT INTO tbl_instituciones (id, nombre, password, clasificacionAd, correo, telefono, anio) VALUES
-                            ($clave, '$dependencia', '$hash', '$clasificacion', '$correo', '$telefono', $anio)";
-
+                        "INSERT INTO tbl_instituciones (id, nombre, password, clasificacionAd, anio) VALUES
+                            ($clave, '$dependencia', '$hash', '$clasificacion', $anio)";
                     $stmt = Connection::connect()->prepare($SQL);
+
                     if ($stmt->execute()) {
-                        return ["success", "Registro exitoso !"];
+                        $stmt = null;
+                        $SQL =
+                            "UPDATE altas_instituciones SET
+                                correo='$correo',
+                                telefono='$telefono'
+                            WHERE Clave=$clave AND anio=$anio";
+                        $stmt = Connection::connect()->prepare($SQL);
+
+                        if ($stmt->execute()) {
+                            return ["success", "Registro exitoso !"];
+                        } else {
+                            return ["error",  "Imposible realizar registro !"];
+                        }
                     } else {
                         return ["error",  "Imposible realizar registro !"];
                     }
@@ -655,10 +667,10 @@ class AdminModel
                 "SELECT Institucion FROM altas_instituciones WHERE Clave = $id AND anio = $anio";
 
             $stmt = Connection::connect()->prepare($obtenerNombre);
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 $datos = $stmt->fetchAll();
                 return $datos[0][0];
-            }else{
+            } else {
                 return "algo salio mal xd";
             }
         } catch (\Exception $e) {
