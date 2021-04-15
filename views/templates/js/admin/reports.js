@@ -93,7 +93,6 @@ generarTablaReportes = () => {
         td = document.createElement('td')
         td.className = 'text-center align-middle'
         td.style.width = '15%'
-
         a = document.createElement('a')
         a.className = 'btnReporteIndividual'
         a.id = 'btnReporteIndividual-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion'] + '-' + dependencia['clasificacion'] + '-' + dependencia['Institucion']
@@ -107,8 +106,15 @@ generarTablaReportes = () => {
         a.className = 'btnTituloReporte'
         a.id = 'btnTituloReporte-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Título del titular'
+        if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
+            a.href = 'views/static/archivosTitulares2019y2020/' + dependencia['tituloArchivo']
+            a.target = '_blank'
+        } else {
+            a.href = dependencia['tituloBinario']
+            a.download = 'titulo-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
+        }
         i = document.createElement('i')
-        i.className = 'fas fa-lg fa-file-image text-warning mx-0 w-25'
+        i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
         a.append(i)
         td.append(a)
 
@@ -116,8 +122,15 @@ generarTablaReportes = () => {
         a.className = 'btnCedulaReporte'
         a.id = 'btnCedulaReporte-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Cédula del titular'
+        if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
+            a.href = 'views/static/archivosTitulares2019y2020/' + dependencia['cedulaArchivo']
+            a.target = '_blank'
+        } else {
+            a.href = dependencia['cedulaBinario']
+            a.download = 'cedula-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
+        }
         i = document.createElement('i')
-        i.className = 'fas fa-lg fa-file-pdf text-warning mx-0 w-25'
+        i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
         a.append(i)
         td.append(a)
 

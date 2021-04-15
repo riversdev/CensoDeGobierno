@@ -592,9 +592,14 @@ class AdminModel
                     a.Clave AS idInstitucion,
                     a.Institucion AS nombreInstitucion,
                     a.Clasificacion_Adm AS clasificacion,
+                    b.tituloo AS tituloArchivo,
+                    b.cedula AS cedulaArchivo,
+                    b.titulo2 AS tituloBinario,
+                    b.cedula2 AS cedulaBinario,
                     a.anio AS anioInstitucion
                 FROM altas_instituciones as a
-                WHERE a.anio=$anio AND a.finalizado=1";
+                INNER JOIN tbl_pregunta2 AS b ON b.id_intu=a.Clave
+                WHERE a.anio=$anio AND b.anio=$anio AND a.finalizado=1";
             $stmt = Connection::connect()->prepare($SQL);
 
             if ($stmt->execute()) {
