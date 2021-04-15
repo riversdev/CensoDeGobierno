@@ -143,7 +143,7 @@ listenersDeAccionesResultados = () => {
                 clasificacionDependencia = this.id.split('-')[3],
                 nombreDependencia = this.id.split('-')[4]
 
-            window.open('questionaryReport2021?' + btoa(idDependencia) + '&' + btoa(anioDependencia) + '&' + btoa(clasificacionDependencia), '_blank')
+            window.open('questionaryReport?' + btoa(idDependencia) + '&' + btoa(anioDependencia) + '&' + btoa(clasificacionDependencia), '_blank')
         })
     }
 }

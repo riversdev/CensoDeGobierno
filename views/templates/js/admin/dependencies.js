@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // CONSTRUCCION DE LA TABLA DE DEPENDENCIAS
     listarDependencias('all').then(() => { generarTablaDependencias() })
 
-    //DATA LIST
+    // DATA LIST
     leerListaDependencias()
 
     // ESCUCHADOR SELECT DE AÑO DE LA NAVBAR

@@ -36,7 +36,7 @@ if ($_SESSION['sesionActiva'] != "1") {
         <!-- Bootswatch LUX -->
         <link rel="stylesheet" href="views/static/bootswatch/bootswatch-lux.css">
         <!-- Main questionary report JS -->
-        <script src="views\templates\js\questionaryReport2021.js"></script>
+        <script src="views\templates\js\questionaryReport.js"></script>
 
         <style>
             ._card-border {

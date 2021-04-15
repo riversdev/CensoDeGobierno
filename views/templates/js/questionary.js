@@ -3314,7 +3314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ).set('labels', { ok: 'SI', cancel: 'Cancelar' })
     })
     document.getElementById('contenedorBtnGenerarReporte').addEventListener('click', () => {
-        window.open('questionaryReport2021?' + btoa(idInstitucion) + '&' + btoa(anioInstitucion) + '&' + btoa(clasificacionInstitucion), '_blank')
+        window.open('questionaryReport?' + btoa(idInstitucion) + '&' + btoa(anioInstitucion) + '&' + btoa(clasificacionInstitucion), '_blank')
     })
 
     // CERRAR SESION
