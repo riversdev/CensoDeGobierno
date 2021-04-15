@@ -59,6 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     })
+
+    document.getElementById('modalAddUser').addEventListener('show.bs.modal', () => {
+        document.getElementById('formRegistrarDependencia').reset()
+        document.getElementById('formRegistrarDependencia').classList.remove('was-validated')
+    })
 })
 
 validarFormularios = () => {
