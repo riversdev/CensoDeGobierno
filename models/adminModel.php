@@ -4,33 +4,6 @@ require_once "connectionModel.php";
 class AdminModel
 {
 
-    // CAMBIAR STATUS A 0 A LAS DEPENDENCIAS QUE NO PERTENEZCAN AL AÑO ACTUAL
-    public static function revalidarDependenciasAnuales($tablas)
-    {
-        $anio = date("Y"); # AÑO ACTUAL
-        $c = 0; # CONTADOR DE CONSULTAS EXITOSAS
-        $errores = array(); # ARREGLO DE NOMBRES DE LAS TABLAS DE CONSULTAS ERRONEAS
-
-        # ACTUALIZAR (ESTATUS = 0) EN TODAS LAS TABLAS DE LA LISTA DONDE EL AÑO SEA DIFERENTE AL ACTUAL
-        for ($i = 0; $i < count($tablas); $i++) {
-            $SQL = "UPDATE $tablas[$i] SET Status = 0 WHERE anio != $anio";
-            $stmt = Connection::connect()->prepare($SQL);
-            try {
-                $stmt->execute() ? $c++ : array_push($errores, "$tablas[$i]"); # No se utiliza el else
-            } catch (Exception $e) {
-                array_push($errores, $tablas[$i]);
-            }
-            $stmt = null;
-        }
-
-        # VERIFICACION DE QUE TODAS LAS CONSULTAS FUERON EXITOSAS O NO
-        if ($c != count($tablas)) {
-            echo "error|Imposible revalidar todas las dependencias, errores en las tablas: " . json_encode($errores);
-        } else {
-            echo "success|Dependencias revalidadas exitosamente !";
-        }
-    }
-
     // VERIFICAR QUE UN ID DE UNA DEPENDENCIA NO PUEDA EXISTIR MAS DE UNA VEZ
     public static function verificarIdExistente($idDependencia, $anioDependencia)
     {

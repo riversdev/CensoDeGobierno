@@ -4,50 +4,11 @@ require_once "../models/adminModel.php";
 $data = json_decode(file_get_contents('php://input'), true);
 $tipoPeticion = $data["tipoPeticion"];
 
-//TODAS ESTAS FUNCIONES DENTRO DE LOS IF ESTAN COMENTADAS EN EL ARCHIVO DE ADMIN MODEL 
+//TODAS ESTAS FUNCIONES DENTRO DE LOS IF ESTAN COMENTADAS EN EL ARCHIVO DE adminModel.php 
 
 // ESTAS PETICIONES QUE MANDA AXIOS PARA EL MANEJO DE LA INFORMACION DEL ADMINISTRADOR
 
-if ($tipoPeticion == "revalidarDependenciasAnuales") {
-    $tablas = [
-        "altas_instituciones",
-        "tbl_instituciones",
-        "tbl_pregunta2",
-        "tbl_pregunta4",
-        "tbl_pregunta5",
-        "tbl_pregunta6",
-        "tbl_pregunta7",
-        "tbl_pregunta8",
-        "tbl_pregunta9",
-        "`tbl_pregunta9-1`",
-        "`tbl_pregunta9-2`",
-        "`tbl_preguntas9-3`",
-        "`tbl_pregunta9-4`",
-        "tbl_pregunta10",
-        "tbl_pregunta11",
-        "tbl_pregunta15",
-        "tbl_pregunta16",
-        "`tbl_pregunta16-1`",
-        "`tbl_pregunta16-2`",
-        "`tbl_pregunta16-3`",
-        "`tbl_pregunta16-4`",
-        "`tbl_pregunta16-5`",
-        "`tbl_pregunta16-6`",
-        "`tbl_pregunta16-7`",
-        "`tbl_pregunta16-8`",
-        "tbl_pregunta17",
-        "tbl_pregunta18",
-        "tbl_pregunta19",
-        "tbl_pregunta20",
-        "tbl_pregunta21",
-        "tbl_pregunta22",
-        "`tbl_pregunta22-1`",
-        "`tbl_pregunta22-2`"
-    ]; # 29 tablas hasta 2020
-
-    $resultado = AdminModel::revalidarDependenciasAnuales($tablas);
-    echo $resultado;
-} else if ($tipoPeticion == "leerListaDependencias") {
+if ($tipoPeticion == "leerListaDependencias") {
     $dependencias = AdminModel::leerListaDependencias();
     echo json_encode($dependencias);
 } else if ($tipoPeticion == "editarDependencia") {

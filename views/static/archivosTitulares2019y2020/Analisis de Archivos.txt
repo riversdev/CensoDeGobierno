@@ -1,0 +1,105 @@
+--------------------administracion-om-archivo--------------
+--------------------administracion-om-compras--------------
+--------------------administracion-om-despacho-------------
+--------------------administracion-om-personal-------------
+--------------------administracion-om-servicios------------
+-------------------administracion-om-vehiculos blindados---
+-------------------curso de verano-------------------------
+-Clave Partida
+-Nombre de la partida
+
+-Asignacion Original
+-Ampliacion
+-Reduccion
+-Asignacion Modificada
+-Comprometido
+-Ejercicio al 30 de abril 2019
+-Saldo Total
+-Total(Generales)
+
+
+-----------------administracion-om-concentrado----------
+-Unidad Presupuestal
+-Asignacion Original
+-Asignacion Modificada
+-Comprometido
+-Ejercido al 30 de abril 2019
+-Disponible
+-Total
+
+
+------------administracion-concentrado_2019-----------------
+-Clave Partida
+-Nombre de la partida
+-Presupuesto Autorizado Estatal
+-Presupuesto Autorizado Federal
+-Meses(Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,
+Septiembre,Octubre,Noviembre,Diciembre)
+-Total Ejercido
+-Total(General x Columna)
+
+:Concentrado General de todas las direcciones
+-Dependencia
+-Presupuesto Autorizado
+-Presupuesto Autorizado Federal
+-Meses(Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,
+Septiembre,Octubre,Noviembre,Diciembre)
+-Total Ejercido
+-Total(General x Columna)
+
+----------------Partidas Centralizadas Concentrado------------
+-Unidad Presupuestal
+-Asignacion Original
+-Asignacion Modificada
+-Comprometido
+-Ejercido al 31 de enero 2019
+-Disponible
+-Total
+
+----------------- Partidas Centralizadas Despacho-----------
+
+-Clave Partida
+-Nombre de la partida
+
+-Asignacion Original
+-Ampliacion
+-Reduccion
+-Asignacion Modificada
+-Comprometido
+-Ejercicio al 31 de enero 2019 or -Ejercido al 28 de febrero 2019
+-Saldo Total
+-Total(Generales)
+
+--------------administracion-concentrado_ABRIL_2019----------
+--------------administracion-concentrado_AGOSTO--------------
+--------------administracion-concentrado_DICIEMBRE-----------
+--------------administracion-concentrado_JULIO--------------
+--------------administracion-concentrado_JUNIO--------------
+--------------administracion-concentrado_MARZO_2019--------
+-------------administracion-concentrado_mayo---------------
+-------------administracion-concentrado_NOVIEMBRE----------
+-------------administracion-concentrado_OCTUBRE------------
+-------------administracion-concentrado_SEPTIEMBRE (1)-----
+
+
+-Clave Partida
+-Nombre de la partida
+
+-Presupuesto Autorizado Estatal
+-Presupuesto Autizado Federal
+-Licitacion/Invitacion
+-Enero,Febrero,Marzo,Abril(Meses) *Depende del mes*
+-Total Ejercido
+-Total(General x columna)
+
+:Concentrado
+-Dependencia
+
+Presupuesto Autorizado Estatal
+-Presupuesto Autorizado Federal
+-Licitacion/Invitacion
+-Ayudas/becas
+-Enero,Febrero,Marzo,Abril-------- *Depende del mes*
+-Total Ejercido
+Total(General x columnas)
+
