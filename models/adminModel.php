@@ -3,6 +3,8 @@ require_once "connectionModel.php";
 
 class AdminModel
 {
+
+    // CAMBIAR STATUS A 0 A LAS DEPENDENCIAS QUE NO PERTENEZCAN AL AÑO ACTUAL
     public static function revalidarDependenciasAnuales($tablas)
     {
         $anio = date("Y"); # AÑO ACTUAL
@@ -29,6 +31,7 @@ class AdminModel
         }
     }
 
+    //VERIFICAR QUE UN ID DE UNA DEPENDENCIA NO PUEDA EXISTIR MAS DE UNA VEZ
     public static function verificarIdExistente($idDependencia, $anioDependencia)
     {
         try {
@@ -47,49 +50,7 @@ class AdminModel
         $stmt = null;
     }
 
-    public static function listarResultados($anio)
-    {
-        try {
-            if ($anio == "all") {
-                $listarResultados =
-                    "SELECT
-                    d.id_intu AS idInstitucion,
-                    d.nombre_intu AS nombreInstitucion,
-                    d.cedula2 AS cedulaBlob,
-                    d.titulo2 AS tituloBlob,
-                    d.tituloo AS Titulo,
-                    d.cedula AS Cedula
-                FROM tbl_pregunta2";
-            } else {
-                $listarResultados =
-                    "SELECT
-                    d.id_intu AS idInstitucion,
-                    d.nombre_intu AS nombreInstitucion,
-                    d.cedula2 AS cedulaBlob,
-                    d.titulo2 AS tituloBlob,
-                    d.tituloo AS Titulo,
-                    d.cedula AS Cedula
-                FROM tbl_pregunta2
-                WHERE
-                    d.anio = '" . $anio . "'";
-            }
-
-            $stmt = Connection::connect()->prepare($listarResultados);
-            if ($stmt->execute()) {
-                $contador = $stmt->fetchAll();
-                if (count($contador) == 0) {
-                    return ["error", "No hay resultados registrados!"];
-                } else {
-                    return $stmt->fetchAll();
-                }
-            } else {
-                return ["error", "Imposible ejecutar la consulta!"];
-            }
-        } catch (Exception $e) {
-            return ["error", "Imposible conectar a la base de datos! " . $e];
-        }
-    }
-
+    //OBTENER DEPENDENCIAS DE LA BASE DE DATOS FILTTRADAS POR AÑO O EN GENERAL
     public static function obtenerDependencias($clasificacion, $anio)
     {
         try {
@@ -118,13 +79,14 @@ class AdminModel
                     return ["success", $contador];
                 }
             } else {
-                return ["error", "Imposible ejecutar la consulta!"];
+                return ["error", "Imposible obtener las dependencias !"];
             }
         } catch (Exception $e) {
             return ["error", "Error al conectar a la base de datos! " . $e];
         }
     }
 
+    //REGISTRAR CONTRASEÑA, TELEFONO Y CORREO PARA QUE LE DEPENDENCIA PUEDA ACCEDER A REALIZAR EL CENSO
     public static function registrarDependencia($clasificacion, $clave, $dependencia, $correo, $password, $telefono, $anio)
     {
         try {
@@ -168,6 +130,7 @@ class AdminModel
         }
     }
 
+    //LOGEO TANTO DEL USUARIO Y LA DEPENDENCIA DE IGUAL MANERA INICIALIZAR LAS VARIABLES DE SESIÓN
     public static function accesoUsuario($tipoDeUsuario, $usuario, $contrasenia, $anio)
     {
         try {
@@ -199,7 +162,7 @@ class AdminModel
                         return ["success", false];
                     }
                 } else {
-                    return ["error", "Error, intente de nuevo o mas tarde!"];
+                    return ["error", "Error al ejecutar la consulta !"];
                 }
             } else if ($tipoDeUsuario == "admin") {
                 $SQL =
@@ -241,6 +204,7 @@ class AdminModel
         }
     }
 
+    // CIERRE DE SESIÓN DEL ADMINISTRADOR O USUARIO
     public static function cerrarSesion()
     {
         session_start();
@@ -252,6 +216,8 @@ class AdminModel
 
 
     # CRUD DEPENDENCIAS
+
+    // OBTENER TODAS LAS DEPENDENCIAS QUE EXISTAN EN LA BASE DE DATOS YA SE FILTRADO POR AÑO O LAS DEPENDENCIAS EN GENERAL
     public static function listarDependencias($anio)
     {
         try {
@@ -292,6 +258,7 @@ class AdminModel
         }
     }
 
+    // REGISTRAR UNA NUEVA DEPENDENCIA 
     public static function guardarDependencia($idDependencia, $anioDependencia, $nombreDependencia, $clasificacionDependencia)
     {
         try {
@@ -334,6 +301,7 @@ class AdminModel
         }
     }
 
+    //ACTUALIZAR LOS DATOS DE LA DEPENDENCIA
     public static function editarDependencia($idDependencia, $idDependenciaOriginal, $anioDependencia, $anioDependenciaOriginal, $nombreDependencia, $nombreDependenciaOriginal, $clasificacion, $clasificacionOriginal, $tablas)
     {
         $c = 0; # CONTADOR DE CONSULTAS EXITOSAS
@@ -403,6 +371,7 @@ class AdminModel
         }
     }
 
+    //ELIMINAR LA DEPENDENCIA YA SEA SOLO SUS RESULTADOS DURANTE EL AÑO SELECCIONADO O LA DEPENDENCIA EN GENERAL
     public static function elminarDependencia($idDependencia, $anioDependencia, $tablasAll, $tablaHistorial, $tipoDeEliminacion)
     {
         $c = 0; // CONTADOR DE CONSULTAS EJECUTADAS
@@ -444,6 +413,7 @@ class AdminModel
         }
     }
 
+    // EN CASO DE LA DEPENDENCIA TERMINE SU CUESTIONARIO CON DATOS ERRONEOS REACTIVARLE EL CUESTIONARIO PARA CORRECION DE LA INFORMACIÓN YA REGISTRADA
     public static function activarCuestionario($idDependencia, $nombreDependencia, $anioDependencia)
     {
         try {
@@ -464,6 +434,7 @@ class AdminModel
         }
     }
 
+    // OBTENER DATOS DE TODAS LAS DEPENDENCIAS DE LA BASE DE DATOS PARA USO EN UN DATALIST EN EL MODAL DEL CRUD DE AGREGAR O EDITAR LA DEPENDENCIA
     public static function leerListaDependencias()
     {
         try {
@@ -482,6 +453,8 @@ class AdminModel
 
 
     # CRUD USUARIOS
+
+    // OBTENER LOS USUARIOS DE LA BASE DE DATOS PARA MOSTRARLOS
     public static function listarUsuarios()
     {
         try {
@@ -509,6 +482,7 @@ class AdminModel
         }
     }
 
+    // AGREGAR UN NUEVO USUARIO A LA BASE DE DATOS
     public static function agregarUsuario($nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario)
     {
         try {
@@ -558,6 +532,7 @@ class AdminModel
         }
     }
 
+    // ELIMINAR UN USUARIO DE LA BASE DE DATOS
     public static function eliminarUsuario($id)
     {
         try {
@@ -583,6 +558,7 @@ class AdminModel
         }
     }
 
+    // ACTUALIZAR LOS DATOS DE UN USUARIO EN LA BASE DE DATOS
     public static function editarUsuario($idUsuario, $nombreUsuario, $correoUsuario, $phoneUsuario, $ocupacionUsuario, $rolUsuario, $estatusUsuario, $contraseniaUsuario)
     {
         try {
@@ -633,6 +609,8 @@ class AdminModel
     }
 
     # REPORTES
+
+    // MOSTRAR LOS REPORTES INDIVIDUALES DE IGUAL MANERA EL TITULO Y CEDULA DEL TITULAR DE LA INSTITUCION
     public static function listarReportes($anio)
     {
         try {
@@ -656,6 +634,7 @@ class AdminModel
         }
     }
 
+    // OBTENER EL NOMBRE DE LA INSTITUCION ESTA FUNCION SE OCUPA EN EL JS DE QUESTIONARYREPORT 
     public static function nombreInstitucion($id, $anio)
     {
         try {
