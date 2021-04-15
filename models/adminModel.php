@@ -31,7 +31,7 @@ class AdminModel
         }
     }
 
-    //VERIFICAR QUE UN ID DE UNA DEPENDENCIA NO PUEDA EXISTIR MAS DE UNA VEZ
+    // VERIFICAR QUE UN ID DE UNA DEPENDENCIA NO PUEDA EXISTIR MAS DE UNA VEZ
     public static function verificarIdExistente($idDependencia, $anioDependencia)
     {
         try {
@@ -50,7 +50,7 @@ class AdminModel
         $stmt = null;
     }
 
-    //OBTENER DEPENDENCIAS DE LA BASE DE DATOS FILTTRADAS POR AÑO O EN GENERAL
+    // OBTENER DEPENDENCIAS DE LA BASE DE DATOS FILTTRADAS POR AÑO O EN GENERAL
     public static function obtenerDependencias($clasificacion, $anio)
     {
         try {
@@ -86,7 +86,7 @@ class AdminModel
         }
     }
 
-    //REGISTRAR CONTRASEÑA, TELEFONO Y CORREO PARA QUE LE DEPENDENCIA PUEDA ACCEDER A REALIZAR EL CENSO
+    // REGISTRAR CONTRASEÑA, TELEFONO Y CORREO PARA QUE LE DEPENDENCIA PUEDA ACCEDER A REALIZAR EL CENSO
     public static function registrarDependencia($clasificacion, $clave, $dependencia, $correo, $password, $telefono, $anio)
     {
         try {
@@ -130,7 +130,7 @@ class AdminModel
         }
     }
 
-    //LOGEO TANTO DEL USUARIO Y LA DEPENDENCIA DE IGUAL MANERA INICIALIZAR LAS VARIABLES DE SESIÓN
+    // LOGEO TANTO DEL USUARIO Y LA DEPENDENCIA DE IGUAL MANERA INICIALIZAR LAS VARIABLES DE SESIÓN
     public static function accesoUsuario($tipoDeUsuario, $usuario, $contrasenia, $anio)
     {
         try {
@@ -217,7 +217,7 @@ class AdminModel
 
     # CRUD DEPENDENCIAS
 
-    // OBTENER TODAS LAS DEPENDENCIAS QUE EXISTAN EN LA BASE DE DATOS YA SE FILTRADO POR AÑO O LAS DEPENDENCIAS EN GENERAL
+    // OBTENER TODAS LAS DEPENDENCIAS QUE EXISTAN EN LA BASE DE DATOS YA SEA FILTRADO POR AÑO O LAS DEPENDENCIAS EN GENERAL
     public static function listarDependencias($anio)
     {
         try {
@@ -371,7 +371,7 @@ class AdminModel
         }
     }
 
-    //ELIMINAR LA DEPENDENCIA YA SEA SOLO SUS RESULTADOS DURANTE EL AÑO SELECCIONADO O LA DEPENDENCIA EN GENERAL
+    // ELIMINAR LA DEPENDENCIA YA SEA SOLO SUS RESULTADOS DURANTE EL AÑO SELECCIONADO O LA DEPENDENCIA EN GENERAL
     public static function elminarDependencia($idDependencia, $anioDependencia, $tablasAll, $tablaHistorial, $tipoDeEliminacion)
     {
         $c = 0; // CONTADOR DE CONSULTAS EJECUTADAS

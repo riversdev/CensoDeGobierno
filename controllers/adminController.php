@@ -4,6 +4,10 @@ require_once "../models/adminModel.php";
 $data = json_decode(file_get_contents('php://input'), true);
 $tipoPeticion = $data["tipoPeticion"];
 
+//TODAS ESTAS FUNCIONES DENTRO DE LOS IF ESTAN COMENTADAS EN EL ARCHIVO DE ADMIN MODEL 
+
+// ESTAS PETICIONES QUE MANDA AXIOS PARA EL MANEJO DE LA INFORMACION DEL ADMINISTRADOR
+
 if ($tipoPeticion == "revalidarDependenciasAnuales") {
     $tablas = [
         "altas_instituciones",
@@ -145,10 +149,6 @@ if ($tipoPeticion == "revalidarDependenciasAnuales") {
     echo json_encode($listarUsuarios);
 } else if ($tipoPeticion == "listarDependencias") {
     echo json_encode(AdminModel::listarDependencias($data['anioDependencia']));
-} else if ($tipoPeticion == "listarResultados") {
-    $anio = $data['anioDependencia'];
-    $listarResultados = AdminModel::listarResultados($anio);
-    echo json_encode($listarResultados);
 } else if ($tipoPeticion == "obtenerDependencias") {
     $clasificacion = $data['clasificacion'];
     $anio = $data['anio'];
