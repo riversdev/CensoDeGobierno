@@ -106,15 +106,24 @@ generarTablaReportes = () => {
         a.className = 'btnTituloReporte'
         a.id = 'btnTituloReporte-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Título del titular'
-        if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
-            a.href = 'views/static/archivosTitulares2019y2020/' + dependencia['tituloArchivo']
-            a.target = '_blank'
-        } else {
-            a.href = dependencia['tituloBinario']
-            a.download = 'titulo-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
-        }
         i = document.createElement('i')
-        i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
+        if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
+            if (dependencia['tituloArchivo'] != '') {
+                a.href = 'views/static/archivosTitulares2019y2020/' + dependencia['tituloArchivo']
+                a.target = '_blank'
+                i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
+            } else {
+                i.className = 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
+            }
+        } else {
+            if (dependencia['tituloBinario'] != '') {
+                a.href = dependencia['tituloBinario']
+                a.download = 'titulo-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
+                i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
+            } else {
+                i.className = 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
+            }
+        }
         a.append(i)
         td.append(a)
 
@@ -122,15 +131,24 @@ generarTablaReportes = () => {
         a.className = 'btnCedulaReporte'
         a.id = 'btnCedulaReporte-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Cédula del titular'
-        if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
-            a.href = 'views/static/archivosTitulares2019y2020/' + dependencia['cedulaArchivo']
-            a.target = '_blank'
-        } else {
-            a.href = dependencia['cedulaBinario']
-            a.download = 'cedula-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
-        }
         i = document.createElement('i')
-        i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
+        if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
+            if (dependencia['cedulaArchivo'] != '') {
+                a.href = 'views/static/archivosTitulares2019y2020/' + dependencia['cedulaArchivo']
+                a.target = '_blank'
+                i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
+            } else {
+                i.className = 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
+            }
+        } else {
+            if (dependencia['cedulaBinario'] != '') {
+                a.href = dependencia['cedulaBinario']
+                a.download = 'cedula-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
+                i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
+            } else {
+                i.className = 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
+            }
+        }
         a.append(i)
         td.append(a)
 
