@@ -108,21 +108,9 @@ generarTablaReportes = () => {
         a.title = 'Título del titular'
         i = document.createElement('i')
         if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
-            if (dependencia['tituloArchivo'] != '') {
-                a.href = 'views/static/archivosTitulares2019y2020/' + dependencia['tituloArchivo']
-                a.target = '_blank'
-                i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
-            } else {
-                i.className = 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
-            }
+            i.className = dependencia['tituloArchivo'] != '' ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
         } else {
-            if (dependencia['tituloBinario'] != '') {
-                a.href = dependencia['tituloBinario']
-                a.download = 'titulo-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
-                i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
-            } else {
-                i.className = 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
-            }
+            i.className = dependencia['tituloBinario'] != '' ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
         }
         a.append(i)
         td.append(a)
@@ -133,21 +121,9 @@ generarTablaReportes = () => {
         a.title = 'Cédula del titular'
         i = document.createElement('i')
         if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
-            if (dependencia['cedulaArchivo'] != '') {
-                a.href = 'views/static/archivosTitulares2019y2020/' + dependencia['cedulaArchivo']
-                a.target = '_blank'
-                i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
-            } else {
-                i.className = 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
-            }
+            i.className = dependencia['cedulaArchivo'] != '' ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
         } else {
-            if (dependencia['cedulaBinario'] != '') {
-                a.href = dependencia['cedulaBinario']
-                a.download = 'cedula-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
-                i.className = 'fas fa-lg fa-sticky-note text-warning mx-0 w-25'
-            } else {
-                i.className = 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
-            }
+            i.className = dependencia['cedulaBinario'] != '' ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
         }
         a.append(i)
         td.append(a)
@@ -177,7 +153,69 @@ listenersDeAccionesResultados = () => {
                 clasificacionDependencia = this.id.split('-')[3],
                 nombreDependencia = this.id.split('-')[4]
 
-            window.open('questionaryReport?' + btoa(idDependencia) + '&' + btoa(anioDependencia) + '&' + btoa(clasificacionDependencia), '_blank')
+            if (anioDependencia == 2019) {
+
+            } else if (anioDependencia == 2020) {
+
+            } else {
+                window.open('questionaryReport?' + btoa(idDependencia) + '&' + btoa(anioDependencia) + '&' + btoa(clasificacionDependencia), '_blank')
+            }
+        })
+    }
+
+    for (let i = 0; i < elementosTituloReporte.length; i++) {
+        document.getElementById(elementosTituloReporte[i].id).addEventListener('click', function () {
+            let idDependencia = this.id.split('-')[1],
+                anioDependencia = this.id.split('-')[2]
+
+            for (const reporte in reportes) {
+                if (reportes[reporte].idInstitucion == idDependencia && reportes[reporte].anioInstitucion == anioDependencia) {
+                    if (anioDependencia == 2019 || anioDependencia == 2020) {
+                        if (reportes[reporte]['tituloArchivo'] != null && reportes[reporte]['tituloArchivo'] != '') {
+                            this.href = 'views/static/archivosTitulares2019y2020/' + reportes[reporte]['tituloArchivo']
+                            this.target = '_blank'
+                        } else {
+                            alertify.alert('<span class="font-weight-bold">Sin archivos</span>', 'Verifique el titular vacante o con clave de otra institución en el reporte individual de esta dependencia.')
+                        }
+                    } else {
+                        if (reportes[reporte]['tituloBinario'] != null && reportes[reporte]['tituloBinario'] != '') {
+                            this.href = reportes[reporte]['tituloBinario']
+                            this.download = 'titulo-' + idDependencia + '-' + anioDependencia
+                        } else {
+                            alertify.alert('<span class="font-weight-bold">Sin archivos</span>', 'Verifique el titular vacante o con clave de otra institución en el reporte individual de esta dependencia.')
+                        }
+                    }
+                    break
+                }
+            }
+        })
+    }
+
+    for (let i = 0; i < elementosCedulaReporte.length; i++) {
+        document.getElementById(elementosCedulaReporte[i].id).addEventListener('click', function () {
+            let idDependencia = this.id.split('-')[1],
+                anioDependencia = this.id.split('-')[2]
+
+            for (const reporte in reportes) {
+                if (reportes[reporte].idInstitucion == idDependencia && reportes[reporte].anioInstitucion == anioDependencia) {
+                    if (anioDependencia == 2019 || anioDependencia == 2020) {
+                        if (reportes[reporte]['cedulaArchivo'] != null && reportes[reporte]['cedulaArchivo'] != '') {
+                            this.href = 'views/static/archivosTitulares2019y2020/' + reportes[reporte]['cedulaArchivo']
+                            this.target = '_blank'
+                        } else {
+                            alertify.alert('<span class="font-weight-bold">Sin archivos</span>', 'Verifique el titular vacante o con clave de otra institución en el reporte individual de esta dependencia.')
+                        }
+                    } else {
+                        if (reportes[reporte]['cedulaBinario'] != null && reportes[reporte]['cedulaBinario'] != '') {
+                            this.href = reportes[reporte]['cedulaBinario']
+                            this.download = 'cedula-' + idDependencia + '-' + anioDependencia
+                        } else {
+                            alertify.alert('<span class="font-weight-bold">Sin archivos</span>', 'Verifique el titular vacante o con clave de otra institución en el reporte individual de esta dependencia.')
+                        }
+                    }
+                    break
+                }
+            }
         })
     }
 }
