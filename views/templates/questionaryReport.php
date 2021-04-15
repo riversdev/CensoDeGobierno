@@ -1,23 +1,10 @@
 <?php
 session_start();
 
-if ($_SESSION['sesionActiva'] != "1") {
-    header('Location: logout.php');
+if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
+    header("Location: /CensoDeGobierno");
     exit;
 } else {
-    $tipoSesion = $_SESSION['tipoUsuario'];
-    echo $tipoSesion == "dependencia" ? 'hey' : "hasfas";
-    if ($_SESSION['tipoUsuario'] == "dependencia") {
-        $id = $_SESSION['idDependencia'];
-        echo '
-        <script>
-                idInstitucion = ' . $_SESSION['idDependencia'] . ',
-                nombreInstitucion = "' . $_SESSION['nombreDependencia'] . '";
-                clasificacionInstitucion = "' . $_SESSION['clasificacionDependencia'] . '";
-                anioInstitucion = "' . $_SESSION['anioDependencia'] . '";
-        </script>
-    ';
-    }
 ?>
     <!DOCTYPE html>
     <html lang="en">

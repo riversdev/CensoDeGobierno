@@ -1,5 +1,6 @@
 // VARIABLES Y CONSTANTES GLOBALES DEL MODULO DE USUARIOS
 const modalUsuarios = new bootstrap.Modal(document.getElementById('modalUsuarios'))
+
 let usuarios = null
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,7 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-// LISTAR USUARIOS
+
+recolectarDatosGUIUsuarios = () => {
+    return {
+        idUsuario: document.getElementById('txtIdUsuario').value,
+        nombreUsuario: document.getElementById('txtNombreUsuario').value,
+        correoUsuario: document.getElementById('txtCorreoUsuario').value,
+        contraseniaUsuario: document.getElementById('txtContraseniaUsuario').value,
+        phoneUsuario: document.getElementById('txtPhoneUsuario').value,
+        ocupacionUsuario: document.getElementById('txtOcupacionUsuario').value,
+        rolUsuario: document.getElementById('txtTipoUsuario').value,
+        estatusUsuario: document.getElementById('txtEstatusUsuario').value
+    }
+}
+
+
+// CRUD USUARIOS
 async function listarUsuarios() {
     try {
         let res = await axios('controllers/adminController.php', {
@@ -59,21 +75,6 @@ async function listarUsuarios() {
     }
 }
 
-// RECOLECTAR DATOS DEL USUARIO DE LA GUI
-recolectarDatosGUIUsuarios = () => {
-    return {
-        idUsuario: document.getElementById('txtIdUsuario').value,
-        nombreUsuario: document.getElementById('txtNombreUsuario').value,
-        correoUsuario: document.getElementById('txtCorreoUsuario').value,
-        contraseniaUsuario: document.getElementById('txtContraseniaUsuario').value,
-        phoneUsuario: document.getElementById('txtPhoneUsuario').value,
-        ocupacionUsuario: document.getElementById('txtOcupacionUsuario').value,
-        rolUsuario: document.getElementById('txtTipoUsuario').value,
-        estatusUsuario: document.getElementById('txtEstatusUsuario').value
-    }
-}
-
-// CRUD USUARIOS
 async function enviarUsuario(usuario, accion) {
     if (accion == 'agregar') {
         try {
@@ -168,7 +169,8 @@ async function enviarUsuario(usuario, accion) {
     }
 }
 
-// TABLA USUARIOS
+
+// GENERACION DE LA TABLA DE USUARIOS, LLAMANDO A SUS ESCUCHADORES DE ACCIONES Y DATATABLES
 generarTablaUsuarios = () => {
     let table = document.createElement('table'),
         head = document.createElement('thead'),
@@ -277,7 +279,6 @@ generarTablaUsuarios = () => {
     aplicarDataTable('tablaUsuarios')
 }
 
-// LISTENERS DE ACCIONES USUARIOS
 listenersDeAccionesUsuarios = () => {
     let elementosEditar = document.getElementsByClassName('btnEdit'),
         elementosEliminar = document.getElementsByClassName('btnDelete')

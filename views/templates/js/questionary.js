@@ -1,3 +1,4 @@
+// VARIABLES GLOBALES DEL CUESTIONARIO 2021
 let preguntasContestadas = [], tituloTitular = '', cedulaTitular = '', totalHombres = null, totalMujeres = null, totalHombresIndigenas = null, totalMujeresIndigenas = null, totalHombresDiscapacitados = null, totalMujeresDiscapacitadas = null, totalPropios = null, totalRentados = null, totalOtros = null, totalComputadoras = null, totalImpresoras = null, totalMultifuncionales = null, totalServidores = null, totalTabletas = null, procedimientoDeContratacion1 = null, procedimientoDeContratacion2 = null, procedimientoDeContratacion3 = null, procedimientoDeContratacion4 = null, procedimientoDeContratacion5 = null, totalContratos1 = null, totalContratos2 = null, totalContratos3 = null, totalContratos4 = null, totalContratos5 = null, totalMontos1 = null, totalMontos2 = null, totalMontos3 = null, totalMontos4 = null, totalMontos5 = null
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -3341,6 +3342,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
     })
+
+    // MENSAJE DE BIENVENIDA
+    alertify.success('Todo está listo !')
 })
 
 // FUNCIONES PARA VALIDACION PREGUNTAS 1 Y 3

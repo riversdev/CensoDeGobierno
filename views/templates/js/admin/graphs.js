@@ -1,12 +1,18 @@
+// VARIABLES GLOBALES PARA EL MODULO DEL GRAFICADOR
 let anios = [],
     registroAnios = []
 
 document.addEventListener('DOMContentLoaded', function () {
+    // CREAR EL SELECT DE AÑOS, OBTENER EL REGISTRO DE AÑOS Y GENERAR LA PRIMER GRAFICA SEGUN LA SELECCION ACTUAL
     verificarAnios()
+
+    // ESCUCHADOR DEL SELECT DE LA PREGUNTA PARA GENERAR SU GRAFICA
     document.getElementById('preguntaGrafica').addEventListener('change', () => {
         document.getElementById('tablesContainer').innerHTML = ''
         verificarAnios()
     })
+
+    // ESCUCHADOR DEL BOTON PARA CREAR LA TABLA DE COMPARACION ANUAL DE LA GRAFICA SELECCIONADA
     document.getElementById('btnTabular').addEventListener('click', () => {
         // console.warn('Registro de años (Tabla ' + document.getElementById('preguntaGrafica').value + ')')
         // console.log(registroAnios) // Registro de años completo
@@ -14,19 +20,22 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 })
 
-verificarAnios = () => {
-    anios = []
 
-    for (let i = new Date().getFullYear(); i >= 2017; i--) {
-        anios.push(i); // Crecion arreglo de años
+// FUNCIONES DE PREPARACION DEL DASHBOARD
+crearSelectComparacionAnios = () => {
+    document.getElementById('contenedorAnioGrafica').innerHTML = ''
+    select = document.createElement('select')
+    select.className = 'custom-select'
+    select.id = 'anioGrafica'
+
+    for (let i = 0; i < anios.length - 1; i++) {
+        let option = document.createElement('option')
+        option.value = anios[i]
+        option.appendChild(document.createTextNode(anios[i]))
+        select.append(option);
     }
 
-    crearSelectComparacionAnios()
-
-    obtenerAnios().then((pregunta) => {
-        redimensionarContenedores(pregunta);
-        graficarDatos(pregunta);
-    });
+    document.getElementById('contenedorAnioGrafica').append(select)
 }
 
 redimensionarContenedores = (pregunta) => {
@@ -43,6 +52,23 @@ redimensionarContenedores = (pregunta) => {
         document.getElementById('container').classList.remove('col-lg-6', 'col-md-12', 'border', 'border-bottom-0', 'border-left-0', 'rounded');
         document.getElementById('secondContainer').classList.add('d-none');
     }
+}
+
+
+// FUNCIONES PARA OBTENER EL REGISTRO DE AÑOS CON TODA LA INFORMACION NECESARIA PARA GRAFICAS Y TABLAS
+verificarAnios = () => {
+    anios = []
+
+    for (let i = new Date().getFullYear(); i >= 2017; i--) {
+        anios.push(i); // Crecion arreglo de años
+    }
+
+    crearSelectComparacionAnios()
+
+    obtenerAnios().then((pregunta) => {
+        redimensionarContenedores(pregunta);
+        graficarDatos(pregunta);
+    });
 }
 
 async function obtenerAnios() {
@@ -70,6 +96,8 @@ async function obtenerDatos(pregunta, anio) {
     }
 }
 
+
+// GRAFICACION Y TABULACION DE DATOS DE ACUERDO A LA PREGUNTA SELECCIONADA
 graficarDatos = (pregunta) => {
     let dataPrev = {},
         data = {};
@@ -4507,22 +4535,6 @@ graficarDatos = (pregunta) => {
     }
 }
 
-crearSelectComparacionAnios = () => {
-    document.getElementById('contenedorAnioGrafica').innerHTML = ''
-    select = document.createElement('select')
-    select.className = 'custom-select'
-    select.id = 'anioGrafica'
-
-    for (let i = 0; i < anios.length - 1; i++) {
-        let option = document.createElement('option')
-        option.value = anios[i]
-        option.appendChild(document.createTextNode(anios[i]))
-        select.append(option);
-    }
-
-    document.getElementById('contenedorAnioGrafica').append(select)
-}
-
 tabularDatos = (pregunta) => {
     // Creacion de elementos
     let container = document.getElementById('tablesContainer'),
@@ -5951,6 +5963,8 @@ tabularDatos = (pregunta) => {
         .scrollIntoView({ block: 'end', behavior: 'smooth' });
 }
 
+
+// FUNCIONES DE FORMATEO DE CADENAS PARA LA COMPARACION ANUAL
 quitarAcentos = (cadena) => {
     const acentos = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U' };
     return cadena.split('').map(letra => acentos[letra] || letra).join('').toString();

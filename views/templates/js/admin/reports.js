@@ -1,3 +1,4 @@
+// VARIABLES GLOBALES DEL MODULO DE REPORTES
 let reportes = null
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-// LISTAR REPORTES
+
+// OBTENER LISTADO DE DEPENDENCIAS PARA LOS REPORTES
 async function listarReportes(anioDependencia) {
     try {
         let res = await axios('controllers/adminController.php', {
@@ -36,7 +38,8 @@ async function listarReportes(anioDependencia) {
     }
 }
 
-// GENERAR TABLA REPORTES
+
+// GENERACION DE LA TABLA DE REPORTES, LLAMANDO A SUS ESCUCHADORES DE ACCIONES Y DATATABLES
 generarTablaReportes = () => {
     let table = document.createElement('table'),
         head = document.createElement('thead'),

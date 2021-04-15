@@ -5,6 +5,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
     header("Location: /CensoDeGobierno");
     exit;
 } else {
+    # IMPORTACION DE LOS MODALES
     require_once("views/templates/components/modals.php");
     echo '
         <script>

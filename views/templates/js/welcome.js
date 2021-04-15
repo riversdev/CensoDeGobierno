@@ -1,4 +1,6 @@
+// VARIABLES Y CONSTANTES GLOBALES DEL INICIO
 const modalRegistroDependencia = new bootstrap.Modal(document.getElementById('modalAddUser'))
+
 let f = null
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
+    // LLENADO DEL SELECT DE DEPENDENCIAS EN LOGIN DE DEPENDENCIAS
     obtenerDependencias('all').then((res) => {
         if (res[0] != undefined && res[0] == 'success') {
             document.getElementById('txtInstitucionLogin').innerHTML = ''
@@ -35,13 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    botonesInicio = document.getElementsByClassName('btnInicio')
+    // ESCUCHADORES DE CLICK PARA LOS BOTONES DE REGRESO AL INICIO EN LOS LOGINS
+    let botonesInicio = document.getElementsByClassName('btnInicio')
     for (let i = 0; i < botonesInicio.length; i++) {
         botonesInicio[i].addEventListener('click', () => {
             new bootstrap.Tab(document.querySelector('#myTab li button[id="home-tab"]')).show()
         })
     }
 
+    // ESCUCHADOR DEL SELECT DE CLASIFICACION EN EL MODAL DE REGISTRO PARA LLENAR EL SELECT EN ESE MODAL
     document.getElementById('txtClasificacion').addEventListener('change', function () {
         obtenerDependencias(this.value).then((res) => {
             if (res[0] != undefined && res[0] == 'success') {
@@ -60,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+    // RESETEO Y QUITAR VALDACION DEL FORMULARIO EN EL MODAL DE REGISTRO AL ABRIR EL MODAL
     document.getElementById('modalAddUser').addEventListener('show.bs.modal', () => {
         document.getElementById('formRegistrarDependencia').reset()
         document.getElementById('formRegistrarDependencia').classList.remove('was-validated')

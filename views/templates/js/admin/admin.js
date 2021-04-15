@@ -59,7 +59,37 @@ document.addEventListener('DOMContentLoaded', () => {
     alertify.success('Todo está listo !')
 })
 
-// FUNCIONES DE USO GENERAL
+displayElementosAdministrador = () => {
+    if (tipoUsuario == 'Usuario') {
+        let adminElements = document.getElementsByClassName('adminElement')
+        for (let i = 0; i < adminElements.length; i++) {
+            adminElements[i].classList.add('d-none')
+        }
+    }
+}
+
+vizualizarElementosNavegacion = (tabVisible) => {
+    arbolElementosOcultos = {
+        'usuarios-tab': ['btnAgregarUsuario'],
+        'dependencias-tab': ['btnAgregarDependencia', 'contenedorSelectAnioDependencia'],
+        'reportes-tab': ['contenedorSelectAnioReportes']
+    }
+
+    for (const lista in arbolElementosOcultos) {
+        if (lista == tabVisible) {
+            arbolElementosOcultos[lista].forEach(elemento => {
+                document.getElementById(elemento).classList.remove('d-none')
+            })
+        } else {
+            arbolElementosOcultos[lista].forEach(elemento => {
+                document.getElementById(elemento).classList.add('d-none')
+            })
+        }
+    }
+
+    displayElementosAdministrador()
+}
+
 validarFormularios = () => {
     'use strict'
 
@@ -177,30 +207,6 @@ llenarSelectDeAnios = (select) => {
     }
 }
 
-// ELEMENTOS VISIBLES EN LAS TABS
-vizualizarElementosNavegacion = (tabVisible) => {
-    arbolElementosOcultos = {
-        'usuarios-tab': ['btnAgregarUsuario'],
-        'dependencias-tab': ['btnAgregarDependencia', 'contenedorSelectAnioDependencia'],
-        'reportes-tab': ['contenedorSelectAnioReportes']
-    }
-
-    for (const lista in arbolElementosOcultos) {
-        if (lista == tabVisible) {
-            arbolElementosOcultos[lista].forEach(elemento => {
-                document.getElementById(elemento).classList.remove('d-none')
-            })
-        } else {
-            arbolElementosOcultos[lista].forEach(elemento => {
-                document.getElementById(elemento).classList.add('d-none')
-            })
-        }
-    }
-
-    displayElementosAdministrador()
-}
-
-// APLICAR ESTILOS Y FUNCIONES DATATABLE A TODAS LAS TABLAS
 aplicarDataTable = (tabla) => {
     if (tabla == 'tablaUsuarios') {
         $('#tablaUsuarios').DataTable({
@@ -368,17 +374,6 @@ aplicarDataTable = (tabla) => {
     }
 }
 
-// VIZUALIZAR ELEMENTOS EN CUENTA DE ADMIN SEGUN EL ROL DE USUARIO
-displayElementosAdministrador = () => {
-    if (tipoUsuario == 'Usuario') {
-        let adminElements = document.getElementsByClassName('adminElement')
-        for (let i = 0; i < adminElements.length; i++) {
-            adminElements[i].classList.add('d-none')
-        }
-    }
-}
-
-// SALIR
 async function cerrarSesion() {
     try {
         let res = await axios('controllers/adminController.php', {
