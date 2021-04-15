@@ -259,7 +259,7 @@ generarTablaUsuarios = () => {
             i = document.createElement('i')
             i.className = 'fa fa-lg fa-user-times text-danger ml-4'
             a = document.createElement('a')
-            a.className = 'btnDelete'
+            a.className = 'btnDelete adminElement'
             a.id = 'btnDelete-' + user['idUsuario']
             a.append(i)
             td.append(a)
@@ -332,4 +332,6 @@ listenersDeAccionesUsuarios = () => {
             ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
         })
     }
+
+    displayElementosAdministrador()
 }

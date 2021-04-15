@@ -122,7 +122,6 @@ generarTablaDependencias = () => {
         td = document.createElement('td')
         td.className = 'text-center align-middle'
         td.style.width = '15%'
-
         i = document.createElement('i')
         i.className = 'fas fa-lg fa-id-card text-success w-25'
         a = document.createElement('a')
@@ -131,29 +130,26 @@ generarTablaDependencias = () => {
         a.title = 'Contacto'
         a.append(i);
         td.append(a)
-
         i = document.createElement('i')
         i.className = 'fas fa-lg fa-edit text-info w-25'
         a = document.createElement('a')
-        a.className = 'btnEditDependencia'
+        a.className = 'btnEditDependencia adminElement'
         a.id = 'btnEditDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Editar'
         a.append(i);
         td.append(a)
-
         i = document.createElement('i')
         i.className = 'fas fa-lg fa-trash-alt text-danger w-25'
         a = document.createElement('a')
-        a.className = 'btnDeleteDependencia'
+        a.className = 'btnDeleteDependencia adminElement'
         a.id = 'btnDeleteDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Eliminar'
         a.append(i)
         td.append(a)
-
         i = document.createElement('i')
         i.className = dependencia['Finalizado'] == 1 ? 'fas fa-lg fa-power-off text-warning w-25' : 'fas fa-lg fa-power-off text-muted w-25'
         a = document.createElement('a')
-        a.className = 'btnActiveDependencia'
+        a.className = 'btnActiveDependencia adminElement'
         a.id = 'btnActive-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion'] + '-' + dependencia['Finalizado']
         a.title = 'Reactivar'
         a.append(i)
@@ -415,6 +411,8 @@ listenerDeAccionesDependencias = () => {
             }
         })
     }
+
+    displayElementosAdministrador()
 }
 
 

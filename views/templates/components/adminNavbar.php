@@ -40,11 +40,11 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto d-flex align-items-center">
-                    <a id="btnAgregarUsuario" class="nav-link d-none" href="#" data-bs-toggle="modal" data-bs-target="#modalUsuarios" style="font-size: x-small;">
+                    <a id="btnAgregarUsuario" class="nav-link d-none adminElement" href="#" data-bs-toggle="modal" data-bs-target="#modalUsuarios" style="font-size: x-small;">
                         <i class="fa fa-user-plus"></i>
                         Agregar Usuario
                     </a>
-                    <a id="btnAgregarDependencia" class="nav-link d-none" href="#" data-bs-toggle="modal" data-bs-target="#modalDependencias" style="font-size: x-small;">
+                    <a id="btnAgregarDependencia" class="nav-link d-none adminElement" href="#" data-bs-toggle="modal" data-bs-target="#modalDependencias" style="font-size: x-small;">
                         <i class="fas fa-university"></i>
                         Agregar Dependencia
                     </a>

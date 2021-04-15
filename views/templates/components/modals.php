@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-12 d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-white" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-outline-primary ml-3">Enviar</button>
+                        <button type="submit" class="btn btn-outline-primary ml-3 adminElement">Enviar</button>
                     </div>
                 </form>
             </div>

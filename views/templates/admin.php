@@ -10,7 +10,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
         <script>
             const
                 idUsuario = ' . $_SESSION['idUsuario'] . ',
-                tipoUsuario = "' . $_SESSION['tipoUsuario'] . '";
+                tipoUsuario = "' . $_SESSION['rolUsuario'] . '";
         </script>
     ';
 ?>

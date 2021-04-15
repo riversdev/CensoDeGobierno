@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ).set('labels', { ok: 'Confirmo', cancel: 'Cancelar' });
     })
 
+    // VIZUALIZAR ELEMENTOS EN CUENTA DE ADMIN SEGUN EL ROL DE USUARIO
+    displayElementosAdministrador()
+
     // MENSAJE DE BIENVENIDA
     alertify.success('Todo está listo !')
 })
@@ -72,10 +75,12 @@ validarFormularios = () => {
                 } else {
                     event.preventDefault()
                     if (form.id == 'formUsuarios') {
-                        if (document.getElementById('txtIdUsuario').value == '') {
-                            enviarUsuario(recolectarDatosGUIUsuarios(), 'agregar')
-                        } else {
-                            enviarUsuario(recolectarDatosGUIUsuarios(), 'editar')
+                        if (tipoUsuario != 'Usuario') {
+                            if (document.getElementById('txtIdUsuario').value == '') {
+                                enviarUsuario(recolectarDatosGUIUsuarios(), 'agregar')
+                            } else {
+                                enviarUsuario(recolectarDatosGUIUsuarios(), 'editar')
+                            }
                         }
                     } else if (form.id == 'formDependencias') {
                         let valor = document.getElementById('submitDependencia').innerHTML
@@ -191,6 +196,8 @@ vizualizarElementosNavegacion = (tabVisible) => {
             })
         }
     }
+
+    displayElementosAdministrador()
 }
 
 // APLICAR ESTILOS Y FUNCIONES DATATABLE A TODAS LAS TABLAS
@@ -358,6 +365,16 @@ aplicarDataTable = (tabla) => {
                 }
             }
         });
+    }
+}
+
+// VIZUALIZAR ELEMENTOS EN CUENTA DE ADMIN SEGUN EL ROL DE USUARIO
+displayElementosAdministrador = () => {
+    if (tipoUsuario == 'Usuario') {
+        let adminElements = document.getElementsByClassName('adminElement')
+        for (let i = 0; i < adminElements.length; i++) {
+            adminElements[i].classList.add('d-none')
+        }
     }
 }
 
