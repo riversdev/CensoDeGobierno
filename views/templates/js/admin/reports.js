@@ -153,10 +153,8 @@ listenersDeAccionesResultados = () => {
                 clasificacionDependencia = this.id.split('-')[3],
                 nombreDependencia = this.id.split('-')[4]
 
-            if (anioDependencia == 2019) {
-
-            } else if (anioDependencia == 2020) {
-
+            if (anioDependencia == 2019 || anioDependencia == 2020) {
+                window.open('oldIndividualReport?' + idDependencia + '&' + anioDependencia, '_blank')
             } else {
                 window.open('questionaryReport?' + btoa(idDependencia) + '&' + btoa(anioDependencia) + '&' + btoa(clasificacionDependencia), '_blank')
             }
