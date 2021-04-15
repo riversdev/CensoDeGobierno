@@ -1,6 +1,7 @@
 // VARIABLES Y CONSTANTES GLOBALES DEL MODULO DE DEPENDENCIAS
-const modalDependencias = new bootstrap.Modal(document.getElementById('modalDependencias'))
-const modalDependenciasEliminar = new bootstrap.Modal(document.getElementById('modalDependenciasEliminar'))
+const modalDependencias = new bootstrap.Modal(document.getElementById('modalDependencias')),
+    modalDependenciasEliminar = new bootstrap.Modal(document.getElementById('modalDependenciasEliminar'))
+
 let dependencias = null,
     dependenciasEditar = null,
     dependenciasEliminar = null,
@@ -183,7 +184,7 @@ async function accionesDependencias(dependencia, accion) {
             respuesta = res.data
             if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
-                modalDependencias.hide()                
+                modalDependencias.hide()
                 listarDependencias(document.getElementById('selectAnioDependencia').value)
                     .then(() => { generarTablaDependencias() })
                 document.getElementById('formDependencias').reset()
