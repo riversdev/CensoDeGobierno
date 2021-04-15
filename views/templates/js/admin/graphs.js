@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
         verificarAnios()
     })
     document.getElementById('btnTabular').addEventListener('click', () => {
-        console.warn('Registro de años (Tabla ' + document.getElementById('preguntaGrafica').value + ')')
-        console.log(registroAnios) // Registro de años completo
+        // console.warn('Registro de años (Tabla ' + document.getElementById('preguntaGrafica').value + ')')
+        // console.log(registroAnios) // Registro de años completo
         tabularDatos(document.getElementById('preguntaGrafica').value)
     })
 })
@@ -82,10 +82,10 @@ graficarDatos = (pregunta) => {
         dataPrev[anios[i]] = registroAnios[anios[i + 1]];
     }
 
-    console.warn('DataPrev');
-    console.log(dataPrev);
-    console.warn('Data');
-    console.log(data);
+    // console.warn('DataPrev');
+    // console.log(dataPrev);
+    // console.warn('Data');
+    // console.log(data);
 
     crearSelectComparacionAnios()
 
@@ -4803,7 +4803,7 @@ tabularDatos = (pregunta) => {
             }
         }
 
-        console.log(comparacionAnual); // Datos ordenados
+        // console.log(comparacionAnual); // Datos ordenados
 
         let years = anios.reverse();
 
@@ -4956,7 +4956,7 @@ tabularDatos = (pregunta) => {
             }
         }
 
-        console.log(comparacionAnual); // Datos ordenados
+        // console.log(comparacionAnual); // Datos ordenados
 
         let years = anios.reverse();
 
@@ -5140,7 +5140,7 @@ tabularDatos = (pregunta) => {
             }
         }
 
-        console.log(comparacionAnual); // Datos ordenados
+        // console.log(comparacionAnual); // Datos ordenados
 
         let years = anios.reverse();
 
@@ -5410,7 +5410,7 @@ tabularDatos = (pregunta) => {
             }
         }
 
-        console.log(comparacionAnual); // Datos ordenados
+        // console.log(comparacionAnual); // Datos ordenados
 
         let years = anios.reverse();
 
@@ -5617,7 +5617,7 @@ tabularDatos = (pregunta) => {
             }
         }
 
-        console.log(comparacionAnual); // Datos ordenados
+        // console.log(comparacionAnual); // Datos ordenados
 
         let years = anios.reverse();
 
@@ -5881,7 +5881,7 @@ tabularDatos = (pregunta) => {
             }
         }
 
-        console.log(comparacionAnual); // Datos ordenados
+        // console.log(comparacionAnual); // Datos ordenados
 
         let years = anios.reverse();
 
