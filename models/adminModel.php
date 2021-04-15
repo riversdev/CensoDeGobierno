@@ -202,7 +202,7 @@ class AdminModel
                     return ["error", "Error, intente de nuevo o mas tarde!"];
                 }
             } else if ($tipoDeUsuario == "admin") {
-                $obtenerDatos =
+                $SQL =
                     "SELECT
                         u.user_id AS idUsuario,
                         u.user_password_hash AS contraseniaUsuario,
@@ -210,28 +210,30 @@ class AdminModel
                         u.user_tipe AS tipoUsuario
                     FROM users AS u
                     WHERE u.user_email='$usuario'";
-                $stmt = Connection::connect()->prepare($obtenerDatos);
+                $stmt = Connection::connect()->prepare($SQL);
 
                 if ($stmt->execute()) {
-                    $resultados = $stmt->fetchAll();
-                    if ($resultados[0]['estatusUsuario'] == "Activo" && count($resultados) > 0) {
-                        if (count($resultados) > 0 && password_verify($contrasenia, $resultados[0]['contraseniaUsuario']) && $resultados[0]['estatusUsuario'] == "Activo") {
-                            session_start();
-                            $_SESSION['sesionActiva'] = "1";
-                            $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
-                            $_SESSION['tipoUsuario'] = "admin";
-                            $_SESSION['rolUsuario'] = $resultados[0]['tipoUsuario'];
-                            return ["success", true];
+                    $res = $stmt->fetchAll();
+                    if (count($res) > 0) {
+                        if ($res[0]['estatusUsuario'] == "Activo") {
+                            if (password_verify($contrasenia, $res[0]['contraseniaUsuario'])) {
+                                session_start();
+                                $_SESSION['sesionActiva'] = "1";
+                                $_SESSION['idUsuario'] = $res[0]['idUsuario'];
+                                $_SESSION['tipoUsuario'] = "admin";
+                                $_SESSION['rolUsuario'] = $res[0]['tipoUsuario'];
+                                return ["success", true];
+                            } else {
+                                return ["success", false];
+                            }
                         } else {
-                            return ["success", false];
+                            return ["success", false, "Usuario inactivo !"];
                         }
-                    } elseif ($resultados[0]['estatusUsuario'] == "Inactivo" && count($resultados) > 0) {
-                        return ["success", false, "Usuario Inactivo !"];
                     } else {
                         return ["success", false];
                     }
                 } else {
-                    return ["error", "Error, intente de nuevo o mas tarde!"];
+                    return ["error", "Imposible verificar usuario !"];
                 }
             }
         } catch (Exception $e) {
