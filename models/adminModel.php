@@ -483,7 +483,7 @@ class AdminModel
     public static function listarUsuarios()
     {
         try {
-            $listarUsuarios =
+            $SQL =
                 "SELECT 
                     u.user_id AS idUsuario,
                     u.user_name AS nombreUsuario,
@@ -495,16 +495,12 @@ class AdminModel
                     u.user_status AS estatusUsuario,
                     u.user_password_hash AS userPasswd
                 FROM users AS u";
-            $stmt = Connection::connect()->prepare($listarUsuarios);
+            $stmt = Connection::connect()->prepare($SQL);
+
             if ($stmt->execute()) {
-                $contador = $stmt->fetchAll();
-                if (count($contador) == 0) {
-                    return ["error", "No hay usuarios registrados!"];
-                } else {
-                    return $contador;
-                }
+                return ["success", $stmt->fetchAll()];
             } else {
-                return ["error", "imposible ejecutar la consulta!"];
+                return ["error", "Imposible obtener usuarios !"];
             }
         } catch (Exception $e) {
             return ["error", "Error al conectar a la base datos! " . $e];

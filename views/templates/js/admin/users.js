@@ -42,7 +42,18 @@ async function listarUsuarios() {
                 tipoPeticion: 'listarUsuarios'
             }
         })
-        usuarios = res.data
+
+        let resultado = res.data
+
+        if (resultado[0] == 'success') {
+            usuarios = resultado[1]
+        } else if (resultado[0] == 'error') {
+            alertify.error(resultado[1])
+        } else if (resultado[0] == 'warn') {
+            console.warn(resultado[1])
+        } else {
+            console.error('Tipo de respuesta no definido. ' + resultado)
+        }
     } catch (error) {
         console.error(error);
     }
@@ -208,51 +219,53 @@ generarTablaUsuarios = () => {
     head.append(tr)
 
     usuarios.forEach(user => {
-        tr = document.createElement('tr')
-        th = document.createElement('th')
-        th.scope = 'row'
-        th.append(document.createTextNode(user['idUsuario']))
-        tr.append(th)
-        td = document.createElement('td')
-        td.append(document.createTextNode(user['nombreUsuario']))
-        tr.append(td)
-        td = document.createElement('td')
-        td.append(document.createTextNode(user['tipoUsuario']))
-        tr.append(td)
-        td = document.createElement('td')
-        td.append(document.createTextNode(user['emailUsuario']))
-        tr.append(td)
-        td = document.createElement('td')
-        td.append(document.createTextNode(user['phoneUsuario']))
-        tr.append(td)
-        td = document.createElement('td')
-        td.append(document.createTextNode(user['usuarioOcupacion']))
-        tr.append(td)
-        td = document.createElement('td')
-        td.append(document.createTextNode(user['fechaRegistro']))
-        tr.append(td)
-        td = document.createElement('td')
-        td.append(document.createTextNode(user['estatusUsuario']))
-        td.className = user['estatusUsuario'] == 'Activo' ? 'text-primary' : 'text-muted'
-        tr.append(td)
-        td = document.createElement('td')
-        td.className = 'text-center align-middle'
-        i = document.createElement('i')
-        i.className = 'fas fa-lg fa-user-edit text-info'
-        a = document.createElement('a')
-        a.className = 'btnEdit'
-        a.id = 'btnEdit-' + user['idUsuario']
-        a.append(i);
-        td.append(a)
-        i = document.createElement('i')
-        i.className = 'fa fa-lg fa-user-times text-danger ml-4'
-        a = document.createElement('a')
-        a.className = 'btnDelete'
-        a.id = 'btnDelete-' + user['idUsuario']
-        a.append(i)
-        td.append(a)
-        tr.append(td)
-        body.append(tr)
+        if (user['idUsuario'] != 0) {
+            tr = document.createElement('tr')
+            th = document.createElement('th')
+            th.scope = 'row'
+            th.append(document.createTextNode(user['idUsuario']))
+            tr.append(th)
+            td = document.createElement('td')
+            td.append(document.createTextNode(user['nombreUsuario']))
+            tr.append(td)
+            td = document.createElement('td')
+            td.append(document.createTextNode(user['tipoUsuario']))
+            tr.append(td)
+            td = document.createElement('td')
+            td.append(document.createTextNode(user['emailUsuario']))
+            tr.append(td)
+            td = document.createElement('td')
+            td.append(document.createTextNode(user['phoneUsuario']))
+            tr.append(td)
+            td = document.createElement('td')
+            td.append(document.createTextNode(user['usuarioOcupacion']))
+            tr.append(td)
+            td = document.createElement('td')
+            td.append(document.createTextNode(user['fechaRegistro']))
+            tr.append(td)
+            td = document.createElement('td')
+            td.append(document.createTextNode(user['estatusUsuario']))
+            td.className = user['estatusUsuario'] == 'Activo' ? 'text-primary' : 'text-muted'
+            tr.append(td)
+            td = document.createElement('td')
+            td.className = 'text-center align-middle'
+            i = document.createElement('i')
+            i.className = 'fas fa-lg fa-user-edit text-info'
+            a = document.createElement('a')
+            a.className = 'btnEdit'
+            a.id = 'btnEdit-' + user['idUsuario']
+            a.append(i);
+            td.append(a)
+            i = document.createElement('i')
+            i.className = 'fa fa-lg fa-user-times text-danger ml-4'
+            a = document.createElement('a')
+            a.className = 'btnDelete'
+            a.id = 'btnDelete-' + user['idUsuario']
+            a.append(i)
+            td.append(a)
+            tr.append(td)
+            body.append(tr)
+        }
     })
 
     table.append(head);
