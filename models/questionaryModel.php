@@ -4,6 +4,15 @@ require_once "connectionModel.php";
 class Questionary
 {
 
+    /** 
+                                * DATOS EN GENERAL EN LAS PREGUNTAS
+     * EN CADA FUNCION DEL MODELO SE HACE UNA INSERCION EN CASO DE NO EXISTIR ESE REGISTRO EN LA BASE DE DATOS O SE ACTUALIZA ESA INFORMACION (EN CASO QUE SE MANEJE UN FUNCION PARA UNA PREGUNTA)
+     * EN LA MAYORIA DE LAS PREGUNTAS SE OCUPAN VARIABLES STRING DE CONCATENACION EN CASO DE QUE HAYA DATOS ESPECÍFICOS
+     * EN ALGUNAS PREGUNTAS SE OCUPAN ARREGLOS EN CASO QUE HAYA MAS DE UN DATO EN ESPECIFICO SEPARADO POR COMAS Y PUNTO AL FINAL
+     * SE HA VALIDADO A TODO BUG POSIBLE EN CUESTION AL CODIGO DEL CUESTIONARIO
+     */
+
+    // COMPARAR DATOS EN CASO DE QUE SE HAYA SELECCIONADO QUE CUENTAN CON EL MISMO TITULAR
     public static function getTitular($idMismoTitular, $anioInstitucion, $sexo, $edad, $ingresos, $nivelEscolaridad, $estatusEscolaridad, $empleoAnterior, $antiguedadServicio, $antiguedadCargo, $pertenenciaIndigena, $condicionDiscapacidad, $formaDesignacion)
     {
         try {
@@ -44,6 +53,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 1 SECCION 1
     public static function insertQuestion1($idInstitucion, $nombreInstitucion, $clasificacionInstitucion, $tipoInstitucion, $funcionPrincipal, $funcionSecUno, $funcionSecDos, $funcionSecTres, $funcionSecCuatro, $funcionSecCinco, $funcionPrincipalEspecifica, $funcionSecUnoEspecifica, $funcionSecDosEspecifica, $funcionSecTresEspecifica, $funcionSecCuatroEspecifica, $funcionSecCincoEspecifica, $comentarioGeneral, $Status, $Anio)
     {
         # try catch para atrapar todo error posible
@@ -242,6 +252,8 @@ class Questionary
             return ["warning", "Error SQL " . $e];
         }
     }
+
+    // EJECUCION DE QUERYS PARA VERIFICAR SI UNA PREGUNTA YA HA SIDO CONTESTADA
     public static function verificarPreguntas($query)
     {
         try {
@@ -255,6 +267,8 @@ class Questionary
             return "ERROR SQL " . $e;
         }
     }
+
+    // OBTENER TOTAL DE HOMBRES Y MUJERES DE LA DEPENDENCIA
     public static function obtenerConteoDependencia($idInstitucion, $nombreInstitucion, $clasificacionInstitucion, $Anio)
     {
         try {
@@ -290,6 +304,8 @@ class Questionary
             return ["warning", "SQL ERROR " . $e];
         }
     }
+
+    // OBTENER CONTEO DE HOMBRES Y MUJERES DEL PERSONAL INDIGENA DE LA DEPENDENCIA
     public static function obtenerConteoPersonalIndigena($idInstitucion, $nombreInstitucion, $anioInstitucion)
     {
         try {
@@ -311,6 +327,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // OBTENER CONTEO DE HOMBRES Y MUJERS DEL PERSONAL DISCAPACITADO DE LA DEPENDENCIA
     public static function obtenerConteoPersonalDispacacitado($idInstitucion, $anioInstitucion)
     {
         try {
@@ -332,6 +350,10 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // VALIDACIONES EN LA VISTA DEL CUESTIONARIO
+
+    // SABER SI LA DEPENDENCIA CUENTA CON FUNCION DE EDUCACIÓN
     public static function contieneEducacion($idInstitucion, $anioInstitucion)
     {
         try {
@@ -359,6 +381,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SABER SI LA DEPENDENCIA CUENTA CON FUNCION DE SALUD
     public static function contieneSalud($idInstitucion, $anioInstitucion)
     {
         try {
@@ -385,6 +409,7 @@ class Questionary
         } catch (Exception $e) {
         }
     }
+    // SABER SI LA INSTITUCION CUENTA CON FUNCION DE DEPORTE
     public static function contieneDeporte($idInstitucion, $anioInstitucion)
     {
         try {
@@ -411,6 +436,8 @@ class Questionary
         } catch (Exception $e) {
         }
     }
+
+    // SABER SI CONTABA CON ELEMENTOS
     public static function contieneElementos($idInstitucion, $anioInstitucion)
     {
         try {
@@ -440,6 +467,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // CONTEO DE INMUEBLES DE LA DEPENDENCIA
     public static function conteoTotalInmuebles($idInstitucion, $anioInstitucion)
     {
         try {
@@ -463,6 +492,8 @@ class Questionary
             return ["warning", "ERROR SQL $e"];
         }
     }
+
+    // CONTEO DE EQUIPO INFORMATICO
     public static function conteoEquipoInformatico($idInstitucion, $anioInstitucion)
     {
         try {
@@ -488,6 +519,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SABER SI LA FUNCION PRINCIPAL DE LA DEPENDENCIA ES EDUCACIÓN
     public static function contieneEducacionPrincipal($idInstitucion, $anioInstitucion)
     {
         try {
@@ -513,6 +546,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SABER SI LA FUNCION PRINCIPAL DE LA DEPENDENCIA ES SALUD
     public static function contieneSaludPrincipal($idInstitucion, $anioInstitucion)
     {
         try {
@@ -538,6 +573,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SABER SI LA FUNCION PRINCIPAL DE LA DEPENDENCIA ES DEPORTE
     public static function ContieneDeportePrincipal($idInstitucion, $anioInstitucion)
     {
         try {
@@ -563,6 +600,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SABER SI SE CONTABILIZARON IMMUEBLES CUYO USO PRINCIPAL SEA EDUCACIÓN
     public static function seContabilizoEducacion($idInstitucion, $anioInstitucion)
     {
         try {
@@ -588,6 +627,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SABER SI SE CONTABILIZARON IMMUEBLES CUYO USO PRINCIPAL SEA SALUD
     public static function seContabilizoSalud($idInstitucion, $anioInstitucion)
     {
         try {
@@ -613,6 +654,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SABER SI SE CONTABILIZARON IMMUEBLES CUYO USO PRINCIPAL SEA DEPORTE
     public static function seContabilizoDeporte($idInstitucion, $anioInstitucion)
     {
         try {
@@ -638,6 +681,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SABER SI SE CONTABILIZO EQUIPO INFORMATICO
     public static function seContabilizoEquipoInformatico($idInstitucion, $anioInstitucion)
     {
         try {
@@ -663,6 +708,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 2 SECCION 1
     public static function insertQuestion2($idInstitucion, $nombreInstitucion, $unidadGenero, $comentarioGeneral, $Status, $Anio)
     {
         try {
@@ -716,6 +763,9 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 3 SECCION 1
+    // EN ESTA PREGUNTA ESTA UN POCO COMPLEJA AL MOMENTO DE GUARDAR LOS DATOS YA QUE POR MOTIVOS DE MEJOR MANEJO DE LA INFORMACION SE AGREGO EL TITULO Y CEDULA POR SEPARADO XD
     public static function insertQuestion3($idInstitucion, $nombreInstitucion, $sexoTitular, $edadTitular, $ingresosTitular, $nivEscolaridadTitular, $estatusEscolaridadTitular, $empleoAnteriorTitular, $antiguedadServicioTitular, $antiguedadCargoTitular, $pertenenciaIndigenaTitular, $condicionDescapacidadTitular, $formaDesignacionTitular, $afiliacionPartidistaTitular, $mimsoTitular, $idMismoTitular, $sexoTitularEspecifico, $nivEscolaridadTitularEspecifico, $empleoAnteriorTitularEspecifico, $pertenenciaIndigenaTitularEspecifico, $condicionDiscapacidadTitularEspecifico, $estatusEscolaridadTitularEspecifico, $formaDesignacionTitularEspecifico, $afiliacionPartidistaTitularEspecifica,  $comentarioGeneral, $Status, $Anio, $tituloTitular, $cedulaTitular)
     {
         try {
@@ -924,6 +974,9 @@ class Questionary
             return ["warning", "SQL ERROR " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 4 SECCION 1
+    // INSERCION DE PERSONAL HOMBRES Y MUJERES POR CLASIFICACIÓN
     public static function insertQuestion4($idInstitucion, $nombreInstitucion, $clasificacionInstitucion, $totalPersonal, $totalHombres, $totalMujeres, $comentarioGeneral, $Status, $Anio)
     {
         try {
@@ -1282,6 +1335,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 5 SECCION 1
     public static function insertQuestion5($idInstitucion, $nombreInstitucion, $totalHombresConfianza, $totalMujeresConfianza, $totalHombresBase, $totalMujeresBase, $totalHombresEventual, $totalMujeresEventual, $totalHombresHonorarios, $totalMujeresHonorarios, $totalHombresOtro, $totalMujeresOtro, $otroEspecifico, $comentarioGeneral, $Status, $Anio, $totalPersonal, $totalHombres, $totalMujeres)
     {
         try {
@@ -1378,6 +1433,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 6 SECCION 1
     public static function insertQuestion6($idInstitucion, $nombreInstitucion, $totalHombresISSSTE, $totalMujeresISSSTE, $totalHombresISSEFH, $totalMujeresISSEFH, $totalHombresIMSS, $totalMujeresIMSS, $totalHombresOtra, $totalMujeresOtra, $totalHombresSinSeguridad, $totalMujeresSinSeguridad, $otroYsinSeguridadEspecifico, $comentarioGeneral, $Status, $Anio, $totalPersonal, $totalHombres, $totalMujeres)
     {
         try {
@@ -1471,6 +1528,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 7 SECCION 1
     public static function insertQuestion7($idInstitucion, $nombreInstitucion, $totalHombres18a24, $totalMujeres18a24, $totalHombres25a29, $totalMujeres25a29, $totalHombres30a34, $totalMujeres30a34, $totalHombres35a39, $totalMujeres35a39, $totalHombres40a44, $totalMujeres40a44, $totalHombres45a49, $totalMujeres45a49, $totalHombres50a54, $totalMujeres50a54, $totalHombres55a59, $totalMujeres55a59, $totalHombres60yMas, $totalMujeres60yMas, $comentarioGeneral, $Status, $Anio, $totalPersonal, $totalHombres, $totalMujeres)
     {
         try {
@@ -1583,6 +1642,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 8 SECCION 1
     public static function insertQuestion8($idInstitucion, $nombreInstitucion, $totalHombresSinPaga, $totalMujeresSinPaga, $totalHombres1a5000, $totalMujeres1a5000, $totalHombres5001a10000, $totalMujeres5001a10000, $totalHombres10001a15000, $totalMujeres10001a15000, $totalHombres15001a20000, $totalMujeres15001a20000, $totalHombres20001a25000, $totalMujeres20001a25000, $totalHombres25001a30000, $totalMujeres25001a30000, $totalHombres30001a35000, $totalMujeres30001a35000, $totalHombres35001a40000, $totalMujeres35001a40000, $totalHombres40001a45000, $totalMujeres40001a45000, $totalHombres45001a50000, $totalMujeres45001a50000, $totalHombres50001a55000, $totalMujeres50001a55000, $totalHombres55001a60000, $totalMujeres55001a60000, $totalHombres60001a65000, $totalMujeres60001a65000, $totalHombres65001a70000, $totalMujeres65001a70000, $totalHombresMasDe70000, $totalMujeresMasDe70000, $sinPagaEspecifico, $comentarioGeneral, $Status, $Anio, $totalPersonal, $totalHombres, $totalMujeres)
     {
 
@@ -1748,6 +1809,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 9 SECCION 1
     public static function insertQuestion9($idInstitucion, $nombreInstitucion, $totalHombresNinguno, $totalMujeresNinguno, $totalHombresPresPri, $totalMujeresPresPri, $totalHombresSecu, $totalMujeresSecu, $totalHombresPrepa, $totalMujeresPrepa, $totalHombresTecnica, $totalMujeresTecnica, $totalHombresLicenciatura, $totalMujeresLicenciatura, $totalHombresMaestria, $totalMujeresMaestria, $totalHombresDoctorado, $totalMujeresDoctorado, $ningunoEspecifico, $comentarioGeneral, $Status, $Anio, $totalPersonal, $totalHombres, $totalMujeres)
     {
         try {
@@ -1859,6 +1922,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 10 SECCION 1
     public static function insertQuestion10($idInstitucion, $nombreInstitucion, $totalHombresPertenecen, $totalMujeresPertenecen, $totalHombresNoPertenecen, $totalMujeresNoPertenecen, $totalHombresNoIdentificado, $totalMujeresNoIdentificado, $noIdentificadoEspecifico, $comentarioGeneral, $Status, $anioInstitucion, $totalPersonal, $totalHombres, $totalMujeres)
     {
         try {
@@ -1962,6 +2027,9 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 11 SECCION 1
+    // LA PREGUNTA CON MAS INFORMACION PARA GUARDAR XD
     public static function insertQuestion11($idInstitucion, $nombreInstitucion, $totalHombresChinanteco, $totalMujeresChinanteco, $totalHombresChol, $totalMujeresChol, $totalHombresCora, $totalMujeresCora, $totalHombresHuasteco, $totalMujeresHuasteco, $totalHombresHuichol, $totalMujeresHuichol, $totalHombresMaya, $totalMujeresMaya, $totalHombresMayo, $totalMujeresMayo, $totalHombresMazahua, $totalMujeresMazahua, $totalHombresMazateco, $totalMujeresMazateco, $totalHombresMixe, $totalMujeresMixe, $totalHombresMixteco, $totalMujeresMixteco, $totalHombresNahuatl, $totalMujeresNahuatl, $totalHombresOtomi, $totalMujeresOtomi, $totalHombresTarascoPurepecha, $totalMujeresTarascoPurepecha, $totalHombresTarahumara, $totalMujeresTarahumara, $totalHombresTepehuano, $totalMujeresTepehuano, $totalHombresTlapaneco, $totalMujeresTlapaneco, $totalHombresTotonaco, $totalMujeresTotonaco, $totalHombresTseltal, $totalMujeresTseltal, $totalHombresTsotsil, $totalMujeresTsotsil, $totalHombresYaqui, $totalMujeresYaqui, $totalHombresZapoteco, $totalMujeresZapoteco, $totalHombresZoque, $totalMujeresZoque, $totalHombresOtro, $totalMujeresOtro, $totalHombresNoIdentificado, $totalMujeresNoIdentificado, $puebloIndigenaEspecifico, $comentarioGeneral, $Status, $anioInstitucion, $totalPersonal, $totalHombres, $totalMujeres)
     {
         try {
@@ -2278,6 +2346,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 12 SECCION 1
     public static function insertQuestion12($idInstitucion, $nombreInstitucion, $totalHombresConDiscapacidad, $totalMujeresConDiscapacidad, $totalHombresSinDiscapacidad, $totalMujeresSinDiscapacidad, $totalHombresNoIdentificado, $totalMujeresNoIdentificado, $noIdentificadoEspecifico, $comentarioGeneral, $Status, $anioInstitucion, $totalPersonal, $totalHombres, $totalMujeres)
     {
         try {
@@ -2381,6 +2451,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 13 SECCION 1
     public static function insertQuestion13($idInstitucion, $nombreInstitucion, $totalHombresCaminar, $totalMujeresCaminar, $totalHombresVer, $totalMujeresVer, $totalHombresBrazos, $totalMujeresBrazos, $totalHombresAprender, $totalMujeresAprender, $totalHombresOir, $totalMujeresOir, $totalHombresHablar, $totalMujeresHablar, $totalHombresBaniarse, $totalMujeresBaniarse, $totalHombresDepresion, $totalMujeresDepresion, $totalHombresOtro, $totalMujeresOtro, $totalHombresNoIdentificado, $totalMujeresNoIdentificado, $tipoDiscapacidadEspecifico, $comentarioGeneral, $Status, $anioInstitucion, $totalPersonal, $totalHombres, $totalMujeres)
     {
         try {
@@ -2508,6 +2580,8 @@ class Questionary
             return ["warning", "ERROR SQL " . $e];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 14 SECCION 1
     public static function insertQuestion14($idInstitucion, $nombreInstitucion, $personalContabilizado, $totalPersonal, $totalHombres, $totalMujeres, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -2680,6 +2754,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 15 SECCION 1
     public static function insertQuestion15($idInstitucion, $nombreInstitucion, $personalContabilizado, $totalPersonal, $totalHombres, $totalMujeres, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -2852,6 +2928,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 16 SECCION 1
     public static function insertQuestion16($idInstitucion, $nombreInstitucion, $elementosProfesionalizacion, $disposicionNormativa, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -3101,6 +3179,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 17 SECCION 1
     public static function insertQuestion17($idInstitucion, $nombreInstitucion, $checkServicio, $checkReclutamiento, $checkPruebas, $checkCurricular, $checkActualizacion, $checkValidacion, $checkConcursos, $checkMecanismos, $checkProgramas, $checkEvaluacion, $checkEstimulos, $checkSeparacion, $checkOtros, $otroEspecifico, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -3203,6 +3283,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 18 SECCION 1
     public static function insertQuestion18($idInstitucion, $nombreInstitucion, $contabaConUnidadAdministrativa, $unidadAdministrativa, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -3358,6 +3440,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 19 SECCION 1
     public static function insertQuestion19($idInstitucion, $nombreInstitucion, $seImpartieronAcciones, $accionesImpartidas, $accionesImpartidasConcluidas, $totalPersonal, $totalHombres, $totalMujeres, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -3552,6 +3636,10 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // SE OMITEN LAS PREGUNTAS 20, 21, 21, 23 DEBIDO A QUE NO SON NECESARIAS PARA EL CUESTIONARIO XD
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 24 SECCION 1
     public static function insertQuestion24($idInstitucion, $nombreInstitucion, $totalInmuebles, $totalPropios, $totalRentados, $totalOtro, $otroEspecifico, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -3712,6 +3800,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 25 SECCION 1
     public static function insertQuestion25($idInstitucion, $nombreInstitucion, $seContabilizaron, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -3862,6 +3952,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 26 SECCION 1
     public static function insertQuestion26($idInstitucion, $nombreInstitucion, $totalInmuebles, $totalInmueblesPricipalEducativa, $totalInmueblesOtraPrincipal, $comoEscuelas1, $paraOtro1, $formaMixta1, $comoEscuelas2, $paraOtro2, $formaMixta2, $paraOtraFuncEducativaEspecifica,  $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -3951,6 +4042,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 27 SECCION 1
     public static function insertQuestion27($idInstitucion, $nombreInstitucion, $opcion, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -4102,6 +4195,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 28 SECCION 1
     public static function insertQuestion28($idInstitucion, $nombreInstitucion, $totalInmuebles, $totalInmueblesPricipalSalud, $totalInmueblesOtraPrincipal, $comoClinicas1, $comoCentrosDeSalud1, $comoHospitales1, $paraOtro1, $formaMixta1, $comoClinicas2, $comoCentrosDeSalud2, $comoHospitales2, $paraOtro2, $formaMixta2, $paraOtraFuncSaludEspecifica, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -4205,6 +4300,8 @@ class Questionary
             return ["warning", "ERROR SQL : $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 29 SECCION 1
     public static function insertQuestion29($idInstitucion, $nombreInstitucion, $opcion, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -4356,6 +4453,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 30 SECCION 1
     public static function insertQuestion30($idInstitucion, $nombreInstitucion, $totalInmuebles, $totalInmueblesPricipalDeportes, $totalInmueblesOtraPrincipal, $destinadosActFisicas1, $destinadosRecreacionFisica1, $destinadosDeporte1, $destinadosDeporteAltoRendimiento1, $destinadosEventos1, $paraOtro1, $destinadosIndistintos1, $destinadosActFisicas2, $destinadosRecreacionFisica2, $destinadosDeporte2, $destinadosDeporteAltoRendimiento2, $destinadosEventos2, $paraOtro2, $destinadosIndistintos2, $paraOtraFuncSaludEspecifica, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -4473,6 +4572,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 31 SECCION 1
     public static function insertQuestion31($idInstitucion, $nombreInstitucion, $totalGeneral, $totalAutomoviles, $totalCamionesCamionetas, $totalMotocicletas, $totalBicicletas, $totalHelicopteros, $totalDrones, $totalOtros, $otroEspecifico, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -4561,6 +4661,8 @@ class Questionary
         } catch (Exception $e) {
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 32 SECCION 1
     public static function insertQuestion32($idInstitucion, $nombreInstitucion, $totalLineasFijas, $totalLineasMoviles, $totalLineas, $totalAparatosFijos, $totalAparatosMoviles, $totalAparatos, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -4634,6 +4736,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 33 SECCION 1
     public static function insertQuestion33($idInstitucion, $nombreInstitucion, $totalComputadoraPersonal, $totalComputadoraPortatil, $totalComputadoras, $totalImpresoraPersonal, $totalImpresoraCompartida, $totalImpresoras, $totalMultifuncionales, $totalServidores, $totalTabletas, $contoConServicios, $comentarioGeneral, $Status, $anioInstitucion, $contoConServiciosEspecifico)
     {
         try {
@@ -4760,6 +4864,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 34 SECCION 1
     public static function insertQuestion34($idInstitucion, $nombreInstitucion, $seContabilizaron, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -4875,6 +4981,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 35 SECCION 1
     public static function insertQuestion35($idInstitucion, $nombreInstitucion, $totalComputadorasEducacion, $totalComputadorasOtra, $totalComputadoras, $totalImpresorasEducacion, $totalImpresorasOtra, $totalImpresoras, $totalMultifuncionalesEducacion, $totalMultifuncionalesOtra, $totalMultifuncionales, $totalServidoresEducacion, $totalServidoresOtra, $totalServidores, $totalTabletasEducacion, $totalTabletasOtra, $totalTabletas, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -4978,6 +5086,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA COMPLEMENTO SECCION 1 (PERSONAL MUERTO POR COVID :( )
     public static function preguntaComplemento($idInstitucion, $nombreInstitucion, $totalPersonal, $totalHombres, $totalMujeres, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -5044,6 +5153,10 @@ class Questionary
 
     # ------------------------------ SECCION 12 -----------------------------------#
 
+
+    // VALIDACIONES EN LA VISTA PARA LAS PREGUNTAS DE LA SECCION 12
+
+    // SABER CONTABA CON LA DISPOSICION 1 PREGUNTA 1
     public static function contabaConDisposicionP1($idInstitucion, $anioInstitucion)
     {
         try {
@@ -5068,6 +5181,7 @@ class Questionary
         }
     }
 
+    // SABER CONTABA CON LA DISPOSICION 2 PREGUNTA 2
     public static function contabaConDisposicion2P1($idInstitucion, $anioInstitucion)
     {
         try {
@@ -5092,6 +5206,7 @@ class Questionary
         }
     }
 
+    // SABER SI CONTABA CON SISTEMA ELECTRÓNICO
     public static function cuentaSistemaElectronico($idInstitucion, $anioInstitucion)
     {
         try {
@@ -5118,6 +5233,7 @@ class Questionary
         }
     }
 
+    // SABER SI CUENTA CON LOS DIFERENTES TIPOS DE PROCEDIMIENTOS DE CONTRATACIÓN
     public static function procedimientosContratacion($idInstitucion, $anioInstitucion)
     {
         try {
@@ -5194,6 +5310,7 @@ class Questionary
         }
     }
 
+    // TOTAL DE CONTRATOS
     public static function totalContratos($idInstitucion, $anioInstitucion)
     {
         try {
@@ -5219,6 +5336,7 @@ class Questionary
         }
     }
 
+    // OBTENER MONTOS DE LOS CONTRATOS
     public static function obtenerMontos($idInstitucion, $anioInstitucion)
     {
         try {
@@ -5242,6 +5360,8 @@ class Questionary
         } catch (Exception $e) {
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 1 SECCION 12
     public static function insertQuestion1_12($idInstitucion, $nombreInstitucion, $contabaConDisposicion1, $nombreDisposicion1, $contabaConDisposicion2, $nombreDisposicion2, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -5392,6 +5512,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 2 SECCION 12
     public static function insertQuestion2_12($idInstitucion, $nombreInstitucion, $checkNoAplica1, $checkAdjudicacion1, $checkInvitacion1, $checkLicitacionNacional1, $checkLicitacionInternacional1, $checkOtroProcedimiento1, $checkNoAplica2, $checkAdjudicacion2, $checkInvitacion2, $checkLicitacionNacional2, $checkLicitacionInternacional2, $checkOtroProcedimiento2, $checkOtroEspecifico1, $checkOtroEspecifico2, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -5560,6 +5681,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 3 SECCION 12
     public static function insertQuestion3_12($idInstitucion, $nombreInstitucion, $checkNoAplica1, $contabaMecanismo1, $checkMecanismo1tipo1, $checkMecanismo2tipo1, $checkMecanismo3tipo1, $checkMecanismo4tipo1, $checkMecanismo5tipo1, $checkMecanismo6tipo1, $checkMecanismo7tipo1, $checkMecanismo8tipo1, $checkMecanismo9tipo1, $checkMecanismo10tipo1, $checkMecanismo11tipo1, $checkMecanismo12tipo1, $checkMecanismo13tipo1, $checkMecanismo14tipo1, $checkMecanismo15tipo1, $checkMecanismo16tipo1, $checkNoAplica2, $contabaMecanismo2, $checkMecanismo1tipo2, $checkMecanismo2tipo2, $checkMecanismo3tipo2, $checkMecanismo4tipo2, $checkMecanismo5tipo2, $checkMecanismo6tipo2, $checkMecanismo7tipo2, $checkMecanismo8tipo2, $checkMecanismo9tipo2, $checkMecanismo10tipo2, $checkMecanismo11tipo2, $checkMecanismo12tipo2, $checkMecanismo13tipo2, $checkMecanismo14tipo2, $checkMecanismo15tipo2, $checkMecanismo16tipo2, $checkOtroEspecifico1, $checkOtroEspecifico2, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -5747,6 +5869,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 4 SECCION 12
     public static function insertQuestion4_12($idInstitucion, $nombreInstitucion, $contabaConSistemas, $sitioDisponible, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -5825,6 +5948,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 5 SECCION 12
     public static function insertQuestion5_12($idInstitucion, $nombreInstitucion, $checkEtapa1, $checkEtapa2, $checkEtapa3, $checkEtapa4, $checkEtapa5, $checkEtapa6, $checkEtapa7, $checkEtapa8, $checkEtapa9, $otraEspecifica, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -5916,6 +6040,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 6 SECCION 12
     public static function insertQuestion6_12($idInstitucion, $nombreInstitucion, $contabaConElSistema1, $contabaConElSistema2, $contabaConElSistema3, $contabaConElSistema4, $contabaConElSistema5, $tipoFormato1, $tipoFormato2, $tipoFormato3, $tipoFormato4, $tipoFormato5, $frecuenciaActualizacion1, $frecuenciaActualizacion2, $frecuenciaActualizacion3, $frecuenciaActualizacion4, $frecuenciaActualizacion5, $cantidadRegistrada1, $cantidadRegistrada2, $cantidadRegistrada3, $cantidadRegistrada4, $cantidadRegistrada5, $otroFormatoEspecifico1, $otroFormatoEspecifico2, $otroFormatoEspecifico3, $otroFormatoEspecifico4, $otroFormatoEspecifico5, $otraFrecuenciaEspecifica1, $otraFrecuenciaEspecifica2, $otraFrecuenciaEspecifica3, $otraFrecuenciaEspecifica4, $otraFrecuenciaEspecifica5, $comentarioGeneral, $anioInstitucion, $contabaConElSistema6, $tipoFormato6, $frecuenciaActualizacion6, $cantidadRegistrada6, $otroFormatoEspecifico6, $otraFrecuenciaEspecifica6)
     {
         try {
@@ -6107,6 +6232,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 7 SECCION 12
     public static function insertQuestion7_12($idInstitucion, $nombreInstitucion, $noAplica1, $contratosRealizados1, $noAplica2, $contratosRealizados2, $noAplica3, $contratosRealizados3, $noAplica4, $contratosRealizados4, $noAplica5, $contratosRealizados5, $comentarioGeneral, $Status, $anioInstitucion, $totalContratos)
     {
         try {
@@ -6246,6 +6372,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 8 SECCION 12
     public static function insertQuestion8_12($idInstitucion, $nombreInstitucion, $noAplicaProcedimientoTipo1, $totalContratosTipo1, $contratosAdquisicionesTipo1, $contratosObraPublicaTipo1, $noAplicaProcedimientoTipo2, $totalContratosTipo2, $contratosAdquisicionesTipo2, $contratosObraPublicaTipo2, $noAplicaProcedimientoTipo3, $totalContratosTipo3, $contratosAdquisicionesTipo3, $contratosObraPublicaTipo3, $noAplicaProcedimientoTipo4, $totalContratosTipo4, $contratosAdquisicionesTipo4, $contratosObraPublicaTipo4, $noAplicaProcedimientoTipo5, $totalContratosTipo5, $contratosAdquisicionesTipo5, $contratosObraPublicaTipo5, $comentarioGeneral, $Status, $anioInstitucion, $totalContratosGral, $totalContratosGralAdquisiciones, $totalContratosGralObraPublica)
     {
         try {
@@ -6410,6 +6537,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 9 SECCION 12
     public static function insertQuestion9_12($idInstitucion, $nombreInstitucion, $noAplica1, $montoAsociado1, $noAplica2, $montoAsociado2, $noAplica3, $montoAsociado3, $noAplica4, $montoAsociado4, $noAplica5, $montoAsociado5, $comentarioGeneral, $Status, $anioInstitucion, $montoTotal)
     {
 
@@ -6527,6 +6655,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 10 SECCION 12
     public static function insertQuestion10_12($idInstitucion, $nombreInstitucion, $noAplicaProcedimientoTipo1, $totalMontosTipo1, $montosAdquisicionesTipo1, $montosObraPublicaTipo1, $noAplicaProcedimientoTipo2, $totalMontosTipo2, $montosAdquisicionesTipo2, $montosObraPublicaTipo2, $noAplicaProcedimientoTipo3, $totalMontosTipo3, $montosAdquisicionesTipo3, $montosObraPublicaTipo3, $noAplicaProcedimientoTipo4, $totalMontosTipo4, $montosAdquisicionesTipo4, $montosObraPublicaTipo4, $noAplicaProcedimientoTipo5, $totalMontosTipo5, $montosAdquisicionesTipo5, $montosObraPublicaTipo5, $comentarioGeneral, $Status, $anioInstitucion, $totalMontosGral, $totalMontosGralAdquisiciones, $totalMontosGralObraPublica)
     {
         try {
@@ -6651,6 +6780,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 11 SECCION 12
     public static function insertQuestion11_12($idInstitucion, $nombreInstitucion, $implementoEsquema, $totalContratos, $montoAsociado, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -6714,6 +6844,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 12 SECCION 12
     public static function insertQuestion12_12($idInstitucion, $nombreInstitucion, $implementoEsquema, $totalContrataciones, $montoAsociado, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -6776,6 +6907,8 @@ class Questionary
             return ["warning", "ERROR SQL: $e"];
         }
     }
+
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 13 SECCION 12
     public static function insertQuestion13_12($idInstitucion, $nombreInstitucion, $totalConvenios, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -6835,6 +6968,7 @@ class Questionary
         }
     }
 
+    // INSERTAR O ACTUALIZAR INFORMACION EN LA PREGUNTA 14 SECCION 12
     public static function insertQuestion14_12($idInstitucion, $nombreInstitucion, $totalDeEstudios, $comentarioGeneral, $Status, $anioInstitucion)
     {
         try {
@@ -6897,7 +7031,8 @@ class Questionary
 
     #REPORTE INDIVIDUAL POR DEPENDENCIA
 
-    # p == Pregunta, s == Seccion
+    // OBTENER LA CONSULTA POR PREGUNTA PARA MENOR CODIGO EN EL CONTROLADOR
+    # p == Pregunta, s == Seccion/
     public static function obtenerConsulta($p, $s, $idInstitucion, $anioInstitucion, $clasificacionInstitucion)
     {
         #SECCION 1
@@ -6998,6 +7133,7 @@ class Questionary
         }
     }
 
+    // EJECUTAR LA CONSULTA PARA GENERAR EL ARBOL DEL REPORTE EN EL CONTROLADOR
     public static function generarReporte($query)
     {
         try {
@@ -7012,6 +7148,7 @@ class Questionary
         }
     }
 
+    // CAMBIAR EL ESTADO DE FINALIZADO DE 0 A 1 PARA TERMINAR CENSO
     public static function terminarCenso($idInstitucion, $anioInstitucion)
     {
         try {
@@ -7033,6 +7170,7 @@ class Questionary
         }
     }
 
+    // VERIFICAR SI EL ESTADO DE FINALIZADO ES 1 O 0 EN CASO DE NO HABER TERMINADO
     public static function verificarFinalizacionCenso($idInstitucion, $anioInstitucion)
     {
         try {

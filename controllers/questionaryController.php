@@ -4,6 +4,10 @@ require_once "../models/questionaryModel.php";
 $data = json_decode(file_get_contents('php://input'), true);
 $tipoPeticion = $data["tipoPeticion"];
 
+// TODAS LAS FUNCIONES DENTRO DE LOS IF ESTAN COMENTADAS EN EL ARCHIVO questionaryController.php
+
+// PETICIONES QUE MANDA AXIOS PARA MANEJO DE LA INFORMACIÓN DEL CUESTTONARIO
+
 if ($tipoPeticion == "guardarPregunta") {
     $Pregunta = $data["pregunta"];
     $seccion = $data['seccion'];
@@ -1027,6 +1031,8 @@ if ($tipoPeticion == "guardarPregunta") {
         $respuestaPregunta14_12 = Questionary::insertQuestion14_12($idInstitucion, $nombreInstitucion, $totalDeEstudios, $comentarioGeneral, 1, $anioInstitucion);
         echo json_encode($respuestaPregunta14_12);
     }
+
+    // VALIDACIONES QUE PIDE AXIOS DESDE LA VISTA TODO DE IGUAL MANERA ESTA COMENTADO EN EL MODELO
 } else if ($tipoPeticion == 'verificarPreguntasContestadas') {
     $preguntasContestadas = [];
     $idInstitucion = $data['idInstitucion'];
@@ -1519,7 +1525,7 @@ if ($tipoPeticion == "guardarPregunta") {
     $respuesta = Questionary::obtenerMontos($idInstitucion, $anioInstitucion);
 
     echo json_encode($respuesta);
-} else if ($tipoPeticion == 'obtenerReporte') {
+} else if ($tipoPeticion == 'obtenerReporte') { // GENERAR ARBOL DE LA INFORMACION DEL TODO EL CUESTIONARIO DE LA DEPENDDENCIA
     $id = $data['idInstitucion'];
     $nombre = $data['nombreInstitucion'];
     $clasificacion = $data['clasificacionInstitucion'];
@@ -1527,6 +1533,7 @@ if ($tipoPeticion == "guardarPregunta") {
 
     #SECCION 1
 
+    // EJECUCION DE LAS CONSULTAS ALMACENADAS EN UNA VARIABLE 
     $pregunta1 = Questionary::generarReporte(Questionary::obtenerConsulta(1, 1, $id, $anio, $clasificacion));
     $pregunta2 = Questionary::generarReporte(Questionary::obtenerConsulta(2, 1, $id, $anio, $clasificacion));
     $pregunta3 = Questionary::generarReporte(Questionary::obtenerConsulta(3, 1, $id, $anio, $clasificacion));
@@ -1581,6 +1588,9 @@ if ($tipoPeticion == "guardarPregunta") {
     $pregunta13_12 = Questionary::generarReporte(Questionary::obtenerConsulta(13, 12, $id, $anio, $clasificacion));
     $pregunta14_12 = Questionary::generarReporte(Questionary::obtenerConsulta(14, 12, $id, $anio, $clasificacion));
 
+
+    // ARBOL DE TODA LA INFORMACION DEL CUESTIONARIO
+    // ESTA VALIDADO EN CASO DE NO TENER INFORMACION ENCONTRADA EN LA BASE DE DATOS
     $reporte = array(
         "pregunta1seccion1" => [
             'tipoInstitucion' => isset($pregunta1[0]['tipoInstitucion']) ? $pregunta1[0]['tipoInstitucion'] : "",
@@ -2318,7 +2328,7 @@ if ($tipoPeticion == "guardarPregunta") {
     );
 
     echo json_encode($reporte);
-} else if ($tipoPeticion == 'finalizarCuestionarioEnBD') {
+} else if ($tipoPeticion == 'finalizarCuestionarioEnBD') { // VALIDACIONES PARA EL REPORTE EN PDF DEL CUESTIONARIO IGUALMENTE COMENTADAS EN EL MODELO
     $idInstitucion = $data['idInstitucion'];
     $anioInstitucion = $data['anioInstitucion'];
 
