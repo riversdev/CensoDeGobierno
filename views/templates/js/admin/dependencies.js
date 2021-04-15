@@ -183,8 +183,9 @@ async function accionesDependencias(dependencia, accion) {
             respuesta = res.data
             if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
-                modalDependencias.hide()
-                listarDependencias('all').then(() => { generarTablaDependencias() })
+                modalDependencias.hide()                
+                listarDependencias(document.getElementById('selectAnioDependencia').value)
+                    .then(() => { generarTablaDependencias() })
                 document.getElementById('formDependencias').reset()
             } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
@@ -214,7 +215,8 @@ async function accionesDependencias(dependencia, accion) {
             if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
                 modalDependencias.hide()
-                listarDependencias('all').then(() => { generarTablaDependencias() })
+                listarDependencias(document.getElementById('selectAnioDependencia').value)
+                    .then(() => { generarTablaDependencias() })
                 document.getElementById('formDependencias').reset()
             } else if (respuesta[0] == 'error') {
                 alertify.error(respuesta[1])
@@ -238,7 +240,8 @@ async function accionesDependencias(dependencia, accion) {
             respuesta = res.data
             if (respuesta[0] == 'success') {
                 alertify.success(respuesta[1])
-                listarDependencias('all').then(() => { generarTablaDependencias() })
+                listarDependencias(document.getElementById('selectAnioDependencia').value)
+                    .then(() => { generarTablaDependencias() })
                 document.getElementById('formDependenciaEliminar').reset()
 
             } else if (respuesta[0] == 'error') {

@@ -411,7 +411,7 @@ class AdminModel
         $mensajeSuccess = ""; // VARIABLE DE GUARDADO
         //REASIGNAR TABLAS PARA DISMINUIR CODIGO
         $tipoDeEliminacion == "all" ? $tablas = $tablasAll : $tablas = $tablaHistorial;
-        $tipoDeEliminacion == "all" ? $mensajeSuccess = ["success", "Dependencia Eliminada"] : $mensajeSuccess = ["success", "Resultados Eliminados"];
+        $tipoDeEliminacion == "all" ? $mensajeSuccess = ["success", "Dependencia eliminada !"] : $mensajeSuccess = ["success", "Resultados eliminados !"];
         // RECORRER ARBOL DE TABLAS DONDE ESTAN LAS TABLAS Y SUS CAMPOS
         for ($i = 0; $i < count($tablas); $i++) {
 
