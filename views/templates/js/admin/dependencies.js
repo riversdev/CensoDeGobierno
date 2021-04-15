@@ -122,24 +122,36 @@ generarTablaDependencias = () => {
         td = document.createElement('td')
         td.className = 'text-center align-middle'
         td.style.width = '15%'
+
         i = document.createElement('i')
-        i.className = 'fas fa-lg far fa-edit text-info mx-0 w-25'
+        i.className = 'fas fa-lg fa-id-card text-success w-25'
+        a = document.createElement('a')
+        a.className = 'btnContactoDependencia'
+        a.id = 'btnContactoDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
+        a.title = 'Contacto'
+        a.append(i);
+        td.append(a)
+
+        i = document.createElement('i')
+        i.className = 'fas fa-lg fa-edit text-info w-25'
         a = document.createElement('a')
         a.className = 'btnEditDependencia'
         a.id = 'btnEditDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Editar'
         a.append(i);
         td.append(a)
+
         i = document.createElement('i')
-        i.className = 'fa fa-lg far fa-trash-alt text-danger mx-2 w-25'
+        i.className = 'fas fa-lg fa-trash-alt text-danger w-25'
         a = document.createElement('a')
         a.className = 'btnDeleteDependencia'
         a.id = 'btnDeleteDependencia-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Eliminar'
         a.append(i)
         td.append(a)
+
         i = document.createElement('i')
-        i.className = dependencia['Finalizado'] == 1 ? 'fa fa-lg fa-power-off text-warning mx-0 w-25' : 'fa fa-lg fa-power-off text-muted mx-0 w-25'
+        i.className = dependencia['Finalizado'] == 1 ? 'fas fa-lg fa-power-off text-warning w-25' : 'fas fa-lg fa-power-off text-muted w-25'
         a = document.createElement('a')
         a.className = 'btnActiveDependencia'
         a.id = 'btnActive-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion'] + '-' + dependencia['Finalizado']
@@ -277,9 +289,31 @@ recolectarDatosDependenciaGUI = () => {
 }
 
 listenerDeAccionesDependencias = () => {
-    let elementosEditar = document.getElementsByClassName('btnEditDependencia'),
+    let elementosContacto = document.getElementsByClassName('btnContactoDependencia'),
+        elementosEditar = document.getElementsByClassName('btnEditDependencia'),
         elementosEliminar = document.getElementsByClassName('btnDeleteDependencia'),
         elementosActivarCuestionario = document.getElementsByClassName('btnActiveDependencia')
+
+    for (let i = 0; i < elementosContacto.length; i++) {
+        document.getElementById(elementosContacto[i].id).addEventListener('click', function () {
+            let idDependencia = this.id.split('-')[1],
+                anioDependencia = this.id.split('-')[2],
+                nombreDependencia = '',
+                correoDependencia = '',
+                telefonoDependencia = ''
+
+            for (const dependencia in dependencias) {
+                if (dependencias[dependencia].idInstitucion == idDependencia && dependencias[dependencia].anioInstitucion == anioDependencia) {
+                    nombreDependencia = dependencias[dependencia]['nombreInstitucion']
+                    correoDependencia = dependencias[dependencia]['correo']
+                    telefonoDependencia = dependencias[dependencia]['telefono']
+                    break
+                }
+            }
+
+            alertify.alert('Información de contacto..', '<span class="fw-bold">' + anioDependencia + ', ' + nombreDependencia + '<br><br>Correo: ' + (correoDependencia != '' ? '<span class="fw-normal">' + correoDependencia + '</span>' : '<span class="fw-normal fst-italic text-warning">sin datos</span>') + '<br>Teléfono: ' + (telefonoDependencia != '' ? '<span class="fw-normal">' + telefonoDependencia + '</span>' : '<span class="fw-normal fst-italic text-warning">sin datos</span>') + '</span>')
+        })
+    }
 
     for (let i = 0; i < elementosEditar.length; i++) {
         document.getElementById(elementosEditar[i].id).addEventListener('click', function () {

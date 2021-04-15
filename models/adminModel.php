@@ -206,11 +206,12 @@ class AdminModel
                     "SELECT
                         u.user_id AS idUsuario,
                         u.user_password_hash AS contraseniaUsuario,
-                        u.user_status AS estatusUsuario
+                        u.user_status AS estatusUsuario,
+                        u.user_tipe AS tipoUsuario
                     FROM users AS u
-                    WHERE u.user_email = '" . $usuario . "'";
-
+                    WHERE u.user_email='$usuario'";
                 $stmt = Connection::connect()->prepare($obtenerDatos);
+
                 if ($stmt->execute()) {
                     $resultados = $stmt->fetchAll();
                     if ($resultados[0]['estatusUsuario'] == "Activo" && count($resultados) > 0) {
@@ -219,6 +220,7 @@ class AdminModel
                             $_SESSION['sesionActiva'] = "1";
                             $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
                             $_SESSION['tipoUsuario'] = "admin";
+                            $_SESSION['rolUsuario'] = $resultados[0]['tipoUsuario'];
                             return ["success", true];
                         } else {
                             return ["success", false];
@@ -233,7 +235,7 @@ class AdminModel
                 }
             }
         } catch (Exception $e) {
-            return ["error", "Imposible conectar a la base de datos!" . $e];
+            return ["warn", "Imposible conectar a la base de datos!" . $e];
         }
     }
 
@@ -255,30 +257,26 @@ class AdminModel
             if ($anio == "all") {
                 $listarDependencias =
                     "SELECT
-                        d.Clave AS idInstitucion,
-                        d.Institucion AS nombreInstitucion,
-                        d.Clasificacion_Adm AS Clasificacion,
-                        d.anio AS anioInstitucion,
-                        d.finalizado AS Finalizado,
-                        e.correo AS correo,
-                        e.telefono AS telefono
-                    FROM altas_instituciones as d
-                    INNER JOIN tbl_instituciones as e ON e.id=d.Clave
-                    GROUP BY d.Clave";
+                        a.Clave AS idInstitucion,
+                        a.Institucion AS nombreInstitucion,
+                        a.Clasificacion_Adm AS Clasificacion,
+                        a.anio AS anioInstitucion,
+                        a.finalizado AS Finalizado,
+                        a.correo AS correo,
+                        a.telefono AS telefono
+                    FROM altas_instituciones as a";
             } else {
                 $listarDependencias =
                     "SELECT
-                        d.Clave AS idInstitucion,
-                        d.Institucion AS nombreInstitucion,
-                        d.Clasificacion_Adm AS Clasificacion,
-                        d.anio AS anioInstitucion,
-                        d.finalizado AS Finalizado,
-                        e.correo AS correo,
-                        e.telefono AS telefono
-                    FROM altas_instituciones as d
-                    INNER JOIN tbl_instituciones as e ON e.id=d.Clave 
-                    WHERE d.anio=$anio AND e.anio=$anio
-                    GROUP BY d.Clave";
+                        a.Clave AS idInstitucion,
+                        a.Institucion AS nombreInstitucion,
+                        a.Clasificacion_Adm AS Clasificacion,
+                        a.anio AS anioInstitucion,
+                        a.finalizado AS Finalizado,
+                        a.correo AS correo,
+                        a.telefono AS telefono
+                    FROM altas_instituciones as a
+                    WHERE a.anio=$anio";
             }
             $stmt = Connection::connect()->prepare($listarDependencias);
 
