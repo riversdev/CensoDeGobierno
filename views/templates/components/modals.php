@@ -1,4 +1,4 @@
-<!-- MODAL USUARIOS -->
+<!-- MODAL AGREGAR Y EDITAR USUARIOS -->
 <div class="modal fade" id="modalUsuarios" tabindex="-1" aria-labelledby="modalUsuariosLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content border-0">
@@ -72,12 +72,12 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
+            <div class="modal-footer p-1" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
         </div>
     </div>
 </div>
 
-<!-- MODAL DEPENDENCIAS -->
+<!-- MODAL AGREGAR Y EDITAR DEPENDENCIAS -->
 <div class="modal fade" id="modalDependencias" tabindex="-1" aria-labelledby="modalDependenciasLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content border-0">
@@ -128,66 +128,52 @@
                     <button id="submitDependencia" type="submit" class="btn btn-outline-primary ml-3">Enviar</button>
                 </div>
             </form>
-            <div class="modal-footer" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
+            <div class="modal-footer p-1" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
         </div>
     </div>
 </div>
 
-<!-- Formulario ELIMINAR DEPENDENCIA -->
+<!-- MODAL ELIMINAR DEPENDENCIAS -->
 <div class="modal fade" id="modalDependenciasEliminar" tabindex="-1" aria-labelledby="modalDependenciasEliminarLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content border-0">
             <div class="modal-header border-0 d-flex justify-content-between align-items-center" style="background: linear-gradient(to right, #b91926,#e63c4d);">
-                <h5 class="modal-title text-white" id="modalDependenciasLabel">Eliminar dependencia</h5>
+                <h6 class="modal-title text-white" id="modalDependenciasLabel">Eliminando dependencia...</h6>
                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="formDependenciaEliminar" class="card p-3 m-0 needs-validation" novalidate>
                 <div class="modal-body form-row p-0">
-                    <div class="col-12">
-                        <div class="form-row mt-2">
-                            <div class="col-12 mb-3">
-                                <div class="form-check text-center">
-                                    <div class="form-row m-0">
-                                        <div class="col-10">
-                                            <label class="form-check-label text-justify" for="flexRadioDefault1">
-                                                Eliminar dependencia (esto eliminará todo registro de esta dependencia en el año seleccionado, incluyendo las respuestas del censo y contraseña de acceso)
-                                            </label>
-                                        </div>
-                                        <div class="col-2 mt-2">
-                                            <input class="btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="all" required>
-                                            <label class="btn btn-sm btn-outline-success text-white" for="flexRadioDefault1"><i class="fas fa-2x fa-times"></i></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="valid-feedback">Correcto!</div>
-                                <div class="invalid-feedback">Ingrese un numero válido!</div>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="form-check text-center">
-                                    <div class="form-row m-0">
-                                        <div class="col-10">
-                                            <label class="form-check-label text-justify" for="flexRadioDefault12">
-                                                Eliminar resultados (esto eliminará las respuestas del censo en el año seleccionado y la contraseña de acceso de la dependencia pero se conservará su alta en el sistema)
-                                            </label>
-                                        </div>
-                                        <div class="col-2 mt-2">
-                                            <input class="btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault12" value="historial" required>
-                                            <label class="btn btn-sm btn-outline-success text-white" for="flexRadioDefault12"><i class="fas fa-2x fa-times"></i></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="valid-feedback">Correcto!</div>
-                                <div class="invalid-feedback">Ingrese un opción válida!</div>
-                            </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="form-check text-center p-0">
+                            <label class="form-check-label mb-1" for="flexRadioDefault1">Eliminar dependencia</label><br>
+                            <input class="btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="all" required>
+                            <label class="btn btn-sm btn-outline-success text-white" for="flexRadioDefault1">
+                                <i class="fas fa-2x fa-times"></i>
+                            </label>
                         </div>
+                        <p class="small mt-2 mb-0 mx-1 text-justify text-muted">
+                            Esto eliminará todo registro de esta dependencia en el año seleccionado, incluyendo la alta en el sistema, las respuestas del cuestionario y la contraseña de acceso.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="form-check text-center p-0">
+                            <label class="form-check-label mb-1" for="flexRadioDefault12">Eliminar resultados</label><br>
+                            <input class="btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault12" value="historial" required>
+                            <label class="btn btn-sm btn-outline-success text-white" for="flexRadioDefault12">
+                                <i class="fas fa-2x fa-times"></i>
+                            </label>
+                        </div>
+                        <p class="small mt-2 mb-0 mx-1 text-justify text-muted">
+                            Esto eliminará las respuestas del cuestionario en el año seleccionado y la contraseña de acceso pero se conservará su alta en el sistema.
+                        </p>
                     </div>
                 </div>
-                <div class="w-100 d-flex justify-content-end">
+                <div class="w-100 d-flex justify-content-end mt-3">
                     <button type="button" class="btn btn-outline-white" data-bs-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-outline-primary ml-3">Enviar</button>
                 </div>
             </form>
-            <div class="modal-footer" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
+            <div class="modal-footer p-1" style="background: linear-gradient(to left, #b91926,#e63c4d);"></div>
         </div>
     </div>
 </div>
