@@ -621,7 +621,7 @@ class AdminModel
 
             if ($stmt->execute()) {
                 $datos = $stmt->fetchAll();
-                return ["success", $datos[0][0], $datos[0][1]];
+                return ["success", (isset($datos[0][0]) ? $datos[0][0] : 'Sin datos'), (isset($datos[0][1]) ? $datos[0][1] : 'Sin datos')];
             } else {
                 return ["error", "Imposible obtener datos !"];
             }
