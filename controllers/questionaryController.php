@@ -1737,7 +1737,7 @@ if ($tipoPeticion == "guardarPregunta") {
 
         "pregunta9seccion1" => [
             'ningunoHombres' => isset($pregunta9[0]['ningunoh']) ? $pregunta9[0]['ningunoh'] : "0",
-            'ningunoMujeres' => isset($$pregunta9[0]['ningunom']) ? $pregunta9[0]['ningunom'] : "0",
+            'ningunoMujeres' => isset($pregunta9[0]['ningunom']) ? $pregunta9[0]['ningunom'] : "0",
             'prePriHombres' => isset($pregunta9[0]['preescolarPh']) ? $pregunta9[0]['preescolarPh'] : "0",
             'prePriMujeres' => isset($pregunta9[0]['prescolarPm']) ? $pregunta9[0]['prescolarPm'] : "0",
             'secundariaHombres' => isset($pregunta9[0]['secundariah']) ? $pregunta9[0]['secundariah'] : "0",
