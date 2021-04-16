@@ -93,44 +93,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" colspan="5">Secundaria(s)</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP1S1">
-                                    <tr class="_header-size">
-                                        <td colspan="1" class="text-center align-middle px-2">
-                                            1.-
-                                        </td>
-                                        <td colspan="2" class="text-justify align-middle">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            3
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            14
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            5
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            5
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            5
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            5
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            5
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP1S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP1s1">
+                                    <tr id="contenedorComentariosEspecificosP1s1" class="contenedorDeComentarios">
                                         <td colspan="9">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP1s1" readonly></textarea>
@@ -138,7 +105,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP1s1">
+                                    <tr id="contenedorComentariosGeneralP1s1" class="contenedorDeComentarios">
                                         <td colspan="9">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneral" readonly></textarea>
@@ -169,22 +136,10 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center">¿Cuenta con alguna unidad de género y/o enlace de género?</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP2S1">
-                                    <tr class="_header-size">
-                                        <td colspan="1" class="text-center align-middle px-2">
-                                            1.-
-                                        </td>
-                                        <td colspan="2" class="text-justify align-middle">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP2S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
-                                <tr id="contenedorComentariosGeneralP2s1">
+                                <tr id="contenedorComentariosGeneralP2s1" class="contenedorDeComentarios">
                                     <td colspan="2">
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP2" readonly></textarea>
@@ -233,59 +188,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center px-1">Estatus</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP3S1">
-                                    <tr class="_header-size">
-                                        <td colspan="1" class="text-center align-middle px-2">
-                                            1.-
-                                        </td>
-                                        <td colspan="2" class="text-justify align-middle">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP3S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP3s1" class="">
+                                    <tr id="contenedorComentariosEspecificosP3s1" class="contenedorDeComentarios">
                                         <td colspan="9">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP3s1" readonly></textarea>
@@ -293,7 +200,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP3s1">
+                                    <tr id="contenedorComentariosGeneralP3s1" class="contenedorDeComentarios">
                                         <td colspan="10">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP3" readonly></textarea>
@@ -330,27 +237,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP4S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle px-2" colspan="1">1.-</td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            23
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            10
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            13
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP4S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP4s1">
+                                    <tr id="contenedorComentariosGeneralP4s1" class="contenedorDeComentarios">
                                         <td colspan="4">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP4" readonly></textarea>
@@ -404,59 +295,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center px-1">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP5S1">
-                                    <tr class="_header-size">
-                                        <td colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            23
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            10
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            13
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP5S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP5s1">
+                                    <tr id="contenedorComentariosEspecificosP5s1" class="contenedorDeComentarios">
                                         <td colspan="9">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP5s1" readonly></textarea>
@@ -464,7 +307,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP5s1">
+                                    <tr id="contenedorComentariosGeneralP5s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP5" readonly></textarea>
@@ -518,59 +361,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center px-1">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP6S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            23
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            785
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP6S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP6s1">
+                                    <tr id="contenedorComentariosEspecificosP6s1" class="contenedorDeComentarios">
                                         <td colspan="9">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP6s1" readonly></textarea>
@@ -578,7 +373,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP6s1">
+                                    <tr id="contenedorComentariosGeneralP6s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP6" readonly></textarea>
@@ -644,83 +439,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP7S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            230
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP7S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP7s1">
+                                    <tr id="contenedorComentariosGeneralP7s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP7" readonly></textarea>
@@ -783,67 +506,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP8S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP8S1"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 2 de 2)</h5>
@@ -888,75 +551,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
 
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP81S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP81S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP8s1">
+                                    <tr id="contenedorComentariosEspecificosP8s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP8s1" readonly></textarea>
@@ -964,7 +563,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP8s1">
+                                    <tr id="contenedorComentariosGeneralP8s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP8" readonly></textarea>
@@ -1027,77 +626,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP9S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            895
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            123
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            852
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP9S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP9s1">
+                                    <tr id="contenedorComentariosEspecificosP9s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP9s1" readonly></textarea>
@@ -1105,7 +638,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP9s1">
+                                    <tr id="contenedorComentariosGeneralP9s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP9" readonly></textarea>
@@ -1153,47 +686,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center px-4">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP10S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP10S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP10s1">
+                                    <tr id="contenedorComentariosEspecificosP10s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP10s1" readonly></textarea>
@@ -1201,7 +698,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP10s1">
+                                    <tr id="contenedorComentariosGeneralP10s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP10" readonly></textarea>
@@ -1281,79 +778,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionIndigena17P11S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionIndigena17P11S1"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 2 de 4)</h5>
@@ -1396,70 +821,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionIndigena813P11S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionIndigena813P11S1"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 3 de 4)</h5>
@@ -1502,70 +864,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionIndigena1419P11S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionIndigena1419P11S1"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 4 de 4)</h5>
@@ -1608,74 +907,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionIndigena2025P11S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionIndigena2025P11S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP11s1">
+                                    <tr id="contenedorComentariosEspecificosP11s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP11s1" readonly></textarea>
@@ -1683,7 +919,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP11s1">
+                                    <tr id="contenedorComentariosGeneralP11s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP11" readonly></textarea>
@@ -1731,47 +967,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center px-2">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP12S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP12S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP12s1">
+                                    <tr id="contenedorComentariosEspecificosP12s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP12s1" readonly></textarea>
@@ -1779,7 +979,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP12s1">
+                                    <tr id="contenedorComentariosGeneralP12s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP12" readonly></textarea>
@@ -1851,63 +1051,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionDiscapacidad15P13S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-
-
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionDiscapacidad15P13S1"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 2 de 2)</h5>
@@ -1946,65 +1090,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle _text-vertical px-0">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionDiscapacidad610P13S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionDiscapacidad610P13S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP13s1">
+                                    <tr id="contenedorComentariosEspecificosP13s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP13s1" readonly></textarea>
@@ -2012,7 +1102,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP13s1">
+                                    <tr id="contenedorComentariosGeneralP13s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP13" readonly></textarea>
@@ -2050,23 +1140,10 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP14S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">1</td>
-                                        <td class="text-center align-middle">1</td>
-                                        <td class="text-center align-middle">1</td>
-                                        <td class="text-center align-middle">1</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP14S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
-                                <tr id="contenedorComentariosGeneralP14s1">
+                                <tr id="contenedorComentariosGeneralP14s1" class="contenedorDeComentarios">
                                     <td>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP14" readonly></textarea>
@@ -2103,23 +1180,10 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP15S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">1</td>
-                                        <td class="text-center align-middle">1</td>
-                                        <td class="text-center align-middle">1</td>
-                                        <td class="text-center align-middle">1</td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP15S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
-                                <tr id="contenedorComentariosGeneralP15s1">
+                                <tr id="contenedorComentariosGeneralP15s1" class="contenedorDeComentarios">
                                     <td>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP15" readonly></textarea>
@@ -2151,26 +1215,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="35%">Nombre de la disposición normativa donde se encuentran regulados</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP16S1">
-                                    <tr class="_header-size">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            1
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            Descripcion Normativa COCODI
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP16S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP16s1">
+                                    <tr id="contenedorComentariosGeneralP16s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP16" readonly></textarea>
@@ -2217,59 +1266,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle px-1">Otros</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP17S1">
-                                    <tr class="_header-size text-center align-middle">
-                                        <td class="text-center align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                        <td class="align-middle">
-                                            x
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP17S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP17s1">
+                                    <tr id="contenedorComentariosEspecificosP17s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP17s1" readonly></textarea>
@@ -2277,7 +1278,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP17s1">
+                                    <tr id="contenedorComentariosGeneralP17s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP17" readonly></textarea>
@@ -2310,26 +1311,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle" width="35%">Nombre de la unidad administrativa o área coordinadora en materia de profesionalización del personal</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP18S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            4
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP18S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP18s1">
+                                    <tr id="contenedorComentariosGeneralP18s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP18" readonly></textarea>
@@ -2369,38 +1355,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td>Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP19S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP19S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP19s1">
+                                    <tr id="contenedorComentariosGeneralP19s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP19" readonly></textarea>
@@ -2438,32 +1397,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="px-5">Otro tipo de posesión</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP24S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">1
-
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP24S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP24s1">
+                                    <tr id="contenedorComentariosEspecificosP24s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP24s1" readonly></textarea>
@@ -2471,7 +1409,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP24s1">
+                                    <tr id="contenedorComentariosGeneralP24s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP24" readonly></textarea>
@@ -2503,23 +1441,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle">¿Se contabilizaron bienes inmuebles cuyo uso principal haya sido el apoyo a funciones educativas?</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP25S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP25S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP25s1">
+                                    <tr id="contenedorComentariosGeneralP25s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP25" readonly></textarea>
@@ -2582,13 +1508,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="px-3">2.3 Bienes inmuebles usados de forma mixta</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP26S1">
-
-                                </tbody>
+                                <tbody id="identifierQuestionP26S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP26s1">
+                                    <tr id="contenedorComentariosEspecificosP26s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP26s1" readonly></textarea>
@@ -2596,7 +1520,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP26s1">
+                                    <tr id="contenedorComentariosGeneralP26s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP26" readonly></textarea>
@@ -2628,23 +1552,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle">¿Se contabilizaron bienes inmuebles cuyo uso principal fue el apoyo a funciones de salud?</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP27S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP27S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP27s1">
+                                    <tr id="contenedorComentariosGeneralP27s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP27" readonly></textarea>
@@ -2712,13 +1624,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="px-1">2.5 Bienes inmuebles usados de forma mixta</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP28S1">
-
-                                </tbody>
+                                <tbody id="identifierQuestionP28S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP28s1">
+                                    <tr id="contenedorComentariosEspecificosP28s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP28s1" readonly></textarea>
@@ -2726,7 +1636,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP28s1">
+                                    <tr id="contenedorComentariosGeneralP28s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP28" readonly></textarea>
@@ -2758,23 +1668,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle">¿Se contabilizaron bienes inmuebles cuyo uso principal fue la realización de activación física, cultura física y/o deporte?</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP29S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP29S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP29s1">
+                                    <tr id="contenedorComentariosGeneralP29s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP29" readonly></textarea>
@@ -2893,7 +1791,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP30s1">
+                                    <tr id="contenedorComentariosEspecificosP30s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP30s1" readonly></textarea>
@@ -2901,7 +1799,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP30s1">
+                                    <tr id="contenedorComentariosGeneralP30s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP30" readonly></textarea>
@@ -2943,44 +1841,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center px-2">Otro tipo de vehiculos</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP31S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">1
-
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP31S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP31s1">
+                                    <tr id="contenedorComentariosEspecificosP31s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP31s1" readonly></textarea>
@@ -2988,7 +1853,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP31s1">
+                                    <tr id="contenedorComentariosGeneralP31s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP31" readonly></textarea>
@@ -3029,38 +1894,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center px-3">Moviles</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP32S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP32S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP32s1">
+                                    <tr id="contenedorComentariosGeneralP32s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP32" readonly></textarea>
@@ -3105,50 +1943,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle px-2" colspan="2">Para uso compartido</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP33S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle" colspan="2">
-                                            1
-                                        </td>
-                                        <td class="align-middle" colspan="2">
-                                            1
-                                        </td>
-                                        <td class="align-middle" colspan="2">
-                                            1
-                                        </td>
-                                        <td class="align-middle" colspan="2">
-                                            1
-                                        </td>
-                                        <td class="align-middle" colspan="2">
-                                            1
-                                        </td>
-                                        <td class="align-middle" colspan="2">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP33S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP33s1">
+                                    <tr id="contenedorComentariosEspecificosP33s1" class="contenedorDeComentarios">
                                         <td colspan="9">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP33s1" readonly></textarea>
@@ -3156,7 +1955,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP33s1">
+                                    <tr id="contenedorComentariosGeneralP33s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP33" readonly></textarea>
@@ -3188,23 +1987,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-justify align-middle">¿Se contabilizaron computadoras, impresoras, multifuncionales, servidores y tabletas electrónicas asignadas a profesores y estudiantes exclusivamente para ser utilizadas con fines educativos y de enseñanza?</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP34S1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            9
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP34S1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP34s1">
+                                    <tr id="contenedorComentariosGeneralP34s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP34" readonly></textarea>
@@ -3308,7 +2095,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP35s1">
+                                    <tr id="contenedorComentariosEspecificosP35s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP35s1" readonly></textarea>
@@ -3316,7 +2103,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP35s1">
+                                    <tr id="contenedorComentariosGeneralP35s1" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP35" readonly></textarea>
@@ -3352,29 +2139,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center">Mujeres</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionPComplementS1">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionPComplementS1"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralComplementos1">
+                                    <tr id="contenedorComentariosGeneralComplementos1" class="contenedorDeComentarios">
                                         <td colspan="4">
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralComplementoS1" readonly></textarea>
@@ -3413,32 +2182,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" colspan="3" width="20%">Nombre de la disposición normativa</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP1S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-0" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-4 align-middle" colspan="3">
-                                            1
-                                        </td>
-                                        <td class="align-middle px-1" colspan="3">
-                                            Disposicion 1
-                                        </td>
-                                        <td class="px-4 align-middle" colspan="3">
-                                            1
-                                        </td>
-                                        <td class="align-middle" colspan="3">
-                                            Disposicion 2
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP1S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP1s12">
+                                    <tr id="contenedorComentariosGeneralP1s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP1s12" readonly></textarea>
@@ -3484,34 +2232,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle">Otro procedimiento (especifique)</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionMateria1P2S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionMateria1P2S12"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 2 de 2)</h5>
@@ -3534,38 +2255,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle">Otro procedimiento (especifique)</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionMateria2P2S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionMateria2P2S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP2s12">
+                                    <tr id="contenedorComentariosEspecificosP2s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP2s12" readonly></textarea>
@@ -3573,7 +2267,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP2s12">
+                                    <tr id="contenedorComentariosGeneralP2s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP2s12" readonly></textarea>
@@ -3631,70 +2325,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle">16</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionMateria1P3S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionMateria1P3S12"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 2 de 2)</h5>
@@ -3729,74 +2360,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle">16</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionMateria2P3S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionMateria2P3S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP3s12">
+                                    <tr id="contenedorComentariosEspecificosP3s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP3s12" readonly></textarea>
@@ -3804,7 +2372,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP3s12">
+                                    <tr id="contenedorComentariosGeneralP3s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP3s12" readonly></textarea>
@@ -3837,26 +2405,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="45%">Sitio donde se encuentra disponible el sistema electrónico de contrataciones públicas (URL):</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP4S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            https://oficialiamayor.com
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP4S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP4s12">
+                                    <tr id="contenedorComentariosGeneralP4s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP4s12" readonly></textarea>
@@ -3896,47 +2449,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle px-1" width="8%">9. No se sabe</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP5S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP5S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP5s12">
+                                    <tr id="contenedorComentariosEspecificosP5s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP5s12" readonly></textarea>
@@ -3944,7 +2461,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP5s12">
+                                    <tr id="contenedorComentariosGeneralP5s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP5s12" readonly></textarea>
@@ -3990,40 +2507,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="8%">Cantidad registrada</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionTipoSistema12P6S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            10
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionTipoSistema12P6S12"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 2 de 3)</h5>
@@ -4046,40 +2530,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="8%">Cantidad registrada</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionTipoSistema34P6S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            10
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionTipoSistema34P6S12"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 3 de 3)</h5>
@@ -4102,44 +2553,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="8%">Cantidad registrada</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionTipoSistema56P6S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            10
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-3 align-middle">
-                                            1
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionTipoSistema56P6S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosEspecificosP6s12">
+                                    <tr id="contenedorComentariosEspecificosP6s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtDatosEspecificosP6s12" readonly></textarea>
@@ -4147,7 +2565,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="contenedorComentariosGeneralP6s12">
+                                    <tr id="contenedorComentariosGeneralP6s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP6s12" readonly></textarea>
@@ -4176,7 +2594,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                 <tbody>
                                     <tr class="text-center" style="font-size:14px">
                                         <td class="text-justify align-middle px-3 py-2">* Total de contratos realizados:</td>
-                                        <td class="text-dark font-weight-bold align-middle" id="identifierQuestionSumaTotalContratosP7S12">100</td>
+                                        <td class="text-dark font-weight-bold align-middle" id="identifierQuestionSumaTotalContratosP7S12">0</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -4211,74 +2629,12 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle">Contratos realizados</td>
                                     </tr>
                                 </thead>
-                                <tfoot id="identifierQuestionSumaContratosP7S12">
-                                    <tr class="_header-size text-center text-dark">
-                                        <td colspan="4"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                                <tbody id="identifierQuestionP7S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tfoot id="identifierQuestionSumaContratosP7S12"></tfoot>
+                                <tbody id="identifierQuestionP7S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP7s12">
+                                    <tr id="contenedorComentariosGeneralP7s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP7s12" readonly></textarea>
@@ -4307,11 +2663,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                 <tbody id="identifierQuestionSumaTotalContratosP8S12">
                                     <tr class="text-center" style="font-size:14px">
                                         <td class="text-justify align-middle px-3" width="15%">Total de contratos realizados:</td>
-                                        <td class="text-dark font-weight-bold align-middle" id="totalContratosP8S12">100</td>
+                                        <td class="text-dark font-weight-bold align-middle" id="totalContratosP8S12">0</td>
                                         <td class="text-justify align-middle px-2" width="30%">Contratos realizados, según tipo de materia de Adquisiciones, arrendamientos y servicios:</td>
-                                        <td class="text-dark font-weight-bold align-middle" id="totalContratos1P8S12">50</td>
+                                        <td class="text-dark font-weight-bold align-middle" id="totalContratos1P8S12">0</td>
                                         <td class="text-justify align-middle px-2" width="30%">Contratos realizados, según tipo de materia de Obra pública y servicios relacionados con la misma:</td>
-                                        <td class="text-dark font-weight-bold align-middle px-2" id="totalContratos2P8S12">50</td>
+                                        <td class="text-dark font-weight-bold align-middle px-2" id="totalContratos2P8S12">0</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -4340,66 +2696,8 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="12%">Obra pública y servicios relacionados con la misma</td>
                                     </tr>
                                 </thead>
-                                <tfoot id="identifierQuestionSumaContratos12P8S12">
-                                    <tr class="_header-size text-center text-dark">
-                                        <td colspan="4"></td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                                <tbody id="identifierQuestionTipoProcedimiento12P8S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tfoot id="identifierQuestionSumaContratos12P8S12"></tfoot>
+                                <tbody id="identifierQuestionTipoProcedimiento12P8S12"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 2 de 3)</h5>
@@ -4426,66 +2724,8 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="12%">Obra pública y servicios relacionados con la misma</td>
                                     </tr>
                                 </thead>
-                                <tfoot id="identifierQuestionSumaContratos34P8S12">
-                                    <tr class="_header-size text-center text-dark">
-                                        <td colspan="4"></td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                                <tbody id="identifierQuestionTipoProcedimiento34P8S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tfoot id="identifierQuestionSumaContratos34P8S12"></tfoot>
+                                <tbody id="identifierQuestionTipoProcedimiento34P8S12"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 3 de 3)</h5>
@@ -4506,47 +2746,12 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="12%">Obra pública y servicios relacionados con la misma</td>
                                     </tr>
                                 </thead>
-                                <tfoot id="identifierQuestionSumaContratos5P8S12">
-                                    <tr class="_header-size text-center text-dark">
-                                        <td colspan="4"></td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                                <tbody id="identifierQuestionTipoProcedimiento5P8S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tfoot id="identifierQuestionSumaContratos5P8S12"></tfoot>
+                                <tbody id="identifierQuestionTipoProcedimiento5P8S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP8s12">
+                                    <tr id="contenedorComentariosGeneralP8s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP8s12" readonly></textarea>
@@ -4575,7 +2780,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                 <tbody>
                                     <tr class="text-center" style="font-size:14px">
                                         <td class="text-justify align-middle px-3 py-2">* Monto asociado a los contratos realizados:</td>
-                                        <td class="text-dark font-weight-bold align-middle" id="totalMontoP9S12">100.00</td>
+                                        <td class="text-dark font-weight-bold align-middle" id="totalMontoP9S12">0</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -4605,74 +2810,12 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="align-middle" width="10%">Monto asociado a los contratos realizados</td>
                                     </tr>
                                 </thead>
-                                <tfoot id="identifierQuestionMontoAsociadoP9S12">
-                                    <tr class="_header-size text-center text-dark">
-                                        <td colspan="4"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td colspan="1"></td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                                <tbody id="identifierQuestionP9S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tfoot id="identifierQuestionMontoAsociadoP9S12"></tfoot>
+                                <tbody id="identifierQuestionP9S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP9s12">
+                                    <tr id="contenedorComentariosGeneralP9s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP9s12" readonly></textarea>
@@ -4701,11 +2844,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                 <tbody>
                                     <tr class="text-center" style="font-size:14px">
                                         <td class="text-justify align-middle px-3" width="15%">Monto total asociado a los contratos realizados:</td>
-                                        <td class="text-dark font-weight-bold align-middle" id="totalMontoP10S12">100.00</td>
+                                        <td class="text-dark font-weight-bold align-middle" id="totalMontoP10S12">0</td>
                                         <td class="text-justify align-middle px-3" width="30%">Monto asociado a los contratos realizados, según tipo de materia de Adquisiciones, arrendamientos y servicios:</td>
-                                        <td class="text-dark font-weight-bold align-middle" id="totalMonto1P10S12">50.00</td>
+                                        <td class="text-dark font-weight-bold align-middle" id="totalMonto1P10S12">0</td>
                                         <td class="text-justify align-middle px-3" width="30%">Monto asociado a los contratos realizados, según tipo de materia de Obra pública y servicios relacionados con la misma:</td>
-                                        <td class="text-dark font-weight-bold align-middle px-2" id="totalMonto2P10S12">50.00</td>
+                                        <td class="text-dark font-weight-bold align-middle px-2" id="totalMonto2P10S12">0</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -4734,40 +2877,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="12%">Obra pública y servicios relacionados con la misma</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionTipoProcedimiento12P10S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionTipoProcedimiento12P10S12"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 2 de 3)</h5>
@@ -4794,40 +2904,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="12%">Obra pública y servicios relacionados con la misma</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionTipoProcedimiento34P10S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionTipoProcedimiento34P10S12"></tbody>
                             </table>
                             <div class="text-right px-2">
                                 <h5>(Parte 3 de 3)</h5>
@@ -4848,32 +2925,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="12%">Obra pública y servicios relacionados con la misma</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionTipoProcedimiento5P10S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-1" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="align-middle">
-                                            X
-                                        </td>
-                                        <td class="align-middle">
-                                            5
-                                        </td>
-                                        <td class="align-middle">
-                                            3
-                                        </td>
-                                        <td class="align-middle">
-                                            2
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionTipoProcedimiento5P10S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP10s12">
+                                    <tr id="contenedorComentariosGeneralP10s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP10s12" readonly></textarea>
@@ -4908,29 +2964,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle">Monto asociado a los contratos o convenios marco</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP11S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP11S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP11s12">
+                                    <tr id="contenedorComentariosGeneralP11s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP11s12" readonly></textarea>
@@ -4964,29 +3002,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle">Monto asociado a las contrataciones o compras consolidadas</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP12S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            1
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                        <td class="align-middle">
-                                            10
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP12S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP12s12">
+                                    <tr id="contenedorComentariosGeneralP12s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP12s12" readonly></textarea>
@@ -5018,23 +3038,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="20%">Total de convenios modificatorios</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP13S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP13S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP13s12">
+                                    <tr id="contenedorComentariosGeneralP13s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP13s12" readonly></textarea>
@@ -5066,23 +3074,11 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                         <td class="text-center align-middle" width="20%">Total de estudios de impacto urbano y ambiental</td>
                                     </tr>
                                 </thead>
-                                <tbody id="identifierQuestionP14S12">
-                                    <tr class="_header-size text-center">
-                                        <td class="align-middle px-2" colspan="1">
-                                            1.-
-                                        </td>
-                                        <td class="text-justify align-middle" colspan="2">
-                                            comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)
-                                        </td>
-                                        <td class="px-4 align-middle">
-                                            1
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="identifierQuestionP14S12"></tbody>
                             </table>
                             <table class="table table-sm table-bordered">
                                 <tbody>
-                                    <tr id="contenedorComentariosGeneralP14s12">
+                                    <tr id="contenedorComentariosGeneralP14s12" class="contenedorDeComentarios">
                                         <td>
                                             <div class="form-floating">
                                                 <textarea class="form-control" placeholder="Comentarios.." id="txtComentarioGeneralP14s12" readonly></textarea>
