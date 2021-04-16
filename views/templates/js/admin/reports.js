@@ -107,7 +107,7 @@ generarTablaReportes = () => {
         td.style.width = '15%'
         a = document.createElement('a')
         a.className = 'btnReporteIndividual'
-        a.id = 'btnReporteIndividual-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion'] + '-' + dependencia['clasificacion'] + '-' + dependencia['Institucion']
+        a.id = 'btnReporteIndividual-' + dependencia['idInstitucion'] + '-' + dependencia['anioInstitucion']
         a.title = 'Generar reporte'
         i = document.createElement('i')
         i.className = 'fas fa-lg fa-address-book text-info mx-0 w-25'
@@ -161,14 +161,12 @@ listenersDeAccionesResultados = () => {
     for (let i = 0; i < elementosReporteIndivudual.length; i++) {
         document.getElementById(elementosReporteIndivudual[i].id).addEventListener('click', function () {
             let idDependencia = this.id.split('-')[1],
-                anioDependencia = this.id.split('-')[2],
-                clasificacionDependencia = this.id.split('-')[3],
-                nombreDependencia = this.id.split('-')[4]
+                anioDependencia = this.id.split('-')[2]
 
             if (anioDependencia == 2019 || anioDependencia == 2020) {
                 window.open('oldIndividualReport?' + idDependencia + '&' + anioDependencia, '_blank')
             } else {
-                window.open('questionaryReport?' + btoa(idDependencia) + '&' + btoa(anioDependencia) + '&' + btoa(clasificacionDependencia), '_blank')
+                window.open('questionaryReport?' + btoa(idDependencia) + '&' + btoa(anioDependencia), '_blank')
             }
         })
     }
@@ -248,6 +246,8 @@ generarReporte = (tipoReporte) => {
     if (tipoReporte == 'general') {
         if (anio == 2019 || anio == 2020) {
             window.open('oldGeneralReport?' + anio, '_blank')
+        } else {
+            window.open('questionaryReport?' + btoa('general') + '&' + btoa(anio), '_blank')
         }
     } else {
         let clasificacion = document.getElementById('selectClasificacionReporte').value
@@ -257,6 +257,12 @@ generarReporte = (tipoReporte) => {
                 window.open('oldCentralizedReport?' + anio, '_blank')
             } else {
                 window.open('oldParastatalReport?' + anio, '_blank')
+            }
+        } else {
+            if (clasificacion == 1) {
+                window.open('questionaryReport?' + btoa('centralizadas') + '&' + btoa(anio), '_blank')
+            } else {
+                window.open('questionaryReport?' + btoa('paraestatales') + '&' + btoa(anio), '_blank')
             }
         }
     }

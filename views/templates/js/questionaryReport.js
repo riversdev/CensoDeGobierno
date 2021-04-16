@@ -2,11 +2,16 @@
 let reporte, idInstitucion, anioInstitucion, clasificacionInstitucion, nombreInstitucion
 
 document.addEventListener('DOMContentLoaded', () => {
+    // DESCIFRAR PARAMETROS DE LA RUTA
+    let parametros = window.location.href.split('?')[1].split('&')
+    idInstitucion = atob(parametros[0])
+    anioInstitucion = atob(parametros[1])
+
     // ESCUCHADOR PARA CERRAR LA VENTANA DESPUES DE IMPRIMIRLA
     window.addEventListener('afterprint', function () { this.close() }, false)
 
     // OBTENER EL NOMBRE DE LA DEPENDENCIA
-    recuperarNombreDependencia().then(() => {
+    recuperarNombreDependencia(idInstitucion, anioInstitucion).then(() => {
         // VERIFICAR SI EL CUESTIONARIO ESTA FINALIZADO, CERRAR LA VENTANA SI NO ES ASI
         verificarCuestionarioFinalizado().then((res) => {
             if (res != undefined && res == true) {
@@ -1043,15 +1048,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-async function recuperarNombreDependencia() {
+async function recuperarNombreDependencia(idInstitucion, anioInstitucion) {
     try {
-        let url = window.location.href,
-            url_define = url.split('?')[1]
-
-        idInstitucion = atob(url_define.split('&')[0])
-        anioInstitucion = atob(url_define.split('&')[1])
-        clasificacionInstitucion = atob(url_define.split('&')[2])
-
         let res = await axios('controllers/adminController.php', {
             method: 'POST',
             data: {
@@ -1060,7 +1058,17 @@ async function recuperarNombreDependencia() {
                 anioInstitucion
             }
         })
-        nombreInstitucion = res.data
+
+        let resultado = res.data
+
+        if (resultado[0] == 'success') {
+            nombreInstitucion = resultado[1]
+            clasificacionInstitucion = resultado[2]
+        } else if (resultado[0] == 'error') {
+            console.warn(resultado[1])
+        } else {
+            console.error(resultado)
+        }
     } catch (error) {
         console.log(error)
     }

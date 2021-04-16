@@ -616,18 +616,17 @@ class AdminModel
     public static function nombreInstitucion($id, $anio)
     {
         try {
-            $obtenerNombre =
-                "SELECT Institucion FROM altas_instituciones WHERE Clave = $id AND anio = $anio";
+            $SQL = "SELECT Institucion, Clasificacion_Adm FROM altas_instituciones WHERE Clave = $id AND anio = $anio";
+            $stmt = Connection::connect()->prepare($SQL);
 
-            $stmt = Connection::connect()->prepare($obtenerNombre);
             if ($stmt->execute()) {
                 $datos = $stmt->fetchAll();
-                return $datos[0][0];
+                return ["success", $datos[0][0], $datos[0][1]];
             } else {
-                return "algo salio mal xd";
+                return ["error", "Imposible obtener datos !"];
             }
         } catch (\Exception $e) {
-            return $e;
+            return ["warn", "Imposible conectarse a la BD. " . $e];
         }
     }
 }
