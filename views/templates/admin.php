@@ -85,28 +85,42 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
             </div>
             <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">
                 <div class="row m-0">
-                    <div class="col-4 offset-1 mb-4 p-3 shadow rounded">
-                        <h5>General</h5>
-                        <p>
-                            <small>de</small>
-                            <span class="spanAnioReporte"></span>
-                        </p>
+                    <div class="col-4 offset-1 mb-4 p-3 shadow rounded d-flex align-content-around flex-wrap justify-content-center">
+                        <figure class="text-center px-4 mb-0">
+                            <blockquote class="blockquote">
+                                <p>General</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                Esta opción le permitirá generar el reporte general del año <u><cite class="citaAnioReporte"></cite></u>
+                            </figcaption>
+                        </figure>
                         <button id="btnReporteGeneral" class="btn btn-outline-primary" type="button">Generar</button>
                     </div>
-                    <div class="col-4 offset-2 mb-4 p-3 shadow rounded">
-                        <h5>Por clasificación administrativa</h5>
-                        <select id="selectClasificacionReporte" class="custom-select">
-                            <option value="1" selected>Centralizadas</option>
-                            <option value="2">Paraestatales</option>
-                        </select>
-                        <p>
-                            <small>de</small>
-                            <span class="spanAnioReporte"></span>
-                        </p>
+                    <div class="col-4 offset-2 mb-4 p-3 shadow rounded d-flex align-content-around flex-wrap justify-content-center">
+                        <figure class="text-center px-4 mb-0">
+                            <blockquote class="blockquote">
+                                <p>Por clasificación administrativa</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                Esta opción le permitirá generar el reporte de dependencias
+                                <select id="selectClasificacionReporte" class="custom-select w-auto">
+                                    <option value="1" selected>Centralizadas</option>
+                                    <option value="2">Paraestatales</option>
+                                </select>
+                                del año <u><cite class="citaAnioReporte"></cite></u>
+                            </figcaption>
+                        </figure>
                         <button id="btnReporteClasificacion" class="btn btn-outline-primary" type="button">Generar</button>
                     </div>
                     <div class="col-12 p-3 shadow rounded">
-                        <h5>Individuales y documentos del titular</h5>
+                        <figure class="text-center mb-0">
+                            <blockquote class="blockquote">
+                                <p>Individuales y documentos del titular</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer mb-0">
+                                La siguiente tabla contiene los registros de las dependencias que han finalizado el cuestionario en el año <u><cite class="citaAnioReporte"></cite></u>
+                            </figcaption>
+                        </figure>
                         <div class="table-responsive p-1" id="contenedorTablaReportesIndividuales"></div>
                     </div>
                 </div>

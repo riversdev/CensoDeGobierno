@@ -3,12 +3,12 @@ let reportes = null
 
 document.addEventListener('DOMContentLoaded', () => {
     llenarSelectDeAnios('selectAnioReportes')
-    actualizarSpansDeAnio(document.getElementById('selectAnioReportes').value)
+    actualizarCitasDeAnio(document.getElementById('selectAnioReportes').value)
     listarReportes(document.getElementById('selectAnioReportes').value).then(() => { generarTablaReportes() })
 
     document.getElementById('selectAnioReportes').addEventListener('change', function () {
         listarReportes(this.value).then(() => {
-            actualizarSpansDeAnio(this.value)
+            actualizarCitasDeAnio(this.value)
             generarTablaReportes()
         })
     })
@@ -232,11 +232,11 @@ listenersDeAccionesResultados = () => {
 
 
 // ACTUALIZAR TEXTO DE LOS SPANS DE LAS CARDS DE REPORTE GENERAL Y POR CLASIFICACION
-actualizarSpansDeAnio = (anio) => {
-    let spansAnioReporte = document.getElementsByClassName('spanAnioReporte')
-    for (let i = 0; i < spansAnioReporte.length; i++) {
-        spansAnioReporte[i].innerHTML = ''
-        spansAnioReporte[i].innerHTML = anio
+actualizarCitasDeAnio = (anio) => {
+    let citasAnioReporte = document.getElementsByClassName('citaAnioReporte')
+    for (let i = 0; i < citasAnioReporte.length; i++) {
+        citasAnioReporte[i].innerHTML = ''
+        citasAnioReporte[i].innerHTML = anio
     }
 }
 
