@@ -339,11 +339,11 @@ aplicarDataTable = (tabla) => {
     } else if (tabla == 'tablaReportes') {
         $('#tablaReportes').DataTable({
             'lengthMenu': [
-                [3, 10, 25, -1],
-                [3, 10, 25, 'Todos']
+                [8, 20, 50, -1],
+                [8, 20, 50, 'Todos']
             ],
             'order': [
-                [1, 'desc']
+                [0, 'desc']
             ],
             responsive: 'true',
             language: {

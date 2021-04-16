@@ -85,7 +85,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
             </div>
             <div class="tab-pane fade" id="reportes" role="tabpanel" aria-labelledby="reportes-tab">
                 <div class="row m-0">
-                    <div class="col-4 offset-1 mb-4 p-3 shadow rounded d-flex align-content-around flex-wrap justify-content-center">
+                    <div class="col-lg-4 col-md-5 col-sm-6 col-12 offset-lg-1 mb-4 p-3 shadow rounded d-flex align-content-around flex-wrap justify-content-center">
                         <figure class="text-center px-4 mb-0">
                             <blockquote class="blockquote">
                                 <p>General</p>
@@ -96,7 +96,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                         </figure>
                         <button id="btnReporteGeneral" class="btn btn-outline-primary" type="button">Generar</button>
                     </div>
-                    <div class="col-4 offset-2 mb-4 p-3 shadow rounded d-flex align-content-around flex-wrap justify-content-center">
+                    <div class="col-lg-4 col-md-5 col-sm-6 col-12 offset-lg-2 offset-md-2 mb-4 p-3 shadow rounded d-flex align-content-around flex-wrap justify-content-center">
                         <figure class="text-center px-4 mb-0">
                             <blockquote class="blockquote">
                                 <p>Por clasificación administrativa</p>
