@@ -1737,7 +1737,7 @@ if ($tipoPeticion == "guardarPregunta") {
 
         "pregunta9seccion1" => [
             'ningunoHombres' => isset($pregunta9[0]['ningunoh']) ? $pregunta9[0]['ningunoh'] : "0",
-            'ningunoMujeres' => isset($$pregunta9[0]['ningunom']) ? $pregunta9[0]['ningunom'] : "0",
+            'ningunoMujeres' => isset($pregunta9[0]['ningunom']) ? $pregunta9[0]['ningunom'] : "0",
             'prePriHombres' => isset($pregunta9[0]['preescolarPh']) ? $pregunta9[0]['preescolarPh'] : "0",
             'prePriMujeres' => isset($pregunta9[0]['prescolarPm']) ? $pregunta9[0]['prescolarPm'] : "0",
             'secundariaHombres' => isset($pregunta9[0]['secundariah']) ? $pregunta9[0]['secundariah'] : "0",
@@ -1755,8 +1755,8 @@ if ($tipoPeticion == "guardarPregunta") {
             'totalHombres' => isset($pregunta9[0]['totalHombres']) ? $pregunta9[0]['totalHombres'] : "0",
             'totalMujeres' => isset($pregunta9[0]['totalMujeres']) ? $pregunta9[0]['totalMujeres'] : "0",
             'totalPersonal' => isset($pregunta9[0]['totalPersonal']) ? $pregunta9[0]['totalPersonal'] : "0",
-            'datosEspecificod' => $pregunta9[0]['comentariosValidacion'] ? $pregunta9[0]['totalPersonal'] : "",
-            'comentarioGeneral' => isset($pregunta9[0]['comentarios']) ? $pregunta9[0]['comentarios'] : ""
+            'datosEspecificod' => isset($pregunta9[0]['comentariosValidacion']) ? $pregunta9[0]['comentariosValidacion'] : "",
+            'comentarioGeneral' => isset($pregunta9[0]['comentariosPregunta']) ? $pregunta9[0]['comentariosPregunta'] : ""
         ],
 
         "pregunta10seccion1" => [
