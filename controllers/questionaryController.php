@@ -1755,7 +1755,7 @@ if ($tipoPeticion == "guardarPregunta") {
             'totalHombres' => isset($pregunta9[0]['totalHombres']) ? $pregunta9[0]['totalHombres'] : "0",
             'totalMujeres' => isset($pregunta9[0]['totalMujeres']) ? $pregunta9[0]['totalMujeres'] : "0",
             'totalPersonal' => isset($pregunta9[0]['totalPersonal']) ? $pregunta9[0]['totalPersonal'] : "0",
-            'datosEspecificod' => $pregunta9[0]['comentariosValidacion'] ? $pregunta9[0]['totalPersonal'] : "",
+            'datosEspecificod' => $pregunta9[0]['comentariosValidacion'] ? $pregunta9[0]['comentariosValidacion'] : "",
             'comentarioGeneral' => isset($pregunta9[0]['comentarios']) ? $pregunta9[0]['comentarios'] : ""
         ],
 
