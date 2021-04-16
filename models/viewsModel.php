@@ -3,7 +3,15 @@ class viewsModel
 {
     static protected function obtenerVistasModelo($vistas)
     {
-        $listaBlanca = ["admin", "questionary", "questionaryReport", "oldIndividualReport"];
+        $listaBlanca = [
+            "admin",
+            "questionary",
+            "questionaryReport",
+            "oldIndividualReport",
+            "oldCentralizedReport",
+            "oldParastatalReport",
+            "oldGeneralReport"
+        ];
 
         if (in_array($vistas, $listaBlanca)) {
             if (is_file("./views/templates/" . $vistas . ".php")) {
@@ -14,6 +22,7 @@ class viewsModel
         } else {
             $contenido = "";
         }
+
         return $contenido;
     }
 }

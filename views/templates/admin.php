@@ -89,7 +89,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                         <h5>General</h5>
                         <p>
                             <small>de</small>
-                            2021
+                            <span class="spanAnioReporte"></span>
                         </p>
                         <button id="btnReporteGeneral" class="btn btn-outline-primary" type="button">Generar</button>
                     </div>
@@ -101,7 +101,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
                         </select>
                         <p>
                             <small>de</small>
-                            2021
+                            <span class="spanAnioReporte"></span>
                         </p>
                         <button id="btnReporteClasificacion" class="btn btn-outline-primary" type="button">Generar</button>
                     </div>

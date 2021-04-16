@@ -3,10 +3,22 @@ let reportes = null
 
 document.addEventListener('DOMContentLoaded', () => {
     llenarSelectDeAnios('selectAnioReportes')
+    actualizarSpansDeAnio(document.getElementById('selectAnioReportes').value)
     listarReportes(document.getElementById('selectAnioReportes').value).then(() => { generarTablaReportes() })
 
     document.getElementById('selectAnioReportes').addEventListener('change', function () {
-        listarReportes(this.value).then(() => { generarTablaReportes() })
+        listarReportes(this.value).then(() => {
+            actualizarSpansDeAnio(this.value)
+            generarTablaReportes()
+        })
+    })
+
+    document.getElementById('btnReporteGeneral').addEventListener('click', function () {
+        generarReporte('general')
+    })
+
+    document.getElementById('btnReporteClasificacion').addEventListener('click', function () {
+        generarReporte('porClasificacionAdmin')
     })
 })
 
@@ -215,5 +227,31 @@ listenersDeAccionesResultados = () => {
                 }
             }
         })
+    }
+}
+
+
+// ACTUALIZAR TEXTO DE LOS SPANS DE LAS CARDS DE REPORTE GENERAL Y POR CLASIFICACION
+actualizarSpansDeAnio = (anio) => {
+    let spansAnioReporte = document.getElementsByClassName('spanAnioReporte')
+    for (let i = 0; i < spansAnioReporte.length; i++) {
+        spansAnioReporte[i].innerHTML = ''
+        spansAnioReporte[i].innerHTML = anio
+    }
+}
+
+
+// GENERACION DE REPORTES
+generarReporte = (tipoReporte) => {
+    let anio = document.getElementById('selectAnioReportes').value
+
+    if (tipoReporte == 'general') {
+        if (anio == 2019 || anio == 2020) {
+            window.open('oldGeneralReport?' + anio, '_blank')
+        }
+    } else {
+        let clasificacion = document.getElementById('selectClasificacionReporte').value
+
+        if (anio == 2019 || anio == 2020) { }
     }
 }
