@@ -252,6 +252,12 @@ generarReporte = (tipoReporte) => {
     } else {
         let clasificacion = document.getElementById('selectClasificacionReporte').value
 
-        if (anio == 2019 || anio == 2020) { }
+        if (anio == 2019 || anio == 2020) {
+            if (clasificacion == 1) {
+                window.open('oldCentralizedReport?' + anio, '_blank')
+            } else {
+                window.open('oldParastatalReport?' + anio, '_blank')
+            }
+        }
     }
 }

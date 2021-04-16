@@ -1,61 +1,52 @@
 <?php
 session_start();
 
-if ($_SESSION['valida'] != "1") {
-    header('Location: logout.php');
+if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
+    header("Location: /CensoDeGobierno");
     exit;
 } else {
-    require_once("conexion/db.php");
-    require_once("conexion/conexion.php");
-    $anio = $_GET['anio'];
+    require_once("models/mysqliConnectionModel.php");
+
+    $anio = explode("?", $_SERVER["REQUEST_URI"])[1];
 ?>
+
     <!DOCTYPE html>
     <html>
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../static/img/h.png">
         <title>Oficialía Mayor</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="robots" content="all,follow">
-        <!-- Bootstrap CSS-->
-        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-        <!-- Font Awesome CSS-->
-        <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-        <!-- Fontastic Custom icon font-->
-        <link rel="stylesheet" href="css/fontastic.css">
-        <!-- Google fonts - Poppins -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
-        <!-- theme stylesheet-->
-        <link rel="stylesheet" href="css/style.green.css" id="theme-stylesheet">
-        <!-- Custom stylesheet - for your changes-->
-        <link rel="stylesheet" href="css/custom.css">
-        <!-- Favicon-->
-        <link rel="shortcut icon" href="img/h.png">
-        <link rel="stylesheet" type="text/css" href="css/style_page.css">
-        <!-- jQuery-3.5.1 -->
-        <script src="rivers\static\jquery-3.5.1.min.js"></script>
-        <!-- fontawesome-free-5.14.0-web -->
-        <link rel="stylesheet" href="rivers\static\fontawesome\css\all.css">
-        <script src="rivers\static\fontawesome\js\all.js"></script>
-        <!-- AlertifyJS 1.13.1 -->
-        <link rel="stylesheet" href="rivers\static\alertifyjs\css\alertify.css">
-        <link rel="stylesheet" href="rivers\static\alertifyjs\css\themes\default.css">
-        <script src="rivers\static\alertifyjs\js\alertify.js"></script>
+        <!-- bootstrap-5.0.0-beta2-dist -->
+        <link rel="stylesheet" href="views/static/bootstrap/css/bootstrap.css">
+        <script src="views/static/bootstrap/js/bootstrap.js"></script>
+        <!-- Bootswatch LUX -->
+        <link rel="stylesheet" href="views/static/bootswatch/bootswatch-lux.css">
         <script type="text/javascript">
-            window.print();
-            window.addEventListener("afterprint", function() {
-                this.close();
-            }, false);
+            document.addEventListener('DOMContentLoaded', () => {
+                window.addEventListener('afterprint', function() {
+                    this.close()
+                }, false)
+                // window.print();
+            })
         </script>
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+            * {
+                font-family: "Open Sans", sans-serif !important;
+                font-weight: normal !important;
+            }
+        </style>
     </head>
 
     <body>
         <!-- header Section-->
         <div class="row mx-3">
             <div class="col-2 d-flex justify-content-start align-items-center">
-                <img src="img/logo_ofi.png" style="height: 70px;">
+                <img src="views\static\img\logo_ofi.png" style="height: 70px;">
             </div>
             <div class="col-8 text-center"><br>
                 <h1 style="font-size: 35px;">
@@ -65,7 +56,7 @@ if ($_SESSION['valida'] != "1") {
                 <!-- <h3 class="text-center"><u>Instituciones paraestatales <?php echo $anio; ?></u></h3> -->
             </div>
             <div class="col-2 d-flex justify-content-end align-items-center">
-                <img src="img/hidal.png" style="height: 100px;">
+                <img src="views\static\img\inegi2020.png" style="height: 100px;">
             </div>
         </div>
 
@@ -3236,7 +3227,6 @@ if ($_SESSION['valida'] != "1") {
     </body>
 
     </html>
-
 <?php
 }
 ?>
