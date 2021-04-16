@@ -1703,6 +1703,7 @@ if ($tipoPeticion == "guardarPregunta") {
             '1a1500Mujeres' => isset($pregunta8[0]['pago2m']) ? $pregunta8[0]['pago2m'] : "0",
             '5001a10000Hombres' => isset($pregunta8[0]['pago3h']) ? $pregunta8[0]['pago3h'] : "0",
             '5001a10000Mujeres' => isset($pregunta8[0]['pago3m']) ? $pregunta8[0]['pago3m'] : "0",
+            '10001a15000Hombres' => isset($pregunta8[0]['pago4h']) ? $pregunta8[0]['pago4h'] : "0",
             '10001a15000Mujeres' => isset($pregunta8[0]['pago4m']) ? $pregunta8[0]['pago4m'] : "0",
             '15001a20000Hombres' => isset($pregunta8[0]['pago5h']) ? $pregunta8[0]['pago5h'] : "0",
             '15001a20000Mujeres' => isset($pregunta8[0]['pago5m']) ? $pregunta8[0]['pago5m'] : "0",
