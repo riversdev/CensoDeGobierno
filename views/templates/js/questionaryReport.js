@@ -1085,7 +1085,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(idDependencia, '1', '5%'))
                     tr.append(crearTD(nombreInstitucion, '2', 'auto'))
                     tr.append(crearTD(reporte['pregunta2seccion1']['respuesta'], '1', 'auto'))
-                    document.getElementById('identifierQuestionP2S1').innerHTML = ''
                     document.getElementById('identifierQuestionP2S1').append(tr)
 
                     // PREGUNTA 3 SECCION 1
@@ -1329,6 +1328,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta11seccion1']['otomiTotal'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta11seccion1']['otomiHombres'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta11seccion1']['otomiMujeres'], '1', 'auto'))
+                    document.getElementById('identifierQuestionIndigena813P11S1').append(tr)
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
                     tr.append(crearTD(nombreInstitucion, '2', 'auto'))
@@ -1372,7 +1372,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta11seccion1']['noidentificadoTotal'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta11seccion1']['noIdentificadoHombres'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta11seccion1']['noIdentificadoMujeres'], '1', 'auto'))
-                    document.getElementById('identifierQuestionIndigena2025P11S1').append(t)
+                    document.getElementById('identifierQuestionIndigena2025P11S1').append(tr)
 
                     // PREGUNTA 12 SECCION 1
                     tr = document.createElement('tr')
@@ -1443,8 +1443,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD((parseInt(reporte['pregunta13seccion1']['discapacidadNoIdentificadaHombres']) + parseInt(reporte['pregunta13seccion1']['discapacidadNoIdentificadaMujeres'])), '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta13seccion1']['discapacidadNoIdentificadaHombres'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta13seccion1']['discapacidadNoIdentificadaMujeres'], '1', 'auto'))
-                    document.getElementById('identifierQuestionDiscapacidad610P13S1').append(t)
-                    
+                    document.getElementById('identifierQuestionDiscapacidad610P13S1').append(tr)
+
                     // PREGUNTA 14 SECCION 1
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
@@ -1960,7 +1960,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('identifierQuestionP14S12').append(tr)
 
                     // IMPRMIR REPORTE
-                    window.print()
+                    if (idDependencia == numerosConcentrados[idInstitucion].length) {
+                        alertify.success('Carga terminada !')
+                        // window.print()
+                    }
                 })
             })
         })
