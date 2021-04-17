@@ -1061,11 +1061,17 @@ document.addEventListener('DOMContentLoaded', () => {
             contenedoresDeComentarios[i].classList.add('d-none')
         }
 
+
+        //VARIABLES PARA TOTALES EN LAS TABLAS
+        let totalHombresGenerales = 0, totalMujeresGeneral=0, totalGeneralPersonal=0, totalPersonalContratacion = 0,  totalHombresContratacion =0, totalMujeresContratacion = 0, totalConfianzaHombres = 0, totalConfianzaMujeres = 0, totalBaseHombres = 0, totalBaseMujeres = 0, totalEventualHombres = 0, totalEventualMujeres = 0, totalHonorariosHombres = 0, totalHonorariosMujeres = 0, totalOtrosHombres = 0, totalOtrosMujeres = 0, totalSeguridadPersonal = 0, totalSeguridadHombres = 0, totalSeguridadMujeres = 0, totalISSSTEHombres = 0, totalISSSTEMujeres = 0, totalISSEFHombres = 0, totalISSEFMujeres = 0, totalIMSSHombres = 0, totalIMSSMujeres = 0, totalOtrosSeguridadHombres = 0, totalOtrosSeguridadMujeres = 0, totalSinSeguridadHombres = 0, totalSinSeguridadMujeres = 0, totalEdadesPersonal = 0, totalEdadesHombres = 0, totalEdadesMujeres = 0, total1824Hombres = 0, total1824Mujeres = 0, total2529Hombres = 0, total2529Mujeres = 0, total3034Hombres = 0, total3034Mujeres = 0, total3539Hombres = 0 , total3539Mujeres = 0, total4044Hombres = 0, total4044Mujeres = 0, total4549Hombres = 0, total4549Mujeres = 0, total5054Hombres = 0, total5054Mujeres = 0, total5559Hombres = 0, total5559Mujeres = 0, total60Hombres = 0, total60Mujeres = 0, totalPagaPersonal = 0, totalPagaHombre = 0, totalPagaMujeres = 0, totalSinPagaHombres = 0, totalSinPagaMujeres = 0, total1a1500Hombres = 0, total1a1500Mujeres = 0, total5001a10000Hombres = 0, total5001a10000Mujeres = 0, total10001a15000Hombres = 0, total10001a15000Mujeres = 0, total15001a20000Hombres = 0, total15001a20000Mujeres = 0, total20001a25000Hombres = 0, total20001a25000Mujeres = 0, total25001a30000Hombres = 0, total25001a30000Mujeres = 0, total30001a35000Hombres = 0, total30001a35000Mujeres = 0, total35001a40000Hombres = 0, total35001a40000Mujeres = 0, total40001a45000Hombres = 0, total40001a45000Mujeres, total45001a50000Hombres = 0, total45001a50000Mujeres = 0, total55001a60000Hombres = 0, total55001a60000Mujeres = 0,total60001a65000Hombres = 0, total60001a65000Mujeres = 0, total65001a70000Hombres = 0, total65001a70000Mujeres = 0, totalMas70000Hombres = 0 , totalMas70000Mujeres = 0
+
         numerosConcentrados[idInstitucion].forEach(idDependencia => {
+
             recuperarNombreDependencia(idDependencia, anioInstitucion).then((res) => {
                 let nombreInstitucion = res[0]
                 let clasificacionInstitucion = res[1]
                 obtenerReporte(idDependencia, nombreInstitucion, clasificacionInstitucion, anioInstitucion).then(() => {
+                    
                     // PREGUNTA 1 SECCION 1
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
@@ -1114,6 +1120,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta4seccion1']['totalHombres'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta4seccion1']['totalMujeres'], '1', 'auto'))
                     document.getElementById('identifierQuestionP4S1').append(tr)
+                    
+                    totalHombresGenerales = totalHombresGenerales + parseInt(reporte['pregunta4seccion1']['totalHombres'])
+                    totalMujeresGeneral = totalMujeresGeneral + parseInt(reporte['pregunta4seccion1']['totalMujeres'])
+                    totalGeneralPersonal = totalGeneralPersonal + parseInt(reporte['pregunta4seccion1']['totalPersonal'])
+
+
 
                     // PREGUNTA 5 SECCION 1
                     tr = document.createElement('tr')
@@ -1134,6 +1146,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta5seccion1']['otrosMujeres'], '1', 'auto'))
                     document.getElementById('identifierQuestionP5S1').append(tr)
 
+                    totalPersonalContratacion = totalPersonalContratacion + parseInt(reporte['pregunta5seccion1']['totalPersonal'])
+                    totalHombresContratacion = totalHombresContratacion + parseInt(reporte['pregunta5seccion1']['totalHombres'])
+                    totalMujeresContratacion = totalMujeresContratacion + parseInt(reporte['pregunta5seccion1']['totalMujeres'])
+                    totalConfianzaHombres = totalConfianzaHombres + parseInt(reporte['pregunta5seccion1']['confianzaHombres'])
+                    totalConfianzaMujeres = totalConfianzaMujeres + parseInt(reporte['pregunta5seccion1']['confianzaMujeres'])
+                    totalBaseHombres = totalBaseHombres + parseInt(reporte['pregunta5seccion1']['baseHombres'])
+                    totalBaseMujeres = totalBaseMujeres + parseInt(reporte['pregunta5seccion1']['baseMujeres'])
+                    totalEventualHombres = totalEventualHombres + parseInt(reporte['pregunta5seccion1']['eventualHombres'])
+                    totalEventualMujeres = totalEventualMujeres + parseInt(reporte['pregunta5seccion1']['eventualMujeres'])
+                    totalHonorariosHombres = totalHonorariosHombres + parseInt(reporte['pregunta5seccion1']['honorariosHombres'])
+                    totalHonorariosMujeres = totalHonorariosMujeres + parseInt(reporte['pregunta5seccion1']['honorariosMujeres'])
+                    totalOtrosHombres = totalOtrosHombres + parseInt(reporte['pregunta5seccion1']['otrosHombres'])
+                    totalOtrosMujeres = totalOtrosMujeres + parseInt(reporte['pregunta5seccion1']['otrosMujeres'])
+
                     // PREGUNTA 6 SECCION 1
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
@@ -1152,6 +1178,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta6seccion1']['sinSeguroHombre'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta6seccion1']['sinSeguroMujeres'], '1', 'auto'))
                     document.getElementById('identifierQuestionP6S1').append(tr)
+
+                    totalSeguridadPersonal = totalSeguridadPersonal + parseInt(reporte['pregunta6seccion1']['totalPersonal'])
+                    totalSeguridadHombres = totalSeguridadHombres + parseInt(reporte['pregunta6seccion1']['totalHombres'])
+                    totalSeguridadHombres = totalSeguridadMujeres + parseInt(reporte['pregunta6seccion1']['totalMujeres'])
+                    totalISSSTEHombres = totalISSSTEHombres + parseInt(reporte['pregunta6seccion1']['isssteHombres'])
+                    totalISSSTEMujeres = totalISSSTEMujeres + parseInt(reporte['pregunta6seccion1']['issteMujeres'])
+                    totalISSEFHombres = totalISSEFHombres + parseInt(reporte['pregunta6seccion1']['issfhHombres'])
+                    totalISSEFMujeres = totalISSEFMujeres + parseInt(reporte['pregunta6seccion1']['issfhMujeres'])
+                    totalIMSSHombres = totalIMSSHombres + parseInt(reporte['pregunta6seccion1']['imssHombres'])
+                    totalIMSSMujeres = totalIMSSMujeres + parseInt(reporte['pregunta6seccion1']['imssMujeres'])
+                    totalOtrosSeguridadHombres = totalOtrosSeguridadHombres + parseInt(reporte['pregunta6seccion1']['otroHombres'])
+                    totalOtrosSeguridadMujeres = totalOtrosSeguridadMujeres + parseInt(reporte['pregunta6seccion1']['otroMujeres'])
+                    totalSinSeguridadHombres = totalSinSeguridadHombres + parseInt(reporte['pregunta6seccion1']['sinSeguroHombre'])
+                    totalSinSeguridadMujeres = totalSinSeguridadMujeres + parseInt(reporte['pregunta6seccion1']['sinSeguroMujeres'])
 
                     // PREGUNTA 7 SECCION 1
                     tr = document.createElement('tr')
@@ -1179,6 +1219,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta7seccion1']['60Hombres'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta7seccion1']['60Mujeres'], '1', 'auto'))
                     document.getElementById('identifierQuestionP7S1').append(tr)
+
+                    totalEdadesPersonal = totalEdadesPersonal + parseInt(reporte['pregunta7seccion1']['totalPersonal'])
+                    totalEdadesHombres = totalEdadesHombres + parseInt(reporte['pregunta7seccion1']['totalHombres'])
+                    totalEdadesMujeres = totalEdadesMujeres + parseInt(reporte['pregunta7seccion1']['totalMujeres'])
+                    total1824Hombres = total1824Hombres + parseInt(reporte['pregunta7seccion1']['1824Hombres'])
+                    total1824Mujeres = total1824Mujeres + parseInt(reporte['pregunta7seccion1']['1824Mujeres'])
+                    total2529Hombres = total2529Hombres + parseInt(reporte['pregunta7seccion1']['2529Hombres'])
+                    total2529Mujeres = total2529Mujeres + parseInt(reporte['pregunta7seccion1']['2529Mujeres'])
+                    total3034Hombres = total3034Hombres + parseInt(reporte['pregunta7seccion1']['3034Hombres'])
+                    total3034Mujeres = total3034Mujeres + parseInt(reporte['pregunta7seccion1']['3034Mujeres'])
+                    total3539Hombres = total3539Hombres + parseInt(reporte['pregunta7seccion1']['3539Hombres'])
+                    total3539Mujeres = total3539Mujeres + parseInt(reporte['pregunta7seccion1']['3539Mujeres'])
+                    total4044Hombres = total4044Hombres + parseInt(reporte['pregunta7seccion1']['4044Hombres'])
+                    total4044Mujeres = total4044Mujeres + parseInt(reporte['pregunta7seccion1']['4044Mujeres'])
+                    total4549Hombres = total4549Hombres + parseInt(reporte['pregunta7seccion1']['4549Hombres'])
+                    total4549Mujeres = total4549Mujeres + parseInt(reporte['pregunta7seccion1']['4549Mujeres'])
+                    total5054Hombres = total5054Hombres + parseInt(reporte['pregunta7seccion1']['5054Hombres'])
+                    total5054Mujeres = total5054Mujeres + parseInt(reporte['pregunta7seccion1']['5054Mujeres'])
+                    total5559Hombres = total5559Hombres + parseInt(reporte['pregunta7seccion1']['5559Hombres'])
+                    total5559Mujeres = total5559Mujeres + parseInt(reporte['pregunta7seccion1']['5559Mujeres'])
+                    total60Hombres = total60Hombres + parseInt(reporte['pregunta7seccion1']['60Hombres'])
+                    total60Mujeres = total60Mujeres + parseInt(reporte['pregunta7seccion1']['60Mujeres'])
 
                     // PREGUNTA 8 SECCION 1
                     tr = document.createElement('tr')
@@ -1224,6 +1286,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta8seccion1']['mas70000Hombres'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta8seccion1']['mas70000Mujeres'], '1', 'auto'))
                     document.getElementById('identifierQuestionP81S1').append(tr)
+
+                    totalEdadesPersonal = totalEdadesPersonal + parseInt(reporte['pregunta8seccion1']['totalPersonal'])
+                    totalEdadesHombres = totalEdadesHombres + parseInt(reporte['pregunta8seccion1']['totalHombres'])
+                    totalEdadesMujeres = totalEdadesMujeres + parseInt(reporte['pregunta8seccion1']['totalMujeres'])
+                    totalSinPagaHombres = totalSinPagaHombres + parseInt(reporte['pregunta8seccion1']['sinPagaHombres'])
+                    totalSinPagaMujeres = totalSinPagaMujeres + parseInt(reporte['pregunta8seccion1']['sinPagaMujeres'])
 
                     // PREGUNTA 9 SECCION 1
                     tr = document.createElement('tr')
@@ -1960,13 +2028,91 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('identifierQuestionP14S12').append(tr)
 
                     // IMPRMIR REPORTE
+                    
                     if (idDependencia == numerosConcentrados[idInstitucion].length) {
-                        alertify.success('Carga terminada !')
+                        setTimeout(function() { 
+
+                            //TOTALES PREGUNTA 4
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalGeneralPersonal, '1', 'auto'))
+                            tr.append(crearTD(totalHombresGenerales, '1', 'auto'))
+                            tr.append(crearTD(totalMujeresGeneral, '1', 'auto'))
+                            document.getElementById('identifierQuestionP4S1').append(tr)
+
+                            //TOTALES PREGUNTA 5
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalPersonalContratacion, '1', 'auto'))
+                            tr.append(crearTD(totalHombresContratacion, '1', 'auto'))
+                            tr.append(crearTD(totalMujeresContratacion, '1', 'auto'))
+                            tr.append(crearTD(totalConfianzaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalConfianzaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalBaseHombres, '1', 'auto'))
+                            tr.append(crearTD(totalBaseMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalEventualHombres, '1', 'auto'))
+                            tr.append(crearTD(totalEventualMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalHonorariosHombres, '1', 'auto'))
+                            tr.append(crearTD(totalHonorariosMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalOtrosHombres, '1', 'auto'))
+                            tr.append(crearTD(totalOtrosMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP5S1').append(tr)
+
+                            //TOTALES PREGUNTA 6
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalSeguridadPersonal, '1', 'auto'))
+                            tr.append(crearTD(totalSeguridadHombres, '1', 'auto'))
+                            tr.append(crearTD(totalSeguridadMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalISSSTEHombres, '1', 'auto'))
+                            tr.append(crearTD(totalISSSTEMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalISSEFHombres, '1', 'auto'))
+                            tr.append(crearTD(totalISSEFMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalIMSSHombres, '1', 'auto'))
+                            tr.append(crearTD(totalIMSSMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalOtrosSeguridadHombres, '1', 'auto'))
+                            tr.append(crearTD(totalOtrosSeguridadMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalSinSeguridadHombres, '1', 'auto'))
+                            tr.append(crearTD(totalSinSeguridadMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP6S1').append(tr)
+
+                            //TOTALES PREGUNTA 7
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalEdadesPersonal, '1', 'auto'))
+                            tr.append(crearTD(totalEdadesHombres, '1', 'auto'))
+                            tr.append(crearTD(totalEdadesMujeres, '1', 'auto'))
+                            tr.append(crearTD(total1824Hombres, '1', 'auto'))
+                            tr.append(crearTD(total1824Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total2529Hombres, '1', 'auto'))
+                            tr.append(crearTD(total2529Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total3034Hombres, '1', 'auto'))
+                            tr.append(crearTD(total3034Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total3539Hombres, '1', 'auto'))
+                            tr.append(crearTD(total3539Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total4044Hombres, '1', 'auto'))
+                            tr.append(crearTD(total4044Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total4549Hombres, '1', 'auto'))
+                            tr.append(crearTD(total4549Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total5054Hombres, '1', 'auto'))
+                            tr.append(crearTD(total5054Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total5559Hombres, '1', 'auto'))
+                            tr.append(crearTD(total5559Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total60Hombres, '1', 'auto'))
+                            tr.append(crearTD(total60Mujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP7S1').append(tr)
+
+                            //MENSAJE DE FINALIZACION
+                            alertify.success('Carga terminada !')
+                        }, 1000)
                         // window.print()
                     }
+
+                    
                 })
             })
         })
+            
     }
 })
 
