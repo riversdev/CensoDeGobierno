@@ -1008,9 +1008,9 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                                 <tbody id="identifierQuestionSumaTotalDiscapacidadP13S1">
                                     <tr class="text-center" style="font-size:15px">
                                         <td width="37%"></td>
-                                        <td class="px-5">Total: 150</td>
-                                        <td class="px-5">Hombres: 100</td>
-                                        <td class="px-5">Mujeres: 50</td>
+                                        <td class="px-5" id="totalPersonalDiscapacidad">Total: 150</td>
+                                        <td class="px-5" id="totalHombresDiscapacidad">Hombres: 100</td>
+                                        <td class="px-5" id="totalMujeresDiscapacidad">Mujeres: 50</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -2019,7 +2019,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                             <table class="table table-sm table-bordered">
                                 <tbody>
                                     <tr class="text-center text-dark">
-                                        <td class="font-weight-bold" colspan="2">Institucion : </td>
+                                        <td class="font-weight-bold" colspan="2" id="txtEsconder">Institucion : </td>
                                         <td class="font-weight-bold" colspan="10" id="txtnombreInstitucion">comision estatal para el desarrollo sostenible de los pueblos indigenas (cedspi)</td>
                                     </tr>
                                     <tr class="_header-size text-dark">

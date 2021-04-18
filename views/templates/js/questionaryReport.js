@@ -1063,7 +1063,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         //VARIABLES PARA TOTALES EN LAS TABLAS
-        let totalHombresGenerales = 0, totalMujeresGeneral=0, totalGeneralPersonal=0, totalPersonalContratacion = 0,  totalHombresContratacion =0, totalMujeresContratacion = 0, totalConfianzaHombres = 0, totalConfianzaMujeres = 0, totalBaseHombres = 0, totalBaseMujeres = 0, totalEventualHombres = 0, totalEventualMujeres = 0, totalHonorariosHombres = 0, totalHonorariosMujeres = 0, totalOtrosHombres = 0, totalOtrosMujeres = 0, totalSeguridadPersonal = 0, totalSeguridadHombres = 0, totalSeguridadMujeres = 0, totalISSSTEHombres = 0, totalISSSTEMujeres = 0, totalISSEFHombres = 0, totalISSEFMujeres = 0, totalIMSSHombres = 0, totalIMSSMujeres = 0, totalOtrosSeguridadHombres = 0, totalOtrosSeguridadMujeres = 0, totalSinSeguridadHombres = 0, totalSinSeguridadMujeres = 0, totalEdadesPersonal = 0, totalEdadesHombres = 0, totalEdadesMujeres = 0, total1824Hombres = 0, total1824Mujeres = 0, total2529Hombres = 0, total2529Mujeres = 0, total3034Hombres = 0, total3034Mujeres = 0, total3539Hombres = 0 , total3539Mujeres = 0, total4044Hombres = 0, total4044Mujeres = 0, total4549Hombres = 0, total4549Mujeres = 0, total5054Hombres = 0, total5054Mujeres = 0, total5559Hombres = 0, total5559Mujeres = 0, total60Hombres = 0, total60Mujeres = 0, totalPagaPersonal = 0, totalPagaHombre = 0, totalPagaMujeres = 0, totalSinPagaHombres = 0, totalSinPagaMujeres = 0, total1a1500Hombres = 0, total1a1500Mujeres = 0, total5001a10000Hombres = 0, total5001a10000Mujeres = 0, total10001a15000Hombres = 0, total10001a15000Mujeres = 0, total15001a20000Hombres = 0, total15001a20000Mujeres = 0, total20001a25000Hombres = 0, total20001a25000Mujeres = 0, total25001a30000Hombres = 0, total25001a30000Mujeres = 0, total30001a35000Hombres = 0, total30001a35000Mujeres = 0, total35001a40000Hombres = 0, total35001a40000Mujeres = 0, total40001a45000Hombres = 0, total40001a45000Mujeres = 0, total45001a50000Hombres = 0, total45001a50000Mujeres = 0, total50001a55000Hombres = 0, total50001a55000Mujeres = 0, total55001a60000Hombres = 0, total55001a60000Mujeres = 0,total60001a65000Hombres = 0, total60001a65000Mujeres = 0, total65001a70000Hombres = 0, total65001a70000Mujeres = 0, totalMas70000Hombres = 0 , totalMas70000Mujeres = 0, totalEscolaridadPersonal = 0, totalEscolaridadHombres = 0, totalEscolaridadMujeres = 0, totalNingunoHombres = 0, totalNingunoMujeres = 0, totalParaescolarHombres = 0, totalParaescolarMujeres = 0, totalSecundariaHombres = 0, totalSecundariaMujeres = 0, totalPreparatoriaHombres = 0, totalPreparatoriaMujeres = 0, totalCarreraHombres = 0, totalCarreraMujeres = 0, totalLicenciaturaHombres = 0, totallicenciaturaMujeres = 0, totalMaestriaHombres = 0, totalMaestriaMujeres = 0, totalDoctoradoHombres = 0, totalDoctoradoMujeres = 0, totalIndigenaPersonal = 0, totalIndigenaHombres = 0, totalIndigenaMujeres = 0, totalPertenecenIndigenaHombres = 0, totalPertenecenIndigenaMujeres = 0, totalNoPertenecenIndigenaHombres = 0, totalNoPertenecenIndigenaMujeres = 0, totalIndigenaNoIdentificadoHombres = 0, totalIndigenaNoIdentificadoMujeres = 0, totalChinanteco = 0, totalChinantecoHombres = 0, totalChinantecoMujeres = 0, totalChol = 0, totalCholHombres = 0, totalCholMujeres = 0, totalCora = 0, totalCoraHombres = 0, totalCoraMujeres = 0, totalHuasteco = 0, totalHuastecoHombres = 0, totalHuastecoMujeres = 0, totalHuichol = 0, totalHuicholHombres = 0, totalHuicholMujeres = 0, totalMaya = 0, totalMayaHombres = 0, totalMayaMujeres = 0, totalMayo = 0, totalMayoHombres = 0, totalMayoMujeres = 0, totalMazahua = 0, totalMazahuaHombres = 0, totalMazahuaMujeres = 0, totalMazateco = 0, totalMazatecoHombres = 0, totalMazatecoMujeres = 0, totalMixe = 0, totalMixeHombres = 0, totalMixeMujeres = 0, totalMixteco = 0, totalMixtecoHombres = 0, totalMixtecoMujeres = 0, totalNahuatl = 0, totalNahuatlHombres = 0, totalNahuatlMujeres = 0, totalOtomi = 0, totalOtomiHombres = 0, totalOtomiMujeres = 0, totalTarasco = 0, totalTarascoHombres = 0, totalTarascoMujeres = 0, totalTarahumara = 0, totalTarahumaraHombres = 0, totalTarahumaraMujeres = 0, totalTepehuano = 0, totalTepehuanoHombres = 0, totalTepehuanoMujeres= 0, totalTotonaco = 0, totalTotonacoHombres = 0, totalTotonacoMujeres = 0, totalTlapenaco = 0, totalTlapenacoHombres = 0, totalTlapenacoMujeres = 0, totalTseltal = 0, totalTseltalHombres = 0, totalTsetalMujeres = 0, totalTsotsil = 0, totalTsotsilHombres = 0, totalTsotsilMujeres = 0, totalYaqui = 0, totalYaquiHombres = 0, totalYaquiMujeres = 0, totalZapoteco = 0, totalZapotecoHombres = 0, totalZapotecoMujeres = 0, totalZoque = 0, totalZoqueHombres = 0, totalZoqueMujeres = 0, totalOtraLengua = 0, totalOtraLenguaHombres = 0, totalOtraLenguaMujeres = 0, totalNoIdentificadaLengua = 0, totalNoIdentificadaLenguaHombres = 0, totalNoIdentificadaLenguaMujeres = 0, totalDiscapacidadPersonal = 0, totalDiscapacidadHombres = 0, totalDiscapacidadMujeres = 0, totalConDiscapacidadHombres = 0, totalConDiscapacidadMujeres = 0, totalSinDiscapacidadaHombres = 0, totalSinDiscapacidadaMujeres = 0, totalNoIdentificadoDiscapacidadaHombres = 0, totalNoIdentificadoDiscapacidadaMujeres = 0, totalCaminar = 0, totalCaminarHombres = 0, totalCaminarMujeres = 0, totalVer = 0, totalVerHombres = 0, totalVerMujeres = 0, totalMover = 0, totalMoverHombres = 0, totalMoverMujeres = 0, totalAprender = 0, totalAprenderHombres = 0, totalAprenderMujeres = 0, totalOir = 0, totalOirHombres = 0, totalOirMujeres = 0, totalHablar = 0, totalHablarHombres = 0, totalHablarMujeres = 0, totalBaniarse = 0, totalBaniarseHombres = 0, totalBaniarseMujeres = 0, totalMoral = 0, totalMoralHombres = 0, totalMoralMujeres = 0, totalDiscapacidadDiferente = 0, totalDiscapacidadDiferenteHombres = 0, totalDiscapacidadDiferenteMujeres = 0, totalDiscapacidadNoIdentificado = 0, totalDiscapacidadNoIdentificadoHombres = 0, totalDiscapacidadNoIdentificadoMujeres = 0, fondos1General = 0, fondos1Hombres = 0, fondos1Mujeres = 0, fondos2General = 0, fondos2Hombres = 0, fondos2Mujeres = 0, accionesImpartidas = 0, accionesConcluidas = 0, accionesTotalPersonal = 0, accionesTotalHombres = 0, accionesMujeres = 0, totalInmuebles = 0, totalInmueblesPropios = 0, totalInmueblesRentados = 0, totalInmueblesOtros = 0, totalVehiculos = 0, totalAutomoviles = 0, totalCamionetas = 0, totalMotocicletas = 0, totalBicicletas = 0, totalHelicopteros = 0, totalDrones = 0, totalOtrosVhiculos = 0, totalLineas = 0, totalLineasFijas = 0, totalLineasMoviles = 0, totalAparatos = 0, totalAparatosFijos = 0, totalAparatosMoviles = 0, totalComputadoras = 0, totalComputadorasPersonales = 0, totalComputadorasPortatiles = 0, totalImpresoras = 0, totalImpresorasPersonal = 0, totalImpresorasCompartidas = 0, totalMultifuncionales = 0, totalServidores = 0, totalTabletas = 0, totalCovidPersonal = 0, totalCovidHombres = 0, totalCovidMujeres = 0, totalContratosRealizados1 = 0, totalContratosRealizados2 = 0, totalContratosRealizados3 = 0, totalContratosRealizados4 = 0, totalContratosRealizados5 = 0, totalP8Contratos1 = 0, totalP8Contratos2 = 0, totalP8Contratos3 = 0, totalP8Contratos4 = 0, totalP8Contratos5 = 0, adquisicionesTotal1 = 0, adquisicionesTotal2 = 0, adquisicionesTotal3 = 0, adquisicionesTotal4 = 0, adquisicionesTotal5 = 0, obraTotal1 = 0, obraTotal2 = 0, obraTotal3 = 0, obraTotal4 = 0, obraTotal5 = 0, P8Monto1 = 0.0, P8Monto2 = 0.0, P8Monto3 = 0.0, P8Monto4 = 0.0, P8Monto5 = 0.0, totalP10Monto1 = 0.0, totalP10Monto2 = 0.0, totalP10Monto3 = 0.0, totalP10Monto4 = 0.0, totalP10Monto5 = 0.0, adquicicioneP10Monto1 = 0.0, adquicicioneP10Monto2 = 0.0, adquicicioneP10Monto3 = 0.0, adquicicioneP10Monto4 = 0.0, adquicicioneP10Monto5 = 0.0, obraP10Monto1 = 0.0, obraP10Monto2 = 0.0, obraP10Monto3 = 0.0, obraP10Monto4 = 0.0, obraP10Monto5 = 0.0, totalP11Contratos = 0, totalP11Monto = 0.0, totalP12Contratos = 0, totalP12Monto = 0.0, totalP13Contratos = 0, totalP14Contratos = 0
+        let totalHombresGenerales = 0, totalMujeresGeneral=0, totalGeneralPersonal=0, totalPersonalContratacion = 0,  totalHombresContratacion =0, totalMujeresContratacion = 0, totalConfianzaHombres = 0, totalConfianzaMujeres = 0, totalBaseHombres = 0, totalBaseMujeres = 0, totalEventualHombres = 0, totalEventualMujeres = 0, totalHonorariosHombres = 0, totalHonorariosMujeres = 0, totalOtrosHombres = 0, totalOtrosMujeres = 0, totalSeguridadPersonal = 0, totalSeguridadHombres = 0, totalSeguridadMujeres = 0, totalISSSTEHombres = 0, totalISSSTEMujeres = 0, totalISSEFHombres = 0, totalISSEFMujeres = 0, totalIMSSHombres = 0, totalIMSSMujeres = 0, totalOtrosSeguridadHombres = 0, totalOtrosSeguridadMujeres = 0, totalSinSeguridadHombres = 0, totalSinSeguridadMujeres = 0, totalEdadesPersonal = 0, totalEdadesHombres = 0, totalEdadesMujeres = 0, total1824Hombres = 0, total1824Mujeres = 0, total2529Hombres = 0, total2529Mujeres = 0, total3034Hombres = 0, total3034Mujeres = 0, total3539Hombres = 0 , total3539Mujeres = 0, total4044Hombres = 0, total4044Mujeres = 0, total4549Hombres = 0, total4549Mujeres = 0, total5054Hombres = 0, total5054Mujeres = 0, total5559Hombres = 0, total5559Mujeres = 0, total60Hombres = 0, total60Mujeres = 0, totalPagaPersonal = 0, totalPagaHombre = 0, totalPagaMujeres = 0, totalSinPagaHombres = 0, totalSinPagaMujeres = 0, total1a1500Hombres = 0, total1a1500Mujeres = 0, total5001a10000Hombres = 0, total5001a10000Mujeres = 0, total10001a15000Hombres = 0, total10001a15000Mujeres = 0, total15001a20000Hombres = 0, total15001a20000Mujeres = 0, total20001a25000Hombres = 0, total20001a25000Mujeres = 0, total25001a30000Hombres = 0, total25001a30000Mujeres = 0, total30001a35000Hombres = 0, total30001a35000Mujeres = 0, total35001a40000Hombres = 0, total35001a40000Mujeres = 0, total40001a45000Hombres = 0, total40001a45000Mujeres = 0, total45001a50000Hombres = 0, total45001a50000Mujeres = 0, total50001a55000Hombres = 0, total50001a55000Mujeres = 0, total55001a60000Hombres = 0, total55001a60000Mujeres = 0,total60001a65000Hombres = 0, total60001a65000Mujeres = 0, total65001a70000Hombres = 0, total65001a70000Mujeres = 0, totalMas70000Hombres = 0 , totalMas70000Mujeres = 0, totalEscolaridadPersonal = 0, totalEscolaridadHombres = 0, totalEscolaridadMujeres = 0, totalNingunoHombres = 0, totalNingunoMujeres = 0, totalParaescolarHombres = 0, totalParaescolarMujeres = 0, totalSecundariaHombres = 0, totalSecundariaMujeres = 0, totalPreparatoriaHombres = 0, totalPreparatoriaMujeres = 0, totalCarreraHombres = 0, totalCarreraMujeres = 0, totalLicenciaturaHombres = 0, totallicenciaturaMujeres = 0, totalMaestriaHombres = 0, totalMaestriaMujeres = 0, totalDoctoradoHombres = 0, totalDoctoradoMujeres = 0, totalIndigenaPersonal = 0, totalIndigenaHombres = 0, totalIndigenaMujeres = 0, totalPertenecenIndigenaHombres = 0, totalPertenecenIndigenaMujeres = 0, totalNoPertenecenIndigenaHombres = 0, totalNoPertenecenIndigenaMujeres = 0, totalIndigenaNoIdentificadoHombres = 0, totalIndigenaNoIdentificadoMujeres = 0, totalChinanteco = 0, totalChinantecoHombres = 0, totalChinantecoMujeres = 0, totalChol = 0, totalCholHombres = 0, totalCholMujeres = 0, totalCora = 0, totalCoraHombres = 0, totalCoraMujeres = 0, totalHuasteco = 0, totalHuastecoHombres = 0, totalHuastecoMujeres = 0, totalHuichol = 0, totalHuicholHombres = 0, totalHuicholMujeres = 0, totalMaya = 0, totalMayaHombres = 0, totalMayaMujeres = 0, totalMayo = 0, totalMayoHombres = 0, totalMayoMujeres = 0, totalMazahua = 0, totalMazahuaHombres = 0, totalMazahuaMujeres = 0, totalMazateco = 0, totalMazatecoHombres = 0, totalMazatecoMujeres = 0, totalMixe = 0, totalMixeHombres = 0, totalMixeMujeres = 0, totalMixteco = 0, totalMixtecoHombres = 0, totalMixtecoMujeres = 0, totalNahuatl = 0, totalNahuatlHombres = 0, totalNahuatlMujeres = 0, totalOtomi = 0, totalOtomiHombres = 0, totalOtomiMujeres = 0, totalTarasco = 0, totalTarascoHombres = 0, totalTarascoMujeres = 0, totalTarahumara = 0, totalTarahumaraHombres = 0, totalTarahumaraMujeres = 0, totalTepehuano = 0, totalTepehuanoHombres = 0, totalTepehuanoMujeres= 0, totalTotonaco = 0, totalTotonacoHombres = 0, totalTotonacoMujeres = 0, totalTlapenaco = 0, totalTlapenacoHombres = 0, totalTlapenacoMujeres = 0, totalTseltal = 0, totalTseltalHombres = 0, totalTsetalMujeres = 0, totalTsotsil = 0, totalTsotsilHombres = 0, totalTsotsilMujeres = 0, totalYaqui = 0, totalYaquiHombres = 0, totalYaquiMujeres = 0, totalZapoteco = 0, totalZapotecoHombres = 0, totalZapotecoMujeres = 0, totalZoque = 0, totalZoqueHombres = 0, totalZoqueMujeres = 0, totalOtraLengua = 0, totalOtraLenguaHombres = 0, totalOtraLenguaMujeres = 0, totalNoIdentificadaLengua = 0, totalNoIdentificadaLenguaHombres = 0, totalNoIdentificadaLenguaMujeres = 0, totalDiscapacidadPersonal = 0, totalDiscapacidadHombres = 0, totalDiscapacidadMujeres = 0, totalConDiscapacidadHombres = 0, totalConDiscapacidadMujeres = 0, totalSinDiscapacidadaHombres = 0, totalSinDiscapacidadaMujeres = 0, totalNoIdentificadoDiscapacidadaHombres = 0, totalNoIdentificadoDiscapacidadaMujeres = 0, totalCaminar = 0, totalCaminarHombres = 0, totalCaminarMujeres = 0, totalVer = 0, totalVerHombres = 0, totalVerMujeres = 0, totalMover = 0, totalMoverHombres = 0, totalMoverMujeres = 0, totalAprender = 0, totalAprenderHombres = 0, totalAprenderMujeres = 0, totalOir = 0, totalOirHombres = 0, totalOirMujeres = 0, totalHablar = 0, totalHablarHombres = 0, totalHablarMujeres = 0, totalBaniarse = 0, totalBaniarseHombres = 0, totalBaniarseMujeres = 0, totalMoral = 0, totalMoralHombres = 0, totalMoralMujeres = 0, totalDiscapacidadDiferente = 0, totalDiscapacidadDiferenteHombres = 0, totalDiscapacidadDiferenteMujeres = 0, totalDiscapacidadNoIdentificado = 0, totalDiscapacidadNoIdentificadoHombres = 0, totalDiscapacidadNoIdentificadoMujeres = 0, fondos1General = 0, fondos1Hombres = 0, fondos1Mujeres = 0, fondos2General = 0, fondos2Hombres = 0, fondos2Mujeres = 0, accionesImpartidas = 0, accionesConcluidas = 0, accionesTotalPersonal = 0, accionesTotalHombres = 0, accionesMujeres = 0, totalInmuebles = 0, totalInmueblesPropios = 0, totalInmueblesRentados = 0, totalInmueblesOtros = 0, totalVehiculos = 0, totalAutomoviles = 0, totalCamionetas = 0, totalMotocicletas = 0, totalBicicletas = 0, totalHelicopteros = 0, totalDrones = 0, totalOtrosVhiculos = 0, totalLineas = 0, totalLineasFijas = 0, totalLineasMoviles = 0, totalAparatos = 0, totalAparatosFijos = 0, totalAparatosMoviles = 0, totalComputadoras = 0, totalComputadorasPersonales = 0, totalComputadorasPortatiles = 0, totalImpresoras = 0, totalImpresorasPersonal = 0, totalImpresorasCompartidas = 0, totalMultifuncionales = 0, totalServidores = 0, totalTabletas = 0, totalCovidPersonal = 0, totalCovidHombres = 0, totalCovidMujeres = 0, totalContratosRealizados1 = 0, totalContratosRealizados2 = 0, totalContratosRealizados3 = 0, totalContratosRealizados4 = 0, totalContratosRealizados5 = 0, totalP8Contratos1 = 0, totalP8Contratos2 = 0, totalP8Contratos3 = 0, totalP8Contratos4 = 0, totalP8Contratos5 = 0, adquisicionesTotal1 = 0, adquisicionesTotal2 = 0, adquisicionesTotal3 = 0, adquisicionesTotal4 = 0, adquisicionesTotal5 = 0, obraTotal1 = 0, obraTotal2 = 0, obraTotal3 = 0, obraTotal4 = 0, obraTotal5 = 0, P8Monto1 = 0.0, P8Monto2 = 0.0, P8Monto3 = 0.0, P8Monto4 = 0.0, P8Monto5 = 0.0, totalP10Monto1 = 0.0, totalP10Monto2 = 0.0, totalP10Monto3 = 0.0, totalP10Monto4 = 0.0, totalP10Monto5 = 0.0, adquicicioneP10Monto1 = 0.0, adquicicioneP10Monto2 = 0.0, adquicicioneP10Monto3 = 0.0, adquicicioneP10Monto4 = 0.0, adquicicioneP10Monto5 = 0.0, obraP10Monto1 = 0.0, obraP10Monto2 = 0.0, obraP10Monto3 = 0.0, obraP10Monto4 = 0.0, obraP10Monto5 = 0.0, totalP11Contratos = 0, totalP11Monto = 0.0, totalP12Contratos = 0, totalP12Monto = 0.0, totalP13Contratos = 0, totalP14Contratos = 0, totalMaximoP26 = 0, total1P26 = 0, total2P26 = 0, total11P26 = 0, total12P26 = 0, total13P26 = 0, total21P26 = 0, total22P26 = 0, total23P26 = 0, totalMaximoP28 = 0, total1P28 = 0, total2P28 = 0, total11P28 = 0, total12P28 = 0, total13P28 = 0, total14P28 = 0, total15P28 = 0, total21P28 = 0, total22P28 = 0, total23P28 = 0, total24P28 = 0, total25P28 = 0, totalMaximoP30 = 0, total1P30 = 0, total2P30 = 0, total11P30 = 0, total12P30 = 0, total13P30 = 0, total14P30 = 0, total15P30 = 0, total16P30 = 0, total17P30 = 0, total21P30 = 0, total22P30 = 0, total23P30 = 0, total24P30 = 0, total25P30 = 0, total26P30 = 0, total27P30 = 0, totalMaximoo1P35 = 0, totalMaximoo2P35 = 0, totalMaximoo3P35 = 0, totalMaximoo4P35 = 0, totalMaximoo5P35 = 0, total11P35 = 0, total12P35 = 0, total21P35 = 0, total22P35 = 0, total31P35 = 0, total32P35 = 0, total41P35 = 0, total42P35 = 0, total51P35 = 0, total52P35 = 0
 
         numerosConcentrados[idInstitucion].forEach(idDependencia => {
 
@@ -1124,8 +1124,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalHombresGenerales = totalHombresGenerales + parseInt(reporte['pregunta4seccion1']['totalHombres'])
                     totalMujeresGeneral = totalMujeresGeneral + parseInt(reporte['pregunta4seccion1']['totalMujeres'])
                     totalGeneralPersonal = totalGeneralPersonal + parseInt(reporte['pregunta4seccion1']['totalPersonal'])
-
-
 
                     // PREGUNTA 5 SECCION 1
                     tr = document.createElement('tr')
@@ -1597,22 +1595,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // PREGUNTA 13 SECCION 1
                     tr = document.createElement('tr')
-                    tr.append(crearTD('', '1', '37%'))
-                    td = document.createElement('td')
-                    td.className = 'text-center align-middle px-5'
-                    td.appendChild(document.createTextNode('Total: ' + reporte['pregunta13seccion1']['totalPersonal']))
-                    tr.append(td)
-                    td = document.createElement('td')
-                    td.className = 'text-center align-middle px-5'
-                    td.appendChild(document.createTextNode('Hombres: ' + reporte['pregunta13seccion1']['totalHombres']))
-                    tr.append(td)
-                    td = document.createElement('td')
-                    td.className = 'text-center align-middle px-5'
-                    td.appendChild(document.createTextNode('Mujeres: ' + reporte['pregunta13seccion1']['totalMujeres']))
-                    tr.append(td)
-                    document.getElementById('identifierQuestionSumaTotalDiscapacidadP13S1').innerHTML = ''
-                    document.getElementById('identifierQuestionSumaTotalDiscapacidadP13S1').append(tr)
-                    tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
                     tr.append(crearTD(nombreInstitucion, '2', 'auto'))
                     tr.append(crearTD((parseInt(reporte['pregunta13seccion1']['discapacidadCaminarHombres']) + parseInt(reporte['pregunta13seccion1']['discapacidadCaminarMujeres'])), '1', 'auto'))
@@ -1801,6 +1783,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('txtTotalInmuebles2P26').value = reporte['pregunta26seccion1']['totalOtroTIpoFuncion']
                     document.getElementById('identifierQuestionP26S1').append(tr)
 
+                    totalMaximoP26 += parseInt(reporte['pregunta26seccion1']['totalInmueblesEducacion'])
+                    total1P26 += parseInt(reporte['pregunta26seccion1']['totalFuncionPrincipalEducacion'])
+                    total2P26 += parseInt(reporte['pregunta26seccion1']['totalOtroTIpoFuncion'])
+                    total11P26 += parseInt(reporte['pregunta26seccion1']['escuelas1'])
+                    total12P26 += parseInt(reporte['pregunta26seccion1']['funcionesEducativas1'])
+                    total13P26 += parseInt(reporte['pregunta26seccion1']['formaMixta1'])
+                    total21P26 += parseInt(reporte['pregunta26seccion1']['escuelas2'])
+                    total22P26 += parseInt(reporte['pregunta26seccion1']['funcionesEducativas2'])
+                    total23P26 += parseInt(reporte['pregunta26seccion1']['formaMixta2'])
+                    
                     // PREGUNTA 27 SECCION 1
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
@@ -1826,6 +1818,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('txtTotalInmuebles1P28').innerHTML = reporte['pregunta28seccion1']['totalFuncionPrincipalSalud']
                     document.getElementById('txtTotalInmuebles2P28').innerHTML = reporte['pregunta28seccion1']['totalOtraFuncion']
                     document.getElementById('identifierQuestionP28S1').append(tr)
+
+                    totalMaximoP28 += parseInt(reporte['pregunta28seccion1']['totalnmueblesSalud'])
+                    total1P28 += parseInt(reporte['pregunta28seccion1']['totalFuncionPrincipalSalud'])
+                    total2P28 += parseInt(reporte['pregunta28seccion1']['totalOtraFuncion'])
+                    total11P28 += parseInt(reporte['pregunta28seccion1']['totalClinicas'])
+                    total12P28 += parseInt(reporte['pregunta28seccion1']['totalCentroSalud'])
+                    total13P28 += parseInt(reporte['pregunta28seccion1']['totalHospitales'])
+                    total14P28 += parseInt(reporte['pregunta28seccion1']['totalFuncionesSalud'])
+                    total15P28 += parseInt(reporte['pregunta28seccion1']['totalMixta'])
+                    total21P28 += parseInt(reporte['pregunta28seccion1']['totalOtraFuncionClinica'])
+                    total22P28 += parseInt(reporte['pregunta28seccion1']['totalOtraFuncionSalud'])
+                    total23P28 += parseInt(reporte['pregunta28seccion1']['totalOtraFuncionHospitales'])
+                    total24P28 += parseInt(reporte['pregunta28seccion1']['totalOtraFuncionesSalud'])
+                    total25P28 += parseInt(reporte['pregunta28seccion1']['totalOtraFuncionMixta'])
 
                     // PREGUNTA 29 SECCION 1
                     tr = document.createElement('tr')
@@ -1855,6 +1861,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('txtTotal2x5P30').innerHTML = reporte['pregunta30seccion1']['otraFuncionEventosDeportivos']
                     document.getElementById('txtTotal2x6P30').innerHTML = reporte['pregunta30seccion1']['otraFuncionOtros']
                     document.getElementById('txtTotal2x7P30').innerHTML = reporte['pregunta30seccion1']['otraFuncionIndistionciones']
+
+                    totalMaximoP30 += parseInt(reporte['pregunta30seccion1']['totalInmueblesDeporte'])
+                    total1P30 += parseInt(reporte['pregunta30seccion1']['totalFuncionPrincipal'])
+                    total2P30 += parseInt(reporte['pregunta30seccion1']['totalOtraFuncion'])
+                    total11P30 += parseInt(reporte['pregunta30seccion1']['funcionPrincipalActivacionFisica'])
+                    total12P30 += parseInt(reporte['pregunta30seccion1']['funcionPrincipalRecreacionFisica'])
+                    total13P30 += parseInt(reporte['pregunta30seccion1']['funcionPrincipalDeporteSocial'])
+                    total14P30 += parseInt(reporte['pregunta30seccion1']['funcionPrincipalAltoRendimiento'])
+                    total15P30 += parseInt(reporte['pregunta30seccion1']['funcionPrincipalEventosDeportivos'])
+                    total16P30 += parseInt(reporte['pregunta30seccion1']['funcionPrincipalOtros'])
+                    total17P30 += parseInt(reporte['pregunta30seccion1']['funcionPrincipalIndistinciones'])
+                    total21P30 += parseInt(reporte['pregunta30seccion1']['otraFuncionActivacionFisica'])
+                    total22P30 += parseInt(reporte['pregunta30seccion1']['otraFuncionRecreacionFisica'])
+                    total23P30 += parseInt(reporte['pregunta30seccion1']['otrafuncionDeporteSocial'])
+                    total24P30 += parseInt(reporte['pregunta30seccion1']['otraFuncionAltoRendimiento'])
+                    total25P30 += parseInt(reporte['pregunta30seccion1']['otraFuncionEventosDeportivos'])
+                    total26P30 += parseInt(reporte['pregunta30seccion1']['otraFuncionOtros'])
+                    total27P30 += parseInt(reporte['pregunta30seccion1']['otraFuncionIndistionciones'])
 
                     // PREGUNTA 31 SECCION 1
                     tr = document.createElement('tr')
@@ -1932,7 +1956,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('identifierQuestionP34S1').append(tr)
 
                     // PREGUNTA 35 SECCION 1
-                    document.getElementById('txtnombreInstitucion').innerHTML = nombreInstitucion
+                    document.getElementById('txtnombreInstitucion').classList.add('d-none')
+                    document.getElementById('txtEsconder').style.display='none'
                     document.getElementById('txtTotal1P35').innerHTML = reporte['pregunta35seccion1']['totalComputadoras']
                     document.getElementById('txtTotal2P35').innerHTML = reporte['pregunta35seccion1']['totalImpresoras']
                     document.getElementById('txtTotal3P35').innerHTML = reporte['pregunta35seccion1']['totalMultifuncionales']
@@ -1948,6 +1973,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('txtTotal4x2P35').innerHTML = reporte['pregunta35seccion1']['otraFuncionServidoresEducacion']
                     document.getElementById('txtTotal5x1P35').innerHTML = reporte['pregunta35seccion1']['funcionPrincipalTabletsEducacion']
                     document.getElementById('txtTotal5x2P35').innerHTML = reporte['pregunta35seccion1']['otraFuncionTabletsEducacion']
+
+                    totalMaximoo1P35 += parseInt(reporte['pregunta35seccion1']['totalComputadoras'])
+                    totalMaximoo2P35 += parseInt(reporte['pregunta35seccion1']['totalImpresoras'])
+                    totalMaximoo3P35 += parseInt(reporte['pregunta35seccion1']['totalMultifuncionales'])
+                    totalMaximoo4P35 += parseInt(reporte['pregunta35seccion1']['totalServidores'])
+                    totalMaximoo5P35 += parseInt(reporte['pregunta35seccion1']['totalTablets'])
+                    total11P35 += parseInt(reporte['pregunta35seccion1']['funcionPrincipalComputadorasEducacion'])
+                    total12P35 += parseInt(reporte['pregunta35seccion1']['otraFuncionComputadorasEducacion'])
+                    total21P35 += parseInt(reporte['pregunta35seccion1']['funcionPrincipalImpresorasEducacion'])
+                    total22P35 += parseInt(reporte['pregunta35seccion1']['otraFuncionImpresorasEducacion'])
+                    total31P35 += parseInt(reporte['pregunta35seccion1']['funcionPrincipalMultifuncionalesEducacion'])
+                    total32P35 += parseInt(reporte['pregunta35seccion1']['otraFuncionMultifuncionalesEducacion'])
+                    total41P35 += parseInt(reporte['pregunta35seccion1']['funcionPrincipalServidoresEducacion'])
+                    total42P35 += parseInt(reporte['pregunta35seccion1']['otraFuncionServidoresEducacion'])
+                    total51P35 += parseInt(reporte['pregunta35seccion1']['funcionPrincipalTabletsEducacion'])
+                    total52P35 += parseInt(reporte['pregunta35seccion1']['otraFuncionTabletsEducacion'])
 
                     // PREGUNTA COMPLEMENTO SECCION 1
                     tr = document.createElement('tr')
@@ -2460,6 +2501,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     //TOTALES PREGUNTA 11
                     tr = document.createElement('tr')
+                    tr.append(crearTD('', '1', '37%'))
+                    td = document.createElement('td')
+                    td.className = 'text-center align-middle px-5'
+                    td.appendChild(document.createTextNode('Total: ' + totalIndigenaPersonal))
+                    tr.append(td)
+                    td = document.createElement('td')
+                    td.className = 'text-center align-middle px-5'
+                    td.appendChild(document.createTextNode('Hombres: ' + totalIndigenaHombres))
+                    tr.append(td)
+                    td = document.createElement('td')
+                    td.className = 'text-center align-middle px-5'
+                    td.appendChild(document.createTextNode('Mujeres: ' + totalIndigenaMujeres))
+                    tr.append(td)
+                    document.getElementById('identifierQuestionSumaTotalIndigenaP11S1').innerHTML = ''
+                    document.getElementById('identifierQuestionSumaTotalIndigenaP11S1').append(tr)
+                    tr = document.createElement('tr')
                     tr.append(crearTD('Total', '3', 'auto'))
                     tr.append(crearTD(totalChinanteco, '1', 'auto'))
                     tr.append(crearTD(totalChinantecoHombres, '1', 'auto'))
@@ -2562,6 +2619,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('identifierQuestionP12S1').append(tr)
 
                     //TOTALES PREGUNTA 13
+                    document.getElementById('totalPersonalDiscapacidad').innerHTML = 'Total: ' + totalDiscapacidadPersonal
+                    document.getElementById('totalHombresDiscapacidad').innerHTML = 'Hombres: '+ totalDiscapacidadHombres
+                    document.getElementById('totalMujeresDiscapacidad').innerHTML = 'Mujeres: '+ totalDiscapacidadMujeres
                     tr = document.createElement('tr')
                     tr.append(crearTD('Total', '3', 'auto'))
                     tr.append(crearTD(totalCaminar, '1', 'auto'))
@@ -2811,10 +2871,73 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD('Total', '3', 'auto'))
                     tr.append(crearTD(totalP14Contratos, '1', 'auto'))
                     document.getElementById('identifierQuestionP14S12').append(tr)
+                    
+                    //TOTALES PREGUNTA 26 SECCION 1
+                    tr = document.createElement('tr')
+                    tr.append(crearTD('Total', '3', 'auto'))
+                    tr.append(crearTD(total11P26, '1', 'auto'))
+                    tr.append(crearTD(total12P26, '1', 'auto'))
+                    tr.append(crearTD(total13P26, '1', 'auto'))
+                    tr.append(crearTD(total21P26, '1', 'auto'))
+                    tr.append(crearTD(total22P26, '1', 'auto'))
+                    tr.append(crearTD(total23P26, '1', 'auto'))
+                    document.getElementById('txtTotalInmueblesP26').value = totalMaximoP26
+                    document.getElementById('txtTotalInmuebles1P26').value = total1P26
+                    document.getElementById('txtTotalInmuebles2P26').value = total2P26
+                    document.getElementById('identifierQuestionP26S1').append(tr)
+
+                    //TOTALES PREGUNTA 28 SECCION 1
+                    tr = document.createElement('tr')
+                    tr.append(crearTD('Total', '3', 'auto'))
+                    tr.append(crearTD(total11P28, '1', 'auto'))
+                    tr.append(crearTD(total12P28, '1', 'auto'))
+                    tr.append(crearTD(total13P28, '1', 'auto'))
+                    tr.append(crearTD(total14P28, '1', 'auto'))
+                    tr.append(crearTD(total15P28, '1', 'auto'))
+                    tr.append(crearTD(total21P28, '1', 'auto'))
+                    tr.append(crearTD(total22P28, '1', 'auto'))
+                    tr.append(crearTD(total23P28, '1', 'auto'))
+                    tr.append(crearTD(total24P28, '1', 'auto'))
+                    tr.append(crearTD(total25P28, '1', 'auto'))
+                    
+                    // TOTALES PREGUNTA 30 SECCION 1
+                    document.getElementById('txtTotalInmueblesP30').innerHTML = totalMaximoP30
+                    document.getElementById('txtTotalInmuebles1P30').innerHTML = total1P30
+                    document.getElementById('txtTotalInmuebles2P30').innerHTML = total2P30
+                    document.getElementById('txtTotal1x1P30').innerHTML = total11P30
+                    document.getElementById('txtTotal1x2P30').innerHTML = total12P30
+                    document.getElementById('txtTotal1x3P30').innerHTML = total13P30
+                    document.getElementById('txtTotal1x4P30').innerHTML = total14P30
+                    document.getElementById('txtTotal1x5P30').innerHTML = total15P30
+                    document.getElementById('txtTotal1x6P30').innerHTML = total16P30
+                    document.getElementById('txtTotal1x7P30').innerHTML = total17P30
+                    document.getElementById('txtTotal2x1P30').innerHTML = total21P30
+                    document.getElementById('txtTotal2x2P30').innerHTML = total22P30
+                    document.getElementById('txtTotal2x3P30').innerHTML = total23P30
+                    document.getElementById('txtTotal2x4P30').innerHTML = total24P30
+                    document.getElementById('txtTotal2x5P30').innerHTML = total25P30
+                    document.getElementById('txtTotal2x6P30').innerHTML = total26P30
+                    document.getElementById('txtTotal2x7P30').innerHTML = total27P30
+
+                    document.getElementById('txtTotal1P35').innerHTML = totalMaximoo1P35
+                    document.getElementById('txtTotal2P35').innerHTML = totalMaximoo2P25
+                    document.getElementById('txtTotal3P35').innerHTML = totalMaximoo3P35
+                    document.getElementById('txtTotal4P35').innerHTML = totalMaximoo4P35
+                    document.getElementById('txtTotal5P35').innerHTML = totalMaximoo5P35
+                    document.getElementById('txtTotal1x1P35').innerHTML = total11P35
+                    document.getElementById('txtTotal1x2P35').innerHTML = total12P35
+                    document.getElementById('txtTotal2x1P35').innerHTML = total21P35
+                    document.getElementById('txtTotal2x2P35').innerHTML = total22P35
+                    document.getElementById('txtTotal3x1P35').innerHTML = total31P35
+                    document.getElementById('txtTotal3x2P35').innerHTML = total32P35
+                    document.getElementById('txtTotal4x1P35').innerHTML = total41P35
+                    document.getElementById('txtTotal4x2P35').innerHTML = total42P35
+                    document.getElementById('txtTotal5x1P35').innerHTML = total51P35
+                    document.getElementById('txtTotal5x2P35').innerHTML = total52P35
 
                             //MENSAJE DE FINALIZACION
                             alertify.success('Carga terminada !')
-                        }, 1000)
+                        }, 1500)
                         // window.print()
                     }
 
