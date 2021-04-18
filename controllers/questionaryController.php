@@ -2066,7 +2066,7 @@ if ($tipoPeticion == "guardarPregunta") {
             'multifuncionales' => isset($pregunta33[0]['multifuncionales']) ? $pregunta33[0]['multifuncionales'] : "0",
             'servidores' => isset($pregunta33[0]['servidores']) ? $pregunta33[0]['servidores'] : "0",
             'tabletas' => isset($pregunta33[0]['tabletas']) ? $pregunta33[0]['tabletas'] : "0",
-            'conexionRemota' => isset($pregunta33[0]['conexionRemota']) ? $pregunta33[0]['conexionRemota'] : "0",
+            'conexionRemota' => isset($pregunta33[0]['conexionRemota']) ? $pregunta33[0]['conexionRemota'] : "",
             'datosEspecificos' => isset($pregunta33[0]['comentariosValidacion']) ? $pregunta33[0]['comentariosValidacion'] : "",
             'comentarioGeneral' => isset($pregunta33[0]['comentariosPregunta']) ? $pregunta33[0]['comentariosPregunta'] : ""
         ],
