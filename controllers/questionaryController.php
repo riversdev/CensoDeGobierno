@@ -1947,8 +1947,8 @@ if ($tipoPeticion == "guardarPregunta") {
 
         "pregunta19seccion1" => [
             'Respuesta' => isset($pregunta19[0]['Respuesta']) ? $pregunta19[0]['Respuesta'] : "",
-            'accionesFormativas' => isset($pregunta19[0]['accionesFormativas']) ? $pregunta19[0]['accionesFormativas'] : "",
-            'accionesFormativasConcluidas' => isset($pregunta19[0]['accionesFormativasC']) ? $pregunta19[0]['accionesFormativasC'] : "",
+            'accionesFormativas' => isset($pregunta19[0]['accionesFormativas']) ? $pregunta19[0]['accionesFormativas'] : "0",
+            'accionesFormativasConcluidas' => isset($pregunta19[0]['accionesFormativasC']) ? $pregunta19[0]['accionesFormativasC'] : "0",
             'TotalPersonal' => isset($pregunta19[0]['Total']) ? $pregunta19[0]['Total'] : "0",
             'totalHombres' => isset($pregunta19[0]['Hombres']) ? $pregunta19[0]['Hombres'] : "0",
             'totalMujeres' => isset($pregunta19[0]['Mujeres']) ? $pregunta19[0]['Mujeres'] : "0",
