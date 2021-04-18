@@ -1051,7 +1051,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         let contenedoresDeComentarios = document.getElementsByClassName('contenedorDeComentarios'),
             numerosConcentrados = {
-                'general': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 100],
+                'general': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85],
                 'centralizadas': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
                 'paraestatales': [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85]
             }
@@ -1061,17 +1061,13 @@ document.addEventListener('DOMContentLoaded', () => {
             contenedoresDeComentarios[i].classList.add('d-none')
         }
 
-
         //VARIABLES PARA TOTALES EN LAS TABLAS
-        let totalHombresGenerales = 0, totalMujeresGeneral=0, totalGeneralPersonal=0, totalPersonalContratacion = 0,  totalHombresContratacion =0, totalMujeresContratacion = 0, totalConfianzaHombres = 0, totalConfianzaMujeres = 0, totalBaseHombres = 0, totalBaseMujeres = 0, totalEventualHombres = 0, totalEventualMujeres = 0, totalHonorariosHombres = 0, totalHonorariosMujeres = 0, totalOtrosHombres = 0, totalOtrosMujeres = 0, totalSeguridadPersonal = 0, totalSeguridadHombres = 0, totalSeguridadMujeres = 0, totalISSSTEHombres = 0, totalISSSTEMujeres = 0, totalISSEFHombres = 0, totalISSEFMujeres = 0, totalIMSSHombres = 0, totalIMSSMujeres = 0, totalOtrosSeguridadHombres = 0, totalOtrosSeguridadMujeres = 0, totalSinSeguridadHombres = 0, totalSinSeguridadMujeres = 0, totalEdadesPersonal = 0, totalEdadesHombres = 0, totalEdadesMujeres = 0, total1824Hombres = 0, total1824Mujeres = 0, total2529Hombres = 0, total2529Mujeres = 0, total3034Hombres = 0, total3034Mujeres = 0, total3539Hombres = 0 , total3539Mujeres = 0, total4044Hombres = 0, total4044Mujeres = 0, total4549Hombres = 0, total4549Mujeres = 0, total5054Hombres = 0, total5054Mujeres = 0, total5559Hombres = 0, total5559Mujeres = 0, total60Hombres = 0, total60Mujeres = 0, totalPagaPersonal = 0, totalPagaHombre = 0, totalPagaMujeres = 0, totalSinPagaHombres = 0, totalSinPagaMujeres = 0, total1a1500Hombres = 0, total1a1500Mujeres = 0, total5001a10000Hombres = 0, total5001a10000Mujeres = 0, total10001a15000Hombres = 0, total10001a15000Mujeres = 0, total15001a20000Hombres = 0, total15001a20000Mujeres = 0, total20001a25000Hombres = 0, total20001a25000Mujeres = 0, total25001a30000Hombres = 0, total25001a30000Mujeres = 0, total30001a35000Hombres = 0, total30001a35000Mujeres = 0, total35001a40000Hombres = 0, total35001a40000Mujeres = 0, total40001a45000Hombres = 0, total40001a45000Mujeres = 0, total45001a50000Hombres = 0, total45001a50000Mujeres = 0, total50001a55000Hombres = 0, total50001a55000Mujeres = 0, total55001a60000Hombres = 0, total55001a60000Mujeres = 0,total60001a65000Hombres = 0, total60001a65000Mujeres = 0, total65001a70000Hombres = 0, total65001a70000Mujeres = 0, totalMas70000Hombres = 0 , totalMas70000Mujeres = 0, totalEscolaridadPersonal = 0, totalEscolaridadHombres = 0, totalEscolaridadMujeres = 0, totalNingunoHombres = 0, totalNingunoMujeres = 0, totalParaescolarHombres = 0, totalParaescolarMujeres = 0, totalSecundariaHombres = 0, totalSecundariaMujeres = 0, totalPreparatoriaHombres = 0, totalPreparatoriaMujeres = 0, totalCarreraHombres = 0, totalCarreraMujeres = 0, totalLicenciaturaHombres = 0, totallicenciaturaMujeres = 0, totalMaestriaHombres = 0, totalMaestriaMujeres = 0, totalDoctoradoHombres = 0, totalDoctoradoMujeres = 0, totalIndigenaPersonal = 0, totalIndigenaHombres = 0, totalIndigenaMujeres = 0, totalPertenecenIndigenaHombres = 0, totalPertenecenIndigenaMujeres = 0, totalNoPertenecenIndigenaHombres = 0, totalNoPertenecenIndigenaMujeres = 0, totalIndigenaNoIdentificadoHombres = 0, totalIndigenaNoIdentificadoMujeres = 0, totalChinanteco = 0, totalChinantecoHombres = 0, totalChinantecoMujeres = 0, totalChol = 0, totalCholHombres = 0, totalCholMujeres = 0, totalCora = 0, totalCoraHombres = 0, totalCoraMujeres = 0, totalHuasteco = 0, totalHuastecoHombres = 0, totalHuastecoMujeres = 0, totalHuichol = 0, totalHuicholHombres = 0, totalHuicholMujeres = 0, totalMaya = 0, totalMayaHombres = 0, totalMayaMujeres = 0, totalMayo = 0, totalMayoHombres = 0, totalMayoMujeres = 0, totalMazahua = 0, totalMazahuaHombres = 0, totalMazahuaMujeres = 0, totalMazateco = 0, totalMazatecoHombres = 0, totalMazatecoMujeres = 0, totalMixe = 0, totalMixeHombres = 0, totalMixeMujeres = 0, totalMixteco = 0, totalMixtecoHombres = 0, totalMixtecoMujeres = 0, totalNahuatl = 0, totalNahuatlHombres = 0, totalNahuatlMujeres = 0, totalOtomi = 0, totalOtomiHombres = 0, totalOtomiMujeres = 0, totalTarasco = 0, totalTarascoHombres = 0, totalTarascoMujeres = 0, totalTarahumara = 0, totalTarahumaraHombres = 0, totalTarahumaraMujeres = 0, totalTepehuano = 0, totalTepehuanoHombres = 0, totalTepehuanoMujeres= 0, totalTotonaco = 0, totalTotonacoHombres = 0, totalTotonacoMujeres = 0, totalTlapenaco = 0, totalTlapenacoHombres = 0, totalTlapenacoMujeres = 0, totalTseltal = 0, totalTseltalHombres = 0, totalTsetalMujeres = 0, totalTsotsil = 0, totalTsotsilHombres = 0, totalTsotsilMujeres = 0, totalYaqui = 0, totalYaquiHombres = 0, totalYaquiMujeres = 0, totalZapoteco = 0, totalZapotecoHombres = 0, totalZapotecoMujeres = 0, totalZoque = 0, totalZoqueHombres = 0, totalZoqueMujeres = 0, totalOtraLengua = 0, totalOtraLenguaHombres = 0, totalOtraLenguaMujeres = 0, totalNoIdentificadaLengua = 0, totalNoIdentificadaLenguaHombres = 0, totalNoIdentificadaLenguaMujeres = 0, totalDiscapacidadPersonal = 0, totalDiscapacidadHombres = 0, totalDiscapacidadMujeres = 0, totalConDiscapacidadHombres = 0, totalConDiscapacidadMujeres = 0, totalSinDiscapacidadaHombres = 0, totalSinDiscapacidadaMujeres = 0, totalNoIdentificadoDiscapacidadaHombres = 0, totalNoIdentificadoDiscapacidadaMujeres = 0, totalCaminar = 0, totalCaminarHombres = 0, totalCaminarMujeres = 0, totalVer = 0, totalVerHombres = 0, totalVerMujeres = 0, totalMover = 0, totalMoverHombres = 0, totalMoverMujeres = 0, totalAprender = 0, totalAprenderHombres = 0, totalAprenderMujeres = 0, totalOir = 0, totalOirHombres = 0, totalOirMujeres = 0, totalHablar = 0, totalHablarHombres = 0, totalHablarMujeres = 0, totalBaniarse = 0, totalBaniarseHombres = 0, totalBaniarseMujeres = 0, totalMoral = 0, totalMoralHombres = 0, totalMoralMujeres = 0, totalDiscapacidadDiferente = 0, totalDiscapacidadDiferenteHombres = 0, totalDiscapacidadDiferenteMujeres = 0, totalDiscapacidadNoIdentificado = 0, totalDiscapacidadNoIdentificadoHombres = 0, totalDiscapacidadNoIdentificadoMujeres = 0, fondos1General = 0, fondos1Hombres = 0, fondos1Mujeres = 0, fondos2General = 0, fondos2Hombres = 0, fondos2Mujeres = 0, accionesImpartidas = 0, accionesConcluidas = 0, accionesTotalPersonal = 0, accionesTotalHombres = 0, accionesMujeres = 0, totalInmuebles = 0, totalInmueblesPropios = 0, totalInmueblesRentados = 0, totalInmueblesOtros = 0, totalVehiculos = 0, totalAutomoviles = 0, totalCamionetas = 0, totalMotocicletas = 0, totalBicicletas = 0, totalHelicopteros = 0, totalDrones = 0, totalOtrosVhiculos = 0, totalLineas = 0, totalLineasFijas = 0, totalLineasMoviles = 0, totalAparatos = 0, totalAparatosFijos = 0, totalAparatosMoviles = 0, totalComputadoras = 0, totalComputadorasPersonales = 0, totalComputadorasPortatiles = 0, totalImpresoras = 0, totalImpresorasPersonal = 0, totalImpresorasCompartidas = 0, totalMultifuncionales = 0, totalServidores = 0, totalTabletas = 0, totalCovidPersonal = 0, totalCovidHombres = 0, totalCovidMujeres = 0, totalContratosRealizados1 = 0, totalContratosRealizados2 = 0, totalContratosRealizados3 = 0, totalContratosRealizados4 = 0, totalContratosRealizados5 = 0, totalP8Contratos1 = 0, totalP8Contratos2 = 0, totalP8Contratos3 = 0, totalP8Contratos4 = 0, totalP8Contratos5 = 0, adquisicionesTotal1 = 0, adquisicionesTotal2 = 0, adquisicionesTotal3 = 0, adquisicionesTotal4 = 0, adquisicionesTotal5 = 0, obraTotal1 = 0, obraTotal2 = 0, obraTotal3 = 0, obraTotal4 = 0, obraTotal5 = 0, P8Monto1 = 0.0, P8Monto2 = 0.0, P8Monto3 = 0.0, P8Monto4 = 0.0, P8Monto5 = 0.0, totalP10Monto1 = 0.0, totalP10Monto2 = 0.0, totalP10Monto3 = 0.0, totalP10Monto4 = 0.0, totalP10Monto5 = 0.0, adquicicioneP10Monto1 = 0.0, adquicicioneP10Monto2 = 0.0, adquicicioneP10Monto3 = 0.0, adquicicioneP10Monto4 = 0.0, adquicicioneP10Monto5 = 0.0, obraP10Monto1 = 0.0, obraP10Monto2 = 0.0, obraP10Monto3 = 0.0, obraP10Monto4 = 0.0, obraP10Monto5 = 0.0, totalP11Contratos = 0, totalP11Monto = 0.0, totalP12Contratos = 0, totalP12Monto = 0.0, totalP13Contratos = 0, totalP14Contratos = 0, totalMaximoP26 = 0, total1P26 = 0, total2P26 = 0, total11P26 = 0, total12P26 = 0, total13P26 = 0, total21P26 = 0, total22P26 = 0, total23P26 = 0, totalMaximoP28 = 0, total1P28 = 0, total2P28 = 0, total11P28 = 0, total12P28 = 0, total13P28 = 0, total14P28 = 0, total15P28 = 0, total21P28 = 0, total22P28 = 0, total23P28 = 0, total24P28 = 0, total25P28 = 0, totalMaximoP30 = 0, total1P30 = 0, total2P30 = 0, total11P30 = 0, total12P30 = 0, total13P30 = 0, total14P30 = 0, total15P30 = 0, total16P30 = 0, total17P30 = 0, total21P30 = 0, total22P30 = 0, total23P30 = 0, total24P30 = 0, total25P30 = 0, total26P30 = 0, total27P30 = 0, totalMaximoo1P35 = 0, totalMaximoo2P35 = 0, totalMaximoo3P35 = 0, totalMaximoo4P35 = 0, totalMaximoo5P35 = 0, total11P35 = 0, total12P35 = 0, total21P35 = 0, total22P35 = 0, total31P35 = 0, total32P35 = 0, total41P35 = 0, total42P35 = 0, total51P35 = 0, total52P35 = 0
+        let totalHombresGenerales = 0, totalMujeresGeneral = 0, totalGeneralPersonal = 0, totalPersonalContratacion = 0, totalHombresContratacion = 0, totalMujeresContratacion = 0, totalConfianzaHombres = 0, totalConfianzaMujeres = 0, totalBaseHombres = 0, totalBaseMujeres = 0, totalEventualHombres = 0, totalEventualMujeres = 0, totalHonorariosHombres = 0, totalHonorariosMujeres = 0, totalOtrosHombres = 0, totalOtrosMujeres = 0, totalSeguridadPersonal = 0, totalSeguridadHombres = 0, totalSeguridadMujeres = 0, totalISSSTEHombres = 0, totalISSSTEMujeres = 0, totalISSEFHombres = 0, totalISSEFMujeres = 0, totalIMSSHombres = 0, totalIMSSMujeres = 0, totalOtrosSeguridadHombres = 0, totalOtrosSeguridadMujeres = 0, totalSinSeguridadHombres = 0, totalSinSeguridadMujeres = 0, totalEdadesPersonal = 0, totalEdadesHombres = 0, totalEdadesMujeres = 0, total1824Hombres = 0, total1824Mujeres = 0, total2529Hombres = 0, total2529Mujeres = 0, total3034Hombres = 0, total3034Mujeres = 0, total3539Hombres = 0, total3539Mujeres = 0, total4044Hombres = 0, total4044Mujeres = 0, total4549Hombres = 0, total4549Mujeres = 0, total5054Hombres = 0, total5054Mujeres = 0, total5559Hombres = 0, total5559Mujeres = 0, total60Hombres = 0, total60Mujeres = 0, totalPagaPersonal = 0, totalPagaHombre = 0, totalPagaMujeres = 0, totalSinPagaHombres = 0, totalSinPagaMujeres = 0, total1a1500Hombres = 0, total1a1500Mujeres = 0, total5001a10000Hombres = 0, total5001a10000Mujeres = 0, total10001a15000Hombres = 0, total10001a15000Mujeres = 0, total15001a20000Hombres = 0, total15001a20000Mujeres = 0, total20001a25000Hombres = 0, total20001a25000Mujeres = 0, total25001a30000Hombres = 0, total25001a30000Mujeres = 0, total30001a35000Hombres = 0, total30001a35000Mujeres = 0, total35001a40000Hombres = 0, total35001a40000Mujeres = 0, total40001a45000Hombres = 0, total40001a45000Mujeres = 0, total45001a50000Hombres = 0, total45001a50000Mujeres = 0, total50001a55000Hombres = 0, total50001a55000Mujeres = 0, total55001a60000Hombres = 0, total55001a60000Mujeres = 0, total60001a65000Hombres = 0, total60001a65000Mujeres = 0, total65001a70000Hombres = 0, total65001a70000Mujeres = 0, totalMas70000Hombres = 0, totalMas70000Mujeres = 0, totalEscolaridadPersonal = 0, totalEscolaridadHombres = 0, totalEscolaridadMujeres = 0, totalNingunoHombres = 0, totalNingunoMujeres = 0, totalParaescolarHombres = 0, totalParaescolarMujeres = 0, totalSecundariaHombres = 0, totalSecundariaMujeres = 0, totalPreparatoriaHombres = 0, totalPreparatoriaMujeres = 0, totalCarreraHombres = 0, totalCarreraMujeres = 0, totalLicenciaturaHombres = 0, totallicenciaturaMujeres = 0, totalMaestriaHombres = 0, totalMaestriaMujeres = 0, totalDoctoradoHombres = 0, totalDoctoradoMujeres = 0, totalIndigenaPersonal = 0, totalIndigenaHombres = 0, totalIndigenaMujeres = 0, totalPertenecenIndigenaHombres = 0, totalPertenecenIndigenaMujeres = 0, totalNoPertenecenIndigenaHombres = 0, totalNoPertenecenIndigenaMujeres = 0, totalIndigenaNoIdentificadoHombres = 0, totalIndigenaNoIdentificadoMujeres = 0, totalChinanteco = 0, totalChinantecoHombres = 0, totalChinantecoMujeres = 0, totalChol = 0, totalCholHombres = 0, totalCholMujeres = 0, totalCora = 0, totalCoraHombres = 0, totalCoraMujeres = 0, totalHuasteco = 0, totalHuastecoHombres = 0, totalHuastecoMujeres = 0, totalHuichol = 0, totalHuicholHombres = 0, totalHuicholMujeres = 0, totalMaya = 0, totalMayaHombres = 0, totalMayaMujeres = 0, totalMayo = 0, totalMayoHombres = 0, totalMayoMujeres = 0, totalMazahua = 0, totalMazahuaHombres = 0, totalMazahuaMujeres = 0, totalMazateco = 0, totalMazatecoHombres = 0, totalMazatecoMujeres = 0, totalMixe = 0, totalMixeHombres = 0, totalMixeMujeres = 0, totalMixteco = 0, totalMixtecoHombres = 0, totalMixtecoMujeres = 0, totalNahuatl = 0, totalNahuatlHombres = 0, totalNahuatlMujeres = 0, totalOtomi = 0, totalOtomiHombres = 0, totalOtomiMujeres = 0, totalTarasco = 0, totalTarascoHombres = 0, totalTarascoMujeres = 0, totalTarahumara = 0, totalTarahumaraHombres = 0, totalTarahumaraMujeres = 0, totalTepehuano = 0, totalTepehuanoHombres = 0, totalTepehuanoMujeres = 0, totalTotonaco = 0, totalTotonacoHombres = 0, totalTotonacoMujeres = 0, totalTlapenaco = 0, totalTlapenacoHombres = 0, totalTlapenacoMujeres = 0, totalTseltal = 0, totalTseltalHombres = 0, totalTsetalMujeres = 0, totalTsotsil = 0, totalTsotsilHombres = 0, totalTsotsilMujeres = 0, totalYaqui = 0, totalYaquiHombres = 0, totalYaquiMujeres = 0, totalZapoteco = 0, totalZapotecoHombres = 0, totalZapotecoMujeres = 0, totalZoque = 0, totalZoqueHombres = 0, totalZoqueMujeres = 0, totalOtraLengua = 0, totalOtraLenguaHombres = 0, totalOtraLenguaMujeres = 0, totalNoIdentificadaLengua = 0, totalNoIdentificadaLenguaHombres = 0, totalNoIdentificadaLenguaMujeres = 0, totalDiscapacidadPersonal = 0, totalDiscapacidadHombres = 0, totalDiscapacidadMujeres = 0, totalConDiscapacidadHombres = 0, totalConDiscapacidadMujeres = 0, totalSinDiscapacidadaHombres = 0, totalSinDiscapacidadaMujeres = 0, totalNoIdentificadoDiscapacidadaHombres = 0, totalNoIdentificadoDiscapacidadaMujeres = 0, totalCaminar = 0, totalCaminarHombres = 0, totalCaminarMujeres = 0, totalVer = 0, totalVerHombres = 0, totalVerMujeres = 0, totalMover = 0, totalMoverHombres = 0, totalMoverMujeres = 0, totalAprender = 0, totalAprenderHombres = 0, totalAprenderMujeres = 0, totalOir = 0, totalOirHombres = 0, totalOirMujeres = 0, totalHablar = 0, totalHablarHombres = 0, totalHablarMujeres = 0, totalBaniarse = 0, totalBaniarseHombres = 0, totalBaniarseMujeres = 0, totalMoral = 0, totalMoralHombres = 0, totalMoralMujeres = 0, totalDiscapacidadDiferente = 0, totalDiscapacidadDiferenteHombres = 0, totalDiscapacidadDiferenteMujeres = 0, totalDiscapacidadNoIdentificado = 0, totalDiscapacidadNoIdentificadoHombres = 0, totalDiscapacidadNoIdentificadoMujeres = 0, fondos1General = 0, fondos1Hombres = 0, fondos1Mujeres = 0, fondos2General = 0, fondos2Hombres = 0, fondos2Mujeres = 0, accionesImpartidas = 0, accionesConcluidas = 0, accionesTotalPersonal = 0, accionesTotalHombres = 0, accionesMujeres = 0, totalInmuebles = 0, totalInmueblesPropios = 0, totalInmueblesRentados = 0, totalInmueblesOtros = 0, totalVehiculos = 0, totalAutomoviles = 0, totalCamionetas = 0, totalMotocicletas = 0, totalBicicletas = 0, totalHelicopteros = 0, totalDrones = 0, totalOtrosVhiculos = 0, totalLineas = 0, totalLineasFijas = 0, totalLineasMoviles = 0, totalAparatos = 0, totalAparatosFijos = 0, totalAparatosMoviles = 0, totalComputadoras = 0, totalComputadorasPersonales = 0, totalComputadorasPortatiles = 0, totalImpresoras = 0, totalImpresorasPersonal = 0, totalImpresorasCompartidas = 0, totalMultifuncionales = 0, totalServidores = 0, totalTabletas = 0, totalCovidPersonal = 0, totalCovidHombres = 0, totalCovidMujeres = 0, totalContratosRealizados1 = 0, totalContratosRealizados2 = 0, totalContratosRealizados3 = 0, totalContratosRealizados4 = 0, totalContratosRealizados5 = 0, totalP8Contratos1 = 0, totalP8Contratos2 = 0, totalP8Contratos3 = 0, totalP8Contratos4 = 0, totalP8Contratos5 = 0, adquisicionesTotal1 = 0, adquisicionesTotal2 = 0, adquisicionesTotal3 = 0, adquisicionesTotal4 = 0, adquisicionesTotal5 = 0, obraTotal1 = 0, obraTotal2 = 0, obraTotal3 = 0, obraTotal4 = 0, obraTotal5 = 0, P8Monto1 = 0.0, P8Monto2 = 0.0, P8Monto3 = 0.0, P8Monto4 = 0.0, P8Monto5 = 0.0, totalP10Monto1 = 0.0, totalP10Monto2 = 0.0, totalP10Monto3 = 0.0, totalP10Monto4 = 0.0, totalP10Monto5 = 0.0, adquicicioneP10Monto1 = 0.0, adquicicioneP10Monto2 = 0.0, adquicicioneP10Monto3 = 0.0, adquicicioneP10Monto4 = 0.0, adquicicioneP10Monto5 = 0.0, obraP10Monto1 = 0.0, obraP10Monto2 = 0.0, obraP10Monto3 = 0.0, obraP10Monto4 = 0.0, obraP10Monto5 = 0.0, totalP11Contratos = 0, totalP11Monto = 0.0, totalP12Contratos = 0, totalP12Monto = 0.0, totalP13Contratos = 0, totalP14Contratos = 0, totalMaximoP26 = 0, total1P26 = 0, total2P26 = 0, total11P26 = 0, total12P26 = 0, total13P26 = 0, total21P26 = 0, total22P26 = 0, total23P26 = 0, totalMaximoP28 = 0, total1P28 = 0, total2P28 = 0, total11P28 = 0, total12P28 = 0, total13P28 = 0, total14P28 = 0, total15P28 = 0, total21P28 = 0, total22P28 = 0, total23P28 = 0, total24P28 = 0, total25P28 = 0, totalMaximoP30 = 0, total1P30 = 0, total2P30 = 0, total11P30 = 0, total12P30 = 0, total13P30 = 0, total14P30 = 0, total15P30 = 0, total16P30 = 0, total17P30 = 0, total21P30 = 0, total22P30 = 0, total23P30 = 0, total24P30 = 0, total25P30 = 0, total26P30 = 0, total27P30 = 0, totalMaximoo1P35 = 0, totalMaximoo2P35 = 0, totalMaximoo3P35 = 0, totalMaximoo4P35 = 0, totalMaximoo5P35 = 0, total11P35 = 0, total12P35 = 0, total21P35 = 0, total22P35 = 0, total31P35 = 0, total32P35 = 0, total41P35 = 0, total42P35 = 0, total51P35 = 0, total52P35 = 0
 
         numerosConcentrados[idInstitucion].forEach(idDependencia => {
-
             recuperarNombreDependencia(idDependencia, anioInstitucion).then((res) => {
-                let nombreInstitucion = res[0]
-                let clasificacionInstitucion = res[1]
+                let nombreInstitucion = res[0], clasificacionInstitucion = res[1]
                 obtenerReporte(idDependencia, nombreInstitucion, clasificacionInstitucion, anioInstitucion).then(() => {
-                    
                     // PREGUNTA 1 SECCION 1
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
@@ -1120,7 +1116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta4seccion1']['totalHombres'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta4seccion1']['totalMujeres'], '1', 'auto'))
                     document.getElementById('identifierQuestionP4S1').append(tr)
-                    
+
                     totalHombresGenerales = totalHombresGenerales + parseInt(reporte['pregunta4seccion1']['totalHombres'])
                     totalMujeresGeneral = totalMujeresGeneral + parseInt(reporte['pregunta4seccion1']['totalMujeres'])
                     totalGeneralPersonal = totalGeneralPersonal + parseInt(reporte['pregunta4seccion1']['totalPersonal'])
@@ -1642,7 +1638,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalMover += parseInt(parseInt(reporte['pregunta13seccion1']['discapacidadMoverHombres']) + parseInt(reporte['pregunta13seccion1']['discapacidadMoverMuejeres']))
                     totalMoverHombres += parseInt(reporte['pregunta13seccion1']['discapacidadMoverHombres'])
                     totalMoverMujeres += parseInt(reporte['pregunta13seccion1']['discapacidadMoverMuejeres'])
-                    totalAprender += parseInt(parseInt(reporte['pregunta13seccion1']['discapacidadAprenderHombres'])+parseInt(reporte['pregunta13seccion1']['discapacidadAprenderMujeres']))
+                    totalAprender += parseInt(parseInt(reporte['pregunta13seccion1']['discapacidadAprenderHombres']) + parseInt(reporte['pregunta13seccion1']['discapacidadAprenderMujeres']))
                     totalAprenderHombres += parseInt(reporte['pregunta13seccion1']['discapacidadAprenderHombres'])
                     totalAprenderMujeres += parseInt(reporte['pregunta13seccion1']['discapacidadAprenderMujeres'])
                     totalOir += parseInt(parseInt(reporte['pregunta13seccion1']['discapacidadOirHombres']) + parseInt(reporte['pregunta13seccion1']['discapacidadOirMujeres']))
@@ -1664,7 +1660,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalDiscapacidadNoIdentificadoHombres += parseInt(reporte['pregunta13seccion1']['discapacidadNoIdentificadaHombres'])
                     totalDiscapacidadNoIdentificadoMujeres += parseInt(reporte['pregunta13seccion1']['discapacidadNoIdentificadaMujeres'])
 
-                    
+
                     // PREGUNTA 14 SECCION 1
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
@@ -1792,7 +1788,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     total21P26 += parseInt(reporte['pregunta26seccion1']['escuelas2'])
                     total22P26 += parseInt(reporte['pregunta26seccion1']['funcionesEducativas2'])
                     total23P26 += parseInt(reporte['pregunta26seccion1']['formaMixta2'])
-                    
+
                     // PREGUNTA 27 SECCION 1
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
@@ -1957,7 +1953,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // PREGUNTA 35 SECCION 1
                     document.getElementById('txtnombreInstitucion').classList.add('d-none')
-                    document.getElementById('txtEsconder').style.display='none'
+                    document.getElementById('txtEsconder').style.display = 'none'
                     document.getElementById('txtTotal1P35').innerHTML = reporte['pregunta35seccion1']['totalComputadoras']
                     document.getElementById('txtTotal2P35').innerHTML = reporte['pregunta35seccion1']['totalImpresoras']
                     document.getElementById('txtTotal3P35').innerHTML = reporte['pregunta35seccion1']['totalMultifuncionales']
@@ -2222,7 +2218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalP8Contratos5 += parseInt(reporte['pregunta8seccion12']['Total5'])
                     adquisicionesTotal5 += parseInt(reporte['pregunta8seccion12']['Adquisiciones5'])
                     obraTotal5 += parseInt(reporte['pregunta8seccion12']['otraPublica'])
-                    
+
                     // PREGUNTA 9 SECCION 12
                     tr = document.createElement('tr')
                     tr.append(crearTD(idDependencia, '1', '5%'))
@@ -2241,11 +2237,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('totalMontoP9S12').innerHTML = reporte['pregunta9seccion12']['totalMonto']
                     document.getElementById('identifierQuestionMontoAsociadoP9S12').classList.add('d-none')
 
-                    P8Monto1 += parseFloat((reporte['pregunta9seccion12']['monAsociado'] * 100)/100)
-                    P8Monto2 += parseFloat((reporte['pregunta9seccion12']['monAsociado2'] * 100)/100)
-                    P8Monto3 += parseFloat((reporte['pregunta9seccion12']['monAsociado3'] * 100)/100)
-                    P8Monto4 += parseFloat((reporte['pregunta9seccion12']['monAsociado4'] * 100)/100)
-                    P8Monto5 += parseFloat((reporte['pregunta9seccion12']['monAsociado5'] * 100)/100)
+                    P8Monto1 += parseFloat((reporte['pregunta9seccion12']['monAsociado'] * 100) / 100)
+                    P8Monto2 += parseFloat((reporte['pregunta9seccion12']['monAsociado2'] * 100) / 100)
+                    P8Monto3 += parseFloat((reporte['pregunta9seccion12']['monAsociado3'] * 100) / 100)
+                    P8Monto4 += parseFloat((reporte['pregunta9seccion12']['monAsociado4'] * 100) / 100)
+                    P8Monto5 += parseFloat((reporte['pregunta9seccion12']['monAsociado5'] * 100) / 100)
 
 
                     // PREGUNTA 10 SECCION 12
@@ -2285,21 +2281,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('totalMonto1P10S12').innerHTML = reporte['pregunta10seccion12']['totalMontoAdquisicionesGeneral']
                     document.getElementById('totalMonto2P10S12').innerHTML = reporte['pregunta10seccion12']['totalMontoObrasGeneral']
 
-                    totalP10Monto1 += parseFloat((reporte['pregunta10seccion12']['TotalMonto']*100)/100)
-                    adquicicioneP10Monto1 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones']*100)/100)
-                    obraP10Monto1 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra1']*100)/100)
-                    totalP10Monto2 += parseFloat((reporte['pregunta10seccion12']['TotalMonto2']*100)/100)
-                    adquicicioneP10Monto2 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones2']*100)/100)
-                    obraP10Monto2 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra12']*100)/100)
-                    totalP10Monto3 += parseFloat((reporte['pregunta10seccion12']['TotalMonto3']*100)/100)
-                    adquicicioneP10Monto3 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones3']*100)/100)
-                    obraP10Monto3 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra3']*100)/100)
-                    totalP10Monto4 += parseFloat((reporte['pregunta10seccion12']['TotalMonto4']*100)/100)
-                    adquicicioneP10Monto4 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones4']*100)/100)
-                    obraP10Monto4 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra14']*100)/100)
-                    totalP10Monto5 += parseFloat((reporte['pregunta10seccion12']['TotalMonto5']*100)/100)
-                    adquicicioneP10Monto5 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones5']*100)/100)
-                    obraP10Monto5 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra15']*100)/100)
+                    totalP10Monto1 += parseFloat((reporte['pregunta10seccion12']['TotalMonto'] * 100) / 100)
+                    adquicicioneP10Monto1 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones'] * 100) / 100)
+                    obraP10Monto1 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra1'] * 100) / 100)
+                    totalP10Monto2 += parseFloat((reporte['pregunta10seccion12']['TotalMonto2'] * 100) / 100)
+                    adquicicioneP10Monto2 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones2'] * 100) / 100)
+                    obraP10Monto2 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra12'] * 100) / 100)
+                    totalP10Monto3 += parseFloat((reporte['pregunta10seccion12']['TotalMonto3'] * 100) / 100)
+                    adquicicioneP10Monto3 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones3'] * 100) / 100)
+                    obraP10Monto3 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra3'] * 100) / 100)
+                    totalP10Monto4 += parseFloat((reporte['pregunta10seccion12']['TotalMonto4'] * 100) / 100)
+                    adquicicioneP10Monto4 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones4'] * 100) / 100)
+                    obraP10Monto4 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra14'] * 100) / 100)
+                    totalP10Monto5 += parseFloat((reporte['pregunta10seccion12']['TotalMonto5'] * 100) / 100)
+                    adquicicioneP10Monto5 += parseFloat((reporte['pregunta10seccion12']['totalMontoAdquisiciones5'] * 100) / 100)
+                    obraP10Monto5 += parseFloat((reporte['pregunta10seccion12']['totalMontoObra15'] * 100) / 100)
 
                     // PREGUNTA 11 SECCION 12
                     tr = document.createElement('tr')
@@ -2311,7 +2307,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('identifierQuestionP11S12').append(tr)
 
                     totalP11Contratos += parseInt(reporte['pregunta11seccion12']['totalContratos'])
-                    totalP11Monto += parseFloat((reporte['pregunta11seccion12']['Monto']*100)/100)
+                    totalP11Monto += parseFloat((reporte['pregunta11seccion12']['Monto'] * 100) / 100)
 
                     // PREGUNTA 12 SECCION 12
                     tr = document.createElement('tr')
@@ -2321,9 +2317,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     tr.append(crearTD(reporte['pregunta12seccion12']['totalContratos'], '1', 'auto'))
                     tr.append(crearTD(reporte['pregunta12seccion12']['Monto'], '1', 'auto'))
                     document.getElementById('identifierQuestionP12S12').append(tr)
-                    
+
                     totalP12Contratos += parseInt(reporte['pregunta12seccion12']['totalContratos'])
-                    totalP12Monto += parseFloat((reporte['pregunta12seccion12']['Monto']*100)/100)
+                    totalP12Monto += parseFloat((reporte['pregunta12seccion12']['Monto'] * 100) / 100)
 
                     // PREGUNTA 13 SECCION 12
                     tr = document.createElement('tr')
@@ -2343,11 +2339,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     totalP14Contratos += parseInt(reporte['pregunta14seccion12']['Total'])
 
-                    // IMPRMIR REPORTE
-                    
+                    // IMPRMIR TOTALES
                     if (idDependencia == numerosConcentrados[idInstitucion].length) {
-                        setTimeout(function() { 
-
+                        setTimeout(() => {
                             //TOTALES PREGUNTA 4
                             tr = document.createElement('tr')
                             tr.append(crearTD('Total', '3', 'auto'))
@@ -2417,535 +2411,531 @@ document.addEventListener('DOMContentLoaded', () => {
                             tr.append(crearTD(total60Hombres, '1', 'auto'))
                             tr.append(crearTD(total60Mujeres, '1', 'auto'))
                             document.getElementById('identifierQuestionP7S1').append(tr)
-                            
+
                             //TOTALES PREGUNTA 8
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalPagaPersonal, '1', 'auto'))
-                    tr.append(crearTD(totalPagaHombre, '1', 'auto'))
-                    tr.append(crearTD(totalPagaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalSinPagaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalSinPagaMujeres, '1', 'auto'))
-                    tr.append(crearTD(total1a1500Hombres, '1', 'auto'))
-                    tr.append(crearTD(total1a1500Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total50001a55000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total50001a55000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total10001a15000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total10001a15000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total15001a20000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total15001a20000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total20001a25000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total20001a25000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total25001a30000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total25001a30000Mujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionP8S1').append(tr)
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(total30001a35000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total30001a35000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total35001a40000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total35001a40000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total40001a45000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total40001a45000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total45001a50000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total45001a50000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total50001a55000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total50001a55000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total55001a60000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total55001a60000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total60001a65000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total60001a65000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(total65001a70000Hombres, '1', 'auto'))
-                    tr.append(crearTD(total65001a70000Mujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMas70000Hombres, '1', 'auto'))
-                    tr.append(crearTD(totalMas70000Mujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionP81S1').append(tr)
-                    
-                    //TOTALES PREGUNTA 10
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalEscolaridadPersonal, '1', 'auto'))
-                    tr.append(crearTD(totalEscolaridadHombres, '1', 'auto'))
-                    tr.append(crearTD(totalEscolaridadMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalNingunoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalNingunoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalParaescolarHombres, '1', 'auto'))
-                    tr.append(crearTD(totalParaescolarMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalSecundariaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalSecundariaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalPreparatoriaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalPreparatoriaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalCarreraHombres, '1', 'auto'))
-                    tr.append(crearTD(totalCarreraMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalLicenciaturaHombres, '1', 'auto'))
-                    tr.append(crearTD(totallicenciaturaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMaestriaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMaestriaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalDoctoradoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalDoctoradoMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionP9S1').append(tr)
-                    
-                    //TOTALES PREGUNTA 11
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalIndigenaPersonal, '1', 'auto'))
-                    tr.append(crearTD(totalIndigenaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalIndigenaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalPertenecenIndigenaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalPertenecenIndigenaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalNoPertenecenIndigenaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalNoPertenecenIndigenaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalIndigenaNoIdentificadoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalIndigenaNoIdentificadoMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionP10S1').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalPagaPersonal, '1', 'auto'))
+                            tr.append(crearTD(totalPagaHombre, '1', 'auto'))
+                            tr.append(crearTD(totalPagaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalSinPagaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalSinPagaMujeres, '1', 'auto'))
+                            tr.append(crearTD(total1a1500Hombres, '1', 'auto'))
+                            tr.append(crearTD(total1a1500Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total50001a55000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total50001a55000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total10001a15000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total10001a15000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total15001a20000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total15001a20000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total20001a25000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total20001a25000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total25001a30000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total25001a30000Mujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP8S1').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(total30001a35000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total30001a35000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total35001a40000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total35001a40000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total40001a45000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total40001a45000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total45001a50000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total45001a50000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total50001a55000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total50001a55000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total55001a60000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total55001a60000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total60001a65000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total60001a65000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(total65001a70000Hombres, '1', 'auto'))
+                            tr.append(crearTD(total65001a70000Mujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMas70000Hombres, '1', 'auto'))
+                            tr.append(crearTD(totalMas70000Mujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP81S1').append(tr)
 
-                    //TOTALES PREGUNTA 11
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('', '1', '37%'))
-                    td = document.createElement('td')
-                    td.className = 'text-center align-middle px-5'
-                    td.appendChild(document.createTextNode('Total: ' + totalIndigenaPersonal))
-                    tr.append(td)
-                    td = document.createElement('td')
-                    td.className = 'text-center align-middle px-5'
-                    td.appendChild(document.createTextNode('Hombres: ' + totalIndigenaHombres))
-                    tr.append(td)
-                    td = document.createElement('td')
-                    td.className = 'text-center align-middle px-5'
-                    td.appendChild(document.createTextNode('Mujeres: ' + totalIndigenaMujeres))
-                    tr.append(td)
-                    document.getElementById('identifierQuestionSumaTotalIndigenaP11S1').innerHTML = ''
-                    document.getElementById('identifierQuestionSumaTotalIndigenaP11S1').append(tr)
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalChinanteco, '1', 'auto'))
-                    tr.append(crearTD(totalChinantecoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalChinantecoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalChol, '1', 'auto'))
-                    tr.append(crearTD(totalCholHombres, '1', 'auto'))
-                    tr.append(crearTD(totalCholMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalCora, '1', 'auto'))
-                    tr.append(crearTD(totalCoraHombres, '1', 'auto'))
-                    tr.append(crearTD(totalCoraMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalHuasteco, '1', 'auto'))
-                    tr.append(crearTD(totalHuastecoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalHuastecoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalHuichol, '1', 'auto'))
-                    tr.append(crearTD(totalHuicholHombres, '1', 'auto'))
-                    tr.append(crearTD(totalHuicholMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMaya, '1', 'auto'))
-                    tr.append(crearTD(totalMayaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMayaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMayo, '1', 'auto'))
-                    tr.append(crearTD(totalMayoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMayoMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionIndigena17P11S1').append(tr)
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalMazahua, '1', 'auto'))
-                    tr.append(crearTD(totalMazahuaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMazahuaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMazateco, '1', 'auto'))
-                    tr.append(crearTD(totalMazatecoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMazatecoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMixe, '1', 'auto'))
-                    tr.append(crearTD(totalMixeHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMixeMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMixteco, '1', 'auto'))
-                    tr.append(crearTD(totalMixtecoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMixtecoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalNahuatl, '1', 'auto'))
-                    tr.append(crearTD(totalNahuatlHombres, '1', 'auto'))
-                    tr.append(crearTD(totalNahuatlMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalOtomi, '1', 'auto'))
-                    tr.append(crearTD(totalOtomiHombres, '1', 'auto'))
-                    tr.append(crearTD(totalOtomiMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionIndigena813P11S1').append(tr)
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalTarasco, '1', 'auto'))
-                    tr.append(crearTD(totalTarascoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalTarascoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalTarahumara, '1', 'auto'))
-                    tr.append(crearTD(totalTarahumaraHombres, '1', 'auto'))
-                    tr.append(crearTD(totalTarahumaraMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalTepehuano, '1', 'auto'))
-                    tr.append(crearTD(totalTepehuanoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalTepehuanoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalTlapenaco, '1', 'auto'))
-                    tr.append(crearTD(totalTlapenacoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalTlapenacoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalTotonaco, '1', 'auto'))
-                    tr.append(crearTD(totalTotonacoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalTotonacoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalTseltal, '1', 'auto'))
-                    tr.append(crearTD(totalTseltalHombres, '1', 'auto'))
-                    tr.append(crearTD(totalTsetalMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionIndigena1419P11S1').append(tr)
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalTsotsil, '1', 'auto'))
-                    tr.append(crearTD(totalTsotsilHombres, '1', 'auto'))
-                    tr.append(crearTD(totalTsotsilMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalYaqui, '1', 'auto'))
-                    tr.append(crearTD(totalYaquiHombres, '1', 'auto'))
-                    tr.append(crearTD(totalYaquiMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalZapoteco, '1', 'auto'))
-                    tr.append(crearTD(totalZapotecoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalZapotecoMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalZoque, '1', 'auto'))
-                    tr.append(crearTD(totalZoqueHombres, '1', 'auto'))
-                    tr.append(crearTD(totalZoqueMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalOtraLengua, '1', 'auto'))
-                    tr.append(crearTD(totalOtraLenguaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalOtraLenguaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalNoIdentificadaLengua, '1', 'auto'))
-                    tr.append(crearTD(totalNoIdentificadaLenguaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalNoIdentificadaLenguaMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionIndigena2025P11S1').append(tr)
+                            //TOTALES PREGUNTA 10
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalEscolaridadPersonal, '1', 'auto'))
+                            tr.append(crearTD(totalEscolaridadHombres, '1', 'auto'))
+                            tr.append(crearTD(totalEscolaridadMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalNingunoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalNingunoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalParaescolarHombres, '1', 'auto'))
+                            tr.append(crearTD(totalParaescolarMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalSecundariaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalSecundariaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalPreparatoriaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalPreparatoriaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalCarreraHombres, '1', 'auto'))
+                            tr.append(crearTD(totalCarreraMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalLicenciaturaHombres, '1', 'auto'))
+                            tr.append(crearTD(totallicenciaturaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMaestriaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMaestriaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalDoctoradoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalDoctoradoMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP9S1').append(tr)
 
-                    //TOTALES PREGUNTA 12
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadPersonal, '1', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadHombres, '1', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalConDiscapacidadHombres, '1', 'auto'))
-                    tr.append(crearTD(totalConDiscapacidadMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalSinDiscapacidadaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalSinDiscapacidadaMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalNoIdentificadoDiscapacidadaHombres, '1', 'auto'))
-                    tr.append(crearTD(totalNoIdentificadoDiscapacidadaMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionP12S1').append(tr)
+                            //TOTALES PREGUNTA 11
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalIndigenaPersonal, '1', 'auto'))
+                            tr.append(crearTD(totalIndigenaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalIndigenaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalPertenecenIndigenaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalPertenecenIndigenaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalNoPertenecenIndigenaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalNoPertenecenIndigenaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalIndigenaNoIdentificadoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalIndigenaNoIdentificadoMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP10S1').append(tr)
 
-                    //TOTALES PREGUNTA 13
-                    document.getElementById('totalPersonalDiscapacidad').innerHTML = 'Total: ' + totalDiscapacidadPersonal
-                    document.getElementById('totalHombresDiscapacidad').innerHTML = 'Hombres: '+ totalDiscapacidadHombres
-                    document.getElementById('totalMujeresDiscapacidad').innerHTML = 'Mujeres: '+ totalDiscapacidadMujeres
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalCaminar, '1', 'auto'))
-                    tr.append(crearTD(totalCaminarHombres, '1', 'auto'))
-                    tr.append(crearTD(totalCaminarMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalVer, '1', 'auto'))
-                    tr.append(crearTD(totalVerHombres, '1', 'auto'))
-                    tr.append(crearTD(totalVerMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMover, '1', 'auto'))
-                    tr.append(crearTD(totalMoverHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMoverMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalAprender, '1', 'auto'))
-                    tr.append(crearTD(totalAprenderHombres, '1', 'auto'))
-                    tr.append(crearTD(totalAprenderMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalOir, '1', 'auto'))
-                    tr.append(crearTD(totalOirHombres, '1', 'auto'))
-                    tr.append(crearTD(totalOirMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionDiscapacidad15P13S1').append(tr)
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalHablar, '1', 'auto'))
-                    tr.append(crearTD(totalHablarHombres, '1', 'auto'))
-                    tr.append(crearTD(totalHablarMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalBaniarse, '1', 'auto'))
-                    tr.append(crearTD(totalBaniarseHombres, '1', 'auto'))
-                    tr.append(crearTD(totalBaniarseMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalMoral, '1', 'auto'))
-                    tr.append(crearTD(totalMoralHombres, '1', 'auto'))
-                    tr.append(crearTD(totalMoralMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadDiferente, '1', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadDiferenteHombres, '1', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadDiferenteMujeres, '1', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadNoIdentificado, '1', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadNoIdentificadoHombres, '1', 'auto'))
-                    tr.append(crearTD(totalDiscapacidadNoIdentificadoMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionDiscapacidad610P13S1').append(tr)
+                            //TOTALES PREGUNTA 11
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('', '1', '37%'))
+                            td = document.createElement('td')
+                            td.className = 'text-center align-middle px-5'
+                            td.appendChild(document.createTextNode('Total: ' + totalIndigenaPersonal))
+                            tr.append(td)
+                            td = document.createElement('td')
+                            td.className = 'text-center align-middle px-5'
+                            td.appendChild(document.createTextNode('Hombres: ' + totalIndigenaHombres))
+                            tr.append(td)
+                            td = document.createElement('td')
+                            td.className = 'text-center align-middle px-5'
+                            td.appendChild(document.createTextNode('Mujeres: ' + totalIndigenaMujeres))
+                            tr.append(td)
+                            document.getElementById('identifierQuestionSumaTotalIndigenaP11S1').innerHTML = ''
+                            document.getElementById('identifierQuestionSumaTotalIndigenaP11S1').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalChinanteco, '1', 'auto'))
+                            tr.append(crearTD(totalChinantecoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalChinantecoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalChol, '1', 'auto'))
+                            tr.append(crearTD(totalCholHombres, '1', 'auto'))
+                            tr.append(crearTD(totalCholMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalCora, '1', 'auto'))
+                            tr.append(crearTD(totalCoraHombres, '1', 'auto'))
+                            tr.append(crearTD(totalCoraMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalHuasteco, '1', 'auto'))
+                            tr.append(crearTD(totalHuastecoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalHuastecoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalHuichol, '1', 'auto'))
+                            tr.append(crearTD(totalHuicholHombres, '1', 'auto'))
+                            tr.append(crearTD(totalHuicholMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMaya, '1', 'auto'))
+                            tr.append(crearTD(totalMayaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMayaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMayo, '1', 'auto'))
+                            tr.append(crearTD(totalMayoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMayoMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionIndigena17P11S1').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalMazahua, '1', 'auto'))
+                            tr.append(crearTD(totalMazahuaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMazahuaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMazateco, '1', 'auto'))
+                            tr.append(crearTD(totalMazatecoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMazatecoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMixe, '1', 'auto'))
+                            tr.append(crearTD(totalMixeHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMixeMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMixteco, '1', 'auto'))
+                            tr.append(crearTD(totalMixtecoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMixtecoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalNahuatl, '1', 'auto'))
+                            tr.append(crearTD(totalNahuatlHombres, '1', 'auto'))
+                            tr.append(crearTD(totalNahuatlMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalOtomi, '1', 'auto'))
+                            tr.append(crearTD(totalOtomiHombres, '1', 'auto'))
+                            tr.append(crearTD(totalOtomiMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionIndigena813P11S1').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalTarasco, '1', 'auto'))
+                            tr.append(crearTD(totalTarascoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalTarascoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalTarahumara, '1', 'auto'))
+                            tr.append(crearTD(totalTarahumaraHombres, '1', 'auto'))
+                            tr.append(crearTD(totalTarahumaraMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalTepehuano, '1', 'auto'))
+                            tr.append(crearTD(totalTepehuanoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalTepehuanoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalTlapenaco, '1', 'auto'))
+                            tr.append(crearTD(totalTlapenacoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalTlapenacoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalTotonaco, '1', 'auto'))
+                            tr.append(crearTD(totalTotonacoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalTotonacoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalTseltal, '1', 'auto'))
+                            tr.append(crearTD(totalTseltalHombres, '1', 'auto'))
+                            tr.append(crearTD(totalTsetalMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionIndigena1419P11S1').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalTsotsil, '1', 'auto'))
+                            tr.append(crearTD(totalTsotsilHombres, '1', 'auto'))
+                            tr.append(crearTD(totalTsotsilMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalYaqui, '1', 'auto'))
+                            tr.append(crearTD(totalYaquiHombres, '1', 'auto'))
+                            tr.append(crearTD(totalYaquiMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalZapoteco, '1', 'auto'))
+                            tr.append(crearTD(totalZapotecoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalZapotecoMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalZoque, '1', 'auto'))
+                            tr.append(crearTD(totalZoqueHombres, '1', 'auto'))
+                            tr.append(crearTD(totalZoqueMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalOtraLengua, '1', 'auto'))
+                            tr.append(crearTD(totalOtraLenguaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalOtraLenguaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalNoIdentificadaLengua, '1', 'auto'))
+                            tr.append(crearTD(totalNoIdentificadaLenguaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalNoIdentificadaLenguaMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionIndigena2025P11S1').append(tr)
 
-                    // TOTALES PREUNTA 14
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '4', 'auto'))
-                    tr.append(crearTD(fondos1General, '1', 'auto'))
-                    tr.append(crearTD(fondos1Hombres, '1', 'auto'))
-                    tr.append(crearTD(fondos1Mujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionP14S1').append(tr)
+                            //TOTALES PREGUNTA 12
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadPersonal, '1', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadHombres, '1', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalConDiscapacidadHombres, '1', 'auto'))
+                            tr.append(crearTD(totalConDiscapacidadMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalSinDiscapacidadaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalSinDiscapacidadaMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalNoIdentificadoDiscapacidadaHombres, '1', 'auto'))
+                            tr.append(crearTD(totalNoIdentificadoDiscapacidadaMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP12S1').append(tr)
 
-                    // TOTALES PREGUNTA 15
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '4', 'auto'))               
-                    tr.append(crearTD(fondos2General, '1', 'auto'))
-                    tr.append(crearTD(fondos2Hombres, '1', 'auto'))
-                    tr.append(crearTD(fondos2Mujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionP15S1').append(tr)
+                            //TOTALES PREGUNTA 13
+                            document.getElementById('totalPersonalDiscapacidad').innerHTML = 'Total: ' + totalDiscapacidadPersonal
+                            document.getElementById('totalHombresDiscapacidad').innerHTML = 'Hombres: ' + totalDiscapacidadHombres
+                            document.getElementById('totalMujeresDiscapacidad').innerHTML = 'Mujeres: ' + totalDiscapacidadMujeres
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalCaminar, '1', 'auto'))
+                            tr.append(crearTD(totalCaminarHombres, '1', 'auto'))
+                            tr.append(crearTD(totalCaminarMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalVer, '1', 'auto'))
+                            tr.append(crearTD(totalVerHombres, '1', 'auto'))
+                            tr.append(crearTD(totalVerMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMover, '1', 'auto'))
+                            tr.append(crearTD(totalMoverHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMoverMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalAprender, '1', 'auto'))
+                            tr.append(crearTD(totalAprenderHombres, '1', 'auto'))
+                            tr.append(crearTD(totalAprenderMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalOir, '1', 'auto'))
+                            tr.append(crearTD(totalOirHombres, '1', 'auto'))
+                            tr.append(crearTD(totalOirMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionDiscapacidad15P13S1').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalHablar, '1', 'auto'))
+                            tr.append(crearTD(totalHablarHombres, '1', 'auto'))
+                            tr.append(crearTD(totalHablarMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalBaniarse, '1', 'auto'))
+                            tr.append(crearTD(totalBaniarseHombres, '1', 'auto'))
+                            tr.append(crearTD(totalBaniarseMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalMoral, '1', 'auto'))
+                            tr.append(crearTD(totalMoralHombres, '1', 'auto'))
+                            tr.append(crearTD(totalMoralMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadDiferente, '1', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadDiferenteHombres, '1', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadDiferenteMujeres, '1', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadNoIdentificado, '1', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadNoIdentificadoHombres, '1', 'auto'))
+                            tr.append(crearTD(totalDiscapacidadNoIdentificadoMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionDiscapacidad610P13S1').append(tr)
 
-                    // TOTALES PREGUNTA 19
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '4', 'auto'))
-                    tr.append(crearTD(accionesImpartidas, '1', 'auto'))
-                    tr.append(crearTD(accionesConcluidas, '1', 'auto'))
-                    tr.append(crearTD(accionesTotalPersonal, '1', 'auto'))
-                    tr.append(crearTD(accionesTotalHombres, '1', 'auto'))
-                    tr.append(crearTD(accionesMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionP19S1').append(tr)
+                            // TOTALES PREUNTA 14
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '4', 'auto'))
+                            tr.append(crearTD(fondos1General, '1', 'auto'))
+                            tr.append(crearTD(fondos1Hombres, '1', 'auto'))
+                            tr.append(crearTD(fondos1Mujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP14S1').append(tr)
 
-                    //TOTALES PREGUNTA 24
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalInmuebles, '1', 'auto'))
-                    tr.append(crearTD(totalInmueblesPropios, '1', 'auto'))
-                    tr.append(crearTD(totalInmueblesRentados, '1', 'auto'))
-                    tr.append(crearTD(totalInmueblesOtros, '1', 'auto'))
-                    document.getElementById('identifierQuestionP24S1').append(tr)
+                            // TOTALES PREGUNTA 15
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '4', 'auto'))
+                            tr.append(crearTD(fondos2General, '1', 'auto'))
+                            tr.append(crearTD(fondos2Hombres, '1', 'auto'))
+                            tr.append(crearTD(fondos2Mujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP15S1').append(tr)
 
-                    //TOTALES PREGUNTA 31
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalVehiculos, '1', 'auto'))
-                    tr.append(crearTD(totalAutomoviles, '1', 'auto'))
-                    tr.append(crearTD(totalCamionetas, '1', 'auto'))
-                    tr.append(crearTD(totalMotocicletas, '1', 'auto'))
-                    tr.append(crearTD(totalBicicletas, '1', 'auto'))
-                    tr.append(crearTD(totalHelicopteros, '1', 'auto'))
-                    tr.append(crearTD(totalDrones, '1', 'auto'))
-                    tr.append(crearTD(totalOtrosVhiculos, '1', 'auto'))
-                    document.getElementById('identifierQuestionP31S1').append(tr)
+                            // TOTALES PREGUNTA 19
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '4', 'auto'))
+                            tr.append(crearTD(accionesImpartidas, '1', 'auto'))
+                            tr.append(crearTD(accionesConcluidas, '1', 'auto'))
+                            tr.append(crearTD(accionesTotalPersonal, '1', 'auto'))
+                            tr.append(crearTD(accionesTotalHombres, '1', 'auto'))
+                            tr.append(crearTD(accionesMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionP19S1').append(tr)
 
-                    //TOTALES PREGUNTA 32
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalLineas, '1', 'auto'))
-                    tr.append(crearTD(totalLineasFijas, '1', 'auto'))
-                    tr.append(crearTD(totalLineasMoviles, '1', 'auto'))
-                    tr.append(crearTD(totalAparatos, '1', 'auto'))
-                    tr.append(crearTD(totalAparatosFijos, '1', 'auto'))
-                    tr.append(crearTD(totalAparatosMoviles, '1', 'auto'))
-                    document.getElementById('identifierQuestionP32S1').append(tr)
+                            //TOTALES PREGUNTA 24
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalInmuebles, '1', 'auto'))
+                            tr.append(crearTD(totalInmueblesPropios, '1', 'auto'))
+                            tr.append(crearTD(totalInmueblesRentados, '1', 'auto'))
+                            tr.append(crearTD(totalInmueblesOtros, '1', 'auto'))
+                            document.getElementById('identifierQuestionP24S1').append(tr)
 
-                    //TOTALES PREGUNTA 33
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalComputadoras, '2', 'auto'))
-                    tr.append(crearTD(totalComputadorasPersonales, '2', 'auto'))
-                    tr.append(crearTD(totalComputadorasPortatiles, '2', 'auto'))
-                    tr.append(crearTD(totalImpresoras, '2', 'auto'))
-                    tr.append(crearTD(totalImpresorasPersonal, '2', 'auto'))
-                    tr.append(crearTD(totalImpresorasCompartidas, '2', 'auto'))
-                    tr.append(crearTD(totalMultifuncionales, '1', 'auto'))
-                    tr.append(crearTD(totalServidores, '1', 'auto'))
-                    tr.append(crearTD(totalTabletas, '1', 'auto'))
-                    tr.append(crearTD(reporte['pregunta33seccion1']['conexionRemota'], '1', 'auto'))
-                    document.getElementById('identifierQuestionP33S1').append(tr)
+                            //TOTALES PREGUNTA 31
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalVehiculos, '1', 'auto'))
+                            tr.append(crearTD(totalAutomoviles, '1', 'auto'))
+                            tr.append(crearTD(totalCamionetas, '1', 'auto'))
+                            tr.append(crearTD(totalMotocicletas, '1', 'auto'))
+                            tr.append(crearTD(totalBicicletas, '1', 'auto'))
+                            tr.append(crearTD(totalHelicopteros, '1', 'auto'))
+                            tr.append(crearTD(totalDrones, '1', 'auto'))
+                            tr.append(crearTD(totalOtrosVhiculos, '1', 'auto'))
+                            document.getElementById('identifierQuestionP31S1').append(tr)
 
-                    //TOTALES PREGUNTA COMPLEMENTO
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalCovidPersonal, '1', 'auto'))
-                    tr.append(crearTD(totalCovidHombres, '1', 'auto'))
-                    tr.append(crearTD(totalCovidMujeres, '1', 'auto'))
-                    document.getElementById('identifierQuestionPComplementS1').append(tr)
+                            //TOTALES PREGUNTA 32
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalLineas, '1', 'auto'))
+                            tr.append(crearTD(totalLineasFijas, '1', 'auto'))
+                            tr.append(crearTD(totalLineasMoviles, '1', 'auto'))
+                            tr.append(crearTD(totalAparatos, '1', 'auto'))
+                            tr.append(crearTD(totalAparatosFijos, '1', 'auto'))
+                            tr.append(crearTD(totalAparatosMoviles, '1', 'auto'))
+                            document.getElementById('identifierQuestionP32S1').append(tr)
 
-                    //TOTALES PREGUNTA 7 SECCION 12
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalContratosRealizados1, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalContratosRealizados2, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalContratosRealizados3, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalContratosRealizados4, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalContratosRealizados5, '1', 'auto'))
-                    document.getElementById('identifierQuestionP7S12').append(tr)
-                    document.getElementById('identifierQuestionSumaTotalContratosP7S12').innerHTML = totalContratosRealizados1 + totalContratosRealizados2 + totalContratosRealizados3 + totalContratosRealizados4 + totalContratosRealizados5
+                            //TOTALES PREGUNTA 33
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalComputadoras, '2', 'auto'))
+                            tr.append(crearTD(totalComputadorasPersonales, '2', 'auto'))
+                            tr.append(crearTD(totalComputadorasPortatiles, '2', 'auto'))
+                            tr.append(crearTD(totalImpresoras, '2', 'auto'))
+                            tr.append(crearTD(totalImpresorasPersonal, '2', 'auto'))
+                            tr.append(crearTD(totalImpresorasCompartidas, '2', 'auto'))
+                            tr.append(crearTD(totalMultifuncionales, '1', 'auto'))
+                            tr.append(crearTD(totalServidores, '1', 'auto'))
+                            tr.append(crearTD(totalTabletas, '1', 'auto'))
+                            tr.append(crearTD(reporte['pregunta33seccion1']['conexionRemota'], '1', 'auto'))
+                            document.getElementById('identifierQuestionP33S1').append(tr)
 
-                    //TOTALES PREGUNTA 8 SECCION 12
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP8Contratos1, '1', 'auto'))
-                    tr.append(crearTD(adquisicionesTotal1, '1', 'auto'))
-                    tr.append(crearTD(obraTotal1, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP8Contratos2, '1', 'auto'))
-                    tr.append(crearTD(adquisicionesTotal2, '1', 'auto'))
-                    tr.append(crearTD(obraTotal2, '1', 'auto'))
-                    document.getElementById('identifierQuestionTipoProcedimiento12P8S12').append(tr)
-                    document.getElementById('identifierQuestionSumaContratos12P8S12').classList.add('d-none')
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP8Contratos3, '1', 'auto'))
-                    tr.append(crearTD(adquisicionesTotal3, '1', 'auto'))
-                    tr.append(crearTD(obraTotal3, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP8Contratos4, '1', 'auto'))
-                    tr.append(crearTD(adquisicionesTotal4, '1', 'auto'))
-                    tr.append(crearTD(obraTotal4, '1', 'auto'))
-                    document.getElementById('identifierQuestionTipoProcedimiento34P8S12').append(tr)
-                    document.getElementById('identifierQuestionSumaContratos34P8S12').classList.add('d-none')
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP8Contratos5, '1', 'auto'))
-                    tr.append(crearTD(adquisicionesTotal5, '1', 'auto'))
-                    tr.append(crearTD(obraTotal5, '1', 'auto'))
-                    document.getElementById('identifierQuestionTipoProcedimiento5P8S12').append(tr)
-                    document.getElementById('totalContratosP8S12').innerHTML = totalP8Contratos1 + totalP8Contratos2 + totalP8Contratos3 + totalP8Contratos4 + totalP8Contratos5
-                    document.getElementById('totalContratos1P8S12').innerHTML = adquisicionesTotal1 + adquisicionesTotal2 + adquisicionesTotal3 + adquisicionesTotal4 + adquisicionesTotal5
-                    document.getElementById('totalContratos2P8S12').innerHTML = obraTotal1 + obraTotal2 + obraTotal3 + obraTotal4 + obraTotal5
+                            //TOTALES PREGUNTA COMPLEMENTO
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalCovidPersonal, '1', 'auto'))
+                            tr.append(crearTD(totalCovidHombres, '1', 'auto'))
+                            tr.append(crearTD(totalCovidMujeres, '1', 'auto'))
+                            document.getElementById('identifierQuestionPComplementS1').append(tr)
 
-                    //TOTALES PREGUNTA 9 SECCION 12
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(P8Monto1, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(P8Monto2, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(P8Monto3, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(P8Monto4, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(P8Monto5, '1', 'auto'))
-                    document.getElementById('identifierQuestionP9S12').append(tr)
-                    document.getElementById('totalMontoP9S12').innerHTML =parseFloat((P8Monto1 + P8Monto2 + P8Monto3 + P8Monto4 + P8Monto5) * 100)/100
+                            //TOTALES PREGUNTA 7 SECCION 12
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalContratosRealizados1, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalContratosRealizados2, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalContratosRealizados3, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalContratosRealizados4, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalContratosRealizados5, '1', 'auto'))
+                            document.getElementById('identifierQuestionP7S12').append(tr)
+                            document.getElementById('identifierQuestionSumaTotalContratosP7S12').innerHTML = totalContratosRealizados1 + totalContratosRealizados2 + totalContratosRealizados3 + totalContratosRealizados4 + totalContratosRealizados5
 
-                    //TOTALES PREGUNTA 10 SECCION 12
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP10Monto1, '1', 'auto'))
-                    tr.append(crearTD(adquicicioneP10Monto1, '1', 'auto'))
-                    tr.append(crearTD(obraP10Monto1, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP10Monto2, '1', 'auto'))
-                    tr.append(crearTD(adquicicioneP10Monto2, '1', 'auto'))
-                    tr.append(crearTD(obraP10Monto2, '1', 'auto'))
-                    document.getElementById('identifierQuestionTipoProcedimiento12P10S12').append(tr)
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP10Monto3, '1', 'auto'))
-                    tr.append(crearTD(adquicicioneP10Monto3, '1', 'auto'))
-                    tr.append(crearTD(obraP10Monto3, '1', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP10Monto4, '1', 'auto'))
-                    tr.append(crearTD(adquicicioneP10Monto4, '1', 'auto'))
-                    tr.append(crearTD(obraP10Monto4, '1', 'auto'))
-                    document.getElementById('identifierQuestionTipoProcedimiento34P10S12').append(tr)
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP10Monto4, '1', 'auto'))
-                    tr.append(crearTD(adquicicioneP10Monto4, '1', 'auto'))
-                    tr.append(crearTD(obraP10Monto4, '1', 'auto'))
-                    document.getElementById('identifierQuestionTipoProcedimiento5P10S12').append(tr)
-                    document.getElementById('totalMontoP10S12').innerHTML = (parseFloat((totalP10Monto1 + totalP10Monto2 + totalP10Monto3 + totalP10Monto4 + totalP10Monto5)*100/100))
-                    document.getElementById('totalMonto1P10S12').innerHTML = (parseFloat((adquicicioneP10Monto1 + adquicicioneP10Monto2 + adquicicioneP10Monto3 + adquicicioneP10Monto4 + adquicicioneP10Monto5)*100/100))
-                    document.getElementById('totalMonto2P10S12').innerHTML = (parseInt((obraP10Monto1 + obraP10Monto2 + obraP10Monto3 + obraP10Monto4 + obraP10Monto5)*100/100))
-                    
-                    //TOTALES PREGUNTA 11
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD( '', '1', 'auto'))
-                    tr.append(crearTD(totalP11Contratos, '1', 'auto'))
-                    tr.append(crearTD(totalP11Monto, '1', 'auto'))
-                    document.getElementById('identifierQuestionP11S12').append(tr)
+                            //TOTALES PREGUNTA 8 SECCION 12
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP8Contratos1, '1', 'auto'))
+                            tr.append(crearTD(adquisicionesTotal1, '1', 'auto'))
+                            tr.append(crearTD(obraTotal1, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP8Contratos2, '1', 'auto'))
+                            tr.append(crearTD(adquisicionesTotal2, '1', 'auto'))
+                            tr.append(crearTD(obraTotal2, '1', 'auto'))
+                            document.getElementById('identifierQuestionTipoProcedimiento12P8S12').append(tr)
+                            document.getElementById('identifierQuestionSumaContratos12P8S12').classList.add('d-none')
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP8Contratos3, '1', 'auto'))
+                            tr.append(crearTD(adquisicionesTotal3, '1', 'auto'))
+                            tr.append(crearTD(obraTotal3, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP8Contratos4, '1', 'auto'))
+                            tr.append(crearTD(adquisicionesTotal4, '1', 'auto'))
+                            tr.append(crearTD(obraTotal4, '1', 'auto'))
+                            document.getElementById('identifierQuestionTipoProcedimiento34P8S12').append(tr)
+                            document.getElementById('identifierQuestionSumaContratos34P8S12').classList.add('d-none')
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP8Contratos5, '1', 'auto'))
+                            tr.append(crearTD(adquisicionesTotal5, '1', 'auto'))
+                            tr.append(crearTD(obraTotal5, '1', 'auto'))
+                            document.getElementById('identifierQuestionTipoProcedimiento5P8S12').append(tr)
+                            document.getElementById('totalContratosP8S12').innerHTML = totalP8Contratos1 + totalP8Contratos2 + totalP8Contratos3 + totalP8Contratos4 + totalP8Contratos5
+                            document.getElementById('totalContratos1P8S12').innerHTML = adquisicionesTotal1 + adquisicionesTotal2 + adquisicionesTotal3 + adquisicionesTotal4 + adquisicionesTotal5
+                            document.getElementById('totalContratos2P8S12').innerHTML = obraTotal1 + obraTotal2 + obraTotal3 + obraTotal4 + obraTotal5
 
-                    //TOTALES PREGUNTA 12
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD('', '1', 'auto'))
-                    tr.append(crearTD(totalP12Contratos, '1', 'auto'))
-                    tr.append(crearTD(totalP12Monto, '1', 'auto'))
-                    document.getElementById('identifierQuestionP12S12').append(tr)
+                            //TOTALES PREGUNTA 9 SECCION 12
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(P8Monto1, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(P8Monto2, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(P8Monto3, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(P8Monto4, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(P8Monto5, '1', 'auto'))
+                            document.getElementById('identifierQuestionP9S12').append(tr)
+                            document.getElementById('totalMontoP9S12').innerHTML = parseFloat((P8Monto1 + P8Monto2 + P8Monto3 + P8Monto4 + P8Monto5) * 100) / 100
 
-                    //TOTALES PREGUNTA 13
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalP13Contratos, '1', 'auto'))
-                    document.getElementById('identifierQuestionP13S12').append(tr)
+                            //TOTALES PREGUNTA 10 SECCION 12
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP10Monto1, '1', 'auto'))
+                            tr.append(crearTD(adquicicioneP10Monto1, '1', 'auto'))
+                            tr.append(crearTD(obraP10Monto1, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP10Monto2, '1', 'auto'))
+                            tr.append(crearTD(adquicicioneP10Monto2, '1', 'auto'))
+                            tr.append(crearTD(obraP10Monto2, '1', 'auto'))
+                            document.getElementById('identifierQuestionTipoProcedimiento12P10S12').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP10Monto3, '1', 'auto'))
+                            tr.append(crearTD(adquicicioneP10Monto3, '1', 'auto'))
+                            tr.append(crearTD(obraP10Monto3, '1', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP10Monto4, '1', 'auto'))
+                            tr.append(crearTD(adquicicioneP10Monto4, '1', 'auto'))
+                            tr.append(crearTD(obraP10Monto4, '1', 'auto'))
+                            document.getElementById('identifierQuestionTipoProcedimiento34P10S12').append(tr)
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP10Monto4, '1', 'auto'))
+                            tr.append(crearTD(adquicicioneP10Monto4, '1', 'auto'))
+                            tr.append(crearTD(obraP10Monto4, '1', 'auto'))
+                            document.getElementById('identifierQuestionTipoProcedimiento5P10S12').append(tr)
+                            document.getElementById('totalMontoP10S12').innerHTML = (parseFloat((totalP10Monto1 + totalP10Monto2 + totalP10Monto3 + totalP10Monto4 + totalP10Monto5) * 100 / 100))
+                            document.getElementById('totalMonto1P10S12').innerHTML = (parseFloat((adquicicioneP10Monto1 + adquicicioneP10Monto2 + adquicicioneP10Monto3 + adquicicioneP10Monto4 + adquicicioneP10Monto5) * 100 / 100))
+                            document.getElementById('totalMonto2P10S12').innerHTML = (parseInt((obraP10Monto1 + obraP10Monto2 + obraP10Monto3 + obraP10Monto4 + obraP10Monto5) * 100 / 100))
+
+                            //TOTALES PREGUNTA 11
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP11Contratos, '1', 'auto'))
+                            tr.append(crearTD(totalP11Monto, '1', 'auto'))
+                            document.getElementById('identifierQuestionP11S12').append(tr)
+
+                            //TOTALES PREGUNTA 12
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD('', '1', 'auto'))
+                            tr.append(crearTD(totalP12Contratos, '1', 'auto'))
+                            tr.append(crearTD(totalP12Monto, '1', 'auto'))
+                            document.getElementById('identifierQuestionP12S12').append(tr)
+
+                            //TOTALES PREGUNTA 13
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalP13Contratos, '1', 'auto'))
+                            document.getElementById('identifierQuestionP13S12').append(tr)
 
 
-                    // TOTALES PREGUNTA 14
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(totalP14Contratos, '1', 'auto'))
-                    document.getElementById('identifierQuestionP14S12').append(tr)
-                    
-                    //TOTALES PREGUNTA 26 SECCION 1
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(total11P26, '1', 'auto'))
-                    tr.append(crearTD(total12P26, '1', 'auto'))
-                    tr.append(crearTD(total13P26, '1', 'auto'))
-                    tr.append(crearTD(total21P26, '1', 'auto'))
-                    tr.append(crearTD(total22P26, '1', 'auto'))
-                    tr.append(crearTD(total23P26, '1', 'auto'))
-                    document.getElementById('txtTotalInmueblesP26').value = totalMaximoP26
-                    document.getElementById('txtTotalInmuebles1P26').value = total1P26
-                    document.getElementById('txtTotalInmuebles2P26').value = total2P26
-                    document.getElementById('identifierQuestionP26S1').append(tr)
+                            // TOTALES PREGUNTA 14
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(totalP14Contratos, '1', 'auto'))
+                            document.getElementById('identifierQuestionP14S12').append(tr)
 
-                    //TOTALES PREGUNTA 28 SECCION 1
-                    tr = document.createElement('tr')
-                    tr.append(crearTD('Total', '3', 'auto'))
-                    tr.append(crearTD(total11P28, '1', 'auto'))
-                    tr.append(crearTD(total12P28, '1', 'auto'))
-                    tr.append(crearTD(total13P28, '1', 'auto'))
-                    tr.append(crearTD(total14P28, '1', 'auto'))
-                    tr.append(crearTD(total15P28, '1', 'auto'))
-                    tr.append(crearTD(total21P28, '1', 'auto'))
-                    tr.append(crearTD(total22P28, '1', 'auto'))
-                    tr.append(crearTD(total23P28, '1', 'auto'))
-                    tr.append(crearTD(total24P28, '1', 'auto'))
-                    tr.append(crearTD(total25P28, '1', 'auto'))
-                    
-                    // TOTALES PREGUNTA 30 SECCION 1
-                    document.getElementById('txtTotalInmueblesP30').innerHTML = totalMaximoP30
-                    document.getElementById('txtTotalInmuebles1P30').innerHTML = total1P30
-                    document.getElementById('txtTotalInmuebles2P30').innerHTML = total2P30
-                    document.getElementById('txtTotal1x1P30').innerHTML = total11P30
-                    document.getElementById('txtTotal1x2P30').innerHTML = total12P30
-                    document.getElementById('txtTotal1x3P30').innerHTML = total13P30
-                    document.getElementById('txtTotal1x4P30').innerHTML = total14P30
-                    document.getElementById('txtTotal1x5P30').innerHTML = total15P30
-                    document.getElementById('txtTotal1x6P30').innerHTML = total16P30
-                    document.getElementById('txtTotal1x7P30').innerHTML = total17P30
-                    document.getElementById('txtTotal2x1P30').innerHTML = total21P30
-                    document.getElementById('txtTotal2x2P30').innerHTML = total22P30
-                    document.getElementById('txtTotal2x3P30').innerHTML = total23P30
-                    document.getElementById('txtTotal2x4P30').innerHTML = total24P30
-                    document.getElementById('txtTotal2x5P30').innerHTML = total25P30
-                    document.getElementById('txtTotal2x6P30').innerHTML = total26P30
-                    document.getElementById('txtTotal2x7P30').innerHTML = total27P30
+                            //TOTALES PREGUNTA 26 SECCION 1
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(total11P26, '1', 'auto'))
+                            tr.append(crearTD(total12P26, '1', 'auto'))
+                            tr.append(crearTD(total13P26, '1', 'auto'))
+                            tr.append(crearTD(total21P26, '1', 'auto'))
+                            tr.append(crearTD(total22P26, '1', 'auto'))
+                            tr.append(crearTD(total23P26, '1', 'auto'))
+                            document.getElementById('txtTotalInmueblesP26').value = totalMaximoP26
+                            document.getElementById('txtTotalInmuebles1P26').value = total1P26
+                            document.getElementById('txtTotalInmuebles2P26').value = total2P26
+                            document.getElementById('identifierQuestionP26S1').append(tr)
 
-                    document.getElementById('txtTotal1P35').innerHTML = totalMaximoo1P35
-                    document.getElementById('txtTotal2P35').innerHTML = totalMaximoo2P25
-                    document.getElementById('txtTotal3P35').innerHTML = totalMaximoo3P35
-                    document.getElementById('txtTotal4P35').innerHTML = totalMaximoo4P35
-                    document.getElementById('txtTotal5P35').innerHTML = totalMaximoo5P35
-                    document.getElementById('txtTotal1x1P35').innerHTML = total11P35
-                    document.getElementById('txtTotal1x2P35').innerHTML = total12P35
-                    document.getElementById('txtTotal2x1P35').innerHTML = total21P35
-                    document.getElementById('txtTotal2x2P35').innerHTML = total22P35
-                    document.getElementById('txtTotal3x1P35').innerHTML = total31P35
-                    document.getElementById('txtTotal3x2P35').innerHTML = total32P35
-                    document.getElementById('txtTotal4x1P35').innerHTML = total41P35
-                    document.getElementById('txtTotal4x2P35').innerHTML = total42P35
-                    document.getElementById('txtTotal5x1P35').innerHTML = total51P35
-                    document.getElementById('txtTotal5x2P35').innerHTML = total52P35
+                            //TOTALES PREGUNTA 28 SECCION 1
+                            tr = document.createElement('tr')
+                            tr.append(crearTD('Total', '3', 'auto'))
+                            tr.append(crearTD(total11P28, '1', 'auto'))
+                            tr.append(crearTD(total12P28, '1', 'auto'))
+                            tr.append(crearTD(total13P28, '1', 'auto'))
+                            tr.append(crearTD(total14P28, '1', 'auto'))
+                            tr.append(crearTD(total15P28, '1', 'auto'))
+                            tr.append(crearTD(total21P28, '1', 'auto'))
+                            tr.append(crearTD(total22P28, '1', 'auto'))
+                            tr.append(crearTD(total23P28, '1', 'auto'))
+                            tr.append(crearTD(total24P28, '1', 'auto'))
+                            tr.append(crearTD(total25P28, '1', 'auto'))
 
-                            //MENSAJE DE FINALIZACION
-                            alertify.success('Carga terminada !')
+                            // TOTALES PREGUNTA 30 SECCION 1
+                            document.getElementById('txtTotalInmueblesP30').innerHTML = totalMaximoP30
+                            document.getElementById('txtTotalInmuebles1P30').innerHTML = total1P30
+                            document.getElementById('txtTotalInmuebles2P30').innerHTML = total2P30
+                            document.getElementById('txtTotal1x1P30').innerHTML = total11P30
+                            document.getElementById('txtTotal1x2P30').innerHTML = total12P30
+                            document.getElementById('txtTotal1x3P30').innerHTML = total13P30
+                            document.getElementById('txtTotal1x4P30').innerHTML = total14P30
+                            document.getElementById('txtTotal1x5P30').innerHTML = total15P30
+                            document.getElementById('txtTotal1x6P30').innerHTML = total16P30
+                            document.getElementById('txtTotal1x7P30').innerHTML = total17P30
+                            document.getElementById('txtTotal2x1P30').innerHTML = total21P30
+                            document.getElementById('txtTotal2x2P30').innerHTML = total22P30
+                            document.getElementById('txtTotal2x3P30').innerHTML = total23P30
+                            document.getElementById('txtTotal2x4P30').innerHTML = total24P30
+                            document.getElementById('txtTotal2x5P30').innerHTML = total25P30
+                            document.getElementById('txtTotal2x6P30').innerHTML = total26P30
+                            document.getElementById('txtTotal2x7P30').innerHTML = total27P30
+
+                            document.getElementById('txtTotal1P35').innerHTML = totalMaximoo1P35
+                            document.getElementById('txtTotal2P35').innerHTML = totalMaximoo2P35
+                            document.getElementById('txtTotal3P35').innerHTML = totalMaximoo3P35
+                            document.getElementById('txtTotal4P35').innerHTML = totalMaximoo4P35
+                            document.getElementById('txtTotal5P35').innerHTML = totalMaximoo5P35
+                            document.getElementById('txtTotal1x1P35').innerHTML = total11P35
+                            document.getElementById('txtTotal1x2P35').innerHTML = total12P35
+                            document.getElementById('txtTotal2x1P35').innerHTML = total21P35
+                            document.getElementById('txtTotal2x2P35').innerHTML = total22P35
+                            document.getElementById('txtTotal3x1P35').innerHTML = total31P35
+                            document.getElementById('txtTotal3x2P35').innerHTML = total32P35
+                            document.getElementById('txtTotal4x1P35').innerHTML = total41P35
+                            document.getElementById('txtTotal4x2P35').innerHTML = total42P35
+                            document.getElementById('txtTotal5x1P35').innerHTML = total51P35
+                            document.getElementById('txtTotal5x2P35').innerHTML = total52P35
+
+                            // IMPRMIR REPORTE
+                            window.print()
                         }, 1500)
-                        // window.print()
                     }
-
-                    
                 })
             })
         })
-            
     }
 })
 
