@@ -122,7 +122,7 @@ generarTablaReportes = () => {
         if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
             i.className = dependencia['tituloArchivo'] != '' ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
         } else {
-            i.className = dependencia['tituloBinario'] != '' ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
+            i.className = dependencia['tituloBinario'] != 0 ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
         }
         a.append(i)
         td.append(a)
@@ -135,7 +135,7 @@ generarTablaReportes = () => {
         if (dependencia['anioInstitucion'] == 2019 || dependencia['anioInstitucion'] == 2020) {
             i.className = dependencia['cedulaArchivo'] != '' ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
         } else {
-            i.className = dependencia['cedulaBinario'] != '' ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
+            i.className = dependencia['cedulaBinario'] != 0 ? 'fas fa-lg fa-sticky-note text-warning mx-0 w-25' : 'fas fa-lg fa-sticky-note text-muted mx-0 w-25'
         }
         a.append(i)
         td.append(a)
@@ -186,21 +186,18 @@ listenersDeAccionesResultados = () => {
                             alertify.alert('<span class="font-weight-bold">Sin archivos</span>', 'Verifique el titular vacante o con clave de otra institución en el reporte individual de esta dependencia.')
                         }
                     } else {
-                        console.log(reportes[reporte]['tituloBinario']);
                         if (reportes[reporte]['tituloBinario'] == 1 && reportes[reporte]['tituloBinario'] != null) {
                             obtenerTituloDependencia(idDependencia, anioDependencia).then((resultado) => {
-                                if(resultado[0] == 'success'){
-                                    alertify.success('Descargando titulo...')
-                                    console.log(resultado[1])
+                                if (resultado[0] == 'success') {
+                                    alertify.success('Descargando título...')
                                     this.href = resultado[1]
-                                    this.download = resultado[1]
-                                }else if(resultado[0] == 'error'){
-                                    console.error('Error al ejecutar peticion')
-                                }else{
-                                    console.warn('Respuesta no definida ' + resultado)
+                                    this.download = 'título-' + idDependencia + '-' + anioDependencia
+                                } else if (resultado[0] == 'error') {
+                                    console.error(resultado[1])
+                                } else {
+                                    console.warn('Tipo de respuesta no definido. ' + resultado)
                                 }
                             })
-                            
                         } else {
                             alertify.alert('<span class="font-weight-bold">Sin archivos</span>', 'Verifique el titular vacante o con clave de otra institución en el reporte individual de esta dependencia.')
                         }
@@ -227,19 +224,19 @@ listenersDeAccionesResultados = () => {
                         }
                     } else {
                         console.log(reportes[reporte]['cedulaBinario']);
-                        if(reportes[reporte]['cedulaBinario'] == 1 && reportes[reporte]['cedulaBinario'] != null){
+                        if (reportes[reporte]['cedulaBinario'] == 1 && reportes[reporte]['cedulaBinario'] != null) {
                             obtenerCedulaDependencia(idDependencia, anioDependencia).then((resultado) => {
-                                if(resultado[0] == 'success'){
-                                    console.log('Descargando cedula...')
+                                if (resultado[0] == 'success') {
+                                    console.log('Descargando cédula...')
                                     this.href = resultado[1]
-                                    this.download = resultado[1]
-                                }else if(resultado[0] == 'error'){
-                                    console.error('Error al ejecutar petición')
-                                }else{
-                                    console.warning('Respuesta no definida ' + resultado)
+                                    this.download = 'cédula-' + idDependencia + '-' + anioDependencia
+                                } else if (resultado[0] == 'error') {
+                                    console.error(resultado[1])
+                                } else {
+                                    console.warn('Tipo de respuesta no definido. ' + resultado)
                                 }
-                            })   
-                        }else {
+                            })
+                        } else {
                             alertify.alert('<span class="font-weight-bold">Sin archivos</span>', 'Verifique el titular vacante o con clave de otra institución en el reporte individual de esta dependencia.')
                         }
                     }
@@ -250,31 +247,29 @@ listenersDeAccionesResultados = () => {
     }
 }
 
-//PETICIONES PARA ABRIR ABRIR CEDULA Y TITULO
-// SE HACE POR EL PESO DE LA CONSULTA QUE DEVUELVE EL TITULO Y CEDULA EN GENERAL DE TODAS LAS DEPENDENCIAS ES ESCESIVA EN PESO Y TRUENA LA PETICION
 
-//OBTENER TITULO
-async function obtenerTituloDependencia(idDependencia, anioDependencia){
-    try{
+// PETICIONES PARA ABRIR ABRIR CEDULA Y TITULO
+// SE HACE POR EL PESO DE LA CONSULTA QUE DEVUELVE EL TITULO Y CEDULA EN GENERAL DE TODAS LAS DEPENDENCIAS ES ESCESIVA EN PESO Y TRUENA LA PETICION
+// OBTENER TITULO
+async function obtenerTituloDependencia(idDependencia, anioDependencia) {
+    try {
         let res = await axios('controllers/adminController.php', {
             method: 'POST',
-            data:{
+            data: {
                 tipoPeticion: 'obtenerTituloDependencia',
                 idDependencia: idDependencia,
                 anioDependencia: anioDependencia
             }
         })
-
-        resultado = res.data
-        return resultado
-    }catch(error){
+        return res.data
+    } catch (error) {
         console.error(error)
     }
 }
 
-//OBTENER CEDULA
-async function obtenerCedulaDependencia(idDependencia, anioDependencia){
-    try{
+// OBTENER CEDULA
+async function obtenerCedulaDependencia(idDependencia, anioDependencia) {
+    try {
         let res = await axios('controllers/adminController.php', {
             method: 'POST',
             data: {
@@ -283,9 +278,8 @@ async function obtenerCedulaDependencia(idDependencia, anioDependencia){
                 anioDependencia: anioDependencia
             }
         })
-        resultado = res.data
-        return resultado
-    }catch(error){  
+        return res.data
+    } catch (error) {
         console.error(error)
     }
 }

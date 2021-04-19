@@ -621,12 +621,14 @@ class AdminModel
             $SQL =
                 "SELECT b.titulo2 AS tituloBinario FROM tbl_pregunta2 as b WHERE id_intu = $id AND anio = $anio";
             $stmt = Connection::connect()->prepare($SQL);
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 $datos = $stmt->fetchAll();
-                return ['success', $datos[0]['tituloBinario']];
+                return ["success", $datos[0]['tituloBinario']];
+            } else {
+                return ["error", "Imposible obtener título !"];
             }
         } catch (\Exception $e) {
-            return ['error', 'Error SQL: ' . $e];
+            return ["warn", "Error SQL: " . $e];
         }
     }
 
@@ -636,12 +638,14 @@ class AdminModel
             $SQL =
                 "SELECT b.cedula2 AS cedulaBinario FROM tbl_pregunta2 as b WHERE id_intu = $id AND anio = $anio";
             $stmt = Connection::connect()->prepare($SQL);
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 $datos = $stmt->fetchAll();
-                return ['success', $datos[0]['cedulaBinario']];
+                return ["success", $datos[0]['cedulaBinario']];
+            } else {
+                return ["error", "Imposible obtener cédula !"];
             }
         } catch (\Exception $e) {
-            return ['error', 'Error SQL: ' . $e];
+            return ["warn", "Error SQL: " . $e];
         }
     }
     // OBTENER EL NOMBRE DE LA INSTITUCION ESTA FUNCION SE OCUPA EN EL JS DE QUESTIONARYREPORT 
