@@ -227,7 +227,7 @@ listenersDeAccionesResultados = () => {
                         if (reportes[reporte]['cedulaBinario'] == 1 && reportes[reporte]['cedulaBinario'] != null) {
                             obtenerCedulaDependencia(idDependencia, anioDependencia).then((resultado) => {
                                 if (resultado[0] == 'success') {
-                                    console.log('Descargando cédula...')
+                                    alertify.success('Descargando cédula...')
                                     this.href = resultado[1]
                                     this.download = 'cédula-' + idDependencia + '-' + anioDependencia
                                 } else if (resultado[0] == 'error') {
