@@ -594,8 +594,8 @@ class AdminModel
                     a.Clasificacion_Adm AS clasificacion,
                     b.tituloo AS tituloArchivo,
                     b.cedula AS cedulaArchivo,
-                    b.titulo2 AS tituloBinario,
-                    b.cedula2 AS cedulaBinario,
+                    if(b.titulo2 IS NOT NULL AND b.titulo2 != '', 1, 0) AS tituloBinario,
+                    if(b.cedula2 is NOT NULL AND b.cedula2 != '', 1, 0) AS cedulaBinario,
                     a.anio AS anioInstitucion
                 FROM altas_instituciones as a
                 INNER JOIN tbl_pregunta2 AS b ON b.id_intu=a.Clave
@@ -612,6 +612,38 @@ class AdminModel
         }
     }
 
+
+    // OBTENER TITULO
+
+    public static function obtenerTituloDependencia($id, $anio)
+    {
+        try {
+            $SQL =
+                "SELECT b.titulo2 AS tituloBinario FROM tbl_pregunta2 as b WHERE id_intu = $id AND anio = $anio";
+            $stmt = Connection::connect()->prepare($SQL);
+            if($stmt->execute()){
+                $datos = $stmt->fetchAll();
+                return ['success', $datos[0]['tituloBinario']];
+            }
+        } catch (\Exception $e) {
+            return ['error', 'Error SQL: ' . $e];
+        }
+    }
+
+    public static function obtenerCedulaDependencia($id, $anio)
+    {
+        try {
+            $SQL =
+                "SELECT b.cedula2 AS cedulaBinario FROM tbl_pregunta2 as b WHERE id_intu = $id AND anio = $anio";
+            $stmt = Connection::connect()->prepare($SQL);
+            if($stmt->execute()){
+                $datos = $stmt->fetchAll();
+                return ['success', $datos[0]['cedulaBinario']];
+            }
+        } catch (\Exception $e) {
+            return ['error', 'Error SQL: ' . $e];
+        }
+    }
     // OBTENER EL NOMBRE DE LA INSTITUCION ESTA FUNCION SE OCUPA EN EL JS DE QUESTIONARYREPORT 
     public static function nombreInstitucion($id, $anio)
     {

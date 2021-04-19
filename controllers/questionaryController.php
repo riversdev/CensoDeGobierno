@@ -2364,6 +2364,6 @@ if ($tipoPeticion == "guardarPregunta") {
     $respuesta = Questionary::cerrarSesion();
 
     echo json_encode($respuesta);
-}
+} 
 
 # @copyright CarlitosPC2810 Derechos Reservados

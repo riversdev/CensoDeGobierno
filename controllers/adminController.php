@@ -320,4 +320,8 @@ if ($tipoPeticion == "leerListaDependencias") {
     echo json_encode(AdminModel::listarReportes($data['anioDependencia']));
 } else if ($tipoPeticion == 'nombreInstitucion') {
     echo json_encode(AdminModel::nombreInstitucion($data['idInstitucion'], $data['anioInstitucion']));
+} else if ($tipoPeticion == "obtenerTituloDependencia"){
+    echo json_encode(AdminModel::obtenerTituloDependencia($data['idDependencia'], $data['anioDependencia']));
+} else if($tipoPeticion == "obtenerCedulaDependencia"){
+    echo json_encode(AdminModel::obtenerCedulaDependencia($data['idDependencia'], $data['anioDependencia']));
 }
