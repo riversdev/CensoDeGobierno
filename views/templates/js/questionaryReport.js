@@ -3048,3 +3048,5 @@ ocultarPreguntasNoContestadas = () => {
         document.getElementById('contenedorP5S12').classList.add('d-none')
     }
 }
+
+// by Alejandro Ríos - RiversHIRSCH

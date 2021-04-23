@@ -333,3 +333,5 @@ switch ($pregunta) {
         ';
         break;
 }
+
+# by Alejandro Ríos - RiversHIRSCH

@@ -196,3 +196,5 @@ async function validarAcceso(tipoDeUsuario, usuario, contrasenia) {
         console.error(error);
     }
 };
+
+// by Alejandro Ríos - RiversHIRSCH

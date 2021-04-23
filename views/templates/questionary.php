@@ -6735,4 +6735,6 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
     </div>
 <?php
 }
+
+# by Alejandro Ríos - RiversHIRSCH
 ?>

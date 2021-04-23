@@ -8767,3 +8767,5 @@ async function cerrarSesion() {
         console.error(error);
     }
 };
+
+// by Alejandro Ríos - RiversHIRSCH

@@ -1,0 +1,53 @@
+- Sugerencias
+    - Antes de editar el sistema
+        - Estudia los nuevos documentos del censo
+        - Documentate sobre
+            - Lenguajes
+                - PHP 7
+                - Javascript (puro)
+                - SQL
+            - Herramientas
+                - Highcharts
+                - Alertify
+                - Bootstrap 5 (en 2021 estaba en beta XD)
+                - Axios
+                - PDO (para la interacción con la bd)
+        - Revisa la estructura del proyecto y usalo
+    - Si vienes de jQuery estudia un poco de javascript puro ya que todo el sistema tiene js puro, está comentado asi que no deberias tener problemas en entenderlo. De ser posible evita usar jQuery
+    - Las tablas de comparación anual en el graficador pueden duplicar los registos al tratarse de la misma dependencia, esto es porque sus nombres son diferentes. Platicale de esta parte a la ING. Zully para que te defina cual es el nombre oficial de las dependencias y al realizar el registro de las dependencias del nuevo año se deberá guardar con el mismo nombre que antes tuvieron, de no hacerlo así la tabla de comparación anual mostrará los registros diferentes aunque se trate de la misma dependencia. (LOS DATOS MOSTRADOS SIEMPRE SON IGUALES A LOS DE LA BD)
+    - La mayoria del código está comentado, a falta de tiempo no se incluyeron los resultados de las pruebas o del debugging
+
+- Al adaptar el sistema a un nuevo año en un inicio deberás hacer lo siguiente
+    - Cuenta de dependencia
+        - Crear nuevos archivos para
+            - frontend
+                - views\templates\questionary.php
+                - views\templates\js/questionary.js
+            - backend
+                - controllers\questionaryController.php
+                - models\questionaryModel.php
+        en la misma ruta y copiar los archivos anteriores en la carpeta 'old' de cada carpeta de mvc con el año que le corresponde, tus nuevos arhivos antes mencionados contendrán el cuestionario que estarás desarrollando.
+
+    - Cuenta de administrador
+        - Usuarios
+            - Ya es mantenible
+        - Dependencias
+            - Ya es mantenible pero deberás agregar las dependencias correspondientes al nuevo año
+        - Reportes
+            - Deberás manipular el nuevo año en views\templates\js\admin\reports.js
+        - Graficador
+            - En su mayoria es mantenible pero de haber algún cambio en las preguntas para el nuevo año que estás incluyendo deberás editar estas graficas sin dañar las ya creadas.
+                - Cada grafica tiene su tabla de comparación anual. La lógica puede ser compleja, tomate tu tiempo para entederla.
+
+- Recomendaciones
+    - Hay mucho que mejorarle a este sistema pero en un inicio ademas de adaptarlo al nuevo año
+        - Es importante
+            - Que en el cuestionario se muestren las respuestas de las dependencias en los formularios aunque estas recarguen la pagina o salgan de su cuenta
+                - Aparecen en verde las que ya están contestadas pero sugiero que en ese mismo arbol de preguntas contestadas se agregue uno nuevo con las respuestas que ya se han registrado y mandarselas a los formularios
+            - Se pide(en 2021) que los administradores puedan hacer cambios a las respuestas de las dependencias.
+                - Sugiero que una vez hecho el punto anterior solo se redireccione al cuestionario pero ten en cuenta las variables de sesion
+        - Puede esperar
+            - Arreglar todo el diseño(si estas viendo esto en 2022 el diseño del inicio que actualmente tienes no lo han visto las dependencias aunque podrías cambiarlo)
+            - Se trata de un sistema pequeño aunque incluir frameworks de desarrollo estaria exelente
+
+by Alejandro Ríos - RiversHIRSCH

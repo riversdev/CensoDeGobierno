@@ -13,3 +13,5 @@ class Connection
         }
     }
 }
+
+# by Alejandro Ríos - RiversHIRSCH

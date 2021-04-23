@@ -318,4 +318,6 @@ if (isset($_SESSION['sesionActiva']) && $_SESSION['sesionActiva'] == "1") {
     <script src="views/templates/js/welcome.js"></script>
 <?php
 }
+
+# by Alejandro Ríos - RiversHIRSCH
 ?>

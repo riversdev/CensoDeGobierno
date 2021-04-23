@@ -322,3 +322,5 @@ generarReporte = (tipoReporte) => {
         }
     }
 }
+
+// by Alejandro Ríos - RiversHIRSCH

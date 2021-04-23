@@ -451,3 +451,5 @@ async function leerListaDependencias() {
         console.error(error)
     }
 }
+
+// by Alejandro Ríos - RiversHIRSCH

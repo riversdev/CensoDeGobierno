@@ -5982,3 +5982,5 @@ quitarEspacios = (i) => {
 
     return iiSinEspacios;
 }
+
+// by Alejandro Ríos - RiversHIRSCH

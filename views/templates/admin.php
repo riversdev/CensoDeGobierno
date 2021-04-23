@@ -257,4 +257,6 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1" || $_S
     </footer>
 <?php
 }
+
+# by Alejandro Ríos - RiversHIRSCH
 ?>

@@ -336,3 +336,5 @@ listenersDeAccionesUsuarios = () => {
 
     displayElementosAdministrador()
 }
+
+// by Alejandro Ríos - RiversHIRSCH

@@ -26,3 +26,5 @@ class viewsModel
         return $contenido;
     }
 }
+
+# by Alejandro Ríos - RiversHIRSCH

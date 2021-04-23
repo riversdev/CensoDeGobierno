@@ -311,3 +311,5 @@ class Questions
         return $stmt->fetchAll();
     }
 }
+
+# by Alejandro Ríos - RiversHIRSCH
