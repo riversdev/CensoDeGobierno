@@ -2930,7 +2930,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             document.getElementById('txtTotal5x2P35').innerHTML = total52P35
 
                             // IMPRMIR REPORTE
-                            window.print()
+                            //window.print()
                         }, 1500)
                     }
                 })
@@ -2951,7 +2951,7 @@ async function recuperarNombreDependencia(idInstitucion, anioInstitucion) {
         })
 
         let resultado = res.data
-
+        console.log(res.data);
         if (resultado[0] != undefined && resultado[0] == 'success') {
             nombreInstitucion = resultado[1]
             clasificacionInstitucion = resultado[2]
