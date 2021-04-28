@@ -68,7 +68,7 @@ if (!isset($_SESSION['sesionActiva']) || $_SESSION['sesionActiva'] != "1") {
                 <div class="col-md-12 text-center mt-1 py-2 _bg-blue">
                     <h4 class="text-white">CENSO NACIONAL DE GOBIERNOS ESTATALES 2021</h4>
                     <h5>Módulo 1: Administración pública de la entidad federativa</h5>
-                    <button id="imprimirReporte" class="btn btn-outline-white" >Imprimir Reporte</button>
+                    <a id="imprimirReporte"><i class="fas fa-print"></i></a>
                 </div>
                 <!-- question 1 -->
                 <div class="col-md-12 my-2 _card-border">
