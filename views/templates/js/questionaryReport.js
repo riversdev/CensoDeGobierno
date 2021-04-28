@@ -8,6 +8,14 @@ const numerosConcentrados = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    //FUNCION PARA IMPRIMIR REPORTE
+
+    document.getElementById('imprimirReporte').addEventListener('click', () =>{
+        window.print();
+    })
+
+
     // DESCIFRAR PARAMETROS DE LA RUTA
     let parametros = window.location.href.split('?')[1].split('&')
     idInstitucion = atob(parametros[0])
@@ -1047,7 +1055,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ocultarPreguntasNoContestadas()
 
                         // IMPRMIR REPORTE
-                        window.print()
+                        //window.print()
                     })
                 } else {
                     window.close()
@@ -2936,7 +2944,7 @@ generarConcentrado = (idInstitucion, idDependencia = numerosConcentrados[idInsti
                 document.getElementById('txtTotal5x2P35').innerHTML = total52P35
 
                 // IMPRMIR REPORTE
-                window.print()
+                //window.print()
             } else {
                 generarConcentrado(idInstitucion, idDependencia + 1)
             }
