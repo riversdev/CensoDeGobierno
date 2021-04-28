@@ -35,7 +35,6 @@ async function listarReportes(anioDependencia) {
         })
 
         let resultado = res.data
-        console.log(resultado)
         if (resultado[0] == 'success') {
             reportes = resultado[1]
         } else if (resultado[0] == 'error') {
@@ -223,7 +222,6 @@ listenersDeAccionesResultados = () => {
                             alertify.alert('<span class="font-weight-bold">Sin archivos</span>', 'Verifique el titular vacante o con clave de otra institución en el reporte individual de esta dependencia.')
                         }
                     } else {
-                        console.log(reportes[reporte]['cedulaBinario']);
                         if (reportes[reporte]['cedulaBinario'] == 1 && reportes[reporte]['cedulaBinario'] != null) {
                             obtenerCedulaDependencia(idDependencia, anioDependencia).then((resultado) => {
                                 if (resultado[0] == 'success') {
