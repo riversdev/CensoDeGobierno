@@ -1396,7 +1396,7 @@ generarConcentrado = (idInstitucion, idDependencia = numerosConcentrados[idInsti
             totalPertenecenIndigenaHombres += parseInt(reporte['pregunta10seccion1']['perteneceIndigenaH'])
             totalPertenecenIndigenaMujeres += parseInt(reporte['pregunta10seccion1']['perteneceIndigenaM'])
             totalNoPertenecenIndigenaHombres += parseInt(reporte['pregunta10seccion1']['noPerteneceIndigenaH'])
-            totalNoPertenecenIndigenaMujeres += parseInt(reporte['pregunta10seccion1']['noPerteneceIndigenaM'])
+            totalNoPertenecenIndigenaMujeres += parseInt(reporte['pregunta10seccion1']['noPerteneneIndigenaM'])
             totalIndigenaNoIdentificadoHombres += parseInt(reporte['pregunta10seccion1']['noIdentificadoH'])
             totalIndigenaNoIdentificadoMujeres += parseInt(reporte['pregunta10seccion1']['noIdentificadoM'])
 
