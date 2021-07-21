@@ -14,4 +14,4 @@ class Connection
     }
 }
 
-# by Alejandro Ríos - rivershirsch
+# by rivershirsch
